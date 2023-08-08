@@ -19,7 +19,7 @@ interface AuthContextType {
   loginWithGoogle: () => Promise<void>;
   FacebookSingIn: () => Promise<void>;
   user: any;
-  Logout: () => Promise<void>;
+  Logout:() => Promise<void>;
   loading: boolean;
 }
 
@@ -75,6 +75,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
+
+  
 
   const AuthUser: AuthContextType = {
     createUser,

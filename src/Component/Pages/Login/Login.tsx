@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from "react";
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const [show, setShow] = useState(false);
  const Navigate = useNavigate();
 
  const {login} = useContext(AuthContext);
@@ -74,8 +76,6 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
               className="w-full  bg-white p-8 rounded shadow-lg"
             >
               <h2 className="text-2xl font-semibold mb-4 uppercase">Log In </h2>
-             
-              
 
               {/* Email */}
               <div className="mb-4">
@@ -94,7 +94,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 />
               </div>
               {/* password */}
-              <div className="mb-4">
+              <div className="mb-4 relative">
                 <label
                   htmlFor="password"
                   className="block text-gray-700 font-medium mb-1"
@@ -102,16 +102,20 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={show?"text":"password"}
                   id=" password"
                   name="password"
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
-              </div>
 
-            
-           
+                <p
+                  onClick={() => setShow(!show)}
+                  className=" absolute top-8 right-5 font-bold cursor-pointer "
+                >
+                  {show ? "hide" : "Show"}
+                </p>
+              </div>
 
               {/* Add other input fields */}
               <button
