@@ -5,7 +5,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
-
+  const [show,setShow]=useState(false)
   const { createUser } = useContext(AuthContext);
 
 
@@ -128,7 +128,7 @@ const SignUp = () => {
                 />
               </div>
               {/* password */}
-              <div className="mb-4">
+              <div className="mb-4 relative">
                 <label
                   htmlFor="password"
                   className="block text-gray-700 font-medium mb-1"
@@ -136,12 +136,13 @@ const SignUp = () => {
                   Password
                 </label>
                 <input
-                  type="number"
+                  type={ show? "text" :"password"}
                   id=" password"
                   name="password"
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
+                <p onClick={() => setShow(!show)} className=" absolute top-8 right-5 font-bold cursor-pointer ">{ show ?"hide":"Show"}</p>
               </div>
 
               {/* Roll */}

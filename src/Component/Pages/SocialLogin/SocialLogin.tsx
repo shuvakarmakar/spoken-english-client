@@ -36,7 +36,7 @@ const SocialLogin = () => {
   return (
     <>
       <div className="mt-4 ">
-        <p className="text-gray-600 uppercase">Or sign up with:</p>
+        <p className="text-gray-600 uppercase text-center text-sm">Or sign up with:</p>
         <div className="flex space-x-4 my-3 justify-center">
           <p
             onClick={handleLoginWithFacebook}

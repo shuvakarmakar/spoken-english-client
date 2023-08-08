@@ -1,4 +1,11 @@
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
+
 const Navbar = () => {
+
+  const { Logout } = useContext(AuthContext);
+  // make a logout button
+  
   return (
     <div>
       <div className="navbar bg-base-100">
