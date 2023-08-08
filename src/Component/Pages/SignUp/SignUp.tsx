@@ -1,5 +1,5 @@
 import React,{ useEffect, useState,useContext } from "react";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
