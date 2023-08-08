@@ -67,11 +67,11 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="w-full md:w-[500px] ">
+        <div className="hero-content text-neutral-content">
+          <div className="w-full md:w-[600px] ">
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-md bg-white p-8 rounded shadow-lg"
+              className="w-full  bg-white p-8 rounded shadow-lg"
             >
               <h2 className="text-2xl font-semibold mb-4 uppercase">Log In </h2>
              
@@ -81,7 +81,7 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-gray-700 font-medium mb-1"
+                  className=" block text-gray-700 font-medium mb-1"
                 >
                   Email
                 </label>

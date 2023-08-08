@@ -1,30 +1,34 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 import {
+  FacebookAuthProvider,
   GoogleAuthProvider,
+  User,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
 
 interface AuthContextType {
-  createUser: (email: string, password: string) => Promise<void>;
+  createUser: (email: string, password: string)=> Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
   loginWithGoogle: () => Promise<void>;
-  user: any; // Update the type for user as needed
+  FacebookSingIn: () => Promise<void>;
+  user: any;
   Logout: () => Promise<void>;
-  loding: boolean;
+  loading: boolean;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUSer] = useState<any| null>(null);
-  const [loding, setLoging] = useState<boolean>(true);
+  const [user, setUSer] = useState<null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const auth = getAuth(app);
   console.log("auth", auth);
@@ -32,37 +36,44 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   // create user with email and password
   const createUser = (email: string, password: string) => {
-    setLoging(false);
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // sign in user with email and password
   const login = (email: string, password: string) => {
-    setLoging(false);
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // google sign in user
   const loginWithGoogle = () => {
-    setLoging(false);
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
+  // Facebook sign 
+  const FacebookProvider = new FacebookAuthProvider();
+
+  const FacebookSingIn = () => { 
+       return signInWithPopup(auth, FacebookProvider);
+  }
+
   // get logged in user from firebase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user:User|null) => {
       setUSer(user);
       console.log("logging user found",user);
-      setLoging(false);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
-  }, []);
+  },[auth]);
 
   // Logout user
   const Logout = () => {
-    setLoging(false);
+    setLoading(true);
     return signOut(auth);
   };
 
@@ -72,7 +83,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     loginWithGoogle,
     user,
     Logout,
-    loding,
+    loading,
+    FacebookSingIn,
   };
 
   return (
