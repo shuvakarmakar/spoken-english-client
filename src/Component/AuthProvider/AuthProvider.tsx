@@ -14,8 +14,8 @@ import app from "../../Firebase/firebase";
 interface AuthContextType {
   createUser: (email: string, password: string) => Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
-  loinWithGoogle: () => Promise<void>;
-  user:any; // Update the type for user as needed
+  loginWithGoogle: () => Promise<void>;
+  user: any; // Update the type for user as needed
   Logout: () => Promise<void>;
   loding: boolean;
 }
@@ -37,13 +37,13 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   // sign in user with email and password
-  const Login = (email: string, password: string) => {
+  const login = (email: string, password: string) => {
     setLoging(false);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // google sign in user
-  const loinWithGoogle = () => {
+  const loginWithGoogle = () => {
     setLoging(false);
     return signInWithPopup(auth, provider);
   };
@@ -52,7 +52,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUSer(user);
-      console.log("logging user found");
+      console.log("logging user found",user);
       setLoging(false);
     });
     return () => {
@@ -68,8 +68,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const AuthUser: AuthContextType = {
     createUser,
-    Login,
-    loinWithGoogle,
+    login,
+    loginWithGoogle,
     user,
     Logout,
     loding,
