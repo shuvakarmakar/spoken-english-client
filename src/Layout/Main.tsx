@@ -1,24 +1,24 @@
 import { Outlet } from "react-router";
+import Navbar from "../Shared/Navbar";
 
 const Main = () => {
-    return (
-        <>
-            <div className="header">{/* Header */}</div>
+  return (
+    <>
+      <div className="header">
+        {/* Header */}
+        <Navbar />
+      </div>
 
-            {/* main  */}
-            <div className="main">
-                <Outlet></Outlet>
-            </div>
+      {/* main  */}
+      <div className="main">
+        <Outlet></Outlet>
+      </div>
 
-            {/* Footer */}
+      {/* Footer */}
 
-            <div className="Footer">
-
-            </div>
-
-
-        </>
-    );
+      <div className="Footer"></div>
+    </>
+  );
 };
 
 export default Main;
