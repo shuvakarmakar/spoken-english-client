@@ -8,7 +8,6 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
