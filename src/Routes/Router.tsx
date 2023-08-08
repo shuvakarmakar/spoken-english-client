@@ -4,6 +4,7 @@ import Login from "../Component/Pages/Login/Login";
 import Home from "../Component/Home/Home";
 import Main from "../Layout/Main";
 import Error from "../Component/Pages/Error/Error";
+import FreeLiveLessons from "../Component/Pages/FreeLiveLessons/FreeLiveLessons";
 
 export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
                 path: '/SignUp',
                 element: <SignUp></SignUp>
 
+            },
+            {
+                path: 'freelivelessons',
+                element: <FreeLiveLessons></FreeLiveLessons>
             }
         ]
     },
