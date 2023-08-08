@@ -88,7 +88,7 @@ const SignUp = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="w-[300px] md:w-[500px] ">
+          <div className="w-full md:w-[500px] ">
             <form
               onSubmit={handleSubmit}
               className="w-full max-w-md bg-white p-8 rounded shadow-lg"
