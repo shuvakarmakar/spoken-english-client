@@ -1,12 +1,37 @@
-// import { useContext } from "react";
-// import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const Navbar = () => {
-  // const { Logout ,user} = useContext(AuthContext);
+  const { Logout, user } = useContext(AuthContext);
   // // make a logout button
-
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to log out",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Log out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Logout()
+          .then((result) => {
+            Swal.fire(
+              "LogOut",
+              "Your successfully has been LogOut.",
+              "success"
+            );
+          })
+          .catch((err) => {
+            alert("something went wrong");
+            return;
+          });
+      }
+    });
+  };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -60,7 +85,7 @@ const Navbar = () => {
           <a className="btn btn-ghost normal-case text-xl">ELearner</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 flex items-center gap-5">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -74,7 +99,6 @@ const Navbar = () => {
                   <li>
                     <a>Test Format 1</a>
                   </li>
-               
                   <li>
                     <a>Evalution </a>
                   </li>{" "}
@@ -87,6 +111,31 @@ const Navbar = () => {
             <li>
               <a>Speaking Skills</a>
             </li>
+
+            {user ? (
+              <>
+                <div className="flex items-center">
+                  <li>{user?.displayName}</li>
+                  <button onClick={handleLogOut} className="btn btn-sm ml-2">
+                    LogOut
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                {" "}
+               
+                  <Link to={"/SignUp"}>
+                    {" "}
+                    <li>SignUp</li>
+                  </Link>
+                  <Link to={"/login"}>
+                    {" "}
+                    <li>Login</li>
+                  </Link>
+                
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end gap-2">

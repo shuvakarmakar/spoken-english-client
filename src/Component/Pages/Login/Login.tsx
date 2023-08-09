@@ -116,7 +116,7 @@ const Login = () => {
                   Log In{" "}
                 </h2>
                 <Link to={"/SignUp"}>
-                  <h2 className="text-2xl font-semibold mb-4 uppercase">
+                  <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
                     Sign Up{" "}
                   </h2>
                 </Link>
@@ -158,7 +158,7 @@ const Login = () => {
 
                 <p
                   onClick={() => setShow(!show)}
-                  className=" absolute top-8 right-5 font-bold cursor-pointer "
+                  className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
                 >
                   {show ? "hide" : "Show"}
                 </p>
