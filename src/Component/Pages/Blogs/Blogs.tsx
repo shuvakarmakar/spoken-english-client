@@ -8,7 +8,7 @@ const Blogs = () => {
 
  
 
-    console.log(blogs)
+    // console.log(blogs)
     useEffect(() => {
         // Side effect code goes here
         // This code will run after the component is mounted
@@ -44,7 +44,7 @@ const Blogs = () => {
             <section className='blogs py-5'>
                 <div className="w-[96%] md:w-[90%] mx-auto">
                   {
-                    blogs.map((blog)=>(
+                    blogs.slice(0,3).map((blog)=>(
                       <div className="relative">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4  py-7">
                         <p className='text-2xl text-justify'>{blog.blog_name}</p>
@@ -58,6 +58,10 @@ const Blogs = () => {
                       </div>
                     ))
                   }
+
+                </div>
+                <div className="flex justify-center">
+                    <Link to={'/all-blogs'} className='text-center py-2 font-bold px-3 hover:bg-black hover:text-white   bg-[rgba(0,0,0,0.6)] text-white'>View More</Link>
                 </div>
             </section>
         </div>
