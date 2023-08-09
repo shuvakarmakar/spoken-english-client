@@ -9,6 +9,7 @@ import Blogs from "../Component/Pages/Blogs/Blogs";
 import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
 
 import React from "react";
+import AllBlogs from "../Component/Pages/Blogs/AllBlogs";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
                 path:'blog/:id',
                 element:<BlogDetails></BlogDetails>,
                 loader: ({params})=>fetch(`https://spoken-english-server.vercel.app/blog/${params.id}`)
+            },
+            {
+                path:"all-blogs",
+                element:<AllBlogs></AllBlogs>
             }
         ]
     },
