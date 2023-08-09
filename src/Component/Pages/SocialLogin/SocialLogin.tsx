@@ -12,11 +12,11 @@ const SocialLogin = () => {
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
       .then(res => {
-        console.log(res);
+        // console.log(res);
          Swal.fire("Good job!", "Login Success", "success");
          Navigate("/");
       }).catch(err => { 
-        console.log(err);
+        // console.log(err);
       })
     
 
@@ -24,12 +24,12 @@ const SocialLogin = () => {
   const handleLoginWithFacebook = () => {
     FacebookSingIn()
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         Swal.fire("Good job!", "Login Success", "success");
         Navigate('/')
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
     
 
