@@ -59,7 +59,15 @@ const SignUp = () => {
               },2000)
             })
             .catch((error) => {
-             
+              const errorMessage = error.message;
+                if (errorMessage) {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: `${errorMessage}`,
+                    footer: '<a href="">Why do I have this issue?</a>',
+                  });
+                }
             });
 
         }
@@ -111,7 +119,7 @@ const SignUp = () => {
                   Sign Up
                 </h2>
                 <Link to={"/login"}>
-                  <h2 className="text-2xl font-semibold mb-4 uppercase">
+                  <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
                     Log in
                   </h2>
                 </Link>
@@ -166,7 +174,7 @@ const SignUp = () => {
                 />
                 <p
                   onClick={() => setShow(!show)}
-                  className=" absolute top-8 right-5 font-bold cursor-pointer "
+                  className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
                 >
                   {show ? "hide" : "Show"}
                 </p>

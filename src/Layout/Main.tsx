@@ -16,7 +16,10 @@ const Main = () => {
 
       {/* Footer */}
 
-      <div className="Footer"></div>
+          <div className="Footer">
+              
+              
+      </div>
     </>
   );
 };
