@@ -8,6 +8,7 @@ import FreeLiveLessons from "../Component/Pages/FreeLiveLessons/FreeLiveLessons"
 import Blogs from "../Component/Pages/Blogs/Blogs";
 import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
 
+import React from "react";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
 
             },
             {
-                path: 'freelivelessons',
+                path: '/freelivelessons',
                 element: <FreeLiveLessons></FreeLiveLessons>
             },
             {

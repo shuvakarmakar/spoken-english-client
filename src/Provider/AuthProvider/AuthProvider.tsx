@@ -6,31 +6,35 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
 
 interface AuthContextType {
-  createUser: (email: string, password: string)=> Promise<void>;
+  createUser: (email: string, password: string) => Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
-  FacebookSingIn: () => Promise<void>;
+  ResetPassword: (email: string) => Promise<void>;
+  loginWithGoogle: () =>void;
+  FacebookSingIn: () => void;
   user: any;
-  Logout:() => Promise<void>;
+  Logout: () => Promise<void>;
   loading: boolean;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+
   const [user, setUSer] = useState<null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
+ console.log(user,'from');
   const auth = getAuth(app);
-  console.log("auth", auth);
+  // console.log("auth", auth);
   const provider = new GoogleAuthProvider();
 
   // create user with email and password
@@ -51,24 +55,24 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-  // Facebook sign 
+  // Facebook sign
   const FacebookProvider = new FacebookAuthProvider();
 
-  const FacebookSingIn = () => { 
-       return signInWithPopup(auth, FacebookProvider);
-  }
+  const FacebookSingIn = () => {
+    return signInWithPopup(auth, FacebookProvider);
+  };
 
   // get logged in user from firebase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user:User|null) => {
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       setUSer(user);
-      console.log("logging user found",user);
+      // console.log("logging user found", user);
       setLoading(false);
     });
     return () => {
       unsubscribe();
     };
-  },[auth]);
+  }, [auth]);
 
   // Logout user
   const Logout = () => {
@@ -76,7 +80,20 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return signOut(auth);
   };
 
-  
+  // Reset password
+
+  const ResetPassword = (email:string) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  // update user profile
+
+  const UpdateUserProfile = (Name:string) => { 
+    return updateProfile(auth.currentUser, {
+      displayName:Name,
+     
+    });
+  }
 
   const AuthUser: AuthContextType = {
     createUser,
@@ -86,7 +103,10 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     Logout,
     loading,
     FacebookSingIn,
+    ResetPassword,
+    UpdateUserProfile,
   };
+  
 
   return (
     <div>
