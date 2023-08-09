@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
   
-  const Navigate:NavigateFunction=useNavigate()
+  const Navigate: NavigateFunction = useNavigate()
+  
   const { loginWithGoogle, FacebookSingIn } = useContext(AuthContext);
 
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
       .then(res => {
         console.log(res);
-        alert('Login successful')
+         Swal.fire("Good job!", "Login Success", "success");
          Navigate("/");
       }).catch(err => { 
         console.log(err);
@@ -23,7 +25,7 @@ const SocialLogin = () => {
     FacebookSingIn()
       .then((res) => {
         console.log(res);
-        alert("Login successful");
+        Swal.fire("Good job!", "Login Success", "success");
         Navigate('/')
       })
       .catch((err) => {

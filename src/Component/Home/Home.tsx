@@ -2,17 +2,18 @@ import Blogs from "../Pages/Blogs/Blogs";
 import Banner from "../Banner/Banner";
 import HeroSection from "../HeroSection/HeroSection";
 import Process from "../Process/Process";
-
+import React from "react";
+import Review from "../Review/Review";
+import Footer from "../../Shared/Footer";
 const Home = () => {
   return (
     <div>
-    
-      <h1>This is home</h1>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis atque nostrum id sed, enim laboriosam illo odio ea ipsam fugit esse accusamus accusantium quod culpa quo unde alias! Error, eligendi!</p>
-      <Blogs></Blogs>
       <Banner />
       <HeroSection />
       <Process />
+      <Review />
+      <Blogs />
+      <Footer />
     </div>
   );
 };

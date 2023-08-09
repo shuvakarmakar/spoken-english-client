@@ -5,7 +5,7 @@ import Home from "../Component/Home/Home";
 import Main from "../Layout/Main";
 import Error from "../Component/Pages/Error/Error";
 import FreeLiveLessons from "../Component/Pages/FreeLiveLessons/FreeLiveLessons";
-
+import React from "react";
 export const router = createBrowserRouter([
     {
         path: "/",
