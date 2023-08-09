@@ -4,6 +4,7 @@ import HeroSection from "../HeroSection/HeroSection";
 import Process from "../Process/Process";
 import React from "react";
 import Review from "../Review/Review";
+import Footer from "../../Shared/Footer";
 const Home = () => {
   return (
     <div>
@@ -11,7 +12,8 @@ const Home = () => {
       <HeroSection />
       <Process />
       <Review />
-      <Blogs></Blogs>
+      <Blogs />
+      <Footer />
     </div>
   );
 };
