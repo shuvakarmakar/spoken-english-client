@@ -48,7 +48,7 @@ const Blogs = () => {
                         <p className='text-2xl'>{blog.blog_name}</p>
                         <img src={blog.image} alt="" className='w-full h-[300px]'/>
                         <p className='font-bold'>{blog.blog_short_description}</p>
-                       
+                        
                       </div>
                     ))
                   }
