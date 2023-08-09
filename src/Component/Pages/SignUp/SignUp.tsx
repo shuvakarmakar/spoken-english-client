@@ -1,12 +1,13 @@
 import React,{ useEffect, useState,useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
   const [show,setShow]=useState(false)
-  const { createUser } = useContext(AuthContext);
+  const {createUser,UpdateUserProfile} = useContext(AuthContext);
 
 
  const Navigate=useNavigate()
@@ -26,7 +27,6 @@ const SignUp = () => {
     event.preventDefault();
     const form = event.target;
    const name:string = (form.name as HTMLInputElement).value;
-   // const PhotoUrl: string = (form.PhotoUrl as HTMLInputElement).value;
    const email: string = (form.Email as HTMLInputElement).value;
    const password: number= parseInt(
      (form.password as HTMLInputElement).value,
@@ -50,28 +50,41 @@ const SignUp = () => {
 
     createUser(email, password)
       .then((result) => {
-        // updateUser(result.user, name, PhotoUrl);
-        console.log(result);
+        
+        if (result.user) {
+          UpdateUserProfile(name)
+            .then(() => {
+              setTimeout(() => {
+                  Swal.fire("Good job!", "User Name Update Success", "success");
+              },2000)
+            })
+            .catch((error) => {
+             
+            });
+
+        }
         Navigate("/");
-        alert("success");
-        // toast.success("Login success ,happy shopping");
+        Swal.fire("Good job!", "Create account Success", "success");
+       
         form.reset();
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
-        alert(errorMessage);
-        // ..
+        if (errorMessage) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${errorMessage}`,
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+       
+        
       });
-    // };
-    // const updateUser = (cruent, Name, photoURL) => {
-    //   updateProfile(cruent, {
-    //     displayName: Name,
-    //     photoURL: photoURL,
-    //   });
+  
+   
      event.stopPropagation();
   };
-
 
 
   return (
@@ -93,7 +106,16 @@ const SignUp = () => {
               onSubmit={handleSubmit}
               className="w-full  bg-white p-8 rounded shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4 uppercase">Sign Up</h2>
+              <div className=" flex justify-between">
+                <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
+                  Sign Up
+                </h2>
+                <Link to={"/login"}>
+                  <h2 className="text-2xl font-semibold mb-4 uppercase">
+                    Log in
+                  </h2>
+                </Link>
+              </div>
               {/* name */}
               <div className="mb-4">
                 <label
@@ -136,13 +158,18 @@ const SignUp = () => {
                   Password
                 </label>
                 <input
-                  type={ show? "text" :"password"}
+                  type={show ? "text" : "password"}
                   id=" password"
                   name="password"
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
-                <p onClick={() => setShow(!show)} className=" absolute top-8 right-5 font-bold cursor-pointer ">{ show ?"hide":"Show"}</p>
+                <p
+                  onClick={() => setShow(!show)}
+                  className=" absolute top-8 right-5 font-bold cursor-pointer "
+                >
+                  {show ? "hide" : "Show"}
+                </p>
               </div>
 
               {/* Roll */}
@@ -172,7 +199,7 @@ const SignUp = () => {
                 Sign Up
               </button>
 
-             <SocialLogin></SocialLogin>
+              <SocialLogin></SocialLogin>
             </form>
           </div>
         </div>

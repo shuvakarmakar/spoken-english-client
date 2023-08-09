@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  // const { Logout } = useContext(AuthContext);
+  // const { Logout ,user} = useContext(AuthContext);
   // // make a logout button
 
   return (
@@ -74,6 +74,7 @@ const Navbar = () => {
                   <li>
                     <a>Test Format 1</a>
                   </li>
+               
                   <li>
                     <a>Evalution </a>
                   </li>{" "}

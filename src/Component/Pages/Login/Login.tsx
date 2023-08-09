@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
 
   const { login, ResetPassword } = useContext(AuthContext);
 
+  // Login form
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target;
@@ -33,12 +34,10 @@ const Login = () => {
 
     login(email, password)
       .then((result) => {
-        // updateUser(result.user, name, PhotoUrl);
         console.log(result);
         Navigate("/");
-        
+
         Swal.fire("Good job!", "Login Success", "success");
-        // toast.success("Login success ,happy shopping");
         form.reset();
       })
       .catch((err) => {
@@ -47,60 +46,51 @@ const Login = () => {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text:`${errorMessage}`,
+            text: `${errorMessage}`,
             footer: '<a href="">Why do I have this issue?</a>',
           });
         }
-        console.log(errorMessage);
+
         setError(errorMessage);
-      
-        // ..
       });
-    // };
-    // const updateUser = (cruent, Name, photoURL) => {
-    //   updateProfile(cruent, {
-    //     displayName: Name,
-    //     photoURL: photoURL,
-    //   });
+
     event.stopPropagation();
   };
 
+  // Reset Password
 
- const passRef:RefObject<HTMLInputElement> = useRef(null);
+  const passRef: RefObject<HTMLInputElement> = useRef(null);
 
   const handelResetPassword = () => {
-      if (passRef.current) {
-        passRef.current.focus();
+    if (passRef.current) {
+      passRef.current.focus();
     }
     const email = passRef.current.value;
     if (!email) {
-       Swal.fire({
-         icon: "error",
-         title: "Oops...",
-         text: `Enter your email address`,
-         footer: '<a href="">Why do I have this issue?</a>',
-       });
-      return
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Enter your email address`,
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+      return;
     }
     ResetPassword(email)
-    .then(() => {
-
-    Swal.fire("Yahoo!", "Check your Email", "success");
-  })
-  .catch((error) => {
-    // const errorCode = error.code;
-    const errorMessage = error.message;
-    if (errorMessage) {
+      .then(() => {
+        Swal.fire("Yahoo!", "Check your Email", "success");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        if (errorMessage) {
           Swal.fire({
             icon: "error",
             title: "Oops...",
-            text:`${errorMessage}`,
+            text: `${errorMessage}`,
             footer: '<a href="">Why do I have this issue?</a>',
           });
         }
-  })
-
-  }
+      });
+  };
 
   return (
     <div className="container mx-auto">
@@ -119,10 +109,18 @@ const Login = () => {
           <div className="w-full md:w-[600px] ">
             <form
               onSubmit={handleSubmit}
-              className="w-full  bg-white p-8 rounded shadow-lg"
+              className="w-full  bg-white p-3 md:p-20 rounded shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4 uppercase">Log In </h2>
-
+              <div className="flex justify-between">
+                <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
+                  Log In{" "}
+                </h2>
+                <Link to={"/SignUp"}>
+                  <h2 className="text-2xl font-semibold mb-4 uppercase">
+                    Sign Up{" "}
+                  </h2>
+                </Link>
+              </div>
               {/* Email */}
               <div className="mb-4">
                 <label
@@ -132,7 +130,7 @@ const Login = () => {
                   Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   required
                   id="Email"
                   name="Email"

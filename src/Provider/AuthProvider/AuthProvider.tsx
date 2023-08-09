@@ -10,6 +10,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
@@ -28,11 +29,12 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+
   const [user, setUSer] = useState<null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
+ console.log(user,'from');
   const auth = getAuth(app);
-  console.log("auth", auth);
+  // console.log("auth", auth);
   const provider = new GoogleAuthProvider();
 
   // create user with email and password
@@ -64,7 +66,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       setUSer(user);
-      console.log("logging user found", user);
+      // console.log("logging user found", user);
       setLoading(false);
     });
     return () => {
@@ -80,9 +82,18 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   // Reset password
 
-  const ResetPassword = (email) => {
+  const ResetPassword = (email:string) => {
     return sendPasswordResetEmail(auth, email);
   };
+
+  // update user profile
+
+  const UpdateUserProfile = (Name:string) => { 
+    return updateProfile(auth.currentUser, {
+      displayName:Name,
+     
+    });
+  }
 
   const AuthUser: AuthContextType = {
     createUser,
@@ -93,8 +104,9 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     loading,
     FacebookSingIn,
     ResetPassword,
+    UpdateUserProfile,
   };
-  /* eslint-enable rule-name */
+  
 
   return (
     <div>
