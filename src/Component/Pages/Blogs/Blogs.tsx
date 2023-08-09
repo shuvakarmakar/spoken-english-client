@@ -53,7 +53,7 @@ const Blogs = () => {
 
                       </div>
                       <div className="flex justify-center mb-3">
-                      <Link className='text-center py-1 px-3 bg-transparent border border-fuchsia-900 font-bold hover:bg-black hover:text-white absolute bottom-0 md:bottom-3 bg-[rgba(0,0,0,0.6)] text-white' to={`blog/${blog._id}`}>Details</Link>
+                      <Link className='text-center py-1 px-3  border border-fuchsia-900 font-bold hover:bg-black hover:text-white absolute bottom-0 md:bottom-3 bg-[rgba(0,0,0,0.6)] text-white' to={`blog/${blog._id}`}>Details</Link>
                       </div>
                       </div>
                     ))
