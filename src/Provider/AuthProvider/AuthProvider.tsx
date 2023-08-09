@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -14,12 +15,13 @@ import app from "../../Firebase/firebase";
 
 
 interface AuthContextType {
-  createUser: (email: string, password: string)=> Promise<void>;
+  createUser: (email: string, password: string) => Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
-  FacebookSingIn: () => Promise<void>;
+  ResetPassword: (email: string) => Promise<void>;
+  loginWithGoogle: () =>void;
+  FacebookSingIn: () => void;
   user: any;
-  Logout:() => Promise<void>;
+  Logout: () => Promise<void>;
   loading: boolean;
 }
 
@@ -51,24 +53,24 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-  // Facebook sign 
+  // Facebook sign
   const FacebookProvider = new FacebookAuthProvider();
 
-  const FacebookSingIn = () => { 
-       return signInWithPopup(auth, FacebookProvider);
-  }
+  const FacebookSingIn = () => {
+    return signInWithPopup(auth, FacebookProvider);
+  };
 
   // get logged in user from firebase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user:User|null) => {
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       setUSer(user);
-      console.log("logging user found",user);
+      console.log("logging user found", user);
       setLoading(false);
     });
     return () => {
       unsubscribe();
     };
-  },[auth]);
+  }, [auth]);
 
   // Logout user
   const Logout = () => {
@@ -76,7 +78,11 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     return signOut(auth);
   };
 
-  
+  // Reset password
+
+  const ResetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const AuthUser: AuthContextType = {
     createUser,
@@ -86,7 +92,9 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     Logout,
     loading,
     FacebookSingIn,
+    ResetPassword,
   };
+  /* eslint-enable rule-name */
 
   return (
     <div>
