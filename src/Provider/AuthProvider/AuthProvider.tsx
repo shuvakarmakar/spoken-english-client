@@ -14,14 +14,13 @@ import {
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
-
+// type script type definitions
 interface AuthContextType {
   createUser: (email: string, password: string) => Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
   ResetPassword: (email: string) => Promise<void>;
   loginWithGoogle: () =>void;
   FacebookSingIn: () => void;
-  user: any;
   Logout: () => Promise<void>;
   loading: boolean;
 }
