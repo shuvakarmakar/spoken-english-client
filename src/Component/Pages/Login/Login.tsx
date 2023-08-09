@@ -1,60 +1,106 @@
-import React, { useContext, useState } from "react";
-import SocialLogin from '../SocialLogin/SocialLogin';
-import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useRef } from "react";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import {  useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const [show, setShow] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
-    const [show, setShow] = useState(false);
- const Navigate = useNavigate();
+  const Navigate = useNavigate();
 
- const {login} = useContext(AuthContext);
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const form = event.target;
-  const email: string = (form.Email as HTMLInputElement).value;
-  const password: number = parseInt(
-    (form.password as HTMLInputElement).value,
-    10
-  );
+  const { login, ResetPassword } = useContext(AuthContext);
 
-  const user = {
-    email,
-    password,
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = event.target;
+    const email: string = (form.Email as HTMLInputElement).value;
+    const password: number = parseInt(
+      (form.password as HTMLInputElement).value,
+      10
+    );
+
+    const user = {
+      email,
+      password,
+    };
+    console.log(user);
+    if (!email) {
+      alert("please enter your email or password");
+      return;
+    }
+
+    login(email, password)
+      .then((result) => {
+        // updateUser(result.user, name, PhotoUrl);
+        console.log(result);
+        Navigate("/");
+        
+        Swal.fire("Good job!", "Login Success", "success");
+        // toast.success("Login success ,happy shopping");
+        form.reset();
+      })
+      .catch((err) => {
+        const errorMessage = err.message;
+        if (errorMessage) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text:`${errorMessage}`,
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+        console.log(errorMessage);
+        setError(errorMessage);
+      
+        // ..
+      });
+    // };
+    // const updateUser = (cruent, Name, photoURL) => {
+    //   updateProfile(cruent, {
+    //     displayName: Name,
+    //     photoURL: photoURL,
+    //   });
+    event.stopPropagation();
   };
-  console.log(user);
-  if (!email) {
-    alert("please enter your email or password");
-    return;
-  } else if (!password) {
-    alert("please enter your password");
+
+
+ const passRef: RefObject<HTMLInputElement> = useRef(null);
+
+  const handelResetPassword = () => {
+      if (passRef.current) {
+        passRef.current.focus();
+    }
+    const email = passRef.current.value;
+    if (!email) {
+       Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: `Enter your email address`,
+         footer: '<a href="">Why do I have this issue?</a>',
+       });
+      return
+    }
+    ResetPassword(email)
+    .then(() => {
+
+    Swal.fire("Yahoo!", "Check your Email", "success");
+  })
+  .catch((error) => {
+    // const errorCode = error.code;
+    const errorMessage = error.message;
+    if (errorMessage) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text:`${errorMessage}`,
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+  })
+
   }
-
-  login(email, password)
-    .then((result) => {
-      // updateUser(result.user, name, PhotoUrl);
-      console.log(result);
-      Navigate("/");
-      alert("success");
-      // toast.success("Login success ,happy shopping");
-      form.reset();
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      alert(errorMessage);
-      // ..
-    });
-  // };
-  // const updateUser = (cruent, Name, photoURL) => {
-  //   updateProfile(cruent, {
-  //     displayName: Name,
-  //     photoURL: photoURL,
-  //   });
-  event.stopPropagation();
-};
-
-
 
   return (
     <div className="container mx-auto">
@@ -87,8 +133,10 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 </label>
                 <input
                   type="text"
+                  required
                   id="Email"
                   name="Email"
+                  ref={passRef}
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your Email"
                 />
@@ -102,9 +150,10 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                   Password
                 </label>
                 <input
-                  type={show?"text":"password"}
+                  type={show ? "text" : "password"}
                   id=" password"
                   name="password"
+                  required
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
@@ -115,6 +164,14 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                 >
                   {show ? "hide" : "Show"}
                 </p>
+                {error && (
+                  <small
+                    onClick={handelResetPassword}
+                    className="text-pink-500 link "
+                  >
+                    Rest Password..?
+                  </small>
+                )}
               </div>
 
               {/* Add other input fields */}
