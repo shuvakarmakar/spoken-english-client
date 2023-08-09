@@ -66,7 +66,7 @@ const Login = () => {
   };
 
 
- const passRef: RefObject<HTMLInputElement> = useRef(null);
+ const passRef:RefObject<HTMLInputElement> = useRef(null);
 
   const handelResetPassword = () => {
       if (passRef.current) {
