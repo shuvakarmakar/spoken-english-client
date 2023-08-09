@@ -5,6 +5,9 @@ import Home from "../Component/Home/Home";
 import Main from "../Layout/Main";
 import Error from "../Component/Pages/Error/Error";
 import FreeLiveLessons from "../Component/Pages/FreeLiveLessons/FreeLiveLessons";
+import Blogs from "../Component/Pages/Blogs/Blogs";
+import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
+
 import React from "react";
 export const router = createBrowserRouter([
     {
@@ -29,6 +32,15 @@ export const router = createBrowserRouter([
             {
                 path: '/freelivelessons',
                 element: <FreeLiveLessons></FreeLiveLessons>
+            },
+            {
+                path:'blogs',
+                element:<Blogs></Blogs>
+            },
+            {
+                path:'blog/:id',
+                element:<BlogDetails></BlogDetails>,
+                loader: ({params})=>fetch(`https://spoken-english-server.vercel.app/blog/${params.id}`)
             }
         ]
     },
