@@ -25,6 +25,14 @@ const Process = () => {
             3. Speak Confidently & Ace the IELTS test
           </h3>
         </div>
+        <div>
+          <div className="border-2 border-black  w-36 h-36  p-9 rounded-full  text-center text-7xl">
+            <FaFacebookMessenger />
+          </div>
+          <h3 className="text-2xl mt-3">
+            3. Speak Confidently & Ace the IELTS test
+          </h3>
+        </div>
       </div>
     </div>
   );
