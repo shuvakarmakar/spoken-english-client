@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
 
             },
             {
-                path: 'freelivelessons',
+                path: '/freelivelessons',
                 element: <FreeLiveLessons></FreeLiveLessons>
             }
         ]

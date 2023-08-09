@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
   
-  const Navigate=useNavigate()
+  const Navigate:NavigateFunction=useNavigate()
   const { loginWithGoogle, FacebookSingIn } = useContext(AuthContext);
 
   const handleLoginWithGoogle = () => {
