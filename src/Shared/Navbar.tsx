@@ -61,7 +61,7 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/freelivelessons">Free Live Lesson</Link>
+                <Link to="freelivelessons">Free Live Lesson</Link>
               </li>
               <li>
                 <a>IELTS Speaking</a>
@@ -90,7 +90,7 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <a>Free Live Lesson</a>
+              <Link to="freelivelessons">Free Live Lesson</Link>
             </li>
             <li tabIndex={0}>
               <details>
@@ -124,16 +124,16 @@ const Navbar = () => {
             ) : (
               <>
                 {" "}
-               
-                  <Link to={"/SignUp"}>
-                    {" "}
-                    <li>SignUp</li>
-                  </Link>
-                  <Link to={"/login"}>
-                    {" "}
-                    <li>Login</li>
-                  </Link>
-                
+
+                <Link to={"/SignUp"}>
+                  {" "}
+                  <li>SignUp</li>
+                </Link>
+                <Link to={"/login"}>
+                  {" "}
+                  <li>Login</li>
+                </Link>
+
               </>
             )}
           </ul>
