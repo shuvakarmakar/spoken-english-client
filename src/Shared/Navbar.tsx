@@ -111,6 +111,15 @@ const Navbar = () => {
             <li>
               <a>Speaking Skills</a>
             </li>
+            {user && (
+              <>
+                <Link to={'/dashboard/users'}>
+                  <li>
+                    Dashboard
+                  </li>
+                </Link>
+              </>
+            )}
 
             {user ? (
               <>
@@ -124,16 +133,14 @@ const Navbar = () => {
             ) : (
               <>
                 {" "}
-               
-                  <Link to={"/SignUp"}>
-                    {" "}
-                    <li>SignUp</li>
-                  </Link>
-                  <Link to={"/login"}>
-                    {" "}
-                    <li>Login</li>
-                  </Link>
-                
+                <Link to={"/SignUp"}>
+                  {" "}
+                  <li>SignUp</li>
+                </Link>
+                <Link to={"/login"}>
+                  {" "}
+                  <li>Login</li>
+                </Link>
               </>
             )}
           </ul>

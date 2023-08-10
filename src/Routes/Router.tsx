@@ -10,47 +10,61 @@ import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
 
 import React from "react";
 import AllBlogs from "../Component/Pages/Blogs/AllBlogs";
+import Dashboard from "../Layout/DashBoard/Dashboard";
+import Users from "../Layout/DashBoard/AdminPages/Users/Users";
+
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
         path: "/",
-        element: <Main></Main>,
-        children: [
-            {
-                path: '/',
-                element: <Home></Home>
+        element: <Home></Home>,
+      },
+      {
+        path: "/Login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/SignUp",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/freelivelessons",
+        element: <FreeLiveLessons></FreeLiveLessons>,
+      },
+      {
+        path: "blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "blog/:id",
+        element: <BlogDetails></BlogDetails>,
+        loader: ({ params }) =>
+          fetch(`https://spoken-english-server.vercel.app/blog/${params.id}`),
+      },
+      {
+        path: "all-blogs",
+        element: <AllBlogs></AllBlogs>,
+      },
+    ],
+  },
+  // dashboard routes
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+     
+        {
+            path: "/dashboard/users",
+            element:<Users></Users>
+        }
+    ],
+  },
 
-            },
-            {
-                path: '/Login',
-                element: <Login></Login>
-
-            },
-            {
-                path: '/SignUp',
-                element: <SignUp></SignUp>
-
-            },
-            {
-                path: '/freelivelessons',
-                element: <FreeLiveLessons></FreeLiveLessons>
-            },
-            {
-                path:'blogs',
-                element:<Blogs></Blogs>
-            },
-            {
-                path:'blog/:id',
-                element:<BlogDetails></BlogDetails>,
-                loader: ({params})=>fetch(`https://spoken-english-server.vercel.app/blog/${params.id}`)
-            },
-            {
-                path:"all-blogs",
-                element:<AllBlogs></AllBlogs>
-            }
-        ]
-    },
-    {
-        path: "*",
-        element: <Error></Error>
-    }
-])
+  {
+    path: "*",
+    element: <Error></Error>,
+  },
+]);
