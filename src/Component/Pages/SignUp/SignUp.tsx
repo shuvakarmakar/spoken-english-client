@@ -132,7 +132,7 @@ return (
     >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content  text-neutral-content">
-        <div className="w-full md:w-[600px] ">
+        <div className="w-[350px] md:w-[600px] ">
           <form
             onSubmit={handleSubmit}
             className="w-full  bg-white p-8 rounded shadow-lg"
