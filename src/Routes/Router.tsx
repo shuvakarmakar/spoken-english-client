@@ -12,6 +12,7 @@ import React from "react";
 import AllBlogs from "../Component/Pages/Blogs/AllBlogs";
 import Dashboard from "../Layout/DashBoard/Dashboard";
 import Users from "../Layout/DashBoard/AdminPages/Users/Users";
+import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/freelivelessons",
         element: <FreeLiveLessons></FreeLiveLessons>,
+      },
+      {
+        path: "/free-videos",
+        element: <FreeVideos></FreeVideos>
       },
       {
         path: "blogs",

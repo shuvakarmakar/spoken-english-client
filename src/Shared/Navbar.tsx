@@ -158,11 +158,11 @@ const Navbar = () => {
                   {" "}
                   <li className="btn btn-outline btn-info">SignUp</li>
                 </Link>
-                <Link to={"/login"}>
+                {/* <Link to={"/login"}>
                   {" "}
                   <li>Login</li>
                  
-                </Link>
+                </Link> */}
                 <Link to="/Login">
                   <button className="btn btn-outline btn-secondary">
                     Courses Login
