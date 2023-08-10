@@ -7,7 +7,8 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
   const [show,setShow]=useState(false)
-  const {createUser,UpdateUserProfile} = useContext(AuthContext);
+  const { createUser, UpdateUserProfile, handleButtonClick } =
+    useContext(AuthContext);
 
 
  const Navigate=useNavigate()
@@ -41,10 +42,10 @@ const SignUp = () => {
       }
     console.log(user);
      if (!email) {
-       alert("please enter your email or password");
+     Swal.fire("Oh NO!", "Please enter your email", "error");
        return;
      } else if (!password) {
-       alert("please enter your password");
+        Swal.fire("Good job!", "Please enter your password", "error");
      }
    
 
@@ -201,13 +202,14 @@ const SignUp = () => {
 
               {/* Add other input fields */}
               <button
+                onClick={handleButtonClick}
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
               >
                 Sign Up
               </button>
 
-              <SocialLogin></SocialLogin>
+              <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
             </form>
           </div>
         </div>

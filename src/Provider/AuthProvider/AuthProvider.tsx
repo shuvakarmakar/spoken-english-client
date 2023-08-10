@@ -14,6 +14,8 @@ import {
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
+import buttonSound from "../../Component/Sound/zapsplat_multimedia_button_click_bright_003_92100.mp3";
+import { initializeClickSound, playClickSound } from "../../utils/ClickSound";
 // type script type definitions
 interface AuthContextType {
   createUser: (email: string, password: string) => Promise<void>;
@@ -92,7 +94,17 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       displayName:Name,
      
     });
+
   }
+
+  // handle button sounds click
+ initializeClickSound(buttonSound);
+
+ const handleButtonClick = () => {
+   playClickSound(); // Play the click sound when the button is clicked
+   // Your button's click handler logic
+ };
+
 
   const AuthUser: AuthContextType = {
     createUser,
@@ -104,6 +116,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     FacebookSingIn,
     ResetPassword,
     UpdateUserProfile,
+    handleButtonClick,
   };
   
 
