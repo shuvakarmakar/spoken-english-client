@@ -61,7 +61,7 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <a>Free Live Lesson</a>
+                <Link to="/freelivelessons">Free Live Lesson</Link>
               </li>
               <li>
                 <a>IELTS Speaking</a>
