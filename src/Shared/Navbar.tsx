@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import logo from "../assets/logo.png";
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext);
   // // make a logout button
@@ -87,12 +88,39 @@ const Navbar = () => {
                   </li>
                 </ul>
               </li>
-              <li>
+              <li className="font-bold text-gray-900 hover:text-indigo-500">
                 <a>Speaking Skills</a>
-              </li>
+              </li>{" "}
+              {user ? (
+                <>
+                  <div className="flex items-center">
+                    <li>{user?.displayName}</li>
+                    <button onClick={handleLogOut} className="btn btn-sm ml-2">
+                      LogOut
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="flex gap-5 my-5">
+                  {" "}
+                  <Link to={"/SignUp"}>
+                    {" "}
+                    <button className="btn btn-outline p-3 btn-info ">
+                      Signup
+                    </button>
+                  </Link>
+                  <Link to="/Login">
+                    <button className="btn btn-outline p-7 btn-secondary">
+                      Login
+                    </button>
+                  </Link>
+                </div>
+              )}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">ELearner</a>
+          <Link to="/">
+            <img className="w-40 h-14" src={logo} alt="" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex items-center gap-5">
@@ -152,22 +180,13 @@ const Navbar = () => {
                 </Link>
                 <Link to="/Login">
                   <button className="btn btn-outline btn-secondary">
-                    Courses Login
+                    Login
                   </button>
                 </Link>
               </>
             )}
           </ul>
         </div>
-        {/* <div className="navbar-end gap-2">
-          <button className="btn btn-outline btn-info">Info</button>
-
-          <Link to="/Login">
-            <button className="btn btn-outline btn-secondary">
-              Courses Login
-            </button>
-          </Link>
-        </div> */}
       </div>
     </div>
   );
