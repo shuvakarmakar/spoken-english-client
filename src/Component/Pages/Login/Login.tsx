@@ -98,11 +98,6 @@ const Login = () => {
 
 
 
-
-
-// click sound for buttons
-  
-  
   
 
 
@@ -126,7 +121,7 @@ const Login = () => {
           <div className="w-full md:w-[600px] ">
             <form
               onSubmit={handleSubmit}
-              className="w-full  bg-white p-3 md:p-20 rounded shadow-lg"
+              className="w-[350px] md:w-[600px] bg-white p-3 md:p-20 rounded shadow-lg"
             >
               <div className="flex justify-between">
                 <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
