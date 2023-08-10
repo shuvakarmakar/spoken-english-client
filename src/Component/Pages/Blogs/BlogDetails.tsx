@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
-
+import React from 'react'
 const BlogDetails = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState([]);

@@ -10,7 +10,7 @@ const Login = () => {
 
   const Navigate = useNavigate();
 
-  const { login, ResetPassword } = useContext(AuthContext);
+  const { login, ResetPassword, handleButtonClick } = useContext(AuthContext);
 
   // Login form
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -91,6 +91,19 @@ const Login = () => {
         }
       });
   };
+
+
+
+
+
+// click sound for buttons
+  
+  
+  
+
+
+
+
 
   return (
     <div className="container mx-auto">
@@ -174,13 +187,14 @@ const Login = () => {
 
               {/* Add other input fields */}
               <button
+                onClick={handleButtonClick}
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
               >
                 Login
               </button>
 
-              <SocialLogin></SocialLogin>
+              <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
             </form>
           </div>
         </div>
