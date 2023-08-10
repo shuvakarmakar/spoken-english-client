@@ -106,7 +106,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#"
+                to="freelivelessons"
                 className="font-bold text-gray-900 hover:text-indigo-500"
               >
                 Free Live Lesson
