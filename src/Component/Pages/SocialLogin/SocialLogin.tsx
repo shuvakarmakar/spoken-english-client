@@ -1,17 +1,38 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import React, { useContext } from "react";
+import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import { NavigateFunction, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const SocialLogin = ({ handleButtonClick }) => {
   const Navigate: NavigateFunction = useNavigate();
 
   const { loginWithGoogle, FacebookSingIn } = useContext(AuthContext);
 
+  // handle google login
   const handleLoginWithGoogle = () => {
     loginWithGoogle()
-      .then((res) => {
+      .then((result) => {
         // console.log(res);
+        const user = result.user;
+        // Save user to database
+        const saveUser = {
+          name: user.displayName,
+          email: user.email,
+          Roll:"student",
+        };
+        fetch("http://localhost:5000/AddUsers", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.InsertedId) {
+              alert("User created successfully");
+            }
+          });
         Swal.fire("Good job!", "Login Success", "success");
         Navigate("/");
       })
@@ -19,10 +40,34 @@ const SocialLogin = ({ handleButtonClick }) => {
         // console.log(err);
       });
   };
+
+  // handle facebook login
   const handleLoginWithFacebook = () => {
     FacebookSingIn()
-      .then((res) => {
+      .then((result) => {
         // console.log(res);
+
+        // save user to database
+        const user = result.user;
+        const saveUser = {
+          name: user.displayName,
+          email: user.email,
+          Roll: "student",
+        };
+        fetch("http://localhost:5000/AddUsers", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.InsertedId) {
+              alert("User created successfully");
+            }
+          });
+
         Swal.fire("Good job!", "Login Success", "success");
         Navigate("/");
       })

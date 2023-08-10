@@ -133,11 +133,19 @@ const Navbar = () => {
             <li className="font-bold text-gray-900 hover:text-indigo-500">
               <a>Speaking Skills</a>
             </li>
+            {user && (
+              <>
+                <Link to={"/dashboard/users"}>
+                  <li className="font-bold text-gray-900 hover:text-indigo-500">
+                    Dashboard
+                  </li>
+                </Link>
+              </>
+            )}
 
             {user ? (
               <>
                 <div className="flex items-center">
-                  <li>{user?.displayName}</li>
                   <button onClick={handleLogOut} className="btn btn-sm ml-2">
                     LogOut
                   </button>
@@ -148,7 +156,12 @@ const Navbar = () => {
                 {" "}
                 <Link to={"/SignUp"}>
                   {" "}
-                  <button className="btn btn-outline btn-info">Signup</button>
+                  <li className="btn btn-outline btn-info">SignUp</li>
+                </Link>
+                <Link to={"/login"}>
+                  {" "}
+                  <li>Login</li>
+                 
                 </Link>
                 <Link to="/Login">
                   <button className="btn btn-outline btn-secondary">

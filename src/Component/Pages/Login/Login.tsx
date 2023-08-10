@@ -35,6 +35,10 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         console.log(result);
+          
+
+         
+
         Navigate("/");
 
         Swal.fire("Good job!", "Login Success", "success");
