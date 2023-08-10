@@ -135,8 +135,8 @@ const Navbar = () => {
             </li>
             {user && (
               <>
-                <Link to={'/dashboard/users'}>
-                  <li>
+                <Link to={"/dashboard/users"}>
+                  <li className="font-bold text-gray-900 hover:text-indigo-500">
                     Dashboard
                   </li>
                 </Link>
@@ -146,7 +146,6 @@ const Navbar = () => {
             {user ? (
               <>
                 <div className="flex items-center">
-                  <li>{user?.displayName}</li>
                   <button onClick={handleLogOut} className="btn btn-sm ml-2">
                     LogOut
                   </button>
@@ -157,20 +156,17 @@ const Navbar = () => {
                 {" "}
                 <Link to={"/SignUp"}>
                   {" "}
-<<<<<<< HEAD
-                  <li>SignUp</li>
+                  <li className="btn btn-outline btn-info">SignUp</li>
                 </Link>
                 <Link to={"/login"}>
                   {" "}
                   <li>Login</li>
-=======
-                  <button className="btn btn-outline btn-info">Signup</button>
+                 
                 </Link>
                 <Link to="/Login">
                   <button className="btn btn-outline btn-secondary">
                     Courses Login
                   </button>
->>>>>>> 3a7826bc34300d774e19f2d71c782112f39506b8
                 </Link>
               </>
             )}
