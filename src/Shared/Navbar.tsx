@@ -58,12 +58,22 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to="/">Home</Link>
+                <Link
+                  className="font-bold text-gray-900 hover:text-indigo-500"
+                  to="/"
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/freelivelessons">Free Live Lesson</Link>
+                <Link
+                  className="font-bold text-gray-900 hover:text-indigo-500"
+                  to="freelivelessons"
+                >
+                  Free Live Lesson
+                </Link>
               </li>
-              <li>
+              <li className="font-bold text-gray-900 hover:text-indigo-500">
                 <a>IELTS Speaking</a>
                 <ul className="p-2">
                   <li>
@@ -87,14 +97,26 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex items-center gap-5">
             <li>
-              <Link to="/">Home</Link>
+              <Link
+                to="/"
+                className="font-bold text-gray-900 hover:text-indigo-500"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <a>Free Live Lesson</a>
+              <Link
+                to="#"
+                className="font-bold text-gray-900 hover:text-indigo-500"
+              >
+                Free Live Lesson
+              </Link>
             </li>
             <li tabIndex={0}>
               <details>
-                <summary>IELTS Speaking</summary>
+                <summary className="font-bold text-gray-900 hover:text-indigo-500">
+                  IELTS Speaking
+                </summary>
                 <ul className="p-2">
                   <li>
                     <a>Test Format 1</a>
@@ -108,7 +130,7 @@ const Navbar = () => {
                 </ul>
               </details>
             </li>
-            <li>
+            <li className="font-bold text-gray-900 hover:text-indigo-500">
               <a>Speaking Skills</a>
             </li>
             {user && (
@@ -135,17 +157,26 @@ const Navbar = () => {
                 {" "}
                 <Link to={"/SignUp"}>
                   {" "}
+<<<<<<< HEAD
                   <li>SignUp</li>
                 </Link>
                 <Link to={"/login"}>
                   {" "}
                   <li>Login</li>
+=======
+                  <button className="btn btn-outline btn-info">Signup</button>
+                </Link>
+                <Link to="/Login">
+                  <button className="btn btn-outline btn-secondary">
+                    Courses Login
+                  </button>
+>>>>>>> 3a7826bc34300d774e19f2d71c782112f39506b8
                 </Link>
               </>
             )}
           </ul>
         </div>
-        <div className="navbar-end gap-2">
+        {/* <div className="navbar-end gap-2">
           <button className="btn btn-outline btn-info">Info</button>
 
           <Link to="/Login">
@@ -153,7 +184,7 @@ const Navbar = () => {
               Courses Login
             </button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );
