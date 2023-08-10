@@ -1,22 +1,31 @@
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import React from 'react'
+// import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
 // Import Swiper styles
-import "swiper/css";
+// import "swiper/css";
 import "./Banner.css";
-import banner1 from "../../assets/banner1.jpg";
+// import banner1 from "../../assets/banner1.jpg";
 import banner2 from "../../assets/banner2.jpg";
 const Banner = () => {
   return (
     <div>
-      <Swiper className="mySwiper">
-        <SwiperSlide>
+      <div
+        className="hero min-h-screen"
+        style={{
+          backgroundImage: `url(${banner2})`,
+          width: "100%",
+          height: "100%",
+          backgroundPosition: "center",
+        }}
+      ></div>
+      {/* <Swiper className="mySwiper"> */}
+      {/* <SwiperSlide>
           <img src={banner1} />
-        </SwiperSlide>
-        <SwiperSlide>
+        </SwiperSlide> */}
+      {/* <SwiperSlide>
           <img src={banner2} />
         </SwiperSlide>
-      </Swiper>
+      </Swiper> */}
     </div>
   );
 };
