@@ -20,10 +20,10 @@ const SocialLogin = ({ handleButtonClick }) => {
           email: user.email,
           Roll:"student",
         };
-        fetch("http://localhost:5000/AddUsers", {
+        fetch("https://spoken-english-server.vercel.app/AddUsers",{
           method: "POST",
           headers: {
-            "content-type": "application/json",
+            "content-type":"application/json",
           },
           body: JSON.stringify(saveUser),
         })

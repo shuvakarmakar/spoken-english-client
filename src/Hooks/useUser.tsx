@@ -18,7 +18,9 @@ const useUser = (): [User[], boolean, () => void] => {
   } = useQuery<User[]>({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/GetUsers");
+      const res = await fetch(
+        "https://spoken-english-server.vercel.app/GetUsers"
+      );
       return res.json();
     },
   });

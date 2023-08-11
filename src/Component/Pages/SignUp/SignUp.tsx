@@ -66,25 +66,20 @@ const SignUp = () => {
             password,
             Roll
           };
-          fetch(
-            "http://localhost:5000/AddUsers",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(saveUser),
-            }
-          ).then((res) => res.json())
+          fetch("https://spoken-english-server.vercel.app/AddUsers", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
             .then((data) => {
-               console.log(data);
+              console.log(data);
               if (data.InsertedId) {
-               
-                alert("Inserted successfully")
-
+                alert("Inserted successfully");
               }
             })
-
 
             .catch((error) => {
               const errorMessage = error.message;
