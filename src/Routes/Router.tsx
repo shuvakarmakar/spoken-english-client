@@ -10,6 +10,7 @@ import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
 
 import React from "react";
 import AllBlogs from "../Component/Pages/Blogs/AllBlogs";
+import PopularCourse from "../Component/Pages/Courses/PopularCourse";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path:"all-blogs",
                 element:<AllBlogs></AllBlogs>
+            },
+            {
+                path:"popular-courses",
+                element:<PopularCourse></PopularCourse>
             }
         ]
     },
