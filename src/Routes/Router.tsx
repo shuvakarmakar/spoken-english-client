@@ -14,6 +14,7 @@ import PopularCourse from "../Component/Pages/Courses/PopularCourse";
 import Dashboard from "../Layout/DashBoard/Dashboard";
 import Users from "../Layout/DashBoard/AdminPages/Users/Users";
 import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
+import AllCourse from "../Component/Pages/Courses/AllCourse";
 
 export const router = createBrowserRouter([
   {
@@ -57,7 +58,11 @@ export const router = createBrowserRouter([
       {
         path:"popular-courses",
         element:<PopularCourse></PopularCourse>
-    }
+    },
+    {
+      path:"all-courses",
+      element:<AllCourse></AllCourse>
+  },
     ],
   },
   // dashboard routes
