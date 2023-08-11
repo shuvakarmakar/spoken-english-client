@@ -13,7 +13,7 @@ const useUser = (): [User[], boolean, () => void] => {
   const queryClient = useQueryClient();
 
   const {
-    data: users = [],
+    data: users =[],   
     isLoading: loading,
   } = useQuery<User[]>({
     queryKey: ["users"],
