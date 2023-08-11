@@ -10,6 +10,7 @@ import BlogDetails from "../Component/Pages/Blogs/BlogDetails";
 
 import React from "react";
 import AllBlogs from "../Component/Pages/Blogs/AllBlogs";
+import PopularCourse from "../Component/Pages/Courses/PopularCourse";
 import Dashboard from "../Layout/DashBoard/Dashboard";
 import Users from "../Layout/DashBoard/AdminPages/Users/Users";
 import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
         path: "all-blogs",
         element: <AllBlogs></AllBlogs>,
       },
+      {
+        path:"popular-courses",
+        element:<PopularCourse></PopularCourse>
+    }
     ],
   },
   // dashboard routes
@@ -67,7 +72,6 @@ export const router = createBrowserRouter([
         }
     ],
   },
-
   {
     path: "*",
     element: <Error></Error>,
