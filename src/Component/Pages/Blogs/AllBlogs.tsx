@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 
-const AllBlogs = () => {
-  const [blogs, setBloags] = useState([]);
-  const [loading, setLoading] = useState(true);
+interface Blog {
+  _id: string;
+  blog_name: string;
+  image: string;
+  blog_short_description: string;
+}
 
-  // console.log(blogs)
+const AllBlogs: React.FC = () => {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
-    // Side effect code goes here
-    // This code will run after the component is mounted
-
     async function fetchData() {
       try {
         const response = await fetch(
@@ -18,18 +21,19 @@ const AllBlogs = () => {
         );
         const jsonData = await response.json();
         setLoading(false);
-        setBloags(jsonData);
+        setBlogs(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
 
-    fetchData(); // Call the async function to fetch data
+    fetchData();
   }, []);
 
   if (loading) {
-    return <Spinner></Spinner>;
+    return <Spinner />;
   }
+
   return (
     <div className="bg-white">
       <section className="title flex justify-center items-center gap-5">
@@ -42,7 +46,7 @@ const AllBlogs = () => {
       <section className="blogs py-5">
         <div className="w-[96%] md:w-[90%] mx-auto">
           {blogs.map((blog) => (
-            <div className="relative">
+            <div key={blog._id} className="relative">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4  py-7">
                 <p className="text-2xl text-justify">{blog.blog_name}</p>
                 <img
@@ -65,7 +69,6 @@ const AllBlogs = () => {
             </div>
           ))}
         </div>
-    
       </section>
     </div>
   );

@@ -1,75 +1,73 @@
 import React, { useContext, useState, useRef } from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
+import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Login = () => {
+interface User {
+  email: string;
+  password: string;
+}
+
+const Login: React.FC = () => {
   const [show, setShow] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const Navigate = useNavigate();
 
-  const { login, ResetPassword, handleButtonClick } = useContext(AuthContext);
+  const { login, ResetPassword, handleButtonClick } = useContext(
+    AuthContext
+  ) as AuthContextType;
 
   // Login form
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
-    const email: string = (form.Email as HTMLInputElement).value;
-    const password: number = parseInt(
-      (form.password as HTMLInputElement).value,
-      10
-    );
+   const form = event.target as HTMLFormElement;
+   const formData = new FormData(form);
+   const email = formData.get("Email") as string;
+   const password = formData.get("password") as string;
 
-    const user = {
+    const user: User = {
       email,
       password,
     };
-    console.log(user);
-    if (!email) {
-      alert("please enter your email or password");
+
+    if (!email || !password) {
+      alert("Please enter your email and password");
       return;
     }
 
-    login(email, password)
-      .then((result) => {
-        console.log(result);
-          
+    try {
+      const result = await login(user.email, user.password);
+      console.log(result);
 
-         
+      Navigate("/");
 
-        Navigate("/");
+      Swal.fire("Good job!", "Login Success", "success");
+      form.reset();
+    } catch (err) {
+    const errorMessage = (err as Error).message;
+      if (errorMessage) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${errorMessage}`,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
 
-        Swal.fire("Good job!", "Login Success", "success");
-        form.reset();
-      })
-      .catch((err) => {
-        const errorMessage = err.message;
-        if (errorMessage) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: `${errorMessage}`,
-            footer: '<a href="">Why do I have this issue?</a>',
-          });
-        }
-
-        setError(errorMessage);
-      });
-
-    event.stopPropagation();
+      setError(errorMessage);
+    }
   };
 
   // Reset Password
-
-  const passRef: RefObject<HTMLInputElement> = useRef(null);
+  const passRef: React.RefObject<HTMLInputElement> = useRef(null);
 
   const handelResetPassword = () => {
     if (passRef.current) {
       passRef.current.focus();
     }
-    const email = passRef.current.value;
+    const email = passRef.current?.value;
     if (!email) {
       Swal.fire({
         icon: "error",
@@ -95,14 +93,6 @@ const Login = () => {
         }
       });
   };
-
-
-
-  
-
-
-
-
 
   return (
     <div className="container mx-auto">

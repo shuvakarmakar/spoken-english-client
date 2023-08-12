@@ -1,16 +1,30 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import React from 'react'
-const BlogDetails = () => {
-  const { id } = useParams();
-  const [blog, setBlog] = useState([]);
-  console.log(blog);
+import React,{ useState, useEffect } from "react";
+interface Blog {
+  _id: string;
+  blog_name: string;
+  image: string;
+  blog_short_description: string;
+  blog_details: string;
+  date: string;
+}
 
-  fetch(`https://spoken-english-server.vercel.app/blog/${id}`)
-    .then((res) => res.json())
-    .then((data) => {
-      setBlog(data);
-    });
+const BlogDetails: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const [blog, setBlog] = useState<Blog | null>(null);
+
+  useEffect(() => {
+    fetch(`https://spoken-english-server.vercel.app/blog/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlog(data);
+      });
+  }, [id]);
+
+  if (!blog) {
+    return null; // You might want to render something while loading
+  }
+
   return (
     <div className="bg-white">
       <section>

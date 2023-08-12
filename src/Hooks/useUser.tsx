@@ -12,10 +12,7 @@ interface User {
 const useUser = (): [User[], boolean, () => void] => {
   const queryClient = useQueryClient();
 
-  const {
-    data: users =[],   
-    isLoading: loading,
-  } = useQuery<User[]>({
+  const { data: users = [], isLoading: loading } = useQuery<User[]>({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
@@ -26,7 +23,7 @@ const useUser = (): [User[], boolean, () => void] => {
   });
 
   const refreshUsers = () => {
-    queryClient.invalidateQueries("users");
+    queryClient.invalidateQueries(["users"]); // Pass the query key as an array
   };
 
   return [users, loading, refreshUsers];
