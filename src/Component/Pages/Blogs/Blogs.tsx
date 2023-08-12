@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 
-const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+interface Blog {
+  _id: string;
+  blog_name: string;
+  image: string;
+  blog_short_description: string;
+}
+
+const Blogs: React.FC = () => {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchData() {
