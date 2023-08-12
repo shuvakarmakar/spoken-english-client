@@ -67,7 +67,7 @@ const SignUp = () => {
             Roll
           };
           fetch(
-            "http://localhost:5000/AddUsers",
+            "https://spoken-english-server.vercel.app/AddUsers",
             {
               method: "POST",
               headers: {
