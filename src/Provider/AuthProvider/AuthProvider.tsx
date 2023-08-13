@@ -21,19 +21,20 @@ interface AuthContextType {
   createUser: (email: string, password: string) => Promise<void>;
   Login: (email: string, password: string) => Promise<void>;
   ResetPassword: (email: string) => Promise<void>;
-  loginWithGoogle: () =>void;
+  loginWithGoogle: () => void;
   FacebookSingIn: () => void;
   Logout: () => Promise<void>;
   loading: boolean;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-
   const [user, setUSer] = useState<null>(null);
   const [loading, setLoading] = useState<boolean>(true);
- console.log(user,'from');
+  console.log(user, "from");
   const auth = getAuth(app);
   // console.log("auth", auth);
   const provider = new GoogleAuthProvider();
@@ -83,28 +84,25 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   // Reset password
 
-  const ResetPassword = (email:string) => {
+  const ResetPassword = (email: string) => {
     return sendPasswordResetEmail(auth, email);
   };
 
   // update user profile
 
-  const UpdateUserProfile = (Name:string) => { 
+  const UpdateUserProfile = (Name: string) => {
     return updateProfile(auth.currentUser, {
-      displayName:Name,
-     
+      displayName: Name,
     });
-
-  }
+  };
 
   // handle button sounds click
- initializeClickSound(buttonSound);
+  initializeClickSound(buttonSound);
 
- const handleButtonClick = () => {
-   playClickSound(); // Play the click sound when the button is clicked
-   // Your button's click handler logic
- };
-
+  const handleButtonClick = () => {
+    playClickSound(); // Play the click sound when the button is clicked
+    // Your button's click handler logic
+  };
 
   const AuthUser: AuthContextType = {
     createUser,
@@ -118,7 +116,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     UpdateUserProfile,
     handleButtonClick,
   };
-  
 
   return (
     <div>

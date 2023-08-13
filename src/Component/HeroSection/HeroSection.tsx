@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="px-4 md:px-8 lg:px-16">
+    <div className="">
       <div className="hero bg-base-200 p-8 md:p-32">
         <div className="hero-content grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <img

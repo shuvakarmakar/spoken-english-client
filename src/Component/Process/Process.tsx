@@ -3,7 +3,7 @@ import { FaDesktop, FaBookReader, FaFacebookMessenger } from "react-icons/fa";
 
 const Process = () => {
   return (
-    <div className="px-4 md:px-8 lg:px-16">
+    <div className="px-4 bg-slate-100 md:px-8 lg:px-16">
       <div className="my-10">
         <h1 className="text-3xl md:text-5xl text-center mb-5 md:mb-10">
           How it works
@@ -36,8 +36,10 @@ const Process = () => {
           </div>
         </div>
       </div>
-      <div className="text-center">
-        <button className="btn btn-secondary">JOIN A COURSE</button>
+      <div className="text-center py-8">
+        <button className="btn hover:bg-black btn-secondary">
+          JOIN A COURSE
+        </button>
       </div>
     </div>
   );

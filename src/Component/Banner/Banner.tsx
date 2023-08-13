@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "./Banner.css";
 import banner2 from "../../assets/banner2.jpg";
 import banner1 from "../../assets/banner1.jpg";
+import banner3 from "../../assets/banner3.jpg";
 
 const Banner: React.FC = () => {
   return (
@@ -34,6 +35,17 @@ const Banner: React.FC = () => {
         className="hero min-h-screen"
         style={{
           backgroundImage: `url(${banner1})`,
+          width: "100%",
+          height: "100%",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></SwiperSlide>
+      <SwiperSlide
+        className="hero min-h-screen"
+        style={{
+          backgroundImage: `url(${banner3})`,
           width: "100%",
           height: "100%",
           backgroundSize: "cover",
