@@ -3,8 +3,14 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <div>
-        <footer className="footer grid md:grid-cols-3 grid-cols-2  p-10 bg-base-200 text-base-content">
+      <div className="bg-black ">
+        <div className="flex  p-8 justify-between">
+          <h1 className="text-5xl text-white">Speak Better English</h1>
+          <button className=" btn hover:bg-black btn-secondary">
+            My Online Courses
+          </button>
+        </div>
+        <footer className="footer   grid md:grid-cols-3 grid-cols-2  p-10  text-white ">
           <div>
             <span className="footer-title">Services</span>
             <a className="link link-hover">Branding</a>

@@ -1,11 +1,14 @@
 import { useContext } from "react";
-import { AuthContext, AuthContextType } from "../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../Provider/AuthProvider/AuthProvider";
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
 const Navbar = () => {
- const { Logout, user } = useContext(AuthContext) as AuthContextType;
+  const { Logout, user } = useContext(AuthContext) as AuthContextType;
 
   // // make a logout button
   const handleLogOut = () => {
@@ -16,7 +19,7 @@ const Navbar = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes,Log out",
+      confirmButtonText: "Yes, Log out",
     }).then((result) => {
       if (result.isConfirmed) {
         Logout()
@@ -34,6 +37,7 @@ const Navbar = () => {
       }
     });
   };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -187,15 +191,8 @@ const Navbar = () => {
                   {" "}
                   <li className="btn btn-outline btn-info">SignUp</li>
                 </Link>
-                {/* <Link to={"/login"}>
-                  {" "}
-                  <li>Login</li>
-                 
-                </Link> */}
                 <Link to="/Login">
-                  <button className="btn btn-outline btn-secondary">
-                    Login
-                  </button>
+                  <li className="btn btn-outline btn-secondary">Login</li>
                 </Link>
               </>
             )}

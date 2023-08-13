@@ -36,14 +36,18 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const auth = getAuth(app);
 
-  const createUser =async (email: string, password: string): Promise<void> => {
+  const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return await createUserWithEmailAndPassword(auth, email, password).then(() => {});
+    return await createUserWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
-  const login = async(email: string, password: string): Promise<void> => {
+  const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return await signInWithEmailAndPassword(auth, email, password).then(() => {});
+    return await signInWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
   useEffect(() => {
@@ -56,7 +60,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     };
   }, [auth]);
 
-  const Logout = async() => {
+  const Logout = async () => {
     setLoading(true);
     return await signOut(auth);
   };
@@ -92,7 +96,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     ResetPassword,
     UpdateUserProfile,
     handleButtonClick,
-    
   };
 
   return (
