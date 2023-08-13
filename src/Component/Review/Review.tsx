@@ -1,7 +1,7 @@
 import React from "react";
 import VideoPlayer from "./Video";
 
-const Review = () => {
+const Review: React.FC = () => {
   return (
     <div>
       <VideoPlayer />
@@ -79,7 +79,6 @@ const Review = () => {
                   Deleniti.{" "}
                 </p>
               </blockquote>
-
               <blockquote className="rounded-lg bg-gray-100 p-8">
                 <div className="flex items-center gap-4">
                   <img
@@ -146,7 +145,6 @@ const Review = () => {
                   Deleniti.
                 </p>
               </blockquote>
-
               <blockquote className="rounded-lg bg-gray-100 p-8">
                 <div className="flex items-center gap-4">
                   <img

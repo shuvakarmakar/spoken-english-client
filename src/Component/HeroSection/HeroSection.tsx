@@ -1,4 +1,6 @@
-const HeroSection = () => {
+import React from 'react';
+
+const HeroSection: React.FC = () => {
   return (
     <div className="px-4 md:px-8 lg:px-16">
       <div className="hero bg-base-200 p-8 md:p-32">
@@ -8,7 +10,7 @@ const HeroSection = () => {
             className="max-w-full md:max-w-sm rounded-lg shadow-2xl"
             alt="Speaker"
           />
-          <div className="mx-0 ">
+          <div className="mx-0">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
               Become a Confident English Speaker
             </h1>
