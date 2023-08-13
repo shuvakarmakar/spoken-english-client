@@ -13,6 +13,7 @@ const Home = () => {
       <HeroSection />
       <PopularCourse></PopularCourse>
       <Process />
+   
       <Review />
       <Blogs />
     </div>
