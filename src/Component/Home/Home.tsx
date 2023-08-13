@@ -5,6 +5,7 @@ import Process from "../Process/Process";
 import React from "react";
 import Review from "../Review/Review";
 import PopularCourse from "../Pages/Courses/PopularCourse";
+import JoinCourse from "../JoinCourse/JoinCourse";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
       <HeroSection />
       <PopularCourse></PopularCourse>
       <Process />
-   
+      <JoinCourse />
       <Review />
       <Blogs />
     </div>
