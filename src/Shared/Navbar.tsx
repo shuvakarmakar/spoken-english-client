@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../Provider/AuthProvider/AuthProvider";
+import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
-import { AuthContext } from "../Provider/AuthProvider/AuthProvider";
+const Navbar = () => {
+  const { Logout, user } = useContext(AuthContext) as AuthContextType;
 
-const Navbar: React.FC = () => {
-  const { Logout, user } = useContext(AuthContext);
-
+  // // make a logout button
   const handleLogOut = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -19,14 +23,14 @@ const Navbar: React.FC = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Logout()
-          .then((result) => {
+          .then(() => {
             Swal.fire(
               "LogOut",
               "Your successfully has been LogOut.",
               "success"
             );
           })
-          .catch((err) => {
+          .catch(() => {
             alert("something went wrong");
             return;
           });

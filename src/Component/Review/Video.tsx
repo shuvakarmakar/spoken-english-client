@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoPlayer: React.FC = () => {
   return (
-    <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-10 px-32">
+    <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-16 px-32">
       <div className=" text-center">
         <div>
           <h1 className="text-5xl font-bold">What My Students Says</h1>

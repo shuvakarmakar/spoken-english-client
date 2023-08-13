@@ -4,8 +4,8 @@ import { FaDesktop, FaBookReader, FaFacebookMessenger } from "react-icons/fa";
 const Process = () => {
   return (
     <div className="px-4 bg-slate-100 md:px-8 lg:px-16">
-      <div className="my-10">
-        <h1 className="text-3xl md:text-5xl text-center mb-5 md:mb-10">
+      <div className="my-10 ">
+        <h1 className="text-3xl md:text-5xl py-6 text-center mb-5 md:mb-10">
           How it works
         </h1>
         {/* Icons */}

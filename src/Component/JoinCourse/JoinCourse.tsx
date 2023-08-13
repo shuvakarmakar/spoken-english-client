@@ -3,7 +3,7 @@ import { FaCheckSquare } from "react-icons/fa";
 
 const JoinCourse = () => {
   return (
-    <div className="bg-slate-100 mt-8">
+    <div className="bg-slate-100 mt-10  ">
       <div className="grid  md:grid-cols-2 p-10 grid-cols-1">
         <div className="pl-10">
           <h1 className="text-4xl">Learn With Me</h1>
