@@ -17,6 +17,8 @@ import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
 import AllCourse from "../Component/Pages/Courses/AllCourse";
 import MyClasses from "../Layout/DashBoard/StudentPages/MyClasses/MyClasses";
 import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasses";
+import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCourses";
+import CourseDetails from "../Component/Pages/AllPremiumCourses/CourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -58,13 +60,24 @@ export const router = createBrowserRouter([
         element: <AllBlogs></AllBlogs>,
       },
       {
-        path:"popular-courses",
-        element:<PopularCourse></PopularCourse>
-    },
-    {
-      path:"all-courses",
-      element:<AllCourse></AllCourse>
-  },
+        path: "popular-courses",
+        element: <PopularCourse></PopularCourse>
+      },
+      {
+        path: "all-courses",
+        element: <AllCourse></AllCourse>
+      },
+      // shuva-work
+      {
+        path: "all-premium-courses",
+        element: <AllPremuimCourses></AllPremuimCourses>
+      },
+      {
+        path: "course-details/:id",
+        element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) =>
+          fetch(`https://spoken-english-server.vercel.app/courses/${params.id}`),
+      }
     ],
   },
   // dashboard routes
@@ -73,23 +86,23 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       //  admin routes
-        {
-            path: "/dashboard/users",
-            element:<Users></Users>
+      {
+        path: "/dashboard/users",
+        element: <Users></Users>
       },
 
-      
-        // students routes
-        {
-            path: "/dashboard/MyClasses",
-            element:<MyClasses></MyClasses>
+
+      // students routes
+      {
+        path: "/dashboard/MyClasses",
+        element: <MyClasses></MyClasses>
       },
 
-        // instructor routes
-        {
-            path: "/dashboard/AddClasses",
-            element:<AddClasses></AddClasses>
-        }
+      // instructor routes
+      {
+        path: "/dashboard/AddClasses",
+        element: <AddClasses></AddClasses>
+      }
     ],
   },
   {
