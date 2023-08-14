@@ -10,18 +10,14 @@ const SignUp: React.FC = () => {
     AuthContext
   ) as AuthContextType;
   const Navigate = useNavigate();
-  const [Roll, setSelectedRole] = useState<string>("student");
 
   useEffect(() => {
     document.title = "Spoken | SignUp"; // Set the new title here
   }, []);
 
-  // get selected role handler
 
-  const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedRole(event.target.value);
-  };
 
+  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
@@ -33,7 +29,7 @@ const SignUp: React.FC = () => {
       name,
       email,
       password,
-      Roll,
+     
     };
     console.log(user);
     if (!email) {
@@ -57,7 +53,7 @@ const SignUp: React.FC = () => {
           name,
           email,
           password,
-          Roll,
+          Roll:"student",
         };
         fetch("https://spoken-english-server.vercel.app/AddUsers", {
           method: "POST",
@@ -189,25 +185,7 @@ const SignUp: React.FC = () => {
                 </p>
               </div>
 
-              {/* Roll */}
-              <div className="mb-4">
-                <label
-                  htmlFor="role"
-                  className="block text-gray-700 font-medium mb-1"
-                >
-                  Role
-                </label>
-                <select
-                  value={Roll}
-                  onChange={handleRoleChange}
-                  id="role"
-                  className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                >
-                  <option value="student">Student</option>
-                  <option value="instructor">Instructor</option>
-                </select>
-              </div>
-
+             
               {/* Add other input fields */}
               <button
                 onClick={handleButtonClick}

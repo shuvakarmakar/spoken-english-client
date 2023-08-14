@@ -6,7 +6,7 @@ const Users = () => {
   const [users, loading, refreshUsers] = useUser();
   // console.log(users);
   // /users/admin
-  const handleMakeAdmin = (id:number) => {
+  const handleMakeAdmin = (id: number) => {
     console.log(id);
     fetch(`http://localhost:5000/users/admin/${id}`, {
       method: "PATCH",
@@ -20,7 +20,7 @@ const Users = () => {
   };
 
   // make instructor
-  const handleMakeInstructor = (id:number) => {
+  const handleMakeInstructor = (id: number) => {
     console.log(id);
     fetch(`http://localhost:5000/users/instructor/${id}`, {
       method: "PATCH",
@@ -33,7 +33,7 @@ const Users = () => {
       });
   };
   // Delete the user from  db
-  const handleDelete = (id:number) => {
+  const handleDelete = (id: number) => {
     // DeleteUsers
     fetch(`http://localhost:5000/users/DeleteUsers/${id}`, {
       method: "DELETE",
@@ -55,13 +55,11 @@ const Users = () => {
       ) : (
         <>
           <div className="h-[100vh]  ">
-            {/* <DHeading title={"Menage user"}></DHeading> */}
-            {/* <Toaster></Toaster> */}
             <h1 className=" uppercase text-[3vw] text-center my-4">
-              All <span className="text-blue-500"> Users</span>{" "}
+              All <span className="text-blue-500">Users</span>{" "}
             </h1>
             <div className="flex justify-center mx-auto mt-11">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-scroll">
                 <table className="table border shadow-xl">
                   {/* head */}
                   <thead>
@@ -77,8 +75,7 @@ const Users = () => {
                   </thead>
                   <tbody className="font-serif">
                     {/* row 2 */}
-                      {users?.map((user, index) => {
-                       
+                    {users?.map((user, index) => {
                       return (
                         <tr className="hover">
                           <th>{index + 1}</th>
@@ -89,11 +86,10 @@ const Users = () => {
                             <button
                               disabled={user?.InstructorDisabled}
                               onClick={() => handleMakeInstructor(user._id)}
-                              className={` ${
-                                user.InstructorDisabled
+                              className={` ${user.InstructorDisabled
                                   ? "bg-slate-300"
                                   : " bg-blue-500"
-                              }
+                                }
                                p-1 shadow-md  rounded-md cursor-pointer text-white`}
                             >
                               {" "}
@@ -103,9 +99,8 @@ const Users = () => {
                             <button
                               disabled={user?.disabled}
                               onClick={() => handleMakeAdmin(user._id)}
-                              className={` ${
-                                user.disabled ? "bg-slate-300" : " bg-blue-500"
-                              }
+                              className={` ${user.disabled ? "bg-slate-300" : " bg-blue-500"
+                                }
                                p-1 shadow-md  rounded-md cursor-pointer text-white`}
                             >
                               {" "}

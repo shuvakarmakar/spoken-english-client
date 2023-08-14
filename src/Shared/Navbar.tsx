@@ -7,9 +7,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
+import useAdmin from "../Hooks/UseAdmin";
+import UseInstructor from "../Hooks/UseInstructor";
+import UseStudent from "../Hooks/UseStudent";
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext) as AuthContextType;
-
+ const [isAdmin] = useAdmin();
+ const [isInstructor] = UseInstructor();
+ const [isStudent] = UseStudent();
   // // make a logout button
   const handleLogOut = () => {
     Swal.fire({
@@ -168,11 +173,33 @@ const Navbar = () => {
             </li>
             {user && (
               <>
-                <Link to={"/dashboard/users"}>
-                  <li className="font-bold text-gray-900 hover:text-indigo-500">
-                    Dashboard
-                  </li>
-                </Link>
+                {isAdmin && (
+                  <>
+                    <Link to={"/dashboard/users"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
+                {isStudent && (
+                  <>
+                    <Link to={"/dashboard/MyClasses"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
+                {isInstructor && (
+                  <>
+                    <Link to={"/dashboard/AddClasses"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
               </>
             )}
 
