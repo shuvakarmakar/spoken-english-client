@@ -9,7 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 
 const Review: React.FC = () => {
   return (
@@ -29,18 +29,22 @@ const Review: React.FC = () => {
               pagination={{
                 clickable: true,
               }}
-              modules={[Pagination]}
+              autoplay={{
+                delay: 1000, // Delay between slides in milliseconds
+                disableOnInteraction: false, // Set to true to stop autoplay when user interacts with slider
+              }}
+              modules={[Pagination, Autoplay]}
               className="mySwiper"
             >
               <SwiperSlide>
                 {" "}
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80" />
+                      </div>
+                    </div>
 
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
@@ -100,16 +104,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         John Wick
@@ -168,16 +170,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         Paul Walker
@@ -235,17 +235,16 @@ const Review: React.FC = () => {
                     atque! Deleniti.
                   </p>
                 </blockquote>
-              </SwiperSlide>
-
+              </SwiperSlide>{" "}
               <SwiperSlide>
                 {" "}
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80" />
+                      </div>
+                    </div>
 
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
@@ -305,16 +304,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         John Wick
@@ -373,16 +370,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         Paul Walker
@@ -440,17 +435,16 @@ const Review: React.FC = () => {
                     atque! Deleniti.
                   </p>
                 </blockquote>
-              </SwiperSlide>
-
+              </SwiperSlide>{" "}
               <SwiperSlide>
                 {" "}
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80" />
+                      </div>
+                    </div>
 
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
@@ -510,16 +504,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         John Wick
@@ -578,16 +570,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         Paul Walker
@@ -645,17 +635,16 @@ const Review: React.FC = () => {
                     atque! Deleniti.
                   </p>
                 </blockquote>
-              </SwiperSlide>
-
+              </SwiperSlide>{" "}
               <SwiperSlide>
                 {" "}
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/19SjTjD/images-q-tbn-ANd9-Gc-QU-qe-Zbetzq-411o3q-BVJg-WVQBm-Mx-Gk3a-Wu-Q-usqp-CAU.jpgttps://i.ibb.co/4f5q3Fz/images-q-tbn-ANd9-Gc-Tujukoj-Rxz-CENv-Zxtwn3-Va-P-gx-Ncjzt-Bng-Zg-usqp-CAU.jpg://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80" />
+                      </div>
+                    </div>
 
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
@@ -715,16 +704,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/VYw8Sq8/images-q-tbn-ANd9-Gc-Qbl-J6n-Ix-SH3-ANvt-L3o-Mz74m-ISLyiu7-L89-LHQ-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         John Wick
@@ -783,16 +770,14 @@ const Review: React.FC = () => {
                   </p>
                 </blockquote>
               </SwiperSlide>
-
               <SwiperSlide>
                 <blockquote className="rounded-lg bg-gray-100 p-8">
-                  <div className=" items-center gap-4">
-                    <img
-                      alt="Man"
-                      src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg"
-                      className="h-16 w-16 rounded-full object-cover"
-                    />
-
+                  <div className="flex items-center gap-4">
+                    <div className="avatar">
+                      <div className="w-16 rounded-full">
+                        <img src="https://i.ibb.co/ScvFH4S/images-q-tbn-ANd9-Gc-SGa-OK8-Lj4b-JCLs-Ej-T8-L66h-MA1-Ahl4-Fq6-EPn-Q-usqp-CAU.jpg" />
+                      </div>
+                    </div>
                     <div>
                       <p className="mt-1 text-lg font-medium text-gray-700">
                         Paul Walker
