@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaCheckSquare } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const JoinCourse = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
   return (
     <div className="bg-slate-100 mt-10  ">
       <div className="grid  md:grid-cols-2 p-10 grid-cols-1">
-        <div className="pl-10">
+        <div data-aos="fade-right" className="pl-10">
           <h1 className="text-4xl">Learn With Me</h1>
           <p className="my-3">
             You can <b>develop you speaking skills</b> with me via
@@ -52,7 +57,7 @@ const JoinCourse = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div data-aos="fade-left">
           {" "}
           <img src="https://keithspeakingacademy.com/wp-content/uploads/2023/06/Mobile-Learning-Keit-OHare.png" />
         </div>
