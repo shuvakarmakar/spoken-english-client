@@ -13,6 +13,7 @@ import app from "../../Firebase/firebase";
 
 import buttonSound from "../../Component/Sound/zapsplat_multimedia_button_click_bright_003_92100.mp3";
 import { initializeClickSound, playClickSound } from "../../utils/ClickSound";
+import axios from "axios";
 
 // TypeScript type definitions
 export interface AuthContextType {
@@ -53,8 +54,28 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       setUser(user);
-      setLoading(false);
+
+     if (user) {
+       axios
+         .post("http://localhost:5000/jwt", {
+           email: user.email,
+         })
+         .then((data) => {
+           console.log(data.data);
+           localStorage.setItem("accessToken", data.data.token);
+           setLoading(false);
+         });
+     } else {
+       localStorage.removeItem("accessToken");
+     }
+
+
+
+
+      
     });
+
+
     return () => {
       unsubscribe();
     };
