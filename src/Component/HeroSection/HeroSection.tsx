@@ -1,16 +1,21 @@
-import React from "react";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import React, { useEffect } from "react";
 const HeroSection = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
   return (
-    <div className="">
+    <div>
       <div className="hero bg-base-200 p-8 md:p-32">
         <div className="hero-content grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <img
+            data-aos="fade-right"
             src="https://keithspeakingacademy.com/wp-content/uploads/2023/05/Keith_Web.png"
             className="max-w-full md:max-w-sm rounded-lg shadow-2xl"
             alt="Speaker"
           />
-          <div className="mx-0">
+          <div data-aos="fade-left" className="mx-0">
             <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-8">
               Become a Confident English Speaker
             </h1>
