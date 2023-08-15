@@ -17,6 +17,7 @@ import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
 import AllCourse from "../Component/Pages/Courses/AllCourse";
 import MyClasses from "../Layout/DashBoard/StudentPages/MyClasses/MyClasses";
 import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasses";
+import InstructorApplicationForm from "../Component/Pages/InstructorForm/InstructorForm";
 
 export const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/free-videos",
-        element: <FreeVideos></FreeVideos>
+        element: <FreeVideos></FreeVideos>,
       },
       {
         path: "blogs",
@@ -58,13 +59,17 @@ export const router = createBrowserRouter([
         element: <AllBlogs></AllBlogs>,
       },
       {
-        path:"popular-courses",
-        element:<PopularCourse></PopularCourse>
-    },
-    {
-      path:"all-courses",
-      element:<AllCourse></AllCourse>
-  },
+        path: "popular-courses",
+        element: <PopularCourse></PopularCourse>,
+      },
+      {
+        path: "all-courses",
+        element: <AllCourse></AllCourse>,
+      },
+      {
+        path: "/applyInstructor",
+        element:<InstructorApplicationForm></InstructorApplicationForm>
+      },
     ],
   },
   // dashboard routes
@@ -73,23 +78,22 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       //  admin routes
-        {
-            path: "/dashboard/users",
-            element:<Users></Users>
+      {
+        path: "/dashboard/users",
+        element: <Users></Users>,
       },
 
-      
-        // students routes
-        {
-            path: "/dashboard/MyClasses",
-            element:<MyClasses></MyClasses>
+      // students routes
+      {
+        path: "/dashboard/MyClasses",
+        element: <MyClasses></MyClasses>,
       },
 
-        // instructor routes
-        {
-            path: "/dashboard/AddClasses",
-            element:<AddClasses></AddClasses>
-        }
+      // instructor routes
+      {
+        path: "/dashboard/AddClasses",
+        element: <AddClasses></AddClasses>,
+      },
     ],
   },
   {
