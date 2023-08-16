@@ -82,11 +82,11 @@ export const router = createBrowserRouter([
       {
         path: "course-details/:id",
         element: <CourseDetails></CourseDetails>,
-        loader: ({ params }) =>
-          fetch(
-            `https://spoken-english-server.vercel.app/courses/${params.id}`
-          ),
       },
+      {
+        path: "checkout",
+        element: <Checkout></Checkout>
+      }
     ],
   },
   // dashboard routes
