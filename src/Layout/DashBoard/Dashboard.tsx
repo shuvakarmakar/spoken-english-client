@@ -24,7 +24,7 @@ const Dashboard = () => {
     >
       {/* Mobile and Tablet Sidebar */}
       <div
-        className={`fixed top-0 left-0 bottom-0 bg-white w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
+        className={`fixed top-0 left-0 bottom-0 shadow-md bg-white w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
           sidebarOpen ? "block" : "hidden"
         } transition-transform duration-[0.5s] ease-in-out transform translate-x-0 lg:translate-x-0`}
       >
