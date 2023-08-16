@@ -18,6 +18,8 @@ import AllCourse from "../Component/Pages/Courses/AllCourse";
 import MyClasses from "../Layout/DashBoard/StudentPages/MyClasses/MyClasses";
 import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasses";
 import InstructorApplicationForm from "../Component/Pages/InstructorForm/InstructorForm";
+import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCourses";
+import CourseDetails from "../Component/Pages/AllPremiumCourses/CourseDetails";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +51,10 @@ export const router = createBrowserRouter([
         element: <Blogs></Blogs>,
       },
       {
+        path: "/applyInstructor",
+        element: <InstructorApplicationForm></InstructorApplicationForm>,
+      },
+      {
         path: "blog/:id",
         element: <BlogDetails></BlogDetails>,
         loader: ({ params }) =>
@@ -66,9 +72,18 @@ export const router = createBrowserRouter([
         path: "all-courses",
         element: <AllCourse></AllCourse>,
       },
+      // shuva-work
       {
-        path: "/applyInstructor",
-        element:<InstructorApplicationForm></InstructorApplicationForm>
+        path: "all-premium-courses",
+        element: <AllPremuimCourses></AllPremuimCourses>,
+      },
+      {
+        path: "course-details/:id",
+        element: <CourseDetails></CourseDetails>,
+        loader: ({ params }) =>
+          fetch(
+            `https://spoken-english-server.vercel.app/courses/${params.id}`
+          ),
       },
     ],
   },

@@ -1,8 +1,15 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const VideoPlayer: React.FC = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
   return (
-    <div className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-16 px-32">
+    <div
+      data-aos="zoom-in-down"
+      className="grid md:grid-cols-2 grid-cols-1 gap-10 mt-16 px-32"
+    >
       <div className=" text-center">
         <div>
           <h1 className="text-5xl font-bold">What My Students Says</h1>

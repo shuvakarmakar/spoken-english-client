@@ -12,9 +12,9 @@ import UseInstructor from "../Hooks/UseInstructor";
 import UseStudent from "../Hooks/UseStudent";
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext) as AuthContextType;
- const [isAdmin] = useAdmin();
- const [isInstructor] = UseInstructor();
- const [isStudent] = UseStudent();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = UseInstructor();
+  const [isStudent] = UseStudent();
   // // make a logout button
   const handleLogOut = () => {
     Swal.fire({
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li className="font-bold text-gray-900 hover:text-indigo-500">
-                <a>Speaking Skills</a>
+                <Link to="all-premium-courses">All Premium Courses</Link>
               </li>{" "}
               {user ? (
                 <>
@@ -169,7 +169,7 @@ const Navbar = () => {
               </details>
             </li>
             <li className="font-bold text-gray-900 hover:text-indigo-500">
-              <a>Speaking Skills</a>
+              <Link to="all-premium-courses">All Premium Courses</Link>
             </li>
             {user && (
               <>
