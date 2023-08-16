@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-const MainComponent = () => {
-    const [courses, setCourses] = useState([]);
+
+interface Course {
+    _id: string;
+    image: string;
+    course_name: string;
+    course_short_description: string;
+    price: string;
+    instructor: string;
+}
+
+const MainComponent: React.FC = () => {
+    const [courses, setCourses] = useState<Course[]>([]);
 
     useEffect(() => {
         // Fetch data from the API
         fetch('https://spoken-english-server.vercel.app/courses')
             .then(response => response.json())
-            .then(data => setCourses(data))
+            .then((data: Course[]) => setCourses(data))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
