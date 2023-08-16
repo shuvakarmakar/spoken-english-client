@@ -19,6 +19,8 @@ import MyClasses from "../Layout/DashBoard/StudentPages/MyClasses/MyClasses";
 import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasses";
 import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCourses";
 import CourseDetails from "../Component/Pages/AllPremiumCourses/CourseDetails";
+import { element } from "prop-types";
+import Checkout from "../Component/Pages/Checkout/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +79,10 @@ export const router = createBrowserRouter([
         element: <CourseDetails></CourseDetails>,
         loader: ({ params }) =>
           fetch(`https://spoken-english-server.vercel.app/courses/${params.id}`),
+      },
+      {
+        path: "checkout",
+        element: <Checkout></Checkout>
       }
     ],
   },
