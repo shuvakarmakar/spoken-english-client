@@ -13,6 +13,7 @@ import app from "../../Firebase/firebase";
 
 import buttonSound from "../../Component/Sound/zapsplat_multimedia_button_click_bright_003_92100.mp3";
 import { initializeClickSound, playClickSound } from "../../utils/ClickSound";
+import axios from "axios";
 
 // TypeScript type definitions
 export interface AuthContextType {
@@ -36,27 +37,51 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const auth = getAuth(app);
 
-  const createUser =async (email: string, password: string): Promise<void> => {
+  const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return await createUserWithEmailAndPassword(auth, email, password).then(() => {});
+    return await createUserWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
-  const login = async(email: string, password: string): Promise<void> => {
+  const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return await signInWithEmailAndPassword(auth, email, password).then(() => {});
+    return await signInWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
       setUser(user);
-      setLoading(false);
+
+     if (user) {
+       axios
+         .post("http://localhost:5000/jwt", {
+           email: user.email,
+         })
+         .then((data) => {
+           console.log(data.data);
+           localStorage.setItem("accessToken", data.data.token);
+           setLoading(false);
+         });
+     } else {
+       localStorage.removeItem("accessToken");
+     }
+
+
+
+
+      
     });
+
+
     return () => {
       unsubscribe();
     };
   }, [auth]);
 
-  const Logout = async() => {
+  const Logout = async () => {
     setLoading(true);
     return await signOut(auth);
   };
@@ -92,7 +117,6 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     ResetPassword,
     UpdateUserProfile,
     handleButtonClick,
-    
   };
 
   return (

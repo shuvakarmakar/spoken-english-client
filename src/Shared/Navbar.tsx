@@ -1,12 +1,20 @@
 import { useContext } from "react";
-import { AuthContext, AuthContextType } from "../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../Provider/AuthProvider/AuthProvider";
 import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo.png";
+import useAdmin from "../Hooks/UseAdmin";
+import UseInstructor from "../Hooks/UseInstructor";
+import UseStudent from "../Hooks/UseStudent";
 const Navbar = () => {
- const { Logout, user } = useContext(AuthContext) as AuthContextType;
-
+  const { Logout, user } = useContext(AuthContext) as AuthContextType;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = UseInstructor();
+  const [isStudent] = UseStudent();
   // // make a logout button
   const handleLogOut = () => {
     Swal.fire({
@@ -16,7 +24,7 @@ const Navbar = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes,Log out",
+      confirmButtonText: "Yes, Log out",
     }).then((result) => {
       if (result.isConfirmed) {
         Logout()
@@ -34,6 +42,7 @@ const Navbar = () => {
       }
     });
   };
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -90,7 +99,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li className="font-bold text-gray-900 hover:text-indigo-500">
-                <a>Speaking Skills</a>
+                <Link to="all-premium-courses">All Premium Courses</Link>
               </li>{" "}
               {user ? (
                 <>
@@ -160,15 +169,37 @@ const Navbar = () => {
               </details>
             </li>
             <li className="font-bold text-gray-900 hover:text-indigo-500">
-              <a>Speaking Skills</a>
+              <Link to="all-premium-courses">All Premium Courses</Link>
             </li>
             {user && (
               <>
-                <Link to={"/dashboard/users"}>
-                  <li className="font-bold text-gray-900 hover:text-indigo-500">
-                    Dashboard
-                  </li>
-                </Link>
+                {isAdmin && (
+                  <>
+                    <Link to={"/dashboard/users"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
+                {isStudent && (
+                  <>
+                    <Link to={"/dashboard/MyClasses"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
+                {isInstructor && (
+                  <>
+                    <Link to={"/dashboard/AddClasses"}>
+                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                        Dashboard
+                      </li>
+                    </Link>
+                  </>
+                )}
               </>
             )}
 
@@ -187,15 +218,8 @@ const Navbar = () => {
                   {" "}
                   <li className="btn btn-outline btn-info">SignUp</li>
                 </Link>
-                {/* <Link to={"/login"}>
-                  {" "}
-                  <li>Login</li>
-                 
-                </Link> */}
                 <Link to="/Login">
-                  <button className="btn btn-outline btn-secondary">
-                    Login
-                  </button>
+                  <li className="btn btn-outline btn-secondary">Login</li>
                 </Link>
               </>
             )}
