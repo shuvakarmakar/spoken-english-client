@@ -22,6 +22,11 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
 
   useEffect(() => {
     const socket = io("http://localhost:5001"); // Replace with your server URL
+    // const socket = io("https://socket-io-server-nine.vercel.app", {
+    //   path: "/api/socket",
+    // });
+
+    // Your socket.io code here
 
     if (user) {
       socket.emit("userConnect", { userId: user.uid });

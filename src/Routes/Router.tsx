@@ -22,6 +22,8 @@ import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCo
 import CourseDetails from "../Component/Pages/AllPremiumCourses/CourseDetails";
 import PTPCommunication from "../Component/PTPCommunication/PTPCommunication";
 import PrivetRout from "./PrivetRout/PrivetRout";
+// import { element } from "prop-types";
+import Checkout from "../Component/Pages/Checkout/Checkout";
 
 export const router = createBrowserRouter([
   {
@@ -90,11 +92,11 @@ export const router = createBrowserRouter([
       {
         path: "course-details/:id",
         element: <CourseDetails></CourseDetails>,
-        loader: ({ params }) =>
-          fetch(
-            `https://spoken-english-server.vercel.app/courses/${params.id}`
-          ),
       },
+      {
+        path: "checkout",
+        element: <Checkout></Checkout>
+      }
     ],
   },
   // dashboard routes
