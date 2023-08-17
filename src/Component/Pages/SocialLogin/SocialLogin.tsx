@@ -80,7 +80,7 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ handleButtonClick }) => {
            uid: user.uid,
          };
         if (user) {
-          fetch("http://localhost:5000/AddUsers", {
+          fetch("https://spoken-english-server.vercel.app/AddUsers", {
             method: "POST",
             headers: {
               "content-type": "application/json",

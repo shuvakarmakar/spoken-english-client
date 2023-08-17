@@ -14,7 +14,7 @@ const CourseDetails: React.FC = () => {
     const [course, setCourse] = useState<Course | null>(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/course/${id}`)
+        fetch(`https://spoken-english-server.vercel.app/course/${id}`)
             .then(response => response.json())
             .then(data => setCourse(data))
             .catch(error => console.error('Error fetching course details:', error));
@@ -23,6 +23,12 @@ const CourseDetails: React.FC = () => {
     if (!course) {
         return <div>Loading...</div>;
     }
+
+    const enrollmentData = {
+        courseId: course._id,
+        courseName: course.course_name,
+        // You can add more data here
+    };
 
     return (
         <div className="container mx-auto py-8">
@@ -33,7 +39,10 @@ const CourseDetails: React.FC = () => {
             </div>
             <div className="mt-4 flex justify-center">
                 <Link
-                    to="/checkout"
+                    to={{
+                        pathname: '/checkout',
+                        state: enrollmentData,
+                    }}
                     className="text-white font-semibold py-2 px-4 btn btn-outline btn-primary"
                 >
                     Enroll Now
@@ -44,3 +53,4 @@ const CourseDetails: React.FC = () => {
 };
 
 export default CourseDetails;
+
