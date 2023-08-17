@@ -52,9 +52,10 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   useEffect(() => {
+    setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
-      setUser(user);
-
+     
+   console.log(user);
      if (user) {
        axios
          .post("http://localhost:5000/jwt", {
@@ -63,16 +64,15 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
          .then((data) => {
            console.log(data.data);
            localStorage.setItem("accessToken", data.data.token);
-           setLoading(false);
+          
          });
+      
      } else {
        localStorage.removeItem("accessToken");
-     }
+      }
+        setUser(user);
+        setLoading(false);
 
-
-
-
-      
     });
 
 

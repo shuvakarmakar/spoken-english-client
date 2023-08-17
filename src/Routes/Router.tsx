@@ -20,6 +20,8 @@ import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasse
 import InstructorApplicationForm from "../Component/Pages/InstructorForm/InstructorForm";
 import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCourses";
 import CourseDetails from "../Component/Pages/AllPremiumCourses/CourseDetails";
+import PTPCommunication from "../Component/PTPCommunication/PTPCommunication";
+import PrivetRout from "./PrivetRout/PrivetRout";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ export const router = createBrowserRouter([
       {
         path: "/applyInstructor",
         element: <InstructorApplicationForm></InstructorApplicationForm>,
+      },
+      {
+        path: "/Connect",
+        element: (
+          <PrivetRout>
+            <PTPCommunication></PTPCommunication>
+          </PrivetRout>
+        ),
       },
       {
         path: "blog/:id",
