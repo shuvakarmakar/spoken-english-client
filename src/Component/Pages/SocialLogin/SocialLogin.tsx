@@ -31,21 +31,26 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ handleButtonClick }) => {
           name: user.displayName,
           email: user.email,
           Roll: "student",
+          uid:user.uid,
         };
-
-        fetch("https://spoken-english-server.vercel.app/AddUsers", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(saveUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.InsertedId) {
-              alert("User created successfully");
-            }
-          });
+  console.log(user ,"login social");
+        if (user) {
+          
+           fetch("https://spoken-english-server.vercel.app/AddUsers", {
+             method: "POST",
+             headers: {
+               "content-type": "application/json",
+             },
+             body: JSON.stringify(saveUser),
+           })
+             .then((res) => res.json())
+             .then((data) => {
+               if (data.InsertedId) {
+                 alert("User created successfully");
+               }
+             });
+        }
+        
 
         Swal.fire("Good job!", "Login Success", "success");
         Navigate("/");
@@ -68,25 +73,30 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ handleButtonClick }) => {
         const user = result.user;
 
         // Save user to database
-        const saveUser = {
-          name: user.displayName,
-          email: user.email,
-          Roll: "student",
-        };
+         const saveUser = {
+           name: user.displayName,
+           email: user.email,
+           Roll: "student",
+           uid: user.uid,
+         };
+        if (user) {
+          fetch("http://localhost:5000/AddUsers", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.InsertedId) {
+                alert("User created successfully");
+              }
+            });
+        }
+       
 
-        fetch("http://localhost:5000/AddUsers", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(saveUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.InsertedId) {
-              alert("User created successfully");
-            }
-          });
+        
 
         Swal.fire("Good job!", "Login Success", "success");
         Navigate("/");

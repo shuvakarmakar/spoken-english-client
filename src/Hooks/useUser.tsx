@@ -7,6 +7,7 @@ interface User {
   Roll: string;
   InstructorDisabled: boolean;
   disabled: boolean;
+  uid: string;
 }
 
 const useUser = (): [User[], boolean, () => void] => {
