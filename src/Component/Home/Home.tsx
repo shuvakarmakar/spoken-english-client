@@ -7,6 +7,7 @@ import Review from "../Review/Review";
 import PopularCourse from "../Pages/Courses/PopularCourse";
 import JoinCourse from "../JoinCourse/JoinCourse";
 import BeInstructor from "../Pages/Be-Instructor/BeInstructor";
+import ContactForm from "../ContactForm/ContactForm";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <JoinCourse />
       <Review />
       <Blogs />
+      <ContactForm />
     </div>
   );
 };
