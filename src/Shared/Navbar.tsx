@@ -10,8 +10,10 @@ import logo from "../assets/logo.png";
 import useAdmin from "../Hooks/UseAdmin";
 import UseInstructor from "../Hooks/UseInstructor";
 import UseStudent from "../Hooks/UseStudent";
+// import useUser from "../Hooks/useUser";
 const Navbar = () => {
   const { Logout, user } = useContext(AuthContext) as AuthContextType;
+  //  const [refreshUsers] = useUser();
   const [isAdmin] = useAdmin();
   const [isInstructor] = UseInstructor();
   const [isStudent] = UseStudent();
@@ -28,19 +30,24 @@ const Navbar = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Logout()
+          
           .then(() => {
+         
             Swal.fire(
               "LogOut",
               "Your successfully has been LogOut.",
               "success"
             );
+             
           })
           .catch(() => {
             alert("something went wrong");
             return;
           });
+          
       }
     });
+    // refreshUsers();
   };
 
   return (
@@ -140,6 +147,14 @@ const Navbar = () => {
                 className="font-bold text-gray-900 hover:text-indigo-500"
               >
                 Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/Connect"
+                className="font-bold text-gray-900 hover:text-indigo-500"
+              >
+                Connect
               </Link>
             </li>
             <li>

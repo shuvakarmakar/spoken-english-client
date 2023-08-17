@@ -11,7 +11,7 @@ const Main = () => {
       </div>
 
       {/* main  */}
-      <div className="main">
+      <div className="main min-h-[100vh]">
         <Outlet></Outlet>
       </div>
 
