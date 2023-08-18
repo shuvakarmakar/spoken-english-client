@@ -1,66 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+interface EnrollmentData {
+    courseId: string;
+    courseName: string;
+    price: number;
+    instructor: string;
+    number_of_students: number;
+}
 
 const Checkout: React.FC = () => {
-    const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [cvv, setCVV] = useState('');
+    const location = useLocation<{ enrollmentData: EnrollmentData }>();
+    console.log(location);
+    const enrollmentData = location.state?.enrollmentData;
+    console.log(enrollmentData);
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-
-        // Here, you would typically send the payment information to a backend API for processing
-        // and handle the enrollment process.
-
-        // For the sake of this example, let's just log the payment information.
-        console.log('Card Number:', cardNumber);
-        console.log('Expiry Date:', expiryDate);
-        console.log('CVV:', cvv);
-
-        // Redirect the user to a thank you or confirmation page.
-        // You can use history.push('/confirmation') here.
-    };
+    if (!enrollmentData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="container mx-auto py-8">
             <h1 className="text-2xl font-semibold">Checkout</h1>
-            <form onSubmit={handleSubmit} className="mt-4">
-                <label>
-                    Card Number:
-                    <input
-                        type="text"
-                        value={cardNumber}
-                        onChange={event => setCardNumber(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    Expiry Date:
-                    <input
-                        type="text"
-                        value={expiryDate}
-                        onChange={event => setExpiryDate(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    CVV:
-                    <input
-                        type="text"
-                        value={cvv}
-                        onChange={event => setCVV(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                >
-                    Pay and Enroll
-                </button>
-            </form>
+            <p>Course Name: {enrollmentData.courseName}</p>
+            <p>Price: ${enrollmentData.price}</p>
+            <p>Instructor: {enrollmentData.instructor}</p>
+            <p>Number of Students: {enrollmentData.number_of_students}</p>
+
+            {/* Stripe Elements form */}
+            {/* Add your Stripe payment and billing details form here */}
         </div>
     );
 };
