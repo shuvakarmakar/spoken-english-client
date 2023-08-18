@@ -1,8 +1,12 @@
-import { Outlet } from "react-router";
+import { Outlet,useLocation } from "react-router";
 import Navbar from "../Shared/Navbar";
 import React from "react";
 import Footer from "../Shared/Footer";
+
 const Main = () => {
+
+  const location = useLocation()
+   
   return (
     <>
       <div className="header">
@@ -18,7 +22,7 @@ const Main = () => {
       {/* Footer */}
 
       <div className="Footer">
-        <Footer></Footer>
+        {location.pathname === "/Connect" ? "" : <Footer></Footer>}
       </div>
     </>
   );
