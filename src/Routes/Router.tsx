@@ -24,6 +24,8 @@ import PTPCommunication from "../Component/PTPCommunication/PTPCommunication";
 import PrivetRout from "./PrivetRout/PrivetRout";
 // import { element } from "prop-types";
 import Checkout from "../Component/Pages/Checkout/Checkout";
+import Profile from "../Component/Pages/Profile/Profile";
+import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +69,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/profile/:id",
+        element:<ProfileDetails></ProfileDetails>
+      },
+      {
         path: "blog/:id",
         element: <BlogDetails></BlogDetails>,
         loader: ({ params }) =>
@@ -95,8 +105,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        element: <Checkout></Checkout>
-      }
+        element: <Checkout></Checkout>,
+      },
     ],
   },
   // dashboard routes

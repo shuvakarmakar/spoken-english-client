@@ -1,13 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface EnrollmentData {
-    courseId: string;
-    courseName: string;
-    price: number;
-    instructor: string;
-    number_of_students: number;
-}
+
 
 const Checkout: React.FC = () => {
     const location = useLocation();

@@ -51,7 +51,7 @@ const UserProfileModal = () => {
       <div className="bg-white rounded-lg p-6 shadow-md w-80">
         <div className="flex  items-center justify-center">
           <img
-            src={user?.photoURL}
+            src={user?.photoURL || ""}
             alt="User"
             className="w-16 h-16 rounded-full mx-auto mb-4"
           />
@@ -59,7 +59,10 @@ const UserProfileModal = () => {
         <hr />
         <ul className="text-gray-600 space-y-2">
           <li>
-            <a href="#">Profile</a>
+            <Link to={'/profile'}>
+              {" "}
+              <p>Profile</p>
+            </Link>
           </li>
           <li>
             {user && (
@@ -96,6 +99,12 @@ const UserProfileModal = () => {
           </li>
           <li>
             <a href="#">Settings</a>
+          </li>
+          <li>
+            <a href="#">Help and Support</a>
+          </li>
+          <li>
+            <a href="#">Give Feedback</a>
           </li>
           <li onClick={handleLogOut}>
             <a href="#">Logout</a>

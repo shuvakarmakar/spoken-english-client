@@ -192,7 +192,7 @@ const Navbar = () => {
                       onClick={() => setShowModal(!showModal)}
                       className="w-10 cursor-pointer h-10 bg-gray-500 rounded-full"
                     >
-                      <img src={user?.photoURL} className="rounded-full" alt="" />
+                      <img src={user?.photoURL || ""} className="rounded-full" alt="" />
                     </div>
                     <div className=" absolute right-0 z-50 top-[60px]">
                       {showModal ? <UserProfileModal  /> : ""}
