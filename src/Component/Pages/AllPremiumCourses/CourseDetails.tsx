@@ -44,26 +44,31 @@ const CourseDetails: React.FC = () => {
     console.log(enrollmentData);
 
     return (
-        <div className="container mx-auto py-8">
-            <h1 className="text-2xl font-semibold">{course.course_name}</h1>
-            <div>
-                <img src={course.image} alt={course.course_name} className="w-full h-auto" />
-                <p className="text-gray-600">{course.course_details}</p>
-                <p className="items-center font-bold text-xl text-black mt-5">Price: {course.price}</p>
-            </div>
-            <div className="mt-4 flex justify-center">
-                <Link
-                    to={{
-                        pathname: '/checkout',
-                        state: enrollmentData,
-                    }}
-                    className="text-white font-semibold py-2 px-4 btn btn-outline btn-primary"
-                >
-                    Enroll Now
-                </Link>
-
-            </div>
+      <div className="container mx-auto py-8">
+        <h1 className="text-2xl font-semibold">{course.course_name}</h1>
+        <div>
+          <img
+            src={course.image}
+            alt={course.course_name}
+            className="w-full h-auto"
+          />
+          <p className="text-gray-600">{course.course_details}</p>
+          <p className="items-center font-bold text-xl text-black mt-5">
+            Price: {course.price}
+          </p>
         </div>
+        <div className="mt-4 flex justify-center">
+          <Link
+            to={{
+              pathname: "/checkout",
+            }}
+            state={course}
+            className="text-white font-semibold py-2 px-4 btn btn-outline btn-primary"
+          >
+            Enroll Now
+          </Link>
+        </div>
+      </div>
     );
 };
 

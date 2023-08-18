@@ -10,10 +10,10 @@ interface EnrollmentData {
 }
 
 const Checkout: React.FC = () => {
-    const location = useLocation<{ enrollmentData: EnrollmentData }>();
-    console.log(location);
-    const enrollmentData = location.state?.enrollmentData;
-    console.log(enrollmentData);
+    const location = useLocation();
+    // console.log(location);
+    const enrollmentData = location?.state;
+    console.log(enrollmentData,"checkout");
 
     if (!enrollmentData) {
         return <div>Loading...</div>;
