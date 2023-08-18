@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
-
 interface Course {
     _id: string;
     course_name: string;
     image: string;
     course_details: string;
+    price: number;
+    instructor: string;
+    number_of_students: number;
+}
+
+interface EnrollmentData {
+    courseId: string;
+    courseName: string;
+    price: number;
+    instructor: string;
+    number_of_students: number;
 }
 
 const CourseDetails: React.FC = () => {
@@ -24,11 +34,14 @@ const CourseDetails: React.FC = () => {
         return <div>Loading...</div>;
     }
 
-    const enrollmentData = {
+    const enrollmentData: EnrollmentData = {
         courseId: course._id,
         courseName: course.course_name,
-        // You can add more data here
+        price: course.price,
+        instructor: course.instructor,
+        number_of_students: course.number_of_students,
     };
+    console.log(enrollmentData);
 
     return (
         <div className="container mx-auto py-8">
@@ -36,6 +49,7 @@ const CourseDetails: React.FC = () => {
             <div>
                 <img src={course.image} alt={course.course_name} className="w-full h-auto" />
                 <p className="text-gray-600">{course.course_details}</p>
+                <p className="items-center font-bold text-xl text-black mt-5">Price: {course.price}</p>
             </div>
             <div className="mt-4 flex justify-center">
                 <Link
@@ -47,10 +61,10 @@ const CourseDetails: React.FC = () => {
                 >
                     Enroll Now
                 </Link>
+
             </div>
         </div>
     );
 };
 
 export default CourseDetails;
-
