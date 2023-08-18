@@ -1,66 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Checkout: React.FC = () => {
-    const [cardNumber, setCardNumber] = useState('');
-    const [expiryDate, setExpiryDate] = useState('');
-    const [cvv, setCVV] = useState('');
+    const location = useLocation();
+    const enrollmentData = location?.state;
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-
-        // Here, you would typically send the payment information to a backend API for processing
-        // and handle the enrollment process.
-
-        // For the sake of this example, let's just log the payment information.
-        console.log('Card Number:', cardNumber);
-        console.log('Expiry Date:', expiryDate);
-        console.log('CVV:', cvv);
-
-        // Redirect the user to a thank you or confirmation page.
-        // You can use history.push('/confirmation') here.
-    };
+    if (!enrollmentData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="container mx-auto py-8">
-            <h1 className="text-2xl font-semibold">Checkout</h1>
-            <form onSubmit={handleSubmit} className="mt-4">
-                <label>
-                    Card Number:
-                    <input
-                        type="text"
-                        value={cardNumber}
-                        onChange={event => setCardNumber(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    Expiry Date:
-                    <input
-                        type="text"
-                        value={expiryDate}
-                        onChange={event => setExpiryDate(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <label>
-                    CVV:
-                    <input
-                        type="text"
-                        value={cvv}
-                        onChange={event => setCVV(event.target.value)}
-                        required
-                    />
-                </label>
-                <br />
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                >
-                    Pay and Enroll
-                </button>
-            </form>
+            <h1 className="text-3xl text-center font-semibold mb-6">Checkout</h1>
+            <div className="bg-white shadow-lg rounded-lg p-6">
+                <p className="text-xl font-semibold mb-4">
+                    Course Name: {enrollmentData.course_name}
+                </p>
+                <p className="text-lg mb-2">
+                    Instructor: {enrollmentData.instructor}
+                </p>
+                <p className="text-lg mb-2">
+                    Price: {enrollmentData.price}
+                </p>
+                <p className="text-lg">
+                    Number of Students: {enrollmentData.number_of_students}
+                </p>
+            </div>
+
+            {/* Stripe Elements form */}
+            {/* Add your Stripe payment and billing details form here */}
+
+            <div className="mt-6 flex justify-center">
+                <Link className="btn btn-primary text-white font-semibold py-2 px-4 hover:bg-blue-600">
+                    Pay Now
+                </Link>
+            </div>
         </div>
     );
 };

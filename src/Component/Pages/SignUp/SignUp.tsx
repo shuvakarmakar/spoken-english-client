@@ -1,12 +1,18 @@
 import React, { useEffect, useState, useContext } from "react";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
-
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import app from "../../../Firebase/firebase";
+import { User } from "firebase/auth";
 const SignUp: React.FC = () => {
+  const auth = getAuth(app);
   const [show, setShow] = useState(false);
-  const { createUser, UpdateUserProfile, handleButtonClick } = useContext(
+  const { UpdateUserProfile, handleButtonClick } = useContext(
     AuthContext
   ) as AuthContextType;
   const Navigate = useNavigate();
@@ -15,9 +21,30 @@ const SignUp: React.FC = () => {
     document.title = "Spoken | SignUp"; // Set the new title here
   }, []);
 
+  const createUser = async (
+    email: string,
+    password: string
+  ): Promise<User | null> => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
 
+      // Perform actions with the user (e.g., update profile)
+      // console.log(user, "from created");
 
-  
+      return user;
+    } catch (error) {
+      // Handle error
+      console.error("Error creating user:", error);
+
+      return null;
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
@@ -29,7 +56,6 @@ const SignUp: React.FC = () => {
       name,
       email,
       password,
-     
     };
     console.log(user);
     if (!email) {
@@ -40,21 +66,23 @@ const SignUp: React.FC = () => {
     }
 
     try {
-      await createUser(email, password)
+      const createdUser: User | null = await createUser(email, password);
+
+      if (createdUser) {
         // update user profile name
         await UpdateUserProfile(name);
         setTimeout(() => {
           Swal.fire("Good job!", "User Name Update Success", "success");
         }, 2000);
 
-        // add user information to the database
-
         const saveUser = {
           name,
           email,
           password,
-          Roll:"student",
+          Roll: "student",
+          uid: createdUser.uid,
         };
+
         fetch("https://spoken-english-server.vercel.app/AddUsers", {
           method: "POST",
           headers: {
@@ -80,13 +108,15 @@ const SignUp: React.FC = () => {
               });
             }
           });
-      
-      Navigate("/");
-      Swal.fire("Good job!", "Create account Success", "success");
+        Navigate("/");
+        Swal.fire("Good job!", "Create account Success", "success");
 
-      form.reset();
+        form.reset();
+      }
+
+      // add user information to the database
     } catch (error) {
-     const errorMessage = (error as Error).message;
+      const errorMessage = (error as Error).message;
       if (errorMessage) {
         Swal.fire({
           icon: "error",
@@ -185,7 +215,6 @@ const SignUp: React.FC = () => {
                 </p>
               </div>
 
-             
               {/* Add other input fields */}
               <button
                 onClick={handleButtonClick}
