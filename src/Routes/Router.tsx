@@ -26,6 +26,7 @@ import PrivetRout from "./PrivetRout/PrivetRout";
 import Checkout from "../Component/Pages/Checkout/Checkout";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
+import Dictionary from "../Component/Pages/Dictionary/Dictionary";
 
 export const router = createBrowserRouter([
   {
@@ -72,9 +73,18 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: <Profile></Profile>,
       },
+      // Dictionary (rashik)
+      {
+        path: "/dictionary",
+        element: (
+          <PrivetRout>
+            <Dictionary />
+          </PrivetRout>
+        ),
+      },
       {
         path: "/profile/:id",
-        element:<ProfileDetails></ProfileDetails>
+        element: <ProfileDetails></ProfileDetails>,
       },
       {
         path: "blog/:id",
