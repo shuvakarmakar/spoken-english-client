@@ -15,12 +15,11 @@ import UserProfileModal from "../Component/Pages/UserProfilemodal/UserProfileMod
 const Navbar = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   //  const [refreshUsers] = useUser();
-  const [showModal, setShowModal] =useState(false);
+  const [showModal, setShowModal] = useState(false);
   // const [isAdmin] = useAdmin();
   // const [isInstructor] = UseInstructor();
   // const [isStudent] = UseStudent();
   // // // make a logout button
-  
 
   return (
     <>
@@ -81,22 +80,21 @@ const Navbar = () => {
                 <li className="font-bold text-gray-900 hover:text-indigo-500">
                   <Link to="all-premium-courses">All Premium Courses</Link>
                 </li>
-            
-                  <div className="flex gap-5 my-5">
+
+                <div className="flex gap-5 my-5">
+                  {" "}
+                  <Link to={"/SignUp"}>
                     {" "}
-                    <Link to={"/SignUp"}>
-                      {" "}
-                      <button className="btn btn-outline p-3 btn-info ">
-                        SignUp
-                      </button>
-                    </Link>
-                    <Link to="/Login">
-                      <button className="btn btn-outline p-7 btn-secondary">
-                        Login
-                      </button>
-                    </Link>
-                  </div>
-              
+                    <button className="btn btn-outline p-3 btn-info ">
+                      SignUp
+                    </button>
+                  </Link>
+                  <Link to="/Login">
+                    <button className="btn btn-outline p-7 btn-secondary">
+                      Login
+                    </button>
+                  </Link>
+                </div>
               </ul>
             </div>
             <Link to="/">
@@ -188,14 +186,26 @@ const Navbar = () => {
                     {/* <button onClick={handleLogOut} className="btn btn-sm ml-2">
                     LogOut
                   </button> */}
+                    <li>
+                      <Link
+                        to="/dictionary"
+                        className="font-bold text-gray-900 hover:text-indigo-500"
+                      >
+                        Dictionary
+                      </Link>
+                    </li>
                     <div
                       onClick={() => setShowModal(!showModal)}
                       className="w-10 cursor-pointer h-10 bg-gray-500 rounded-full"
                     >
-                      <img src={user?.photoURL || ""} className="rounded-full" alt="" />
+                      <img
+                        src={user?.photoURL || ""}
+                        className="rounded-full"
+                        alt=""
+                      />
                     </div>
                     <div className=" absolute right-0 z-50 top-[60px]">
-                      {showModal ? <UserProfileModal  /> : ""}
+                      {showModal ? <UserProfileModal /> : ""}
                     </div>
                   </div>
                 </>

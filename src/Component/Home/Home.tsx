@@ -11,7 +11,7 @@ import ContactForm from "../ContactForm/ContactForm";
 
 const Home = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Banner />
       <HeroSection />
       <BeInstructor></BeInstructor>
