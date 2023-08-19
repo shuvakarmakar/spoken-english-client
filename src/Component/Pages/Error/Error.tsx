@@ -1,5 +1,5 @@
 import gif from '../../../assets/404_animation.gif'
-
+import React from 'react'
 const Error = () => {
     return (
         <div>

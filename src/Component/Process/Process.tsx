@@ -1,30 +1,53 @@
 import { FaDesktop, FaBookReader, FaFacebookMessenger } from "react-icons/fa";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 const Process = () => {
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
   return (
-    <div className="my-10">
-      <h1 className="text-5xl text-center">How it works</h1>
-      {/* Icons */}
-      <div className="grid ms-40 my-10 grid-cols-3">
-        <div>
-          <div className="border-2 border-black w-36 h-36 p-9 rounded-full  text-center text-7xl">
-            <FaDesktop />
+    <div className="px-4 bg-slate-100 md:px-8 lg:px-16">
+      <div className="my-10 ">
+        <h1 className="text-3xl md:text-5xl py-6 text-center mb-5 md:mb-10">
+          How it works
+        </h1>
+        {/* Icons */}
+        <div
+          data-aos="flip-down"
+          className="grid gap-5 md:gap-8 md:grid-cols-3"
+        >
+          <div className="text-pink-600 text-center">
+            <div className="border-2 border-pink-600 w-20 md:w-36 h-20 md:h-36 p-4 md:p-9 rounded-full mx-auto text-3xl md:text-7xl">
+              <FaDesktop />
+            </div>
+            <h3 className="text-base md:text-2xl mt-2 md:mt-3">
+              1. Join a Course
+            </h3>
           </div>
-          <h3 className="text-2xl mt-3">1. Join a Course</h3>
-        </div>{" "}
-        <div>
-          <div className="border-2 border-black  w-36 h-36  p-9 rounded-full  text-center text-7xl">
-            <FaBookReader />
-          </div>{" "}
-          <h3 className="text-2xl mt-3">2. Study, Practice and Review</h3>
-        </div>
-        <div>
-          <div className="border-2 border-black  w-36 h-36  p-9 rounded-full  text-center text-7xl">
-            <FaFacebookMessenger />
+          <div className="text-pink-600 text-center">
+            <div className="border-2 border-pink-600 w-20 md:w-36 h-20 md:h-36 p-4 md:p-9 rounded-full mx-auto text-3xl md:text-7xl">
+              <FaBookReader />
+            </div>
+            <h3 className="text-base md:text-2xl mt-2 md:mt-3">
+              2. Study, Practice and Review
+            </h3>
           </div>
-          <h3 className="text-2xl mt-3">
-            3. Speak Confidently & Ace the IELTS test
-          </h3>
+          <div className="text-pink-600 text-center">
+            <div className="border-2 border-pink-600 w-20 md:w-36 h-20 md:h-36 p-4 md:p-9 rounded-full mx-auto text-3xl md:text-7xl">
+              <FaFacebookMessenger />
+            </div>
+            <h3 className="text-base md:text-2xl mt-2 md:mt-3">
+              3. Speak Confidently & Ace the IELTS test
+            </h3>
+          </div>
         </div>
+      </div>
+      <div className="text-center py-8">
+        <button className="btn hover:bg-black btn-secondary">
+          JOIN A COURSE
+        </button>
       </div>
     </div>
   );

@@ -1,97 +1,125 @@
 import React, { createContext, useEffect, useState, ReactNode } from "react";
 import {
-  FacebookAuthProvider,
-  GoogleAuthProvider,
   User,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../../Firebase/firebase";
 
+import buttonSound from "../../Component/Sound/zapsplat_multimedia_button_click_bright_003_92100.mp3";
+import { initializeClickSound, playClickSound } from "../../utils/ClickSound";
+import axios from "axios";
 
-interface AuthContextType {
-  createUser: (email: string, password: string)=> Promise<void>;
-  Login: (email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
-  FacebookSingIn: () => Promise<void>;
-  user: any;
-  Logout:() => Promise<void>;
+// TypeScript type definitions
+export interface AuthContextType {
+  createUser: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  Logout: () => Promise<void>;
   loading: boolean;
+  user: User | null;
+  ResetPassword: (email: string) => Promise<void>;
+  UpdateUserProfile: (Name: string) => Promise<void>;
+  handleButtonClick: () => void;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUSer] = useState<null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   const auth = getAuth(app);
-  console.log("auth", auth);
-  const provider = new GoogleAuthProvider();
 
-  // create user with email and password
-  const createUser = (email: string, password: string) => {
+  const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    return await createUserWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
-  // sign in user with email and password
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return await signInWithEmailAndPassword(auth, email, password).then(
+      () => {}
+    );
   };
 
-  // google sign in user
-  const loginWithGoogle = () => {
-    setLoading(true);
-    return signInWithPopup(auth, provider);
-  };
-
-  // Facebook sign 
-  const FacebookProvider = new FacebookAuthProvider();
-
-  const FacebookSingIn = () => { 
-       return signInWithPopup(auth, FacebookProvider);
-  }
-
-  // get logged in user from firebase
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user:User|null) => {
-      setUSer(user);
-      console.log("logging user found",user);
-      setLoading(false);
+    setLoading(true);
+    const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+     
+   console.log(user);
+     if (user) {
+       axios
+         .post("https://spoken-english-server.vercel.app/jwt", {
+           email: user.email,
+         })
+         .then((data) => {
+           console.log(data.data);
+           localStorage.setItem("accessToken", data.data.token);
+         });
+      
+     } else {
+       localStorage.removeItem("accessToken");
+      }
+        setUser(user);
+        setLoading(false);
+
     });
+
+
     return () => {
       unsubscribe();
     };
-  },[auth]);
+  }, [auth]);
 
-  // Logout user
-  const Logout = () => {
+  const Logout = async () => {
     setLoading(true);
-    return signOut(auth);
+    return await signOut(auth);
   };
 
-  
+  const ResetPassword = (email: string) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  const UpdateUserProfile = (Name: string) => {
+    const currentUser = auth.currentUser;
+    if (currentUser) {
+      return updateProfile(currentUser, {
+        displayName: Name,
+      });
+    } else {
+      return Promise.reject(new Error("No user is currently logged in."));
+    }
+  };
+
+  initializeClickSound(buttonSound);
+
+  const handleButtonClick = () => {
+    playClickSound();
+    // Your button's click handler logic
+  };
 
   const AuthUser: AuthContextType = {
     createUser,
     login,
-    loginWithGoogle,
     user,
     Logout,
     loading,
-    FacebookSingIn,
+    ResetPassword,
+    UpdateUserProfile,
+    handleButtonClick,
   };
 
   return (
-    <div>
-      <AuthContext.Provider value={AuthUser}>{children}</AuthContext.Provider>
-    </div>
+    <AuthContext.Provider value={AuthUser}>{children}</AuthContext.Provider>
   );
 };
 

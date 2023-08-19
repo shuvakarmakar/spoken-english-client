@@ -1,78 +1,134 @@
-import React,{ useEffect, useState,useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import app from "../../../Firebase/firebase";
+import { User } from "firebase/auth";
+const SignUp: React.FC = () => {
+  const auth = getAuth(app);
+  const [show, setShow] = useState(false);
+  const { UpdateUserProfile, handleButtonClick } = useContext(
+    AuthContext
+  ) as AuthContextType;
+  const Navigate = useNavigate();
 
-
-const SignUp = () => {
-  const [show,setShow]=useState(false)
-  const { createUser } = useContext(AuthContext);
-
-
- const Navigate=useNavigate()
- const [Roll, setSelectedRole] = useState<string>("student");
- 
   useEffect(() => {
-    document.title = "Spoken |  SignUp"; // Set the new title here
+    document.title = "Spoken | SignUp"; // Set the new title here
   }, []);
 
-  // get selected role handler
+  const createUser = async (
+    email: string,
+    password: string
+  ): Promise<User | null> => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
 
-    const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-      setSelectedRole(event.target.value);
-    };
+      // Perform actions with the user (e.g., update profile)
+      // console.log(user, "from created");
 
-  const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+      return user;
+    } catch (error) {
+      // Handle error
+      console.error("Error creating user:", error);
+
+      return null;
+    }
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.target;
-   const name:string = (form.name as HTMLInputElement).value;
-   // const PhotoUrl: string = (form.PhotoUrl as HTMLInputElement).value;
-   const email: string = (form.Email as HTMLInputElement).value;
-   const password: number= parseInt(
-     (form.password as HTMLInputElement).value,
-     10
-   );
-
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const email = formData.get("Email") as string;
+    const name = formData.get("name") as string;
+    const password = formData.get("password") as string;
     const user = {
       name,
       email,
       password,
-      Roll
-      }
+    };
     console.log(user);
-     if (!email) {
-       alert("please enter your email or password");
-       return;
-     } else if (!password) {
-       alert("please enter your password");
-     }
-   
+    if (!email) {
+      Swal.fire("Oh NO!", "Please enter your email", "error");
+      return;
+    } else if (!password) {
+      Swal.fire("Good job!", "Please enter your password", "error");
+    }
 
-    createUser(email, password)
-      .then((result) => {
-        // updateUser(result.user, name, PhotoUrl);
-        console.log(result);
+    try {
+      const createdUser: User | null = await createUser(email, password);
+
+      if (createdUser) {
+        // update user profile name
+        await UpdateUserProfile(name);
+        setTimeout(() => {
+          Swal.fire("Good job!", "User Name Update Success", "success");
+        }, 2000);
+
+        const saveUser = {
+          name,
+          email,
+          password,
+          Roll: "student",
+          uid: createdUser.uid,
+        };
+
+        fetch("https://spoken-english-server.vercel.app/AddUsers", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.InsertedId) {
+              alert("Inserted successfully");
+            }
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            if (errorMessage) {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${errorMessage}`,
+                footer: '<a href="">Why do I have this issue?</a>',
+              });
+            }
+          });
         Navigate("/");
-        alert("success");
-        // toast.success("Login success ,happy shopping");
+        Swal.fire("Good job!", "Create account Success", "success");
+
         form.reset();
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        alert(errorMessage);
-        // ..
-      });
-    // };
-    // const updateUser = (cruent, Name, photoURL) => {
-    //   updateProfile(cruent, {
-    //     displayName: Name,
-    //     photoURL: photoURL,
-    //   });
-     event.stopPropagation();
+      }
+
+      // add user information to the database
+    } catch (error) {
+      const errorMessage = (error as Error).message;
+      if (errorMessage) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${errorMessage}`,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
+    }
+
+    event.stopPropagation();
   };
-
-
 
   return (
     <div className="container mx-auto">
@@ -88,12 +144,21 @@ const SignUp = () => {
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content  text-neutral-content">
-          <div className="w-full md:w-[600px] ">
+          <div className="w-[350px] md:w-[600px] ">
             <form
               onSubmit={handleSubmit}
               className="w-full  bg-white p-8 rounded shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4 uppercase">Sign Up</h2>
+              <div className=" flex justify-between">
+                <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
+                  Sign Up
+                </h2>
+                <Link to={"/login"}>
+                  <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
+                    Log in
+                  </h2>
+                </Link>
+              </div>
               {/* name */}
               <div className="mb-4">
                 <label
@@ -136,43 +201,30 @@ const SignUp = () => {
                   Password
                 </label>
                 <input
-                  type={ show? "text" :"password"}
+                  type={show ? "text" : "password"}
                   id=" password"
                   name="password"
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
-                <p onClick={() => setShow(!show)} className=" absolute top-8 right-5 font-bold cursor-pointer ">{ show ?"hide":"Show"}</p>
-              </div>
-
-              {/* Roll */}
-              <div className="mb-4">
-                <label
-                  htmlFor="role"
-                  className="block text-gray-700 font-medium mb-1"
+                <p
+                  onClick={() => setShow(!show)}
+                  className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
                 >
-                  Role
-                </label>
-                <select
-                  value={Roll}
-                  onChange={handleRoleChange}
-                  id="role"
-                  className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                >
-                  <option value="student">Student</option>
-                  <option value="instructor">Instructor</option>
-                </select>
+                  {show ? "hide" : "Show"}
+                </p>
               </div>
 
               {/* Add other input fields */}
               <button
+                onClick={handleButtonClick}
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
               >
                 Sign Up
               </button>
 
-             <SocialLogin></SocialLogin>
+              <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
             </form>
           </div>
         </div>

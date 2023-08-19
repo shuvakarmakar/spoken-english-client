@@ -1,60 +1,98 @@
-import React, { useContext, useState } from "react";
-import SocialLogin from '../SocialLogin/SocialLogin';
-import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useState, useRef } from "react";
+import SocialLogin from "../SocialLogin/SocialLogin";
+import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const Login = () => {
+interface User {
+  email: string;
+  password: string;
+}
 
-    const [show, setShow] = useState(false);
- const Navigate = useNavigate();
+const Login: React.FC = () => {
+  const [show, setShow] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
 
- const {login} = useContext(AuthContext);
-const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const form = event.target;
-  const email: string = (form.Email as HTMLInputElement).value;
-  const password: number = parseInt(
-    (form.password as HTMLInputElement).value,
-    10
-  );
+  const Navigate = useNavigate();
 
-  const user = {
-    email,
-    password,
-  };
-  console.log(user);
-  if (!email) {
-    alert("please enter your email or password");
-    return;
-  } else if (!password) {
-    alert("please enter your password");
-  }
+  const { login, ResetPassword, handleButtonClick } = useContext(
+    AuthContext
+  ) as AuthContextType;
 
-  login(email, password)
-    .then((result) => {
-      // updateUser(result.user, name, PhotoUrl);
+  // Login form
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+   const form = event.target as HTMLFormElement;
+   const formData = new FormData(form);
+   const email = formData.get("Email") as string;
+   const password = formData.get("password") as string;
+
+    const user: User = {
+      email,
+      password,
+    };
+
+    if (!email || !password) {
+      alert("Please enter your email and password");
+      return;
+    }
+
+    try {
+      const result = await login(user.email, user.password);
       console.log(result);
+
       Navigate("/");
-      alert("success");
-      // toast.success("Login success ,happy shopping");
+
+      Swal.fire("Good job!", "Login Success", "success");
       form.reset();
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      console.log(errorMessage);
-      alert(errorMessage);
-      // ..
-    });
-  // };
-  // const updateUser = (cruent, Name, photoURL) => {
-  //   updateProfile(cruent, {
-  //     displayName: Name,
-  //     photoURL: photoURL,
-  //   });
-  event.stopPropagation();
-};
+    } catch (err) {
+    const errorMessage = (err as Error).message;
+      if (errorMessage) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${errorMessage}`,
+          footer: '<a href="">Why do I have this issue?</a>',
+        });
+      }
 
+      setError(errorMessage);
+    }
+  };
 
+  // Reset Password
+  const passRef: React.RefObject<HTMLInputElement> = useRef(null);
+
+  const handelResetPassword = () => {
+    if (passRef.current) {
+      passRef.current.focus();
+    }
+    const email = passRef.current?.value;
+    if (!email) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `Enter your email address`,
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
+      return;
+    }
+    ResetPassword(email)
+      .then(() => {
+        Swal.fire("Yahoo!", "Check your Email", "success");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        if (errorMessage) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${errorMessage}`,
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+        }
+      });
+  };
 
   return (
     <div className="container mx-auto">
@@ -73,10 +111,18 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
           <div className="w-full md:w-[600px] ">
             <form
               onSubmit={handleSubmit}
-              className="w-full  bg-white p-8 rounded shadow-lg"
+              className="w-[350px] md:w-[600px] bg-white p-3 md:p-20 rounded shadow-lg"
             >
-              <h2 className="text-2xl font-semibold mb-4 uppercase">Log In </h2>
-
+              <div className="flex justify-between">
+                <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
+                  Log In{" "}
+                </h2>
+                <Link to={"/SignUp"}>
+                  <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
+                    Sign Up{" "}
+                  </h2>
+                </Link>
+              </div>
               {/* Email */}
               <div className="mb-4">
                 <label
@@ -86,9 +132,11 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                   Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
+                  required
                   id="Email"
                   name="Email"
+                  ref={passRef}
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your Email"
                 />
@@ -102,30 +150,40 @@ const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
                   Password
                 </label>
                 <input
-                  type={show?"text":"password"}
+                  type={show ? "text" : "password"}
                   id=" password"
                   name="password"
+                  required
                   className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
                   placeholder="Your password"
                 />
 
                 <p
                   onClick={() => setShow(!show)}
-                  className=" absolute top-8 right-5 font-bold cursor-pointer "
+                  className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
                 >
                   {show ? "hide" : "Show"}
                 </p>
+                {error && (
+                  <small
+                    onClick={handelResetPassword}
+                    className="text-pink-500 link "
+                  >
+                    Rest Password..?
+                  </small>
+                )}
               </div>
 
               {/* Add other input fields */}
               <button
+                onClick={handleButtonClick}
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
               >
                 Login
               </button>
 
-              <SocialLogin></SocialLogin>
+              <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
             </form>
           </div>
         </div>
