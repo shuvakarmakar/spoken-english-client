@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
+import { redirect, useLocation } from 'react-router-dom';
 
 interface BillingData {
     fullName: string;
@@ -34,27 +34,21 @@ const Checkout: React.FC = () => {
 
         console.log(combinedData);
 
-        fetch('http://localhost:5000/order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(combinedData),
-        })
-            .then(response => {
-                console.log(response);
-                if (response.redirected) {
-                    window.location.replace(response.url);
-                } else {
-                    console.error('Payment failed');
-                    // Handle payment failure
-                }
-            })
-
-            .catch(error => {
-                console.error('Error processing payment:', error);
-                // Handle error
-            });
+       fetch("http://localhost:5000/order", {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify(combinedData),
+       })
+         .then((response) => response.json())
+         .then((data) => {
+           console.log("Redirecting to payment gateway:", data.GatewayPageURL);
+           window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
+         })
+         .catch((error) => {
+           console.error("Error initiating payment:", error);
+         });
     };
 
     if (!enrollmentData) {
