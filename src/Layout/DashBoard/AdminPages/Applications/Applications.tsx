@@ -8,7 +8,7 @@ interface Application {
   email: string;
   phoneNumber: string;
   bio: string;
-} 
+}
 
 const Applications:React.FC=()=> {
   const [applications, setApplications] = useState<Application[]>([]);
