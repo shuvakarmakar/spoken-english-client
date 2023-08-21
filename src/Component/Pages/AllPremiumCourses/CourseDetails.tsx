@@ -36,7 +36,7 @@ const CourseDetails: React.FC = () => {
           className="w-full h-auto mb-4"
         />
         <p className="text-gray-600 mb-4">{course.course_details}</p>
-        <p className="font-bold text-xl text-black mb-2">Price: {course.price}</p>
+        <p className="font-bold text-xl text-black mb-2">Price: ${course.price}</p>
         <div className="flex justify-center">
           <Link
             to={{
