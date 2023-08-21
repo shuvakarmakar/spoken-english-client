@@ -69,7 +69,7 @@ const Dictionary: React.FC = () => {
         />
         <button
           onClick={fetchWordData}
-          className="p-4 mt-4 bg-purple-600 text-white rounded-sm"
+          className="p-2 mt-4 ml-3 btn btn-outline btn-primary text-white rounded-sm"
         >
           Search
         </button>
@@ -77,17 +77,30 @@ const Dictionary: React.FC = () => {
           <div className="mt-8">
             <div className="flex justify-between items-center">
               <h3 className="text-3xl font-semibold">{word}</h3>
+              <p>/{data.phonetic}/</p>
               <button onClick={playSound} className="text-black">
                 <FaVolumeUp />
               </button>
             </div>
-            <div className="flex gap-4 mt-2 text-gray-500">
+            <div className="pl-10 my-3 rounded-l-md border-l-2  border-blue-500">
               <p>{data.meanings[0].partOfSpeech}</p>
-              <p>/{data.phonetic}/</p>
             </div>
-            <p className="text-purple-900 mt-4">
+            <p className="pl-10 my-4 text-purple-400 rounded-l-md border-l-2  border-blue-500">
               {data.meanings[0].definitions[0].definition}
             </p>
+
+            {/* Display Synonyms */}
+            {data.meanings[0].definitions[0].synonyms && (
+              <p className="pl-10 my-4 rounded-l-md border-l-2  border-blue-500">
+                Synonyms: {data.meanings[0].definitions[0].synonyms.join(", ")}
+              </p>
+            )}
+            {/* Display Antonyms */}
+            {data.meanings[0].definitions[0].antonyms && (
+              <p className="pl-10 my-4 rounded-l-md border-l-2  border-blue-500">
+                Antonyms: {data.meanings[0].definitions[0].antonyms.join(", ")}
+              </p>
+            )}
             {data.meanings[0].definitions[0].example && (
               <p className="italic border-l-4 border-purple-600 pl-4 mt-4 text-gray-600">
                 {data.meanings[0].definitions[0].example}

@@ -34,21 +34,21 @@ const Checkout: React.FC = () => {
 
         console.log(combinedData);
 
-       fetch("http://localhost:5000/order", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json",
-         },
-         body: JSON.stringify(combinedData),
-       })
-         .then((response) => response.json())
-         .then((data) => {
-           console.log("Redirecting to payment gateway:", data.GatewayPageURL);
-           window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
-         })
-         .catch((error) => {
-           console.error("Error initiating payment:", error);
-         });
+        fetch("http://localhost:5000/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(combinedData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Redirecting to payment gateway:", data.GatewayPageURL);
+                window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
+            })
+            .catch((error) => {
+                console.error("Error initiating payment:", error);
+            });
     };
 
     if (!enrollmentData) {

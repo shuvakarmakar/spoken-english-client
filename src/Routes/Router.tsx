@@ -27,6 +27,9 @@ import Checkout from "../Component/Pages/Checkout/Checkout";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
 import Dictionary from "../Component/Pages/Dictionary/Dictionary";
+import Messaging from "../Component/Messageing/Messaging";
+import Applications from "../Layout/DashBoard/AdminPages/Applications/Applications";
+import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +90,10 @@ export const router = createBrowserRouter([
         element: <ProfileDetails></ProfileDetails>,
       },
       {
+        path: "/messaging",
+        element: <Messaging></Messaging>
+      },
+      {
         path: "blog/:id",
         element: <BlogDetails></BlogDetails>,
         loader: ({ params }) =>
@@ -117,6 +124,10 @@ export const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout></Checkout>,
       },
+      {
+        path: "payment/success/:tranId",
+        element: <PaymentSuccess></PaymentSuccess>,
+      },
     ],
   },
   // dashboard routes
@@ -141,6 +152,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/AddClasses",
         element: <AddClasses></AddClasses>,
       },
+      {
+        path: "/dashboard/Application",
+        element: <Applications></Applications>
+      }
     ],
   },
   {

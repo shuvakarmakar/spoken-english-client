@@ -8,7 +8,7 @@ const JoinCourse = () => {
     AOS.init(); // Initialize AOS library
   }, []);
   return (
-    <div className="bg-slate-100 mt-10  ">
+    <div className="bg-slate-100 pt-10  ">
       <div className="grid  md:grid-cols-2 p-10 grid-cols-1">
         <div data-aos="fade-right" className="pl-10">
           <h1 className="text-4xl">Learn With Me</h1>
