@@ -28,6 +28,7 @@ import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
 import Dictionary from "../Component/Pages/Dictionary/Dictionary";
 import Messaging from "../Component/Messageing/Messaging";
+import Applications from "../Layout/DashBoard/AdminPages/Applications/Applications";
 
 export const router = createBrowserRouter([
   {
@@ -146,6 +147,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/AddClasses",
         element: <AddClasses></AddClasses>,
       },
+      {
+        path: "/dashboard/Application",
+        element:<Applications></Applications>
+      }
     ],
   },
   {
