@@ -32,7 +32,7 @@ const MainComponent: React.FC = () => {
                             <h2 className="text-lg font-semibold">{course.course_name}</h2>
                             <p className="text-gray-600">{course.course_short_description}</p>
                             <div className="mt-2">
-                                <p className="text-gray-800 font-semibold">{course.price}</p>
+                                <p className="text-gray-800 font-semibold">${course.price}</p>
                                 <p className="text-gray-600">{course.instructor}</p>
                             </div>
                         </div>
