@@ -54,15 +54,15 @@ const Users = () => {
         </>
       ) : (
         <>
-          <div className="h-[100vh]  ">
+          <div className="h-[100vh]">
             <h1 className=" uppercase text-[3vw] text-center my-4">
               All <span className="text-blue-500">Users</span>{" "}
             </h1>
             <div className="flex justify-center mx-auto mt-11">
-              <div className="overflow-x-scroll">
+              <div className="overflow-x-scroll  bg-white">
                 <table className="table border shadow-xl">
                   {/* head */}
-                  <thead>
+                  <thead className="bg-gray-100">
                     <tr>
                       <th>NO:</th>
                       <th>Name</th>
@@ -86,10 +86,11 @@ const Users = () => {
                             <button
                               disabled={user?.InstructorDisabled}
                               onClick={() => handleMakeInstructor(user._id)}
-                              className={` ${user.InstructorDisabled
+                              className={` ${
+                                user.InstructorDisabled
                                   ? "bg-slate-300"
                                   : " bg-blue-500"
-                                }
+                              }
                                p-1 shadow-md  rounded-md cursor-pointer text-white`}
                             >
                               {" "}
@@ -99,8 +100,9 @@ const Users = () => {
                             <button
                               disabled={user?.disabled}
                               onClick={() => handleMakeAdmin(user._id)}
-                              className={` ${user.disabled ? "bg-slate-300" : " bg-blue-500"
-                                }
+                              className={` ${
+                                user.disabled ? "bg-slate-300" : " bg-blue-500"
+                              }
                                p-1 shadow-md  rounded-md cursor-pointer text-white`}
                             >
                               {" "}
