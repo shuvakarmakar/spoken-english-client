@@ -44,7 +44,7 @@ const Checkout: React.FC = () => {
          .then((response) => response.json())
          .then((data) => {
            console.log("Redirecting to payment gateway:", data.GatewayPageURL);
-           window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
+           window.location.href=data.GatewayPageURL; // Redirect the user to payment gateway
          })
          .catch((error) => {
            console.error("Error initiating payment:", error);

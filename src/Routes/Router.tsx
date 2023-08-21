@@ -27,6 +27,7 @@ import Checkout from "../Component/Pages/Checkout/Checkout";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
 import Dictionary from "../Component/Pages/Dictionary/Dictionary";
+import Messaging from "../Component/Messageing/Messaging";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile/:id",
         element: <ProfileDetails></ProfileDetails>,
+      },
+      {
+        path: "/messaging",
+        element:<Messaging></Messaging>
       },
       {
         path: "blog/:id",
