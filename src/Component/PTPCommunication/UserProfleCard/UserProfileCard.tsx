@@ -5,6 +5,7 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
+import { Link } from "react-router-dom";
 
 interface UserProfileCardProps {
   student: {
@@ -97,9 +98,11 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
             Call
           </button>
-          <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
-            Message
-          </button>
+          <Link to={'/messaging'} state={{ MyId:user?.uid, userId: student?.uid }}>
+            <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
+              Message
+            </button>
+          </Link>
         </div>
         {showModal && (
           <div className=" absolute">
