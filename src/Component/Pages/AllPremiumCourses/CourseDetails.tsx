@@ -11,6 +11,14 @@ interface Course {
   number_of_students: number;
 }
 
+interface EnrollmentData {
+    courseId: string;
+    courseName: string;
+    price: number;
+    instructor: string;
+    number_of_students: number;
+}
+
 const CourseDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [course, setCourse] = useState<Course | null>(null);
@@ -22,9 +30,18 @@ const CourseDetails: React.FC = () => {
       .catch(error => console.error('Error fetching course details:', error));
   }, [id]);
 
-  if (!course) {
-    return <div>Loading...</div>;
-  }
+    if (!course) {
+        return <div>Loading...</div>;
+    }
+
+    const enrollmentData: EnrollmentData = {
+        courseId: course._id,
+        courseName: course.course_name,
+        price: course.price,
+        instructor: course.instructor,
+        number_of_students: course.number_of_students,
+    };
+    console.log(enrollmentData);
 
   return (
     <div className="container mx-auto py-8">

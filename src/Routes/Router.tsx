@@ -24,6 +24,7 @@ import PTPCommunication from "../Component/PTPCommunication/PTPCommunication";
 import PrivetRout from "./PrivetRout/PrivetRout";
 // import { element } from "prop-types";
 import Checkout from "../Component/Pages/Checkout/Checkout";
+import AboutUs from "../Component/Pages/Footer/AboutUs";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
 import Dictionary from "../Component/Pages/Dictionary/Dictionary";
@@ -108,6 +109,10 @@ export const router = createBrowserRouter([
       {
         path: "all-courses",
         element: <AllCourse></AllCourse>,
+      },
+      {
+        path:"about-us",
+        element:<AboutUs></AboutUs>
       },
       // shuva-work
       {
