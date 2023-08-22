@@ -6,11 +6,10 @@ import "swiper/css"; // Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import "./Banner.css";
-import banner2 from "../../assets/banner2.jpg";
-import banner1 from "../../assets/banner1.jpg";
-import banner3 from "../../assets/banner3.jpg";
+import banner2 from "../../../../assets/banner2.jpg";
+import banner1 from "../../../../assets/banner1.jpg";
+import banner3 from "../../../../assets/banner3.jpg";
 import { Autoplay } from "swiper/modules";
 
 const Banner: React.FC = () => {
