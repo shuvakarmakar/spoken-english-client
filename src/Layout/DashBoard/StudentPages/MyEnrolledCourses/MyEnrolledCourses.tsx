@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { AuthContext, AuthContextType } from '../../../../Provider/AuthProvider/AuthProvider';
+import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../../Provider/AuthProvider/AuthProvider";
 
 interface Course {
   _id: string;
@@ -27,7 +30,9 @@ const MyEnrolledCourses: React.FC = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-semibold text-center my-5">My Enrolled Courses</h1>
+      <h1 className="text-2xl font-semibold text-center my-5">
+        My Enrolled Courses
+      </h1>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -35,7 +40,7 @@ const MyEnrolledCourses: React.FC = () => {
               <th></th>
               <th>Course Name</th>
               <th>Price</th>
-              <th className='flex justify-center'>Action</th>
+              <th className="flex justify-center">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -48,8 +53,11 @@ const MyEnrolledCourses: React.FC = () => {
                   </Link>
                 </td>
                 <td>${course.total_amount}</td>
-                <td className='flex justify-center'>
-                  <Link className="btn btn-secondary text-white" to={`/start-course/${course._id}`}>
+                <td className="flex justify-center">
+                  <Link
+                    className="btn btn-secondary text-white"
+                    to={`/start-course/${course._id}`}
+                  >
                     Start Now
                   </Link>
                 </td>
