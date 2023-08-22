@@ -33,6 +33,7 @@ import Applications from "../Layout/DashBoard/AdminPages/Applications/Applicatio
 import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
 import PrivecyPolicy from "../Component/Pages/Footer/PrivecyPolicy";
 import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations";
+import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
 
 export const router = createBrowserRouter([
   {
@@ -93,8 +94,12 @@ export const router = createBrowserRouter([
         element: <ProfileDetails></ProfileDetails>,
       },
       {
+        path: "/profileSetting",
+        element:<ProfileSettings></ProfileSettings>,
+      },
+      {
         path: "/messaging",
-        element: <Messaging></Messaging>
+        element: <Messaging></Messaging>,
       },
       {
         path: "blog/:id",
@@ -115,16 +120,16 @@ export const router = createBrowserRouter([
         element: <AllCourse></AllCourse>,
       },
       {
-        path:"about-us",
-        element:<AboutUs></AboutUs>
+        path: "about-us",
+        element: <AboutUs></AboutUs>,
       },
       {
-        path:"privacy-policy",
-        element:<PrivecyPolicy></PrivecyPolicy>
+        path: "privacy-policy",
+        element: <PrivecyPolicy></PrivecyPolicy>,
       },
       {
-        path:"terms-and-conditions",
-        element:<TermsAndConditations></TermsAndConditations>
+        path: "terms-and-conditions",
+        element: <TermsAndConditations></TermsAndConditations>,
       },
       // shuva-work
       {
@@ -169,8 +174,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/Application",
-        element: <Applications></Applications>
-      }
+        element: <Applications></Applications>,
+      },
     ],
   },
   {
