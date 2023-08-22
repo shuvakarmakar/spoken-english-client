@@ -68,7 +68,7 @@ const Checkout: React.FC = () => {
                         Instructor: {enrollmentData.instructor}
                     </p>
                     <p className="text-lg mb-2">
-                        Price: {enrollmentData.price}
+                        Price: ${enrollmentData.price}
                     </p>
                     <p className="text-lg">
                         Number of Students: {enrollmentData.number_of_students}

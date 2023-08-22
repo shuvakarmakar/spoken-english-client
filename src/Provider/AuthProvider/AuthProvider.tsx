@@ -40,37 +40,37 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await createUserWithEmailAndPassword(auth, email, password).then(
-      () => {}
+      () => { }
     );
   };
 
   const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await signInWithEmailAndPassword(auth, email, password).then(
-      () => {}
+      () => { }
     );
   };
 
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
-     
-   console.log(user);
-     if (user) {
-       axios
-         .post("https://spoken-english-server.vercel.app/jwt", {
-           email: user.email,
-         })
-         .then((data) => {
-           console.log(data.data);
-           localStorage.setItem("accessToken", data.data.token);
-         });
-      
-     } else {
-       localStorage.removeItem("accessToken");
+
+      console.log(user);
+      if (user) {
+        axios
+          .post("https://spoken-english-server.vercel.app/jwt", {
+            email: user.email,
+          })
+          .then((data) => {
+            console.log(data.data);
+            localStorage.setItem("accessToken", data.data.token);
+          });
+
+      } else {
+        localStorage.removeItem("accessToken");
       }
-        setUser(user);
-        setLoading(false);
+      setUser(user);
+      setLoading(false);
 
     });
 

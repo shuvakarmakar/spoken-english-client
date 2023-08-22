@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import SignUp from "../Component/Pages/SignUp/SignUp";
 import Login from "../Component/Pages/Login/Login";
-import Home from "../Component/Home/Home";
+import Home from "../Component/Pages/Home/Home/Home";
 import Main from "../Layout/Main";
 import Error from "../Component/Pages/Error/Error";
 import FreeLiveLessons from "../Component/Pages/FreeLiveLessons/FreeLiveLessons";
@@ -15,7 +15,6 @@ import Dashboard from "../Layout/DashBoard/Dashboard";
 import Users from "../Layout/DashBoard/AdminPages/Users/Users";
 import FreeVideos from "../Component/Pages/FreeVideos/FreeVideos";
 import AllCourse from "../Component/Pages/Courses/AllCourse";
-import MyClasses from "../Layout/DashBoard/StudentPages/MyClasses/MyClasses";
 import AddClasses from "../Layout/DashBoard/InstructorPages/AddClasses/AddClasses";
 import InstructorApplicationForm from "../Component/Pages/InstructorForm/InstructorForm";
 import AllPremuimCourses from "../Component/Pages/AllPremiumCourses/AllPremuimCourses";
@@ -34,6 +33,7 @@ import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
 import PrivecyPolicy from "../Component/Pages/Footer/PrivecyPolicy";
 import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations";
 import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
+import MyEnrolledCourses from "../Layout/DashBoard/StudentPages/MyEnrolledCourses/MyEnrolledCourses";
 
 export const router = createBrowserRouter([
   {
@@ -142,7 +142,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        element: <Checkout></Checkout>,
+        element: <PrivetRout><Checkout></Checkout></PrivetRout>,
       },
       {
         path: "payment/success/:tranId",
@@ -163,8 +163,8 @@ export const router = createBrowserRouter([
 
       // students routes
       {
-        path: "/dashboard/MyClasses",
-        element: <MyClasses></MyClasses>,
+        path: "/dashboard/MyEnrolledCourses",
+        element: <MyEnrolledCourses></MyEnrolledCourses>,
       },
 
       // instructor routes
