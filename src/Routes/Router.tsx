@@ -137,7 +137,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "checkout",
-        element: <PrivetRout><Checkout></Checkout></PrivetRout>,
+        element: <Checkout></Checkout>,
       },
       {
         path: "payment/success/:tranId",

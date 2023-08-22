@@ -43,7 +43,7 @@ const Dashboard = () => {
                 </li>
               </NavLink>
               <NavLink
-                to="/dashboard/MyEnrolledClasses"
+                to="/dashboard/MyEnrolledCourses"
                 onClick={() => setSidebarOpen(false)}
               >
                 <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
