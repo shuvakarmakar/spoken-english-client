@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { redirect, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
+import { useLocation } from 'react-router-dom';
+// import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 interface BillingData {
     fullName: string;
@@ -13,17 +13,17 @@ interface BillingData {
     contactNumber: string;
 }
 
-interface EnrollmentData {
-    courseId: string;
-    courseName: string;
-    price: number;
-    instructor: string;
-    number_of_students: number;
-}
+// interface EnrollmentData {
+//     courseId: string;
+//     courseName: string;
+//     price: number;
+//     instructor: string;
+//     number_of_students: number;
+// }
 
 const Checkout: React.FC = () => {
     const location = useLocation();
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
     const enrollmentData = location?.state;
 
     const { register, handleSubmit } = useForm<BillingData>();
@@ -36,21 +36,21 @@ const Checkout: React.FC = () => {
 
         console.log(combinedData);
 
-        fetch("http://localhost:5000/order", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(combinedData),
+        fetch("https://spoken-english-server.vercel.app/order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(combinedData),
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Redirecting to payment gateway:", data.GatewayPageURL);
-                window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
-            })
-            .catch((error) => {
-                console.error("Error initiating payment:", error);
-            });
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Redirecting to payment gateway:", data.GatewayPageURL);
+            window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
+          })
+          .catch((error) => {
+            console.error("Error initiating payment:", error);
+          });
     };
 
     if (!enrollmentData) {
@@ -85,7 +85,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="fullName"
-                            name="fullName"
+                            
                             {...register('fullName')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -97,7 +97,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="email"
                             id="email"
-                            name="email"
+                          
                             {...register('email')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -109,7 +109,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="address"
-                            name="address"
+                            
                             {...register('address')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -121,7 +121,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="city"
-                            name="city"
+                         
                             {...register('city')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -133,7 +133,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="country"
-                            name="country"
+                           
                             {...register('country')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -145,7 +145,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="postalCode"
-                            name="postalCode"
+                           
                             {...register('postalCode')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -157,7 +157,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="contactNumber"
-                            name="contactNumber"
+                            
                             {...register('contactNumber')}
                             className="border border-gray-300 p-2 w-full"
                             required

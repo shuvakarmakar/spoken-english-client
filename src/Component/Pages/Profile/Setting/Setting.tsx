@@ -13,7 +13,7 @@ interface User {
 }
 
 const ProfileSettings = () => {
-  const [users, loading, refreshUsers] = useUser();
+  const [users] = useUser();
   const location = useLocation();
   const id= location?.state;
  const user = users.find((u: any) => u.uid === id) as unknown as User;
