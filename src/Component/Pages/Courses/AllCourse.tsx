@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
+import './PSstyle.css'
 
 interface Course {
   _id: string;
@@ -63,7 +64,7 @@ const AllCourse: React.FC = () => {
               </div>
               <Link
                 to={`course-details/${pc._id}`}
-                className="py-2 px-3 bg-[rgba(0,0,0,0.1)] rounded font-bold"
+                className="PupularCourseButton"
               >
                 Course Details
               </Link>
