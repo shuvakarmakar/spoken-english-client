@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
+import './BlogsStyle.css'
 
 interface Blog {
   _id: string;
@@ -35,18 +36,18 @@ const AllBlogs: React.FC = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#EEEEEE]">
       <section className="title flex justify-center items-center gap-5">
         <div className="flex flex-col items-center justify-start">
-          <p className="text-3xl font-bold">From</p>
-          <p className="text-3xl font-bold text-left">The</p>
+          <p className="text-xl font-bold">From</p>
+          <p className="text-xl font-bold text-left">The</p>
         </div>
-        <p className="text-8xl font-bold">Blogs</p>
+        <p className="text-6xl font-bold">Blogs</p>
       </section>
       <section className="blogs py-5">
         <div className="w-[96%] md:w-[90%] mx-auto">
           {blogs.map((blog) => (
-            <div key={blog._id} className="relative">
+            <div key={blog._id} className="mb-8 md:mb-12 relative shadow-xl p-1 md:p-3 bg-slate-100">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4  py-7">
                 <p className="text-2xl text-justify">{blog.blog_name}</p>
                 <img
@@ -60,7 +61,7 @@ const AllBlogs: React.FC = () => {
               </div>
               <div className="flex justify-center mb-3">
                 <Link
-                  className="text-center py-1 px-3  border border-fuchsia-900 font-bold hover:bg-black hover:text-white absolute bottom-0 md:bottom-3 bg-[rgba(0,0,0,0.6)] text-white"
+                  className="blogsBtn"
                   to={`blog/${blog._id}`}
                 >
                   Details

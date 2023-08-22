@@ -1,5 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
+import rashik from "../../../assets/rashik.jpg"
+import faruk from './../../../assets/faruk.jpg'
 
 const AboutUs = () => {
   return (
@@ -35,7 +37,7 @@ const AboutUs = () => {
             </div>
             <div className="  bg-gray-100 p-6 transition duration-300 ease-in-out transform shadow-xl hover:-translate-y-1 hover:scale-105">
               <div className="flex flex-col justify-center items-center transition duration-200 ease-in-out transform hover:-translate-y-1 hover:opacity-80">
-                <img src="https://scontent.fdac22-1.fna.fbcdn.net/v/t39.30808-6/362952032_290183010223329_5420668042745910115_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHFomwWdzMKveI2ziXsJQSoQSM5nyc45qxBIzmfJzjmrEPUVF0ZYDw9q4YARvlLRvUIGzqQMwQmIKCedMlMdEdw&_nc_ohc=S6YXqhVuegMAX9xASns&_nc_ht=scontent.fdac22-1.fna&oh=00_AfDvkNSvlgXKVojVsy-hRwkb_Yd5nmEjvpxWEs2hrsLExw&oe=64E884DA" alt="" className="w-16 h-16  rounded-full mb-4 transition duration-200 ease-in-out transform hover:scale-110" />
+                <img src={rashik}  className="w-16 h-16  rounded-full mb-4 transition duration-200 ease-in-out transform hover:scale-110" />
                 <div className="text-xl font-semibold text-gray-800">
                 S M Abdul Rashik
                 </div>
@@ -58,7 +60,7 @@ const AboutUs = () => {
             </div>
             <div className="  bg-gray-100 p-6 transition duration-300 ease-in-out transform shadow-xl hover:-translate-y-1 hover:scale-105">
               <div className="flex flex-col justify-center items-center transition duration-200 ease-in-out transform hover:-translate-y-1 hover:opacity-80">
-                <img src="https://avatars.githubusercontent.com/u/59233995?v=4" alt="" className="w-16 h-16  rounded-full mb-4 transition duration-200 ease-in-out transform hover:scale-110" />
+                <img src={faruk} className="w-16 h-16  rounded-full mb-4 transition duration-200 ease-in-out transform hover:scale-110" />
                 <div className="text-xl font-semibold text-gray-800">
                 Md Faruk S
                 </div>

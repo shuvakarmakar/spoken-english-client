@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
+import './PSstyle.css'
 
 interface Course {
   _id: string;
@@ -41,12 +42,12 @@ const PopularCourse: React.FC = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#F1F5F9] pb-4">
       <section className="flex items-center justify-between py-5 w-[96%] md:w-[90%] mx-auto">
         <p className="text-2xl">Popular Courses</p>
         <Link
           to={`/all-courses`}
-          className="py-2 px-3 bg-[rgba(0,0,0,0.1)] rounded font-bold"
+          className="PupularCourseButton"
         >
           View All
         </Link>
@@ -56,16 +57,16 @@ const PopularCourse: React.FC = () => {
           {filterPopularCourses.slice(0, 3).map((pc) => (
             <div
               key={pc._id}
-              className="card py-5 box-border  bg-opacity-58 border-white border-1 shadow-lg backdrop-blur-6 rounded-17 text-center  transition-all duration-500 flex items-center justify-center  font-semibold text-black"
+              className="bg-slate-50 card pb-5 box-border  bg-opacity-58 border-white border-1 shadow-xl backdrop-blur-6 rounded-17 text-center  transition-all duration-500 flex items-center justify-center  font-semibold text-black"
             >
               <img
                 src={pc.image}
-                className="w-[80%] mx-auto h-[250px]"
+                className="w-full mx-auto h-[250px] rounded-tr-lg rounded-tl-lg"
                 alt=""
               />
               <p className="text-xl">{pc.course_name}</p>
               <div className="flex items-center justify-around w-full py-2 text-lg">
-                <p>{pc.price}</p>
+                <p>${pc.price}</p>
                 <div className="flex items-center font-bold text-lg gap-1">
                   <FaUsers />
                   <p> {pc.number_of_students}</p>
@@ -73,9 +74,10 @@ const PopularCourse: React.FC = () => {
               </div>
               <Link
                 to={`course-details/${pc._id}`}
-                className="py-2 px-3 bg-[rgba(0,0,0,0.1)] rounded font-bold"
+                className="PupularCourseButton"
               >
                 Course Details
+                
               </Link>
             </div>
           ))}
