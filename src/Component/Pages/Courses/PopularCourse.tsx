@@ -56,7 +56,7 @@ const PopularCourse: React.FC = () => {
           {filterPopularCourses.slice(0, 3).map((pc) => (
             <div
               key={pc._id}
-              className="card py-5 box-border  bg-opacity-58 border-white border-1 shadow-md backdrop-blur-6 rounded-17 text-center  transition-all duration-500 flex items-center justify-center  font-semibold text-black"
+              className="card py-5 box-border  bg-opacity-58 border-white border-1 shadow-lg backdrop-blur-6 rounded-17 text-center  transition-all duration-500 flex items-center justify-center  font-semibold text-black"
             >
               <img
                 src={pc.image}
@@ -81,6 +81,8 @@ const PopularCourse: React.FC = () => {
           ))}
         </div>
       </section>
+
+      <p></p>
     </div>
   );
 };

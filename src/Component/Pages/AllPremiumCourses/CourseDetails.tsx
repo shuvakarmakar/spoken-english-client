@@ -30,18 +30,20 @@ const CourseDetails: React.FC = () => {
       .catch((error) => console.error("Error fetching course details:", error));
   }, [id]);
 
-  if (!course) {
-    return <div>Loading...</div>;
-  }
+    if (!course) {
+        return <div>Loading...</div>;
+    }
 
-  const enrollmentData: EnrollmentData = {
-    courseId: course._id,
-    courseName: course.course_name,
-    price: course.price,
-    instructor: course.instructor,
-    number_of_students: course.number_of_students,
-  };
-  console.log(enrollmentData);
+    const enrollmentData: EnrollmentData = {
+        courseId: course._id,
+        courseName: course.course_name,
+        price: course.price,
+        instructor: course.instructor,
+        number_of_students: course.number_of_students,
+    };
+    console.log(enrollmentData);
+
+
 
   return (
     <div className="container mx-auto py-8">
