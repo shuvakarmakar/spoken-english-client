@@ -6,8 +6,9 @@ import UseStudent from "../../Hooks/UseStudent";
 import Spinner from "../../Component/Pages/Spinner/Spinner";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
+import AdminNav from "./AdminPages/AdminNav/AdminNav";
 const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [isAdmin, isAdminLoading] = useAdmin();
   const [isInstructor,isInstructorLoading] = UseInstructor();
   const [isStudent,isStudentLoading] = UseStudent();
@@ -31,20 +32,7 @@ const Dashboard = () => {
         <div className="p-4">
           {isAdmin && (
             <ul className="uppercase">
-              <NavLink to="/" onClick={() => setSidebarOpen(false)}>
-                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
-                  Home
-                </li>
-              </NavLink>
-
-              <NavLink
-                to="/dashboard/users"
-                onClick={() => setSidebarOpen(false)}
-              >
-                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
-                  Users
-                </li>
-              </NavLink>
+              <AdminNav setSidebarOpen={setSidebarOpen}></AdminNav>
             </ul>
           )}
 

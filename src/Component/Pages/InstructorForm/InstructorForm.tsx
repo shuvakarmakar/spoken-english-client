@@ -1,26 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import axios from "axios";
+
+interface FormData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  bio: string;
+  pdfFile: File | null;
+}
 
 const InstructorApplicationForm: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
     phoneNumber: "",
     bio: "",
+    pdfFile: null,
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // You can add your submission logic here
-  };
+ const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+   const file = e.target.files?.[0];
+   console.log(file);
+   setFormData((prevData) => ({
+     ...prevData,
+     pdfFile: file ? (file as File) : null,
+   }));
+ };
 
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("fullName", formData.fullName);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("phoneNumber", formData.phoneNumber);
+    formDataToSend.append("bio", formData.bio);
+    if (formData.pdfFile) {
+      formDataToSend.append("pdfFile", formData.pdfFile);
+    }
+
+    console.log(formDataToSend);
+
+    try {
+      // Send form data including the PDF file to the server
+      await axios.post(
+        "http://localhost:5000/BecomeInstructor",
+        formDataToSend
+      );
+      console.log("Form submitted:", formData);
+      // You can add your submission success logic here
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // You can add your submission error logic here
+    }
+  };
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md my-[100px]">
       <h2 className="text-2xl font-semibold mb-4">Apply as an Instructor</h2>
@@ -59,6 +99,40 @@ const InstructorApplicationForm: React.FC = () => {
             required
           />
         </div>
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Phone
+          </label>
+          <input
+            type="number"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Cv/resume
+          </label>
+          <input
+            type="file"
+            id="file"
+            name="file"
+            onChange={handleFileChange}
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            required
+          />
+        </div>
+
         {/* Other form fields (e.g., phoneNumber, bio) */}
         <div className="mb-4">
           <label

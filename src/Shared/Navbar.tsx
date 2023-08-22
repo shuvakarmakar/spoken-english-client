@@ -63,38 +63,52 @@ const Navbar = () => {
                     Free Live Lesson
                   </Link>
                 </li>
-                <li className="font-bold text-gray-900 hover:text-indigo-500">
-                  <a>IELTS Speaking</a>
-                  <ul className="p-2">
-                    <li>
-                      <a>Test Format 1</a>
-                    </li>
-                    <li>
-                      <a>Evalution </a>
-                    </li>{" "}
-                    <li>
-                      <a>IELTS Speaking Test </a>
-                    </li>
-                  </ul>
-                </li>
+
                 <li className="font-bold text-gray-900 hover:text-indigo-500">
                   <Link to="all-premium-courses">All Premium Courses</Link>
                 </li>
 
-                <div className="flex gap-5 my-5">
-                  {" "}
-                  <Link to={"/SignUp"}>
+                {user ? (
+                  <>
+                    <div className="flex items-center relative">
+                      {/* <button onClick={handleLogOut} className="btn btn-sm ml-2">
+                    LogOut
+                  </button> */}
+                      <li>
+                        <Link
+                          to="/dictionary"
+                          className="font-bold text-gray-900 hover:text-indigo-500"
+                        >
+                          Dictionary
+                        </Link>
+                      </li>
+                      <div
+                        onClick={() => setShowModal(!showModal)}
+                        className="w-10 cursor-pointer h-10 bg-gray-500 rounded-full"
+                      >
+                        <img
+                          src={user?.photoURL || ""}
+                          className="rounded-full"
+                          alt=""
+                        />
+                      </div>
+                      <div className=" absolute right-0 z-50 top-[60px]">
+                        {showModal ? <UserProfileModal /> : ""}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
                     {" "}
-                    <button className="btn btn-outline p-3 btn-info ">
-                      SignUp
-                    </button>
-                  </Link>
-                  <Link to="/Login">
-                    <button className="btn btn-outline p-7 btn-secondary">
-                      Login
-                    </button>
-                  </Link>
-                </div>
+                    <Link to={"/SignUp"}>
+                      {" "}
+                      <li className="btn btn-outline btn-info">SignUp</li>
+                    </Link>
+                    <Link to="/Login">
+                      <li className="btn btn-outline btn-secondary">Login</li>
+                    </Link>
+                  </>
+                )}
               </ul>
             </div>
             <Link to="/">
@@ -127,24 +141,7 @@ const Navbar = () => {
                   Free Live Lesson
                 </Link>
               </li>
-              <li tabIndex={0}>
-                <details>
-                  <summary className="font-bold text-gray-900 hover:text-indigo-500">
-                    IELTS Speaking
-                  </summary>
-                  <ul className="p-2">
-                    <li>
-                      <a>Test Format 1</a>
-                    </li>
-                    <li>
-                      <a>Evalution </a>
-                    </li>{" "}
-                    <li>
-                      <a>IELTS Speaking Test </a>
-                    </li>
-                  </ul>
-                </details>
-              </li>
+
               <li className="font-bold text-gray-900 hover:text-indigo-500">
                 <Link to="all-premium-courses">All Premium Courses</Link>
               </li>
