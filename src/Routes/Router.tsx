@@ -31,6 +31,8 @@ import Dictionary from "../Component/Pages/Dictionary/Dictionary";
 import Messaging from "../Component/Messageing/Messaging";
 import Applications from "../Layout/DashBoard/AdminPages/Applications/Applications";
 import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
+import PrivecyPolicy from "../Component/Pages/Footer/PrivecyPolicy";
+import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations";
 
 export const router = createBrowserRouter([
   {
@@ -115,6 +117,14 @@ export const router = createBrowserRouter([
       {
         path:"about-us",
         element:<AboutUs></AboutUs>
+      },
+      {
+        path:"privacy-policy",
+        element:<PrivecyPolicy></PrivecyPolicy>
+      },
+      {
+        path:"terms-and-conditions",
+        element:<TermsAndConditations></TermsAndConditations>
       },
       // shuva-work
       {
