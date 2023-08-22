@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { redirect, useLocation } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 interface BillingData {
     fullName: string;
@@ -22,6 +23,7 @@ interface EnrollmentData {
 
 const Checkout: React.FC = () => {
     const location = useLocation();
+    const { user } = useContext(AuthContext);
     const enrollmentData = location?.state;
 
     const { register, handleSubmit } = useForm<BillingData>();
