@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../../../../Provider/AuthProvider/AuthProvider';
+import { AuthContext, AuthContextType } from '../../../../Provider/AuthProvider/AuthProvider';
 
 interface Course {
   _id: string;
@@ -9,15 +9,19 @@ interface Course {
 }
 
 const MyEnrolledCourses: React.FC = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext) as AuthContextType;
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/enrolled-courses/${user.email}`)
-        .then(response => response.json())
-        .then(data => setEnrolledCourses(data))
-        .catch(error => console.error('Error fetching enrolled courses:', error));
+      fetch(
+        `https://spoken-english-server.vercel.app/enrolled-courses/${user.email}`
+      )
+        .then((response) => response.json())
+        .then((data) => setEnrolledCourses(data))
+        .catch((error) =>
+          console.error("Error fetching enrolled courses:", error)
+        );
     }
   }, [user]);
 

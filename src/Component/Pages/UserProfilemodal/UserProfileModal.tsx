@@ -59,7 +59,7 @@ const UserProfileModal = () => {
         <hr />
         <ul className="text-gray-600 space-y-2">
           <li>
-            <Link to={'/profile'}>
+            <Link to={"/profile"}>
               {" "}
               <p>Profile</p>
             </Link>
@@ -98,7 +98,9 @@ const UserProfileModal = () => {
             )}
           </li>
           <li>
-            <a href="#">Settings</a>
+            <Link to={"/profileSetting"} state={user?.uid}>
+              <p>Settings</p>
+            </Link>
           </li>
           <li>
             <a href="#">Help and Support</a>
