@@ -21,7 +21,7 @@ const ProfileDetails: React.FC = () => {
   const [AllUsers, setAllUser] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch(`https://spoken-english-server.vercel.app/SingleUser/${id}`)
+    fetch(`https://spoken-english-server-xi.vercel.app/SingleUser/${id}`)
       .then((res) => res.json())
       .then((data) => setAllUser(data));
   }, [id]);

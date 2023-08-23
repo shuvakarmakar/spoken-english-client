@@ -51,7 +51,7 @@ const InstructorApplicationForm: React.FC = () => {
     try {
       // Send form data including the PDF file to the server
       await axios.post(
-        "http://localhost:5000/BecomeInstructor",
+        "https://spoken-english-server-xi.vercel.app/BecomeInstructor",
         formDataToSend
       );
       console.log("Form submitted:", formData);
@@ -62,7 +62,7 @@ const InstructorApplicationForm: React.FC = () => {
     }
   };
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md my-[100px]">
+    <div className="w-[70%] mx-auto p-4 bg-white rounded shadow-md my-[100px]">
       <h2 className="text-2xl font-semibold mb-4">Apply as an Instructor</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

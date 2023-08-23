@@ -34,6 +34,7 @@ import PrivecyPolicy from "../Component/Pages/Footer/PrivecyPolicy";
 import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations";
 import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
 import MyEnrolledCourses from "../Layout/DashBoard/StudentPages/MyEnrolledCourses/MyEnrolledCourses";
+import PrivetRoute from "./PrivetRout/PrivetRout";
 
 export const router = createBrowserRouter([
   {
@@ -78,7 +79,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
       // Dictionary (rashik)
       {
@@ -91,15 +96,29 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile/:id",
-        element: <ProfileDetails></ProfileDetails>,
+        element: (
+          <PrivetRout>
+            <ProfileDetails></ProfileDetails>
+          </PrivetRout>
+        ),
       },
       {
         path: "/profileSetting",
-        element:<ProfileSettings></ProfileSettings>,
+        element: (
+          <PrivetRout>
+            {" "}
+            <ProfileSettings></ProfileSettings>
+          </PrivetRout>
+        ),
       },
       {
         path: "/messaging",
-        element: <Messaging></Messaging>,
+        element: (
+          <PrivetRout>
+            {" "}
+            <Messaging></Messaging>
+          </PrivetRout>
+        ),
       },
       {
         path: "blog/:id",

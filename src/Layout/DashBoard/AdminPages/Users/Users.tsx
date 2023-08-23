@@ -8,7 +8,7 @@ const Users = () => {
   // /users/admin
   const handleMakeAdmin = (id: number) => {
     console.log(id);
-    fetch(`https://spoken-english-server.vercel.app/users/admin/${id}`, {
+    fetch(`https://spoken-english-server-xi.vercel.app/users/admin/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -22,9 +22,12 @@ const Users = () => {
   // make instructor
   const handleMakeInstructor = (id: number) => {
     console.log(id);
-    fetch(`https://spoken-english-server.vercel.app/users/instructor/${id}`, {
-      method: "PATCH",
-    })
+    fetch(
+      ` https://spoken-english-server-xi.vercel.app/users/instructor/${id}`,
+      {
+        method: "PATCH",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -35,9 +38,12 @@ const Users = () => {
   // Delete the user from  db
   const handleDelete = (id: number) => {
     // DeleteUsers
-    fetch(`https://spoken-english-server.vercel.app/users/DeleteUsers/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      ` https://spoken-english-server-xi.vercel.app/users/DeleteUsers/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

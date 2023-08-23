@@ -24,7 +24,7 @@ const PopularCourse: React.FC = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://spoken-english-server.vercel.app/courses"
+          " https://spoken-english-server-xi.vercel.app/courses"
         );
         const jsonData = await response.json();
         setLoading(false);

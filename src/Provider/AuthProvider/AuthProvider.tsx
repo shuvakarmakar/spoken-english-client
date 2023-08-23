@@ -58,7 +58,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       console.log(user);
       if (user) {
         axios
-          .post("https://spoken-english-server.vercel.app/jwt", {
+          .post(" https://spoken-english-server-xi.vercel.app/jwt", {
             email: user.email,
           })
           .then((data) => {

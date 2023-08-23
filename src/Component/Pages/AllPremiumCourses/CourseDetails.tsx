@@ -24,7 +24,7 @@ const CourseDetails: React.FC = () => {
   const [course, setCourse] = useState<Course | null>(null);
 
   useEffect(() => {
-    fetch(`https://spoken-english-server.vercel.app/course/${id}`)
+    fetch(`https://spoken-english-server-xi.vercel.app/course/${id}`)
       .then((response) => response.json())
       .then((data) => setCourse(data))
       .catch((error) => console.error("Error fetching course details:", error));
