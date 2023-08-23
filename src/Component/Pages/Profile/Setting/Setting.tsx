@@ -1,4 +1,4 @@
-import React, {useRef, useState } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import useUser from "../../../../Hooks/useUser";
 interface User {
@@ -9,12 +9,13 @@ interface User {
   address: string;
   education: string;
   Roll: string;
-  _id:string;
+  _id: string;
+  about: string;
   // Add other properties as needed
 }
 
 const ProfileSettings = () => {
-  const [users ,refreshUsers] = useUser();
+  const [users ] = useUser();
   const location = useLocation();
   const id= location?.state;
  const user = users.find((u: any) => u.uid === id) as unknown as User;
@@ -31,9 +32,9 @@ const ProfileSettings = () => {
   // // const [chatAvailable, setChatAvailable] = useState(false);
   // const emailRef=useRef<string>()
   // const nameRef=useRef<string>()
-  const handleDeleteAccount = () => {
-    // Handle account deletion logic here
-  };
+  // const handleDeleteAccount = () => {
+  //   // Handle account deletion logic here
+  // };
 
   const handleSaveChanges = async (event: React.FormEvent<HTMLFormElement>) => {
     // Handle save changes logic here
@@ -45,6 +46,7 @@ const ProfileSettings = () => {
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const address = formData.get("address") as string;
+    const about = formData.get("about") as string;
     const education =formData.get("education") as string;
     setEdit(true);
     const updateUser = { name, email, phone, address, education };
@@ -115,6 +117,14 @@ const ProfileSettings = () => {
             placeholder="Education"
             defaultValue={user?.education}
             name="education"
+            disabled={edit}
+          />
+          <input
+            
+            className="about input"
+            placeholder="about"
+            defaultValue={user?.about}
+            name="about"
             disabled={edit}
           />
           <input

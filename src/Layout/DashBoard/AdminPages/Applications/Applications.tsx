@@ -20,7 +20,7 @@ const Applications:React.FC=()=> {
   const fetchApplications = async () => {
     try {
       const response = await axios.get<Application[]>(
-        "http://localhost:5000/get/applications"
+        "https://spoken-english-server-xi.vercel.app/get/applications"
       );
       setApplications(response.data);
       setLoading(false)

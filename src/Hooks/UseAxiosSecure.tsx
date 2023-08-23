@@ -11,7 +11,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   const axiosSecure = axios.create({
-    baseURL:"https://spoken-english-server.vercel.app",
+    baseURL:"https://spoken-english-server-xi.vercel.app",
   });
 
   useEffect(() => {

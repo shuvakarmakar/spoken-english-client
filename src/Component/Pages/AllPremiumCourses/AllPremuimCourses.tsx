@@ -15,10 +15,10 @@ const MainComponent: React.FC = () => {
 
     useEffect(() => {
         // Fetch data from the API
-        fetch('https://spoken-english-server.vercel.app/courses')
-            .then(response => response.json())
-            .then((data: Course[]) => setCourses(data))
-            .catch(error => console.error('Error fetching data:', error));
+        fetch("https://spoken-english-server-xi.vercel.app/courses")
+          .then((response) => response.json())
+          .then((data: Course[]) => setCourses(data))
+          .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
     return (

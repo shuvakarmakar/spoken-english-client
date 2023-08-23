@@ -18,7 +18,7 @@ const MyEnrolledCourses: React.FC = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://spoken-english-server.vercel.app/enrolled-courses/${user.email}`
+        `https://spoken-english-server-xi.vercel.app/enrolled-courses/${user.email}`
       )
         .then((response) => response.json())
         .then((data) => setEnrolledCourses(data))
