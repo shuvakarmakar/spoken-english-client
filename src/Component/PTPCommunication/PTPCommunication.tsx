@@ -57,13 +57,8 @@ const PTPCommunication = () => {
           <Spinner></Spinner>
         ) : (
           <>
-            <div className="p flex gap-10">
-              <div className="friend w-[350px] bg-white shadow-md rounded-md p-4">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Explicabo recusandae dolores velit consequuntur quod nihil
-                similique impedit adipisci perferendis, itaque a modi quos,
-                illum veniam laborum minus cupiditate, eligendi magni?
-              </div>
+            <div className="">
+            
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
                 {users.map((std) => (
                   <UserProfileCard
