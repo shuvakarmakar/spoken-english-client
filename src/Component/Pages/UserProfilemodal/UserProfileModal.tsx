@@ -78,7 +78,7 @@ const UserProfileModal = () => {
                 )}
                 {isStudent && (
                   <>
-                    <Link to={"/dashboard"}>
+                    <Link to={"/dashboard/MyEnrolledCourses"}>
                       <li className="font-bold text-gray-900 hover:text-indigo-500">
                         Dashboard
                       </li>
