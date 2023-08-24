@@ -78,7 +78,7 @@ const UserProfileModal = () => {
                 )}
                 {isStudent && (
                   <>
-                    <Link to={"/dashboard"}>
+                    <Link to={"/dashboard/MyEnrolledCourses"}>
                       <li className="font-bold text-gray-900 hover:text-indigo-500">
                         Dashboard
                       </li>
@@ -103,10 +103,14 @@ const UserProfileModal = () => {
             </Link>
           </li>
           <li>
-            <a href="#">Help and Support</a>
+            <Link to={"/helpSupport"}>
+              <p>Help and Support</p>
+            </Link>
           </li>
           <li>
-            <a href="#">Give Feedback</a>
+            <Link to={"/Feedback"}>
+              <p>Give Feedback</p>
+            </Link>
           </li>
           <li onClick={handleLogOut}>
             <a href="#">Logout</a>

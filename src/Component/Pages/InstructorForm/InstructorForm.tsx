@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 interface FormData {
   fullName: string;
@@ -56,6 +57,7 @@ const InstructorApplicationForm: React.FC = () => {
       );
       console.log("Form submitted:", formData);
       // You can add your submission success logic here
+       Swal.fire("Yaa", " Successfully submitted ", "success");
     } catch (error) {
       console.error("Error submitting form:", error);
       // You can add your submission error logic here

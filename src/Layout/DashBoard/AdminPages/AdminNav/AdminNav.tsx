@@ -29,6 +29,22 @@ const AdminNav: React.FC<AdminNavProps> = ({
           Application
         </li>
       </NavLink>
+      <NavLink
+        to="/dashboard/HelpForm"
+        onClick={() => setSidebarOpen(false)}
+      >
+        <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+          Help From
+        </li>
+      </NavLink>
+      <NavLink
+        to="/dashboard/getFeedback"
+        onClick={() => setSidebarOpen(false)}
+      >
+        <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+          Feedback
+        </li>
+      </NavLink>
     </>
   );
 };
