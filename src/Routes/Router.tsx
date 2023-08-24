@@ -35,6 +35,10 @@ import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations
 import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
 import MyEnrolledCourses from "../Layout/DashBoard/StudentPages/MyEnrolledCourses/MyEnrolledCourses";
 import PrivetRoute from "./PrivetRout/PrivetRout";
+import HelpSupportPage from "../Component/Pages/HelpAndSupport/HelpASupport";
+import GiveFeedbackPage from "../Component/Pages/Feedback/Feedback";
+import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/HelpAForm";
+import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFeedback";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +89,24 @@ export const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      {
+        path: "/Feedback",
+        element: (
+          <PrivetRout>
+            <GiveFeedbackPage></GiveFeedbackPage>
+          </PrivetRout>
+        ),
+      },
+
+      {
+        path: "/helpSupport",
+        element: (
+          <PrivetRoute>
+            <HelpSupportPage></HelpSupportPage>
+          </PrivetRoute>
+        ),
+      },
+
       // Dictionary (rashik)
       {
         path: "/dictionary",
@@ -184,6 +206,15 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/MyEnrolledCourses",
         element: <MyEnrolledCourses></MyEnrolledCourses>,
+      },
+      {
+        path: "/dashboard/HelpForm",
+        element:<HelpSupportAdminPage></HelpSupportAdminPage>
+
+      },
+      {
+        path: "/dashboard/getFeedback",
+        element:<FeedbackReviewPage></FeedbackReviewPage>
       },
 
       // instructor routes

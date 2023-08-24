@@ -23,18 +23,7 @@ const ProfileSettings = () => {
   // console.log(user);
    const [edit,setEdit]=useState(true)
  
-  // console.log(id);
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [education, setEducation] = useState("");
-  // // const [chatAvailable, setChatAvailable] = useState(false);
-  // const emailRef=useRef<string>()
-  // const nameRef=useRef<string>()
-  // const handleDeleteAccount = () => {
-  //   // Handle account deletion logic here
-  // };
+  
 
   const handleSaveChanges = async (event: React.FormEvent<HTMLFormElement>) => {
     // Handle save changes logic here
@@ -49,7 +38,7 @@ const ProfileSettings = () => {
     const about = formData.get("about") as string;
     const education =formData.get("education") as string;
     setEdit(true);
-    const updateUser = { name, email, phone, address, education };
+    const updateUser = { name, email, phone, address, education, about };
     fetch(
       `https://spoken-english-server-xi.vercel.app/UpdateProfile/${user?._id}`,
       {
