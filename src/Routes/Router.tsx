@@ -35,6 +35,9 @@ import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations
 import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
 import MyEnrolledCourses from "../Layout/DashBoard/StudentPages/MyEnrolledCourses/MyEnrolledCourses";
 import PrivetRoute from "./PrivetRout/PrivetRout";
+import Contact from "../Component/Pages/Footer/Contact";
+import CookiePolicy from "../Component/Pages/Footer/CookiePolicy";
+import FAQs from "../Component/Pages/Footer/FAQs";
 import HelpSupportPage from "../Component/Pages/HelpAndSupport/HelpASupport";
 import GiveFeedbackPage from "../Component/Pages/Feedback/Feedback";
 import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/HelpAForm";
@@ -172,6 +175,23 @@ export const router = createBrowserRouter([
         path: "terms-and-conditions",
         element: <TermsAndConditations></TermsAndConditations>,
       },
+      {
+        path: "contact-us",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "cookie-policy",
+        element: <CookiePolicy></CookiePolicy>,
+      },
+      {
+        path: "cookie-policy",
+        element: <CookiePolicy></CookiePolicy>,
+      },
+      {
+        path: "faqs",
+        element: <FAQs></FAQs>,
+      },
+
       // shuva-work
       {
         path: "all-premium-courses",
