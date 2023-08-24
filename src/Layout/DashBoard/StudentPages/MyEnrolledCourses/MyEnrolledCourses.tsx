@@ -21,7 +21,10 @@ const MyEnrolledCourses: React.FC = () => {
         `https://spoken-english-server-xi.vercel.app/enrolled-courses/${user.email}`
       )
         .then((response) => response.json())
-        .then((data) => setEnrolledCourses(data))
+        .then((data) => {
+          setEnrolledCourses(data)
+          console.log(data);
+        })
         .catch((error) =>
           console.error("Error fetching enrolled courses:", error)
         );
