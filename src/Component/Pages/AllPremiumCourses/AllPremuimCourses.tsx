@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 
 interface Course {
     _id: string;
-    image: string;
-    course_name: string;
-    course_short_description: string;
+    imageURL: string;
+    courseName: string;
+    courseDetails: string;
     price: string;
-    instructor: string;
+    instructorName: string;
+    instructorEmail: string;
 }
 
 const MainComponent: React.FC = () => {
@@ -16,9 +17,9 @@ const MainComponent: React.FC = () => {
     useEffect(() => {
         // Fetch data from the API
         fetch("https://spoken-english-server-xi.vercel.app/courses")
-          .then((response) => response.json())
-          .then((data: Course[]) => setCourses(data))
-          .catch((error) => console.error("Error fetching data:", error));
+            .then((response) => response.json())
+            .then((data: Course[]) => setCourses(data))
+            .catch((error) => console.error("Error fetching data:", error));
     }, []);
 
     return (
@@ -27,13 +28,14 @@ const MainComponent: React.FC = () => {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                 {courses.map(course => (
                     <div key={course._id} className="bg-white shadow-lg rounded-lg overflow-hidden">
-                        <img className="w-full h-48 object-cover" src={course.image} alt={course.course_name} />
+                        <img className="w-full h-48 object-cover" src={course.imageURL} alt={course.courseName} />
                         <div className="p-4">
-                            <h2 className="text-lg font-semibold">{course.course_name}</h2>
-                            <p className="text-gray-600">{course.course_short_description}</p>
+                            <h2 className="text-lg font-semibold">{course.courseName}</h2>
+                            <p className="text-gray-600">{course.courseDetails}</p>
                             <div className="mt-2">
-                                <p className="text-gray-800 font-semibold">${course.price}</p>
-                                <p className="text-gray-600">{course.instructor}</p>
+                                <p className="text-gray-800 font-semibold">Course Price: ${course.price}</p>
+                                <p className="text-gray-600 mt-3">Instructor: {course.instructorName}</p>
+                                <p className="text-gray-600 mt-2">Instructor Email:{course.instructorEmail}</p>
                             </div>
                         </div>
                         <div className="flex justify-center items-center p-4">
