@@ -1,33 +1,87 @@
-import React, { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import React, { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../../../Provider/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddClasses = () => {
-  const { control, register, handleSubmit, formState: { errors } } = useForm();
-  const [courseVideos, setCourseVideos] = useState([{ courseVideoName: '', courseVideoFile: null }]);
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [courseVideos, setCourseVideos] = useState([{ courseVideoName: '', courseVideoUrl: '' }]);
+  const { user } = useContext(AuthContext);
 
-  const onSubmit = (data) => {
-    // Combine course video names and files in the data object
-    data.courseVideos = courseVideos;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
-    // TODO: Add logic to submit data to your backend
-    console.log(data);
+  const onSubmit = async (data) => {
+    // Parse integer fields
+    data.price = parseInt(data.price);
+    data.numberOfStudents = parseInt(data.numberOfStudents);
+    data.availableSeats = parseInt(data.availableSeats);
+
+    // Upload the course image to the image hosting service
+    const formData = new FormData();
+    formData.append('image', data.image[0]);
+
+    try {
+      const response = await fetch(img_hosting_url, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        // Store the hosted image URL in the data object
+        data.imageURL = responseData.data.url;
+
+        // Combine course video names and URLs in the data object
+        data.courseVideos = courseVideos;
+
+        // Send the complete data to the backend API
+        const backendResponse = await fetch('http://localhost:5000/addCourses', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (backendResponse.ok) {
+          console.log('Course added successfully');
+          // Reset the form or show a success message
+          Swal.fire({
+            icon: 'success',
+            title: 'Course Added',
+            text: 'Your course has been successfully added.',
+          });
+          reset();
+        } else {
+          console.error('Failed to add course');
+        }
+      } else {
+        console.error('Image upload failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+
 
   const handleAddCourseVideo = () => {
-    setCourseVideos([...courseVideos, { courseVideoName: '', courseVideoFile: null }]);
+    setCourseVideos([...courseVideos, { courseVideoName: '', courseVideoUrl: '' }]);
   };
 
-  const handleCourseVideoNameChange = (index, value) => {
+  const handleCourseVideoNameChange = (index: number, value: string) => {
     const updatedVideos = [...courseVideos];
     updatedVideos[index].courseVideoName = value;
     setCourseVideos(updatedVideos);
   };
 
-  const handleCourseVideoFileChange = (index, file) => {
+  const handleCourseVideoUrlChange = (index: number, value: string) => {
     const updatedVideos = [...courseVideos];
-    updatedVideos[index].courseVideoFile = file;
+    updatedVideos[index].courseVideoUrl = value;
     setCourseVideos(updatedVideos);
   };
+
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -52,7 +106,7 @@ const AddClasses = () => {
               type="file"
               {...register('image', { required: true })}
               name="image"
-              className="file-input"
+              className="file-input file-input-bordered w-full"
             />
             {errors.image && <span className="text-red-500">Class Image is required</span>}
           </div>
@@ -79,6 +133,19 @@ const AddClasses = () => {
             {errors.instructorName && <span className="text-red-500">Instructor Name is required</span>}
           </div>
 
+          {/* Instructor Email */}
+          <div>
+            <label className="block font-semibold mb-1">Instructor Email</label>
+            <input
+              type="email"
+              defaultValue={user.email}
+              {...register('instructorEmail', { required: true })}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            {errors.instructorEmail && <span className="text-red-500">Instructor Email is required</span>}
+          </div>
+
+
           {/* Number of Students */}
           <div>
             <label className="block font-semibold mb-1">Number of Students</label>
@@ -90,15 +157,15 @@ const AddClasses = () => {
             {errors.numberOfStudents && <span className="text-red-500">Number of Students is required</span>}
           </div>
 
-          {/* Available Sheets */}
+          {/* Available Seats */}
           <div>
-            <label className="block font-semibold mb-1">Available Sheets</label>
+            <label className="block font-semibold mb-1">Available Seats</label>
             <input
               type="number"
-              {...register('availableSheets', { required: true })}
+              {...register('availableSeats', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.availableSheets && <span className="text-red-500">Available Sheets is required</span>}
+            {errors.availableSeats && <span className="text-red-500">Available Seats is required</span>}
           </div>
 
           {/* Course Details */}
@@ -120,17 +187,17 @@ const AddClasses = () => {
                 onChange={(e) => handleCourseVideoNameChange(index, e.target.value)}
                 className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
               />
-              <label className="block font-semibold mb-1">Add Course Video {index + 1}</label>
+              <label className="block font-semibold mb-1">Add YouTube Video Link {index + 1}</label>
               <div className="flex space-x-2">
                 <input
-                  type="file"
-                  onChange={(e) => handleCourseVideoFileChange(index, e.target.files[0])}
-                  className="file-input"
+                  type="text"
+                  onChange={(e) => handleCourseVideoUrlChange(index, e.target.value)}
+                  className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
                 />
-                <span className="text-blue-500">{video.courseVideoFile?.name}</span>
               </div>
             </div>
           ))}
+
 
           <button
             type="button"
