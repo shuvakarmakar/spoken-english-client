@@ -42,6 +42,7 @@ import HelpSupportPage from "../Component/Pages/HelpAndSupport/HelpASupport";
 import GiveFeedbackPage from "../Component/Pages/Feedback/Feedback";
 import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/HelpAForm";
 import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFeedback";
+import PaymentFailed from "../Component/Pages/PaymentFailed/PaymentFailed";
 
 export const router = createBrowserRouter([
   {
@@ -209,6 +210,10 @@ export const router = createBrowserRouter([
         path: "payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
       },
+      {
+        path: "payment/fail/:tranId",
+        element: <PaymentFailed></PaymentFailed>,
+      },
     ],
   },
   // dashboard routes
@@ -229,12 +234,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/HelpForm",
-        element:<HelpSupportAdminPage></HelpSupportAdminPage>
+        element: <HelpSupportAdminPage></HelpSupportAdminPage>
 
       },
       {
         path: "/dashboard/getFeedback",
-        element:<FeedbackReviewPage></FeedbackReviewPage>
+        element: <FeedbackReviewPage></FeedbackReviewPage>
       },
 
       // instructor routes

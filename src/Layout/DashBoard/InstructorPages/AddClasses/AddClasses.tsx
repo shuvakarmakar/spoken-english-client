@@ -1,44 +1,117 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { AuthContext } from '../../../../Provider/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddClasses = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const [courseVideos, setCourseVideos] = useState([{ courseVideoName: '', courseVideoUrl: '' }]);
+  const { user } = useContext(AuthContext);
 
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
 
+  const onSubmit = async (data) => {
+    // Parse integer fields
+    data.price = parseInt(data.price);
+    data.numberOfStudents = parseInt(data.numberOfStudents);
+    data.availableSeats = parseInt(data.availableSeats);
 
-  const onSubmit = (data) => {
-    // TODO: Add logic to submit data to your backend
-    console.log(data);
+    // Upload the course image to the image hosting service
+    const formData = new FormData();
+    formData.append('image', data.image[0]);
+
+    try {
+      const response = await fetch(img_hosting_url, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const responseData = await response.json();
+        // Store the hosted image URL in the data object
+        data.imageURL = responseData.data.url;
+
+        // Combine course video names and URLs in the data object
+        data.courseVideos = courseVideos;
+
+        // Send the complete data to the backend API
+        const backendResponse = await fetch('http://localhost:5000/addCourses', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (backendResponse.ok) {
+          console.log('Course added successfully');
+          // Reset the form or show a success message
+          Swal.fire({
+            icon: 'success',
+            title: 'Course Added',
+            text: 'Your course has been successfully added.',
+          });
+          reset();
+        } else {
+          console.error('Failed to add course');
+        }
+      } else {
+        console.error('Image upload failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+
+
+  const handleAddCourseVideo = () => {
+    setCourseVideos([...courseVideos, { courseVideoName: '', courseVideoUrl: '' }]);
+  };
+
+  const handleCourseVideoNameChange = (index: number, value: string) => {
+    const updatedVideos = [...courseVideos];
+    updatedVideos[index].courseVideoName = value;
+    setCourseVideos(updatedVideos);
+  };
+
+  const handleCourseVideoUrlChange = (index: number, value: string) => {
+    const updatedVideos = [...courseVideos];
+    updatedVideos[index].courseVideoUrl = value;
+    setCourseVideos(updatedVideos);
+  };
+
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
         <h1 className="text-3xl font-semibold mb-4">Add Classes</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {/* Course Name */}
           <div>
             <label className="block font-semibold mb-1">Course Name</label>
             <input
               type="text"
-              {...register('course_name', { required: true })}
+              {...register('courseName', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.course_name && <span className="error-message">Course Name is required</span>}
+            {errors.courseName && <span className="text-red-500">Course Name is required</span>}
           </div>
+
+          {/* Image */}
           <div>
-            <label htmlFor="image" className="block font-semibold mb-1">Class Image:</label>
+            <label className="block font-semibold mb-1">Class Image</label>
             <input
               type="file"
               {...register('image', { required: true })}
               name="image"
               className="file-input file-input-bordered w-full"
             />
-            {errors.image && <span className="error-message">Class Image is required</span>}
+            {errors.image && <span className="text-red-500">Class Image is required</span>}
           </div>
+
+          {/* Price */}
           <div>
             <label className="block font-semibold mb-1">Price</label>
             <input
@@ -46,44 +119,93 @@ const AddClasses = () => {
               {...register('price', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.price && <span className="error-message">Price is required</span>}
+            {errors.price && <span className="text-red-500">Price is required</span>}
           </div>
+
+          {/* Instructor Name */}
           <div>
             <label className="block font-semibold mb-1">Instructor Name</label>
             <input
               type="text"
-              {...register('instructor_name', { required: true })}
+              {...register('instructorName', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.instructor_name && <span className="error-message">Instructor Name is required</span>}
+            {errors.instructorName && <span className="text-red-500">Instructor Name is required</span>}
           </div>
+
+          {/* Instructor Email */}
+          <div>
+            <label className="block font-semibold mb-1">Instructor Email</label>
+            <input
+              type="email"
+              defaultValue={user.email}
+              {...register('instructorEmail', { required: true })}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+            />
+            {errors.instructorEmail && <span className="text-red-500">Instructor Email is required</span>}
+          </div>
+
+
+          {/* Number of Students */}
           <div>
             <label className="block font-semibold mb-1">Number of Students</label>
             <input
               type="number"
-              {...register('number_of_students', { required: true })}
+              {...register('numberOfStudents', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.number_of_students && <span className="error-message">Number of Students is required</span>}
+            {errors.numberOfStudents && <span className="text-red-500">Number of Students is required</span>}
           </div>
+
+          {/* Available Seats */}
           <div>
             <label className="block font-semibold mb-1">Available Seats</label>
             <input
               type="number"
-              {...register('available_seats', { required: true })}
+              {...register('availableSeats', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.available_seats && <span className="error-message">Available Seats is required</span>}
+            {errors.availableSeats && <span className="text-red-500">Available Seats is required</span>}
           </div>
+
+          {/* Course Details */}
           <div>
             <label className="block font-semibold mb-1">Course Details</label>
             <textarea
-              {...register('course_details', { required: true })}
-              rows="4"
+              {...register('courseDetails', { required: true })}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
-            {errors.course_details && <span className="error-message">Course Details is required</span>}
+            {errors.courseDetails && <span className="text-red-500">Course Details is required</span>}
           </div>
+
+          {/* Course Videos */}
+          {courseVideos.map((video, index) => (
+            <div key={index}>
+              <label className="block font-semibold mb-1">Add Course Video {index + 1} Name</label>
+              <input
+                type="text"
+                onChange={(e) => handleCourseVideoNameChange(index, e.target.value)}
+                className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              />
+              <label className="block font-semibold mb-1">Add YouTube Video Link {index + 1}</label>
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  onChange={(e) => handleCourseVideoUrlChange(index, e.target.value)}
+                  className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                />
+              </div>
+            </div>
+          ))}
+
+
+          <button
+            type="button"
+            onClick={handleAddCourseVideo}
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+          >
+            Add Course Video
+          </button>
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
