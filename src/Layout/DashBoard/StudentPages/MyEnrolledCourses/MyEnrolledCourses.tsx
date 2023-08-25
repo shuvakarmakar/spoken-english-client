@@ -9,6 +9,8 @@ interface Course {
   _id: string;
   product_name: string;
   total_amount: number;
+  instructor_name: string;
+  instructor_email: string;
 }
 
 const MyEnrolledCourses: React.FC = () => {
@@ -43,6 +45,7 @@ const MyEnrolledCourses: React.FC = () => {
               <th></th>
               <th>Course Name</th>
               <th>Price</th>
+              <th>Instructor</th>
               <th className="flex justify-center">Action</th>
             </tr>
           </thead>
@@ -56,6 +59,7 @@ const MyEnrolledCourses: React.FC = () => {
                   </Link>
                 </td>
                 <td>${course.total_amount}</td>
+                <td>{course.instructor_name}</td>
                 <td className="flex justify-center">
                   <Link
                     className="btn btn-secondary text-white"
