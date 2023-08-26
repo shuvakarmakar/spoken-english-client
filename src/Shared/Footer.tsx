@@ -5,9 +5,9 @@ const Footer = () => {
   return (
     <div>
       <div className="bg-black ">
-        <div className="flex  p-8 justify-between">
-          <h1 className="text-5xl text-white">Speak Better English</h1>
-          <button className=" btn hover:bg-black btn-secondary">
+        <div className="flex-col md:flex-row flex  p-8 md:justify-between justify-center">
+          <h1 className="text-2xl md:text-5xl text-white">Speak Better English</h1>
+          <button className=" btn hover:bg-black btn-secondary max-w-[250px]">
             My Online Courses
           </button>
         </div>
