@@ -8,6 +8,8 @@ interface User {
   InstructorDisabled: boolean;
   disabled: boolean;
   uid: string;
+  profileImage: string;
+  profileBanner: string;
 }
 
 const useUser = (): [User[], boolean, () => void] => {

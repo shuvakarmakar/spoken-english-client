@@ -25,7 +25,9 @@ export interface AuthContextType {
   ResetPassword: (email: string) => Promise<void>;
   UpdateUserProfile: (Name: string) => Promise<void>;
   handleButtonClick: () => void;
+  
 }
+
 
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
@@ -34,7 +36,6 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
   const auth = getAuth(app);
 
   const createUser = async (email: string, password: string): Promise<void> => {
@@ -116,6 +117,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     ResetPassword,
     UpdateUserProfile,
     handleButtonClick,
+   
   };
 
   return (
