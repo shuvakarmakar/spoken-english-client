@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../Provider/AuthProvider/AuthProvider';
+import { FaTrashAlt } from 'react-icons/fa';
+import Swal from 'sweetalert2';
+import useUser from '../../../../Hooks/useUser';
 
 interface Course {
     _id: string;
@@ -10,6 +13,7 @@ interface Course {
 }
 
 const AllAddedClasses: React.FC = () => {
+    // const [refreshUsers] = useUser();
     const [courses, setCourses] = useState<Course[]>([]);
     const { user } = useContext(AuthContext);
 
@@ -28,13 +32,36 @@ const AllAddedClasses: React.FC = () => {
         }
     }, [user.email]);
 
-    const handleDelete = (courseId: string) => {
-        // You can implement the delete logic here
-        // For example, send a DELETE request to your backend API
-        console.log(`Deleting course with ID: ${courseId}`);
+    const handleDelete = (id: number) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // DeleteUsers
+                fetch(`http://localhost:5000/deleteCourse/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        console.log(data);
+                        Swal.fire('Deleted!', 'The course has been deleted.', 'success');
+                        // refreshUsers();
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting course:', error);
+                        Swal.fire('Error', 'An error occurred while deleting the course.', 'error');
+                    });
+            }
+        });
     };
 
-    console.log('Courses state:', courses); // Log courses state
+
+    // console.log('Courses state:', courses); // Log courses state
 
     return (
         <div>
@@ -67,9 +94,10 @@ const AllAddedClasses: React.FC = () => {
                                     <td>{course.courseName}</td>
                                     <td>{course.availableSeats}</td>
                                     <td>
-                                        <button className='btn btn-secondary' onClick={() => handleDelete(course._id)}>
-                                            Delete Course
-                                        </button>
+                                        {" "}
+                                        <span onClick={() => handleDelete(course._id)}>
+                                            <FaTrashAlt className="text-blue-500 w-6 h-6 cursor-pointer"></FaTrashAlt>
+                                        </span>
                                     </td>
                                 </tr>
                             ))}
