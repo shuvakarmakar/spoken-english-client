@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 const GiveFeedbackPage: React.FC = () => {
   const {user}=useContext(AuthContext) as AuthContextType
   const [feedback, setFeedback] = useState("");
-
+  const timestamp = new Date();
+  console.log(timestamp);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Here, you can send the feedback to your server or perform any other action
@@ -13,6 +14,8 @@ const GiveFeedbackPage: React.FC = () => {
     const feedbacks = {
       email: user?.email,
       feedback,
+      createdAt:timestamp,
+      isRead: false,
     };
     // Optionally, you can show a success message to the user
 

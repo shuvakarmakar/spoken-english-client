@@ -8,6 +8,8 @@ interface FormData {
   phoneNumber: string;
   bio: string;
   pdfFile: File | null;
+  isRead: boolean; // Add isRead field
+  createAt: string; // Add createAt field
 }
 
 const InstructorApplicationForm: React.FC = () => {
@@ -17,6 +19,8 @@ const InstructorApplicationForm: React.FC = () => {
     phoneNumber: "",
     bio: "",
     pdfFile: null,
+    isRead: false, // Initialize isRead as false
+    createAt: new Date().toISOString(),
   });
 
   const handleChange = (
@@ -47,6 +51,8 @@ const InstructorApplicationForm: React.FC = () => {
       formDataToSend.append("pdfFile", formData.pdfFile);
     }
 
+    formDataToSend.append("createAt", formData.createAt);
+
     console.log(formDataToSend);
 
     try {
@@ -57,7 +63,7 @@ const InstructorApplicationForm: React.FC = () => {
       );
       console.log("Form submitted:", formData);
       // You can add your submission success logic here
-       Swal.fire("Yaa", " Successfully submitted ", "success");
+      Swal.fire("Yaa", " Successfully submitted ", "success");
     } catch (error) {
       console.error("Error submitting form:", error);
       // You can add your submission error logic here
