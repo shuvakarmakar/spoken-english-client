@@ -43,6 +43,7 @@ import GiveFeedbackPage from "../Component/Pages/Feedback/Feedback";
 import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/HelpAForm";
 import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFeedback";
 import PaymentFailed from "../Component/Pages/PaymentFailed/PaymentFailed";
+import AllAddesClasses from "../Layout/DashBoard/InstructorPages/AllAddedClasses/AllAddesClasses";
 
 export const router = createBrowserRouter([
   {
@@ -246,6 +247,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/AddClasses",
         element: <AddClasses></AddClasses>,
+      },
+      {
+        path: "/dashboard/AllAddedClasses",
+        element: <AllAddesClasses></AllAddesClasses>,
       },
       {
         path: "/dashboard/Application",
