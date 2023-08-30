@@ -7,11 +7,14 @@ import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/Aut
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 const HelpSupportPage: React.FC = () => {
-   const {user}=useContext(AuthContext) as AuthContextType
+  const { user } = useContext(AuthContext) as AuthContextType
+  const timestamp = new Date();
   const [formData, setFormData] = useState({
-    subject: "",
-    message: "",
-    email:user?.email,
+    subject:"",
+    message:"",
+    email: user?.email,
+    createdAt: timestamp,
+    isRead: false,
   });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,6 +37,8 @@ const HelpSupportPage: React.FC = () => {
             subject: "",
             message: "",
             email: "",
+            isRead: false,
+            createdAt:timestamp,
           });
         }
       });
@@ -61,7 +66,7 @@ const HelpSupportPage: React.FC = () => {
           </Link>
         </div>
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 container mx-auto my-[140px] w-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10   my-[140px] w-auto">
             {/* card */}
             <a href="#cards">
               <div
@@ -197,8 +202,8 @@ const HelpSupportPage: React.FC = () => {
         </div>
         <div id="cards" className="my-20">
           <p className="text-center uppercase font-bold p-1">Or</p>
-          <div className="container mx-auto md:flex gap-10 ">
-            <div className="w-full shadow-md p-10 border">
+          <div className=" md:flex gap-10  h-full ">
+            <div className="w-full shadow-md p-10 border mb-10 h-[307px]">
               <h3 className="text-lg font-semibold mb-2">Contact Support</h3>
               <p className="text-gray-600 mb-4">
                 If you can't find the information you need, feel free to contact
@@ -212,7 +217,7 @@ const HelpSupportPage: React.FC = () => {
                 Contact Support
               </a>
             </div>
-            <div className="direct-message w-full shadow-md p-5 border">
+            <div className="direct-message w-full shadow-md p-5 border h-full">
               {/* Support Form */}
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">

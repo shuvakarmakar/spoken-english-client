@@ -10,6 +10,7 @@ import HeroSection from "../HeroSection/HeroSection";
 import JoinCourse from "../JoinCourse/JoinCourse";
 
 
+
 const Home = () => {
   return (
     <div className="overflow-x-hidden">
@@ -18,6 +19,7 @@ const Home = () => {
       <BeInstructor></BeInstructor>
       <PopularCourse></PopularCourse>
       <Process />
+    
       <JoinCourse />
       <Review />
       <Blogs />
