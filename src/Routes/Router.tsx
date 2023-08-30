@@ -44,6 +44,7 @@ import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/Help
 import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFeedback";
 import PaymentFailed from "../Component/Pages/PaymentFailed/PaymentFailed";
 import AllAddesClasses from "../Layout/DashBoard/InstructorPages/AllAddedClasses/AllAddesClasses";
+import StartCourse from "../Layout/DashBoard/StudentPages/StartCourse/StartCourse";
 
 export const router = createBrowserRouter([
   {
@@ -241,6 +242,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/getFeedback",
         element: <FeedbackReviewPage></FeedbackReviewPage>
+      },
+      {
+        path: "/dashboard/startCourse/:id",
+        element: <StartCourse></StartCourse>
       },
 
       // instructor routes
