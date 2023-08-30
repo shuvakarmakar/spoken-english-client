@@ -32,7 +32,7 @@ const AllAddedClasses: React.FC = () => {
         }
     }, [user.email]);
 
-    const handleDelete = (id: number) => {
+    const handleDelete = (id: string) => {
         Swal.fire({
             title: 'Are you sure?',
             text: 'This action cannot be undone.',
