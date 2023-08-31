@@ -43,10 +43,14 @@ const Profile = () => {
         <div className="flex justify-center p-10 w-full">
           <div className="bg-white shadow-lg rounded-lg w-full relative">
             <div
-              className="bg-blue-500  h-[300px] rounded-t-lg relative "
+              className="bg-blue-500 overflow-auto aspect-auto  md:h-[300px] rounded-t-lg relative "
               onClick={openBannerModal}
             >
-              <img className="w-full h-full bg-cover" src={userProfile?.profileBanner} alt="" />
+              <img
+                className="w-full h-full bg-cover aspect-auto"
+                src={userProfile?.profileBanner}
+                alt=""
+              />
             </div>
             <div
               className=" absolute z-10 right-3 top-[10px]  cursor-pointer "
@@ -56,7 +60,7 @@ const Profile = () => {
             </div>
 
             <div
-              className=" z-20 top-[200px] left-[calc(50%-80px)] flex justify-center absolute cursor-pointer"
+              className=" z-20 top-[130px] md:top-[200px] md:left-[calc(50%-80px)] flex  left-[calc(50%-53px)]  justify-center absolute cursor-pointer"
               onClick={openModal}
             >
               <div className=" relative ">
@@ -67,9 +71,9 @@ const Profile = () => {
                       : user?.photoURL || ""
                   }
                   alt="User"
-                  className="w-[150px] h-[150px] rounded-full border-4 border-white shadow-lg"
+                  className="md:w-[150px] w-[100px] h-[100px] md:h-[150px] rounded-full border-4 border-white shadow-lg"
                 />
-                <div className=" absolute z-10 right-0 top-[120px] ">
+                <div className=" absolute z-10 md:right-0 right-[-5px] md:top-[120px] top-[60px]">
                   <BiEdit className={"w-5 h-5"}></BiEdit>
                 </div>
               </div>
@@ -83,13 +87,13 @@ const Profile = () => {
 
             <div className="intro md:flex gap-10">
               {/* Friends */}
-              <div className="border-t p-10 bg-white shadow-xl">
+              <div className="border-t md:p-10 p-3 bg-white shadow-xl">
                 <h3 className="text-lg font-semibold my-2">Friends</h3>
                 <div className="grid grid-cols-3 gap-5">
                   {users.slice(0, 6).map((friend) => (
                     <div
                       key={friend._id}
-                      className="card w-[100px] h-[100px] bg-base-100 shadow-xl border p"
+                      className="card w-[90px] md:w-[100px] h-[90px] md:h-[100px] bg-base-100 shadow-xl border p"
                     >
                       <img
                         className="rounded-md"

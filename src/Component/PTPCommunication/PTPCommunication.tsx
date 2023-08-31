@@ -7,6 +7,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import axios from 'axios';
 import { FaUserCheck, FaUserFriends, FaUserPlus } from "react-icons/fa";
+import FriendRequest from "./FirendRequest/FriendRequest";
+import Suggestion from "./Suggestion/Suggestion";
 
 interface MyObject {
   _id: number;
@@ -155,21 +157,21 @@ const PTPCommunication = () => {
                     
                       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 w-full">
                         {users.map((std) => (
-                          <UserProfileCard
+                          <FriendRequest
                             key={std._id}
                             student={std}
-                          ></UserProfileCard>
+                          ></FriendRequest>
                         ))}
                       </div>
                     </TabPanel>
                     <TabPanel>
-                    
+                     
                       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
                         {users.map((std) => (
-                          <UserProfileCard
+                          <Suggestion
                             key={std._id}
                             student={std}
-                          ></UserProfileCard>
+                          ></Suggestion>
                         ))}
                       </div>
                     </TabPanel>
