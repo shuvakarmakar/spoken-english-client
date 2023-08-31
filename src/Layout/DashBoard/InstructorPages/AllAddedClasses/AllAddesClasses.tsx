@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../../Provider/AuthProvider/AuthProvider';
+import { AuthContext, AuthContextType } from '../../../../Provider/AuthProvider/AuthProvider';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
-import useUser from '../../../../Hooks/useUser';
+// import useUser from '../../../../Hooks/useUser';
 
 interface Course {
     _id: string;
@@ -15,12 +15,12 @@ interface Course {
 const AllAddedClasses: React.FC = () => {
     // const [refreshUsers] = useUser();
     const [courses, setCourses] = useState<Course[]>([]);
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext) as AuthContextType
 
     useEffect(() => {
-        if (user.email) {
+        if (user?.email) {
             // Fetch courses based on the logged-in instructor's email
-            fetch(`http://localhost:5000/added-courses-by-instructor/${user.email}`)
+            fetch(`https://spoken-english-server-xi.vercel.app/added-courses-by-instructor/${user.email}`)
                 .then((response) => response.json())
                 .then((data: Course[]) => {
                     console.log('Fetched courses:', data);
@@ -30,7 +30,7 @@ const AllAddedClasses: React.FC = () => {
                     console.error('Error fetching courses:', error);
                 });
         }
-    }, [user.email]);
+    }, [user?.email]);
 
     const handleDelete = (id: string) => {
         Swal.fire({
@@ -43,7 +43,7 @@ const AllAddedClasses: React.FC = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // DeleteUsers
-                fetch(`http://localhost:5000/deleteCourse/${id}`, {
+                fetch(`https://spoken-english-server-xi.vercel.app/deleteCourse/${id}`, {
                     method: 'DELETE',
                 })
                     .then((res) => res.json())
