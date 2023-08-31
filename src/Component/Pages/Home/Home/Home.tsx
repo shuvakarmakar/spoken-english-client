@@ -21,7 +21,9 @@ const Home = () => {
       <JoinCourse />
       <Review />
       <Blogs />
-      <ContactForm />
+      <div className="md:hidden my-20 px-2 mx-2">
+        <ContactForm />
+      </div>
     </div>
   );
 };
