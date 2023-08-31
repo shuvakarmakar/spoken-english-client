@@ -20,7 +20,7 @@ interface UserProfileCardProps {
 
 const Suggestion: React.FC<UserProfileCardProps> = ({ student }) => {
   const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
-  const [disable,setDesabled] =useState({})
+  // const [disable,setDesabled] =useState({})
   
   // Check if the connected user's online status is true
   const isUserOnline = onlineUsers[student.uid] === true;
@@ -77,7 +77,7 @@ console.log();
     <>
       <div
         onMouseLeave={closeModal}
-        className="bg-white shadow-md rounded-md p-4 relative "
+        className="bg-white shadow-md rounded-md p-4 relative border "
       >
         <div className="flex items-center">
           <div

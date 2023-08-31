@@ -38,7 +38,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="container mx-auto ">
+      <div className="container mx-auto  my-10">
         <div className="flex justify-start p-4"></div>
         <div className="flex justify-center p-10 w-full">
           <div className="bg-white shadow-lg rounded-lg w-full relative">

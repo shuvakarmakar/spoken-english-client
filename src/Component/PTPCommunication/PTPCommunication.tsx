@@ -52,7 +52,7 @@ const PTPCommunication = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className=" my-[100px]">
       <div className="slid my-[20px] flex justify-end mr-5 ">
         <div className="form-control">
           <div className="input-group">
@@ -111,7 +111,7 @@ const PTPCommunication = () => {
                         <FaUserPlus
                           className={"w-6 h-6 text-blue-500"}
                         ></FaUserPlus>{" "}
-                        Friend Request
+                     Request
                       </Tab>
                       <Tab className={"flex gap-2 p-2"}>
                         {" "}

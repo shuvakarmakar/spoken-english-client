@@ -72,7 +72,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
     <>
       <div
         onMouseLeave={closeModal}
-        className="bg-white shadow-md rounded-md p-4 relative "
+        className="bg-white border shadow-md rounded-md p-4 relative "
       >
         <div className="flex items-center">
           <div
