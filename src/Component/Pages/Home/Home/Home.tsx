@@ -4,12 +4,10 @@ import Review from "../../../Review/Review";
 import BeInstructor from "../../Be-Instructor/BeInstructor";
 import Blogs from "../../Blogs/Blogs";
 import PopularCourse from "../../Courses/PopularCourse";
-import Banner from "../Banner/Banner";
+import Banner from "../Banner/Banner1";
 import ContactForm from "../ContactForm/ContactForm";
 import HeroSection from "../HeroSection/HeroSection";
 import JoinCourse from "../JoinCourse/JoinCourse";
-
-
 
 const Home = () => {
   return (
@@ -19,7 +17,7 @@ const Home = () => {
       <BeInstructor></BeInstructor>
       <PopularCourse></PopularCourse>
       <Process />
-    
+
       <JoinCourse />
       <Review />
       <Blogs />

@@ -14,6 +14,7 @@ import app from "../../Firebase/firebase";
 import buttonSound from "../../Component/Sound/zapsplat_multimedia_button_click_bright_003_92100.mp3";
 import { initializeClickSound, playClickSound } from "../../utils/ClickSound";
 import axios from "axios";
+import { io } from "socket.io-client";
 
 // TypeScript type definitions
 export interface AuthContextType {
@@ -25,7 +26,7 @@ export interface AuthContextType {
   ResetPassword: (email: string) => Promise<void>;
   UpdateUserProfile: (Name: string) => Promise<void>;
   handleButtonClick: () => void;
-  
+  onlineUsers: { [key: string]: boolean };
 }
 
 
@@ -41,21 +42,20 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await createUserWithEmailAndPassword(auth, email, password).then(
-      () => { }
+      () => {}
     );
   };
 
   const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await signInWithEmailAndPassword(auth, email, password).then(
-      () => { }
+      () => {}
     );
   };
 
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
-
       console.log(user);
       if (user) {
         axios
@@ -66,15 +66,12 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             console.log(data.data);
             localStorage.setItem("accessToken", data.data.token);
           });
-
       } else {
         localStorage.removeItem("accessToken");
       }
       setUser(user);
       setLoading(false);
-
     });
-
 
     return () => {
       unsubscribe();
@@ -108,6 +105,32 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     // Your button's click handler logic
   };
 
+
+const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>({});
+  // get online connected user  
+   useEffect(() => {
+     const socket = io("https://amused-assorted-bar.glitch.me/");
+
+     if (user) {
+       socket.emit("userConnect", { userId: user.uid });
+
+       socket.on(
+         "onlineUsers",
+         (updatedOnlineUsers: { [key: string]: boolean }) => {
+           console.log(updatedOnlineUsers, "connected");
+           setOnlineUsers(updatedOnlineUsers);
+         }
+       );
+     }
+
+     return () => {
+       if (user) {
+         socket.emit("userDisconnect", { userId: user.uid });
+       }
+       socket.disconnect();
+     };
+   }, [user]);
+
   const AuthUser: AuthContextType = {
     createUser,
     login,
@@ -117,7 +140,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     ResetPassword,
     UpdateUserProfile,
     handleButtonClick,
-   
+    onlineUsers,
   };
 
   return (

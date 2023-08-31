@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import io from "socket.io-client";
+import React, { useContext, useState } from "react";
+// import io from "socket.io-client";
 import {
   AuthContext,
   AuthContextType,
@@ -17,37 +17,40 @@ interface UserProfileCardProps {
 }
 
 const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
-  const { user } = useContext(AuthContext) as AuthContextType;
+  const { user, onlineUsers } = useContext(
+    AuthContext
+  ) as AuthContextType;
 
-  const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
-    {}
-  );
+  // const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
+  //   {}
+  // );
 
-  useEffect(() => {
-   const socket = io("https://amused-assorted-bar.glitch.me/");
+  // useEffect(() => {
+  //  const socket = io("https://amused-assorted-bar.glitch.me/");
 
-    if (user) {
-      socket.emit("userConnect", { userId: user.uid });
+  //   if (user) {
+  //     socket.emit("userConnect", { userId: user.uid });
 
-      socket.on(
-        "onlineUsers",
-        (updatedOnlineUsers: { [key: string]: boolean }) => {
-          console.log(updatedOnlineUsers, "connected");
-          setOnlineUsers(updatedOnlineUsers);
-        }
-      );
-    }
+  //     socket.on(
+  //       "onlineUsers",
+  //       (updatedOnlineUsers: { [key: string]: boolean }) => {
+  //         console.log(updatedOnlineUsers, "connected");
+  //         setOnlineUsers(updatedOnlineUsers);
+  //       }
+  //     );
+  //   }
 
-    return () => {
-      if (user) {
-        socket.emit("userDisconnect", { userId: user.uid });
-      }
-      socket.disconnect();
-    };
-  }, [user]);
+  //   return () => {
+  //     if (user) {
+  //       socket.emit("userDisconnect", { userId: user.uid });
+  //     }
+  //     socket.disconnect();
+  //   };
+  // }, [user]);
 
   // Check if the connected user's online status is true
   const isUserOnline = onlineUsers[student.uid] === true;
+// const isUserOnline = onlineUsers.some((user) => user.uid === student.uid);
 
 // user profile view
   
@@ -69,7 +72,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
     <>
       <div
         onMouseLeave={closeModal}
-        className="bg-white shadow-md rounded-md p-4 relative "
+        className="bg-white border shadow-md rounded-md p-4 relative "
       >
         <div className="flex items-center">
           <div

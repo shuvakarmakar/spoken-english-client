@@ -5,12 +5,18 @@ import React, { useEffect } from "react";
 import "swiper/css"; // Import Swiper styles
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/swiper-bundle.css";
+import "swiper/components/navigation/navigation.min.css";
+import "swiper/components/pagination/pagination.min.css";
+
 import AOS from "aos";
 import "./Banner.css";
-import banner2 from "../../../../assets/banner2.jpg";
-import banner1 from "../../../../assets/banner1.jpg";
-import banner3 from "../../../../assets/banner3.jpg";
+// import banner2 from "../../../../assets/banner2.jpg";
+// import banner1 from "../../../../assets/banner1.jpg";
+// import banner3 from "../../../../assets/banner3.jpg";
 import { Autoplay } from "swiper/modules";
+import Banner1 from "./Banner1";
+import Banner2 from "./Banner2";
 
 const Banner: React.FC = () => {
   useEffect(() => {
@@ -31,37 +37,17 @@ const Banner: React.FC = () => {
         keyboard={true}
         data-aos="zoom-in-up"
       >
-        <SwiperSlide
-          className="hero min-h-screen"
-          style={{
-            backgroundImage: `url(${banner2})`,
-            width: "100%",
-            height: "100%",
-            backgroundPosition: "center",
-          }}
-        ></SwiperSlide>
-        <SwiperSlide
-          className="hero min-h-screen"
-          style={{
-            backgroundImage: `url(${banner1})`,
-            width: "100%",
-            height: "100%",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></SwiperSlide>
-        <SwiperSlide
-          className="hero min-h-screen"
-          style={{
-            backgroundImage: `url(${banner3})`,
-            width: "100%",
-            height: "100%",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <Banner1 />
+        </SwiperSlide>
+        <SwiperSlide>
+          {" "}
+          <Banner2 />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Banner1 />{" "}
+        </SwiperSlide>
       </Swiper>
     </>
   );
