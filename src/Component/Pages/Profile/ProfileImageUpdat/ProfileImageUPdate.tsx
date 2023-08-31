@@ -5,6 +5,7 @@ import {
   AuthContext,
   AuthContextType,
 } from "../../../../Provider/AuthProvider/AuthProvider";
+import useUser from "../../../../Hooks/useUser";
 // import { FaChampagneGlasses } from "react-icons/fa6";
 
 interface ModalProps {
@@ -14,7 +15,7 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const { user } = useContext(AuthContext) as AuthContextType;
-  
+  const [refreshUsers] = useUser();
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [crop, setCrop] = useState<Area>({ x: 0, y: 0, width: 1, height: 1 });
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
@@ -32,9 +33,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const handleCropComplete = (croppedArea: Area, croppedAreaPixels: Area) => {
  
-    setInterval(() => {
+
       console.log(croppedArea);
-    },90000000000)
+ 
     setCroppedAreaPixels(croppedAreaPixels);
   };
 
@@ -78,7 +79,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   .then((res) => res.json())
                   .then((data) => {
                     console.log(data);
+                    refreshUsers
                     onClose();
+                    window.location.reload();
                   });
           }
         

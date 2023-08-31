@@ -1,11 +1,13 @@
+
 import React, { useContext, useState } from "react";
 // import io from "socket.io-client";
 import {
   AuthContext,
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
-import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
-import { Link } from "react-router-dom";
+
+// import { Link } from "react-router-dom";
+import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 
 interface UserProfileCardProps {
   student: {
@@ -16,63 +18,66 @@ interface UserProfileCardProps {
   };
 }
 
-const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
-  const { user, onlineUsers } = useContext(
-    AuthContext
-  ) as AuthContextType;
-
-  // const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
-  //   {}
-  // );
-
-  // useEffect(() => {
-  //  const socket = io("https://amused-assorted-bar.glitch.me/");
-
-  //   if (user) {
-  //     socket.emit("userConnect", { userId: user.uid });
-
-  //     socket.on(
-  //       "onlineUsers",
-  //       (updatedOnlineUsers: { [key: string]: boolean }) => {
-  //         console.log(updatedOnlineUsers, "connected");
-  //         setOnlineUsers(updatedOnlineUsers);
-  //       }
-  //     );
-  //   }
-
-  //   return () => {
-  //     if (user) {
-  //       socket.emit("userDisconnect", { userId: user.uid });
-  //     }
-  //     socket.disconnect();
-  //   };
-  // }, [user]);
-
+const Suggestion: React.FC<UserProfileCardProps> = ({ student }) => {
+  const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
+  // const [disable,setDesabled] =useState({})
+  
   // Check if the connected user's online status is true
   const isUserOnline = onlineUsers[student.uid] === true;
-// const isUserOnline = onlineUsers.some((user) => user.uid === student.uid);
 
-// user profile view
-  
   const [showModal, setShowModal] = useState(false);
-   const [id,SetId]=useState<number>(0)
+  const [id, SetId] = useState<number>(0);
 
   const openModal = (id: number) => {
-      SetId(id)
-     setShowModal(true);
-   };
+    SetId(id);
+    setShowModal(true);
+  };
 
-   const closeModal = () => {
-     setShowModal(false);
-   };
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
 
+  // send friend  request
+const sendFriendRequest = (friendId: string) => {
+  try {
+           console.log(friendId,user?.uid);
+
+     fetch(
+      `http://localhost:5000/send-friend-request/${user?.uid}/${friendId}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(res => res.json())
+       .then(data => {
+         console.log(data);
+         if (data.friendRequest) {
+             
+             // You can update your UI or show a notification here
+           } else {
+             console.error("Failed to send friend request");
+             // Handle error scenario
+           }
+    })
+  
+  } catch (error) {
+    console.error("Error sending friend request:", error);
+  }
+};
+
+      
+
+  
+console.log();
 
   return (
     <>
       <div
         onMouseLeave={closeModal}
-        className="bg-white border shadow-md rounded-md p-4 relative "
+        className="bg-white shadow-md rounded-md p-4 relative border "
       >
         <div className="flex items-center">
           <div
@@ -83,7 +88,6 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>
-            <p className="text-gray-500">Web Developer</p>
           </div>
           <div
             className={`ml-2 w-2 h-2 rounded-full ${
@@ -99,22 +103,24 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
         </div>
         <div className="mt-4 flex justify-between">
           <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
-            Call
+            Remove
           </button>
-          <Link to={'/messaging'} state={{ MyId:user?.uid, userId: student?.uid }}>
-            <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
-              Message
-            </button>
-          </Link>
+
+          <button
+            onClick={() => sendFriendRequest(student.uid)}
+            className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
+          >
+            Add Friend
+          </button>
         </div>
         {showModal && (
           <div className=" absolute">
-            <ViewUserProfile
+            <UserModal
               student={student}
               id={id}
               showModal={showModal}
               closeModal={closeModal}
-            ></ViewUserProfile>
+            ></UserModal>
           </div>
         )}
       </div>
@@ -122,4 +128,4 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
   );
 };
 
-export default UserProfileCard;
+export default Suggestion;

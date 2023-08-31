@@ -30,7 +30,7 @@ const Dashboard = () => {
       >
         <div className="p-4">
           {isAdmin && (
-            <ul className="uppercase">
+            <ul className="uppercase font-semibold font-serif">
               <AdminNav setSidebarOpen={setSidebarOpen}></AdminNav>
             </ul>
           )}
