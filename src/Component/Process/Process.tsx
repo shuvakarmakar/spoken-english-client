@@ -2,7 +2,6 @@ import { FaDesktop, FaBookReader, FaFacebookMessenger } from "react-icons/fa";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import bgimage from "../../assets/process.jpg";
 
 const Process = () => {
   useEffect(() => {
@@ -12,10 +11,12 @@ const Process = () => {
   return (
     <div
       className="bg-cover bg-no-repeat mt-10 flex justify-center items-center min-h-screen"
-      style={{ backgroundImage: `url(${bgimage})` }}
+      style={{
+        backgroundImage: `url("https://i.ibb.co/mTvMy4T/abstract-blue-circle-black-background-technology-1142-12714.jpg")`,
+      }}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <h1 className="text-3xl md:text-5xl text-center mb-4 md:mb-10 font-semibold text-white">
+        <h1 className="text-3xl md:text-5xl text-center my-6 text-gray-50 font-extrabold">
           How It Works
         </h1>
 
