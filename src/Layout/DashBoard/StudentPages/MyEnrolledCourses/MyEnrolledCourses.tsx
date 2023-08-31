@@ -20,7 +20,7 @@ const MyEnrolledCourses: React.FC = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://spoken-english-server-xi.vercel.app/enrolled-courses/${user.email}`
+        `http://localhost:5000/enrolled-courses/${user.email}`
       )
         .then((response) => response.json())
         .then((data) => {
@@ -53,17 +53,16 @@ const MyEnrolledCourses: React.FC = () => {
             {enrolledCourses.map((course, index) => (
               <tr key={course._id}>
                 <td>{index + 1}</td>
-                <td>
-                  <Link className="text-blue-500" to={`/course/${course._id}`}>
+                <td className="font-bold">
                     {course.product_name}
-                  </Link>
                 </td>
                 <td>${course.total_amount}</td>
                 <td>{course.instructor_name}</td>
                 <td className="flex justify-center">
                   <Link
                     className="btn btn-secondary text-white"
-                    to={`/start-course/${course._id}`}
+                    to={`/dashboard/startCourse/${course._id}`}
+                    state={course}
                   >
                     Start Now
                   </Link>
