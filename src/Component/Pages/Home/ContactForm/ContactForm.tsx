@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
+import contactbg from "../../../../assets/contactusbg.avif";
 
 const ContactForm: React.FC = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -41,11 +42,12 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-pink-300 to-blue-400 min-h-screen flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-semibold text-blue-700 mb-4">
-          Contact Us
-        </h2>
+    <div
+      className="bg-cover bg-no-repeat flex justify-center items-center min-h-screen"
+      style={{ backgroundImage: `url(${contactbg})` }}
+    >
+      <div className="bg-gradient-to-r  p-10 from-green-300 via-blue-500 to-purple-600 rounded-lg shadow-lg w-full md:w-[500px] md:ml-auto md:mr-16">
+        <h2 className="text-2xl font-semibold text-white mb-4">Contact Us</h2>
         <form ref={form} onSubmit={sendEmail}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -84,7 +86,7 @@ const ContactForm: React.FC = () => {
             />
           </div>
           <button
-            className="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded transition duration-300"
+            className="w-full btn btn-outline btn-primary hover:bg-white hover:text-blue-900 text-white py-2 px-4 rounded transition duration-300"
             type="submit"
           >
             Send

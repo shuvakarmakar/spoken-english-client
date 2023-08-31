@@ -1,0 +1,11 @@
+{
+  "navbar": {
+    "home": "Home",
+    "connect": "Connect",
+    "freeLiveLesson": "Free Live Lesson",
+    "allPremiumCourses": "All Premium Courses",
+    "dictionary": "Dictionary",
+    "signUp": "Sign Up",
+    "login": "Login"
+  }
+}

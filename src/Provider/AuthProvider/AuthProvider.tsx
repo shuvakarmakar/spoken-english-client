@@ -41,21 +41,20 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await createUserWithEmailAndPassword(auth, email, password).then(
-      () => { }
+      () => {}
     );
   };
 
   const login = async (email: string, password: string): Promise<void> => {
     setLoading(true);
     return await signInWithEmailAndPassword(auth, email, password).then(
-      () => { }
+      () => {}
     );
   };
 
   useEffect(() => {
     setLoading(true);
     const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
-
       console.log(user);
       if (user) {
         axios
@@ -66,15 +65,12 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
             console.log(data.data);
             localStorage.setItem("accessToken", data.data.token);
           });
-
       } else {
         localStorage.removeItem("accessToken");
       }
       setUser(user);
       setLoading(false);
-
     });
-
 
     return () => {
       unsubscribe();

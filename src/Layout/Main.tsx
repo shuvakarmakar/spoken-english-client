@@ -1,17 +1,16 @@
-import { Outlet,useLocation } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import Navbar from "../Shared/Navbar";
 import React from "react";
 import Footer from "../Shared/Footer";
 
 const Main = () => {
+  const location = useLocation();
 
-  const location = useLocation()
   const helpSupport = location.pathname === "/helpSupport";
-   
+
   return (
     <>
-      <div className="header">
-        {helpSupport ? "" : <Navbar />}</div>
+      <div className="header">{helpSupport ? "" : <Navbar />}</div>
 
       {/* main  */}
       <div className="main min-h-[100vh]">
