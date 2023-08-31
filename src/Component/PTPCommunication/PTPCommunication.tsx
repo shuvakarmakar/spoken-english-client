@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import axios from 'axios';
 import { FaUserCheck, FaUserFriends, FaUserPlus } from "react-icons/fa";
-import FriendRequest from "./FirendRequest/FriendRequest";
+import FriendRequest from "./FriendRequest/FriendRequest";
 import Suggestion from "./Suggestion/Suggestion";
 
 interface MyObject {
