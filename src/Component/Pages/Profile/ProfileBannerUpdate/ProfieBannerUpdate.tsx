@@ -1,6 +1,7 @@
 
 import React, { useContext, useState } from "react";
 import { AuthContext, AuthContextType } from "../../../../Provider/AuthProvider/AuthProvider";
+import useUser from "../../../../Hooks/useUser";
 
 interface ModalProps {
   isOpen: boolean;
@@ -10,7 +11,7 @@ const img_hosting_token: string = import.meta.env.VITE_Image_Upload_Token;
 
 const ProfileBannerUpdate: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const { user } = useContext(AuthContext) as AuthContextType;
-
+  const []=useUser()
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
  
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {

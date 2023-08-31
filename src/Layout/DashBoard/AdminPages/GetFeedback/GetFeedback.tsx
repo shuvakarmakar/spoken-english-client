@@ -77,10 +77,10 @@ const FeedbackReviewPage: React.FC = () => {
               {feedbackList.map((feedback) => (
                 <li
                   key={feedback._id}
-                  className={`py-4 ${
+                  className={`py-4 px-2 ${
                     feedback?.isRead
                       ? "text-gray-500"
-                      : "text-gray-900 bg-slate-100 p-4 rounded-md shadow-md"
+                      : "text-gray-900  font-semibold bg-slate-100 rounded-md "
                   }`}
                   onClick={() => handleItemClick(feedback._id)}
                 >

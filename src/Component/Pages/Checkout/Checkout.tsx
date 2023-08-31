@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 // import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 interface BillingData {
@@ -29,32 +30,32 @@ const Checkout: React.FC = () => {
     const { register, handleSubmit } = useForm<BillingData>();
 
     const onSubmit = (billingData: BillingData) => {
-        const combinedData = {
-            ...enrollmentData,
-            billingData,
-        };
+      const combinedData = {
+        ...enrollmentData,
+        billingData,
+      };
 
-        console.log(combinedData);
-
-        fetch("https://spoken-english-server-xi.vercel.app/order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(combinedData),
+      console.log(combinedData);
+      // spoken-english-server-xi.vercel.app
+      fetch("spoken-english-server-xi.vercel.app/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(combinedData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Redirecting to payment gateway:", data.GatewayPageURL);
+          window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log("Redirecting to payment gateway:", data.GatewayPageURL);
-            window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
-          })
-          .catch((error) => {
-            console.error("Error initiating payment:", error);
-          });
+        .catch((error) => {
+          console.error("Error initiating payment:", error);
+        });
     };
 
     if (!enrollmentData) {
-        return <div>Loading...</div>;
+        return <div><Spinner></Spinner></div>;
     }
 
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Process from "../../../Process/Process";
+import Process from "../../../PTPCommunication/Process/Process";
 import Review from "../../../Review/Review";
 import BeInstructor from "../../Be-Instructor/BeInstructor";
 import Blogs from "../../Blogs/Blogs";
