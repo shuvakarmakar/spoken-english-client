@@ -33,6 +33,7 @@ const Applications:React.FC=()=> {
         "https://spoken-english-server-xi.vercel.app/get/applications"
       );
       setApplications(response.data);
+      
       setLoading(false)
     } catch (error) {
       console.error("Error fetching applications:", error);
