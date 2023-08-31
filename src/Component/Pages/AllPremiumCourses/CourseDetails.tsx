@@ -3,20 +3,22 @@ import { useParams, Link } from "react-router-dom";
 
 interface Course {
   _id: string;
-  course_name: string;
-  image: string;
-  course_details: string;
+  imageURL: string;
+  courseName: string;
+  courseDetails: string;
   price: number;
-  instructor: string;
-  number_of_students: number;
+  instructorName: string;
+  instructorEmail: string;
+  numberOfStudents: number;
 }
 
 interface EnrollmentData {
   courseId: string;
   courseName: string;
   price: number;
-  instructor: string;
-  number_of_students: number;
+  instructorName: string;
+  instructorEmail: string;
+  numberOfStudents: number;
 }
 
 const CourseDetails: React.FC = () => {
@@ -24,39 +26,40 @@ const CourseDetails: React.FC = () => {
   const [course, setCourse] = useState<Course | null>(null);
 
   useEffect(() => {
-    fetch(`https://spoken-english-server.vercel.app/course/${id}`)
+    fetch(`https://spoken-english-server-xi.vercel.app/course/${id}`)
       .then((response) => response.json())
       .then((data) => setCourse(data))
       .catch((error) => console.error("Error fetching course details:", error));
   }, [id]);
 
-    if (!course) {
-        return <div>Loading...</div>;
-    }
+  if (!course) {
+    return <div>Loading...</div>;
+  }
 
-    const enrollmentData: EnrollmentData = {
-        courseId: course._id,
-        courseName: course.course_name,
-        price: course.price,
-        instructor: course.instructor,
-        number_of_students: course.number_of_students,
-    };
-    console.log(enrollmentData);
+  const enrollmentData: EnrollmentData = {
+    courseId: course._id,
+    courseName: course.courseName,
+    price: course.price,
+    instructorName: course.instructorName,
+    instructorEmail: course.instructorEmail,
+    numberOfStudents: course.numberOfStudents,
+  };
+  console.log(enrollmentData);
 
 
 
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">
-        {course.course_name}
+        {course.courseName}
       </h1>
       <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
         <img
-          src={course.image}
-          alt={course.course_name}
+          src={course.imageURL}
+          alt={course.courseName}
           className="w-full h-auto mb-4"
         />
-        <p className="text-gray-600 mb-4">{course.course_details}</p>
+        <p className="text-gray-600 mb-4">{course.courseDetails}</p>
         <p className="font-bold text-xl text-black mb-2">
           Price: ${course.price}
         </p>

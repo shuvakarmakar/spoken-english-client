@@ -14,7 +14,7 @@ const BlogDetails: React.FC = () => {
   const [blog, setBlog] = useState<Blog | null>(null);
 
   useEffect(() => {
-    fetch(`https://spoken-english-server.vercel.app/blog/${id}`)
+    fetch(` https://spoken-english-server-xi.vercel.app/blog/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);

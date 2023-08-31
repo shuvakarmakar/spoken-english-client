@@ -67,6 +67,14 @@ const Dashboard = () => {
                   Add Classes
                 </li>
               </NavLink>
+              <NavLink
+                to="/dashboard/AllAddedClasses"
+                onClick={() => setSidebarOpen(false)}
+              >
+                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+                  All Added Classes
+                </li>
+              </NavLink>
             </ul>
           )}
         </div>

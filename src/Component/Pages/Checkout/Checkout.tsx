@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { redirect, useLocation } from 'react-router-dom';
-import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
+import { useLocation } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
+// import { AuthContext } from '../../../Provider/AuthProvider/AuthProvider';
 
 interface BillingData {
     fullName: string;
@@ -13,48 +14,48 @@ interface BillingData {
     contactNumber: string;
 }
 
-interface EnrollmentData {
-    courseId: string;
-    courseName: string;
-    price: number;
-    instructor: string;
-    number_of_students: number;
-}
+// interface EnrollmentData {
+//     courseId: string;
+//     courseName: string;
+//     price: number;
+//     instructor: string;
+//     number_of_students: number;
+// }
 
 const Checkout: React.FC = () => {
     const location = useLocation();
-    const { user } = useContext(AuthContext);
+    // const { user } = useContext(AuthContext);
     const enrollmentData = location?.state;
 
     const { register, handleSubmit } = useForm<BillingData>();
 
     const onSubmit = (billingData: BillingData) => {
-        const combinedData = {
-            ...enrollmentData,
-            billingData,
-        };
+      const combinedData = {
+        ...enrollmentData,
+        billingData,
+      };
 
-        console.log(combinedData);
-
-        fetch("http://localhost:5000/order", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(combinedData),
+      console.log(combinedData);
+      // spoken-english-server-xi.vercel.app
+      fetch("https://spoken-english-server-xi.vercel.app/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(combinedData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Redirecting to payment gateway:", data.GatewayPageURL);
+          window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Redirecting to payment gateway:", data.GatewayPageURL);
-                window.location.href = data.GatewayPageURL; // Redirect the user to payment gateway
-            })
-            .catch((error) => {
-                console.error("Error initiating payment:", error);
-            });
+        .catch((error) => {
+          console.error("Error initiating payment:", error);
+        });
     };
 
     if (!enrollmentData) {
-        return <div>Loading...</div>;
+        return <div><Spinner></Spinner></div>;
     }
 
     return (
@@ -64,16 +65,19 @@ const Checkout: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Enrollment data */}
                     <p className="text-xl font-semibold mb-4">
-                        Course Name: {enrollmentData.course_name}
+                        Course Name: {enrollmentData.courseName}
                     </p>
                     <p className="text-lg mb-2">
-                        Instructor: {enrollmentData.instructor}
+                        Instructor: {enrollmentData.instructorName}
+                    </p>
+                    <p className="text-lg mb-2">
+                        Instructor Email : {enrollmentData.instructorEmail}
                     </p>
                     <p className="text-lg mb-2">
                         Price: ${enrollmentData.price}
                     </p>
                     <p className="text-lg">
-                        Number of Students: {enrollmentData.number_of_students}
+                        Number of Students: {enrollmentData.numberOfStudents}
                     </p>
 
                     {/* Billing Details Form */}
@@ -85,7 +89,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="fullName"
-                            name="fullName"
+                            
                             {...register('fullName')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -97,7 +101,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="email"
                             id="email"
-                            name="email"
+                          
                             {...register('email')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -109,7 +113,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="address"
-                            name="address"
+                            
                             {...register('address')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -121,7 +125,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="city"
-                            name="city"
+                         
                             {...register('city')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -133,7 +137,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="country"
-                            name="country"
+                           
                             {...register('country')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -145,7 +149,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="postalCode"
-                            name="postalCode"
+                           
                             {...register('postalCode')}
                             className="border border-gray-300 p-2 w-full"
                             required
@@ -157,7 +161,7 @@ const Checkout: React.FC = () => {
                         <input
                             type="text"
                             id="contactNumber"
-                            name="contactNumber"
+                            
                             {...register('contactNumber')}
                             className="border border-gray-300 p-2 w-full"
                             required

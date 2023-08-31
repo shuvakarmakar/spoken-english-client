@@ -9,7 +9,7 @@ const Footer = () => {
         className="bg-cover bg-no-repeat flex border-b-2 justify-center items-center h-96"
         style={{ backgroundImage: `url(${footerbg})` }}
       >
-        <footer className="footer grid md:grid-cols-3 grid-cols-2  p-6 md:p-10 text-white">
+        <footer className="footer   grid md:grid-cols-3 grid-cols-2  p-10  text-white ">
           <div>
             <h1 className="text-3xl md:text-5xl text-white">
               Speak Better English
@@ -28,15 +28,15 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <span className="footer-title">Company</span>
             <Link to={"about-us"}>About us</Link>
-            <a className="link link-hover">Contact</a>
+            <Link to={"contact-us"}>Contact</Link>
             <a className="link link-hover">Jobs</a>
-            <a className="link link-hover">Press kit</a>
+            <Link to={"faqs"}>FAQs</Link>
           </div>
           <div>
             <span className="footer-title">Legal</span>
             <Link to={"terms-and-Conditions"}>Terms of use</Link>
             <Link to={"privacy-policy"}>Privacy policy</Link>
-            <a className="link link-hover">Cookie policy</a>
+            <Link to={"cookie-policy"}>Cookie policy</Link>
           </div>
         </footer>
       </div>

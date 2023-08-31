@@ -6,12 +6,11 @@ import Footer from "../Shared/Footer";
 const Main = () => {
   const location = useLocation();
 
+  const helpSupport = location.pathname === "/helpSupport";
+
   return (
     <>
-      <div className="header">
-        {/* Header */}
-        <Navbar />
-      </div>
+      <div className="header">{helpSupport ? "" : <Navbar />}</div>
 
       {/* main  */}
       <div className="main min-h-[100vh]">

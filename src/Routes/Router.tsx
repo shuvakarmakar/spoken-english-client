@@ -32,7 +32,19 @@ import Applications from "../Layout/DashBoard/AdminPages/Applications/Applicatio
 import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
 import PrivecyPolicy from "../Component/Pages/Footer/PrivecyPolicy";
 import TermsAndConditations from "../Component/Pages/Footer/TermsAndConditations";
+import ProfileSettings from "../Component/Pages/Profile/Setting/Setting";
 import MyEnrolledCourses from "../Layout/DashBoard/StudentPages/MyEnrolledCourses/MyEnrolledCourses";
+import PrivetRoute from "./PrivetRout/PrivetRout";
+import Contact from "../Component/Pages/Footer/Contact";
+import CookiePolicy from "../Component/Pages/Footer/CookiePolicy";
+import FAQs from "../Component/Pages/Footer/FAQs";
+import HelpSupportPage from "../Component/Pages/HelpAndSupport/HelpASupport";
+import GiveFeedbackPage from "../Component/Pages/Feedback/Feedback";
+import HelpSupportAdminPage from "../Layout/DashBoard/AdminPages/HelpAndSup/HelpAForm";
+import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFeedback";
+import PaymentFailed from "../Component/Pages/PaymentFailed/PaymentFailed";
+import AllAddesClasses from "../Layout/DashBoard/InstructorPages/AllAddedClasses/AllAddesClasses";
+import StartCourse from "../Layout/DashBoard/StudentPages/StartCourse/StartCourse";
 
 export const router = createBrowserRouter([
   {
@@ -77,8 +89,30 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
+      {
+        path: "/Feedback",
+        element: (
+          <PrivetRout>
+            <GiveFeedbackPage></GiveFeedbackPage>
+          </PrivetRout>
+        ),
+      },
+
+      {
+        path: "/helpSupport",
+        element: (
+          <PrivetRoute>
+            <HelpSupportPage></HelpSupportPage>
+          </PrivetRoute>
+        ),
+      },
+
       // Dictionary (rashik)
       {
         path: "/dictionary",
@@ -90,11 +124,29 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile/:id",
-        element: <ProfileDetails></ProfileDetails>,
+        element: (
+          <PrivetRout>
+            <ProfileDetails></ProfileDetails>
+          </PrivetRout>
+        ),
+      },
+      {
+        path: "/profileSetting",
+        element: (
+          <PrivetRout>
+            {" "}
+            <ProfileSettings></ProfileSettings>
+          </PrivetRout>
+        ),
       },
       {
         path: "/messaging",
-        element: <Messaging></Messaging>
+        element: (
+          <PrivetRout>
+            {" "}
+            <Messaging></Messaging>
+          </PrivetRout>
+        ),
       },
       {
         path: "blog/:id",
@@ -116,16 +168,33 @@ export const router = createBrowserRouter([
       },
       {
         path: "about-us",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
       {
         path: "privacy-policy",
-        element: <PrivecyPolicy></PrivecyPolicy>
+        element: <PrivecyPolicy></PrivecyPolicy>,
       },
       {
         path: "terms-and-conditions",
-        element: <TermsAndConditations></TermsAndConditations>
+        element: <TermsAndConditations></TermsAndConditations>,
       },
+      {
+        path: "contact-us",
+        element: <Contact></Contact>,
+      },
+      {
+        path: "cookie-policy",
+        element: <CookiePolicy></CookiePolicy>,
+      },
+      {
+        path: "cookie-policy",
+        element: <CookiePolicy></CookiePolicy>,
+      },
+      {
+        path: "faqs",
+        element: <FAQs></FAQs>,
+      },
+
       // shuva-work
       {
         path: "all-premium-courses",
@@ -142,6 +211,10 @@ export const router = createBrowserRouter([
       {
         path: "payment/success/:tranId",
         element: <PaymentSuccess></PaymentSuccess>,
+      },
+      {
+        path: "payment/fail/:tranId",
+        element: <PaymentFailed></PaymentFailed>,
       },
     ],
   },
@@ -161,6 +234,19 @@ export const router = createBrowserRouter([
         path: "/dashboard/MyEnrolledCourses",
         element: <MyEnrolledCourses></MyEnrolledCourses>,
       },
+      {
+        path: "/dashboard/HelpForm",
+        element: <HelpSupportAdminPage></HelpSupportAdminPage>
+
+      },
+      {
+        path: "/dashboard/getFeedback",
+        element: <FeedbackReviewPage></FeedbackReviewPage>
+      },
+      {
+        path: "/dashboard/startCourse/:id",
+        element: <StartCourse></StartCourse>
+      },
 
       // instructor routes
       {
@@ -168,9 +254,13 @@ export const router = createBrowserRouter([
         element: <AddClasses></AddClasses>,
       },
       {
+        path: "/dashboard/AllAddedClasses",
+        element: <AllAddesClasses></AllAddesClasses>,
+      },
+      {
         path: "/dashboard/Application",
-        element: <Applications></Applications>
-      }
+        element: <Applications></Applications>,
+      },
     ],
   },
   {

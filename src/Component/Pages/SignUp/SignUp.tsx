@@ -83,7 +83,7 @@ const SignUp: React.FC = () => {
           uid: createdUser.uid,
         };
 
-        fetch("https://spoken-english-server.vercel.app/AddUsers", {
+        fetch("https://spoken-english-server-xi.vercel.app/AddUsers", {
           method: "POST",
           headers: {
             "content-type": "application/json",

@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 interface FormData {
   fullName: string;
@@ -7,6 +8,8 @@ interface FormData {
   phoneNumber: string;
   bio: string;
   pdfFile: File | null;
+  isRead: boolean; // Add isRead field
+  createAt: string; // Add createAt field
 }
 
 const InstructorApplicationForm: React.FC = () => {
@@ -16,6 +19,8 @@ const InstructorApplicationForm: React.FC = () => {
     phoneNumber: "",
     bio: "",
     pdfFile: null,
+    isRead: false, // Initialize isRead as false
+    createAt: new Date().toISOString(),
   });
 
   const handleChange = (
@@ -46,23 +51,26 @@ const InstructorApplicationForm: React.FC = () => {
       formDataToSend.append("pdfFile", formData.pdfFile);
     }
 
+    formDataToSend.append("createAt", formData.createAt);
+
     console.log(formDataToSend);
 
     try {
       // Send form data including the PDF file to the server
       await axios.post(
-        "http://localhost:5000/BecomeInstructor",
+        "https://spoken-english-server-xi.vercel.app/BecomeInstructor",
         formDataToSend
       );
       console.log("Form submitted:", formData);
       // You can add your submission success logic here
+      Swal.fire("Yaa", " Successfully submitted ", "success");
     } catch (error) {
       console.error("Error submitting form:", error);
       // You can add your submission error logic here
     }
   };
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow-md my-[100px]">
+    <div className="w-[70%] mx-auto p-4 bg-white rounded shadow-md my-[100px]">
       <h2 className="text-2xl font-semibold mb-4">Apply as an Instructor</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

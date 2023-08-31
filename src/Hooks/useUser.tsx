@@ -8,6 +8,8 @@ interface User {
   InstructorDisabled: boolean;
   disabled: boolean;
   uid: string;
+  profileImage: string;
+  profileBanner: string;
 }
 
 const useUser = (): [User[], boolean, () => void] => {
@@ -17,7 +19,7 @@ const useUser = (): [User[], boolean, () => void] => {
     queryKey: ["users"],
     queryFn: async () => {
       const res = await fetch(
-        "https://spoken-english-server.vercel.app/GetUsers"
+        "https://spoken-english-server-xi.vercel.app/GetUsers"
       );
       return res.json();
     },

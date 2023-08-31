@@ -36,7 +36,7 @@ const SocialLogin: React.FC<SocialLoginProps> = ({ handleButtonClick }) => {
   console.log(user ,"login social");
         if (user) {
           
-           fetch("https://spoken-english-server.vercel.app/AddUsers", {
+           fetch("https://spoken-english-server-xi.vercel.app/AddUsers", {
              method: "POST",
              headers: {
                "content-type": "application/json",

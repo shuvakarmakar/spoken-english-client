@@ -17,6 +17,7 @@ const Home = () => {
       <BeInstructor></BeInstructor>
       <PopularCourse></PopularCourse>
       <Process />
+
       <JoinCourse />
       <Review />
       <Blogs />

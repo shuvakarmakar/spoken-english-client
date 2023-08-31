@@ -6,10 +6,10 @@ import './PSstyle.css'
 
 interface Course {
   _id: string;
-  course_name: string;
-  image: string;
-  price: string;
-  number_of_students: number;
+  courseName: string;
+  imageURL: string;
+  price: number;
+  numberOfStudents: number;
 }
 
 const AllCourse: React.FC = () => {
@@ -20,7 +20,7 @@ const AllCourse: React.FC = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          "https://spoken-english-server.vercel.app/courses"
+          " https://spoken-english-server-xi.vercel.app/courses"
         );
         const jsonData = await response.json();
         setLoading(false);
@@ -50,16 +50,16 @@ const AllCourse: React.FC = () => {
               className="card py-5 box-border  bg-opacity-58 border-white border-1 shadow-md backdrop-blur-6 rounded-17 text-center  transition-all duration-500 flex items-center justify-center  font-semibold text-black"
             >
               <img
-                src={pc.image}
+                src={pc.imageURL}
                 className="w-[80%] mx-auto h-[250px]"
                 alt=""
               />
-              <p className="text-xl">{pc.course_name}</p>
+              <p className="text-xl">{pc.courseName}</p>
               <div className="flex items-center justify-around w-full py-2 text-lg">
                 <p>{pc.price}</p>
                 <div className="flex items-center font-bold text-lg gap-1">
                   <FaUsers />
-                  <p> {pc.number_of_students}</p>
+                  <p> {pc.numberOfStudents}</p>
                 </div>
               </div>
               <Link

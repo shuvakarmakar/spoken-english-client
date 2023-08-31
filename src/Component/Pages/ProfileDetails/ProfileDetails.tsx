@@ -7,6 +7,7 @@ import {
 import { useParams } from "react-router-dom";
 
 interface User {
+  _id: string;
   name: string;
   photoURL: string | null;
   // Add more properties as needed
@@ -18,15 +19,19 @@ const ProfileDetails: React.FC = () => {
   const [users] = useUser();
   const { user } = useContext(AuthContext) as AuthContextType;
 
-  const [AllUsers, setAllUser] = useState<User[]>([]);
+  const [AllUsers, setAllUser] = useState<User | null>(null);
 
   useEffect(() => {
-    fetch(`https://spoken-english-server-xi.vercel.app/SingleUser/${id}`)
-      .then((res) => res.json())
-      .then((data) => setAllUser(data));
+    if(id){
+            fetch(
+                `https://spoken-english-server-xi.vercel.app/SingleUser/${id}`
+              )
+                .then((res) => res.json())
+            .then((data) => setAllUser(data));
+          }
   }, [id]);
 
-  console.log(AllUsers);
+  console.log(AllUsers?.name);
 
   return (
     <div className="container mx-auto bg-slate-200 ">
@@ -45,12 +50,14 @@ const ProfileDetails: React.FC = () => {
           </div>
 
           {/* User Info */}
-          <div className="text-center pt-4">
-            <h2 className="text-xl font-semibold">{AllUsers?.[0]?.name}</h2>
-            <p className="text-gray-500">@{AllUsers?.[0]?.name}</p>
-            <p className="text-gray-700 my-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
+          <div className="text-center pt-4 mb-10">
+           
+          
+                <h2 key={AllUsers?._id} className="text-xl font-semibold">
+                  {AllUsers?.name}
+                </h2>
+            
+            
           </div>
 
           {/* intro List */}
