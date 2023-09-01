@@ -24,11 +24,13 @@ const Navbar = () => {
   const navItems = (
     <>
       <li><NavLink to="/" className={({ isActive }) => (isActive ? "active" : "default")}>Home</NavLink></li>
-      <li><NavLink to="/Connect" className={({ isActive }) => (isActive ? "active" : "default")}>Connect</NavLink></li>
+      <li><NavLink to="/Connect/Friend" className={({ isActive }) => (isActive ? "active" : "default")}>Connect</NavLink></li>
       <li><NavLink to="/freelivelessons" className={({ isActive }) => (isActive ? "active" : "default")}>Free Live Lesson </NavLink></li>
       <li><NavLink to="/all-premium-courses" className={({ isActive }) => (isActive ? "active" : "default")}>All Premium Courses</NavLink></li>
     </>
   );
+
+
 
   return (
     <div className="bg-gray-100 px-4 py-5 w-full md:px-24 lg:px-8">
@@ -42,6 +44,41 @@ const Navbar = () => {
         </Link>
 
         {/* Nav Items Section */}
+        {/* <ul className="items-center font-mono hidden space-x-8 lg:flex">
+          <li>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/Connect/Friend"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              Connect
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/freelivelessons"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              Free Live Lesson
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/all-premium-courses"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              All Premium Courses
+            </NavLink>
+          </li>
+        </ul>
+         */}
         <ul className="items-center font-sans hidden space-x-8 lg:flex">
           {navItems}
 
@@ -74,7 +111,7 @@ const Navbar = () => {
               </div>
             </li>
           )}
-        </ul>
+        u</ul>
 
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">

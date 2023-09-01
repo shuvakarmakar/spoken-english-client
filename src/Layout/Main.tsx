@@ -7,10 +7,11 @@ const Main = () => {
   const location = useLocation();
 
   const helpSupport = location.pathname === "/helpSupport";
+  const connected= location.pathname ==="/Connect"
 
   return (
     <>
-      <div className="header">{helpSupport ? "" : <Navbar />}</div>
+      <div className="header">{helpSupport || connected ? "" : <Navbar />}</div>
 
       {/* main  */}
       <div className="main min-h-[100vh]">
@@ -19,9 +20,7 @@ const Main = () => {
 
       {/* Footer */}
 
-      <div className="Footer">
-        {location.pathname === "/Connect" ? "" : <Footer></Footer>}
-      </div>
+      <div className="Footer">{connected ? "" : <Footer></Footer>}</div>
     </>
   );
 };
