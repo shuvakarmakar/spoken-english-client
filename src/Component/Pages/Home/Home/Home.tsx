@@ -18,7 +18,7 @@ const Home = () => {
       <PopularCourse></PopularCourse>
       <Process />
 
-      <JoinCourse />
+      {/* <JoinCourse /> */}
       <Review />
       <Blogs />
       <div className="md:hidden my-20 px-2 mx-2">

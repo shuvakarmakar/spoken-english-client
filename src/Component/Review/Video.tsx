@@ -15,13 +15,11 @@ const VideoPlayer: React.FC = () => {
     >
       <div className="text-center md:text-left">
         <div>
-          <h1 className="text-2xl md:text-5xl font-bold">
-            What My Students Say
+          <h1 className="text-2xl md:text-4xl font-bold">
+            What Our Students Say
           </h1>
-          <p className="py-3 md:py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          <p className="py-3 md:py-6 text-justify">
+          Our students have provided positive feedback about our Spoken English courses. They appreciate the engaging and interactive nature of the classes, which has helped them improve their speaking skills with confidence. They also value the supportive and patient instructors who create a comfortable learning environment. Overall, they find our courses effective and enjoyable for enhancing their spoken English abilities.
           </p>
           <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
             <Link

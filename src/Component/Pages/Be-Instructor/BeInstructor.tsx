@@ -10,7 +10,7 @@ const BeInstructor: React.FC = () => {
   };
   // https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png
   return (
-    <div className=" mx-auto py-8 my-[100px] md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  h-[400px]">
+    <div className=" mx-auto py-8 my-[100px] md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
       <div className=" md:w-[50%] w-full">
         <h2 className="md:text-4xl text-2xl font-bold mb-4 ">Become an Instructor</h2>
         <p className="text-gray-600 mb-4 text-sm leading-7">

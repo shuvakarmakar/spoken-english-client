@@ -3,8 +3,6 @@ import { FaCheckSquare } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import bgimg from "../../../../assets/mblbg.jpg";
-
 const JoinCourse = () => {
   useEffect(() => {
     AOS.init(); // Initialize AOS library
@@ -12,40 +10,40 @@ const JoinCourse = () => {
 
   return (
     <div
-      className="bg-cover bg-no-repeat flex justify-center items-center"
-      style={{ backgroundImage: `url(${bgimg})` }}
+      className="bg-black bg-no-repeat flex justify-center items-center"
+      // style={{ backgroundImage: `url(${bgimg})` }}
     >
       <div className="container mx-auto grid md:grid-cols-2 p-8 md:p-16 gap-16">
         <div
           data-aos="fade-right"
           className="flex flex-col justify-center space-y-8 md:space-y-12"
         >
-          <h1 className="text-3xl md:text-5xl text-gray-50 font-extrabold">
-            Learn With Me
+          <h1 className="text-3xl md:text-5xl text-gray-50 font-bold">
+            Learn With US
           </h1>
           <p className="text-lg md:text-xl text-white">
             You can{" "}
             <span className="text-sky-500 font-semibold">
               develop your speaking skills
             </span>{" "}
-            with me through:
+            with us through:
           </p>
           <ul className="space-y-4">
             <li className="flex items-center gap-4 text-lg md:text-xl text-white">
               <FaCheckSquare className="text-sky-500" />
-              My Online Courses
+              Our Online Courses
             </li>
             <li className="flex items-center gap-4 text-lg md:text-xl text-white">
               <FaCheckSquare className="text-sky-500" />
-              My Free Website Resources
+              Our Free Website Resources
             </li>
             <li className="flex items-center gap-4 text-lg md:text-xl text-white">
               <FaCheckSquare className="text-sky-500" />
-              My YouTube Channel - English Speaking Success
+              Our YouTube Channel - English Speaking Success
             </li>
             <li className="flex items-center gap-4 text-lg md:text-xl text-white">
               <FaCheckSquare className="text-sky-500" />
-              My Live Lessons with Video and PDF
+              Our Live Lessons with Video and PDF
             </li>
           </ul>
           <div className="flex flex-col md:flex-row mt-8 md:space-x-10">
