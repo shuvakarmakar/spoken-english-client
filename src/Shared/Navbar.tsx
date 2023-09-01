@@ -44,7 +44,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/Connect"
+              to="/Connect/Friend"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               Connect

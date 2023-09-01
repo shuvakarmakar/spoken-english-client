@@ -45,6 +45,10 @@ import FeedbackReviewPage from "../Layout/DashBoard/AdminPages/GetFeedback/GetFe
 import PaymentFailed from "../Component/Pages/PaymentFailed/PaymentFailed";
 import AllAddesClasses from "../Layout/DashBoard/InstructorPages/AllAddedClasses/AllAddesClasses";
 import StartCourse from "../Layout/DashBoard/StudentPages/StartCourse/StartCourse";
+import FriendRequest from "../Component/PTPCommunication/FriendRequest/FriendRequest";
+import Friends from "../Component/PTPCommunication/Friends/Friends";
+import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
+
 
 export const router = createBrowserRouter([
   {
@@ -79,14 +83,14 @@ export const router = createBrowserRouter([
         path: "/applyInstructor",
         element: <InstructorApplicationForm></InstructorApplicationForm>,
       },
-      {
-        path: "/Connect",
-        element: (
-          <PrivetRout>
-            <PTPCommunication></PTPCommunication>
-          </PrivetRout>
-        ),
-      },
+      // {
+      //   path: "/Connect",
+      //   element: (
+      //     <PrivetRout>
+      //       <PTPCommunication></PTPCommunication>
+      //     </PrivetRout>
+      //   ),
+      // },
       {
         path: "/profile",
         element: (
@@ -139,15 +143,7 @@ export const router = createBrowserRouter([
           </PrivetRout>
         ),
       },
-      {
-        path: "/messaging",
-        element: (
-          <PrivetRout>
-            {" "}
-            <Messaging></Messaging>
-          </PrivetRout>
-        ),
-      },
+
       {
         path: "blog/:id",
         element: <BlogDetails></BlogDetails>,
@@ -236,16 +232,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dashboard/HelpForm",
-        element: <HelpSupportAdminPage></HelpSupportAdminPage>
-
+        element: <HelpSupportAdminPage></HelpSupportAdminPage>,
       },
       {
         path: "/dashboard/getFeedback",
-        element: <FeedbackReviewPage></FeedbackReviewPage>
+        element: <FeedbackReviewPage></FeedbackReviewPage>,
       },
       {
         path: "/dashboard/startCourse/:id",
-        element: <StartCourse></StartCourse>
+        element: <StartCourse></StartCourse>,
       },
 
       // instructor routes
@@ -260,6 +255,37 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/Application",
         element: <Applications></Applications>,
+      },
+    ],
+  },
+
+  // connect pages
+  {
+   path: "/Connect",
+    element: <PTPCommunication></PTPCommunication>,
+        
+    children: [
+      
+      {
+        path: "/Connect/Friend",
+        element: <Friends></Friends>,
+      },
+      {
+        path: "/Connect/FriendRequest",
+        element: <FriendRequest></FriendRequest>,
+      },
+      {
+        path: "/Connect/FriendSuggestions",
+        element: <Suggestion></Suggestion>,
+      },
+      {
+        path: "/Connect/messaging",
+        element: (
+          <PrivetRout>
+            {" "}
+            <Messaging></Messaging>
+          </PrivetRout>
+        ),
       },
     ],
   },
