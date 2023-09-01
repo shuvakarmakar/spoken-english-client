@@ -111,7 +111,7 @@ const Navbar = () => {
               </div>
             </li>
           )}
-        u</ul>
+        </ul>
 
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">

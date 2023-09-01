@@ -7,7 +7,7 @@ import PopularCourse from "../../Courses/PopularCourse";
 import Banner from "../Banner/Banner1";
 import ContactForm from "../ContactForm/ContactForm";
 import HeroSection from "../HeroSection/HeroSection";
-import JoinCourse from "../JoinCourse/JoinCourse";
+// import JoinCourse from "../JoinCourse/JoinCourse";
 
 const Home = () => {
   return (
