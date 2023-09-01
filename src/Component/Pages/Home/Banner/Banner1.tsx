@@ -6,14 +6,14 @@ const Banner1: React.FC = () => {
   return (
     <>
       <div
-        className="bg-cover bg-no-repeat  flex justify-center pt-24 items-center min-h-screen"
+        className="bg-cover bg-no-repeat  flex justify-center md:pt-8 items-center min-h-screen"
         style={{
           backgroundImage: `url('https://i.ibb.co/NLJ7BHj/bgimage.jpg')`,
         }}
       >
         <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-4 md:px-8">
           {/* Left side with text */}
-          <div className="md:w-1/2 text-white md:py-24">
+          <div className="md:w-1/2 text-white md:py-16">
             <h1 className="text-4xl font-sans md:text-5xl font-bold mb-4 md:mb-6 leading-tight">
               Learn Spoken English
             </h1>
