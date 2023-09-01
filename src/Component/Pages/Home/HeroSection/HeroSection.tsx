@@ -1,7 +1,7 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
-import herobg from "../../../../assets/herobg.jpeg";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   useEffect(() => {
@@ -9,11 +9,8 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div
-      className="bg-cover bg-no-repeat flex border-b-2 justify-center pt-12 md:pt-24 items-center min-h-screen"
-      style={{ backgroundImage: `url(${herobg})` }}
-    >
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
+    <div>
+      <div className="max-w-6xl m-7 mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1  md:grid-cols-2 gap-4 md:gap-8">
           <div data-aos="fade-right">
             <img
@@ -24,7 +21,7 @@ const HeroSection = () => {
           </div>
           <div
             data-aos="fade-left"
-            className="mx-0 border-lime-100 shadow-2xl p-5 md:p-8"
+            className="mb-7 bg-slate-200 border-lime-100 shadow-2xl  p-5 md:p-8"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold border-b-2 mb-4 md:mb-6">
               Become a Confident English Speaker
@@ -39,8 +36,13 @@ const HeroSection = () => {
               Struggling English Student but relax, because I can help you
               become a Confident English Speaker.
             </p>
-            <button className="btn btn-primary hover:bg-yellow-300 hover:text-blue-900 py-2 md:py-3 lg:py-4">
-              Get Started
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+              <Link
+                to="/freelivelessons"
+                className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Get Started
+              </Link>
             </button>
           </div>
         </div>

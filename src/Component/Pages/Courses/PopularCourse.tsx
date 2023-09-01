@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
-import './PSstyle.css'
+import "./PSstyle.css";
 
 interface Course {
   _id: string;
@@ -45,10 +45,7 @@ const PopularCourse: React.FC = () => {
     <div className="bg-[#F1F5F9] pb-4">
       <section className="flex items-center justify-between py-5 w-[96%] md:w-[90%] mx-auto">
         <p className="text-2xl">Popular Courses</p>
-        <Link
-          to={`/all-courses`}
-          className="PupularCourseButton"
-        >
+        <Link to={`/all-courses`} className="PupularCourseButton">
           View All
         </Link>
       </section>
@@ -72,13 +69,14 @@ const PopularCourse: React.FC = () => {
                   <p> {pc.numberOfStudents}</p>
                 </div>
               </div>
-              <Link
-                to={`course-details/${pc._id}`}
-                className="PupularCourseButton"
-              >
-                Course Details
-                
-              </Link>
+              <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <Link
+                  to={`course-details/${pc._id}`}
+                  className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                >
+                  Course Details
+                </Link>
+              </button>
             </div>
           ))}
         </div>

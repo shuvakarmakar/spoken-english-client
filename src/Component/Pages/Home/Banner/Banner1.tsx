@@ -1,14 +1,15 @@
 import React from "react";
 import bannervideo from "../../../../assets/animation_llvau3zl.mp4";
 import { Link } from "react-router-dom";
-import bgimage from "../../../../assets/bgimage.jpg";
 
 const Banner1: React.FC = () => {
   return (
     <>
       <div
         className="bg-cover bg-no-repeat  flex justify-center pt-24 items-center min-h-screen"
-        style={{ backgroundImage: `url(${bgimage})` }}
+        style={{
+          backgroundImage: `url('https://i.ibb.co/NLJ7BHj/bgimage.jpg')`,
+        }}
       >
         <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-4 md:px-8">
           {/* Left side with text */}
@@ -23,11 +24,14 @@ const Banner1: React.FC = () => {
               Join our courses to enhance your spoken English proficiency and
               gain confidence in conversations.
             </p>
-            <Link to="/freelivelessons">
-              <button className="btn btn-outline btn-info hover:bg-white hover:text-blue-900">
-                Attend Free Classes
-              </button>
-            </Link>
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+              <Link
+                to="/freelivelessons"
+                className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+              >
+                Attend a Free Class
+              </Link>
+            </button>
           </div>
 
           {/* Right side with image */}
