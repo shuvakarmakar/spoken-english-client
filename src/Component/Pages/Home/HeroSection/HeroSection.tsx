@@ -9,7 +9,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div>
+    <div className="md:mt-20">
       <div className="max-w-6xl m-7 mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1  md:grid-cols-2 gap-4 md:gap-8">
           <div data-aos="fade-right">

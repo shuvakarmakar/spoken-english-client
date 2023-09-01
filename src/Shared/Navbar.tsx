@@ -21,6 +21,15 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const navItems = (
+    <>
+      <li><NavLink to="/" className={({ isActive }) => (isActive ? "active" : "default")}>Home</NavLink></li>
+      <li><NavLink to="/Connect" className={({ isActive }) => (isActive ? "active" : "default")}>Connect</NavLink></li>
+      <li><NavLink to="/freelivelessons" className={({ isActive }) => (isActive ? "active" : "default")}>Free Live Lesson </NavLink></li>
+      <li><NavLink to="/all-premium-courses" className={({ isActive }) => (isActive ? "active" : "default")}>All Premium Courses</NavLink></li>
+    </>
+  );
+
   return (
     <div className="bg-gray-100 px-4 py-5 w-full md:px-24 lg:px-8">
       <div className="relative flex items-center justify-between">
@@ -33,68 +42,18 @@ const Navbar = () => {
         </Link>
 
         {/* Nav Items Section */}
-        <ul className="items-center font-mono hidden space-x-8 lg:flex">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/Connect"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Connect
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/freelivelessons"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Free Live Lesson
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/all-premium-courses"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              All Premium Courses
-            </NavLink>
-          </li>
+        <ul className="items-center font-sans hidden space-x-8 lg:flex">
+          {navItems}
+
           {user && (
-            <li>
-              <NavLink
-                to="/dictionary"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Dictionary
-              </NavLink>
+            <li><NavLink to="/dictionary" className={({ isActive }) => (isActive ? "active" : "default")}>Dictionary</NavLink>
             </li>
           )}
 
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
-            <>
-              <li>
-                <Link
-                  to="/SignUp"
-                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Sign Up
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/Login"
-                  className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >
-                  Login
-                </Link>
+            <><li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link></li>
+              <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
               </li>
             </>
           ) : (
@@ -155,54 +114,10 @@ const Navbar = () => {
                 </div>
                 <nav>
                   <ul className="space-y-4">
-                    <li>
-                      <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
-                      >
-                        Home
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/Connect"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
-                      >
-                        Connect
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/freelivelessons"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
-                      >
-                        Free Live Lesson
-                      </NavLink>
-                    </li>
-                    <li>
-                      <NavLink
-                        to="/all-premium-courses"
-                        className={({ isActive }) =>
-                          isActive ? "active" : "default"
-                        }
-                      >
-                        All Premium Courses
-                      </NavLink>
-                    </li>
+                    {navItems}
+
                     {user && (
-                      <li>
-                        <NavLink
-                          to="/dictionary"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
+                      <li><NavLink to="/dictionary" className={({ isActive }) => isActive ? "active" : "default"}>
                           Dictionary
                         </NavLink>
                       </li>
@@ -212,21 +127,9 @@ const Navbar = () => {
                     {!user ? (
                       <>
                         <div className="flex">
-                          <li>
-                            <Link
-                              to="/SignUp"
-                              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            >
-                              Sign Up
-                            </Link>
+                          <li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link>
                           </li>
-                          <li>
-                            <Link
-                              to="/Login"
-                              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            >
-                              Login
-                            </Link>
+                          <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
                           </li>
                         </div>
                       </>

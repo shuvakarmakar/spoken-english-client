@@ -44,7 +44,7 @@ const PopularCourse: React.FC = () => {
   return (
     <div className="bg-[#F1F5F9] pb-4">
       <section className="flex items-center justify-between py-5 w-[96%] md:w-[90%] mx-auto">
-        <p className="text-2xl">Popular Courses</p>
+        <p className="text-2xl font-bold">Popular Courses</p>
         <Link to={`/all-courses`} className="PupularCourseButton">
           View All
         </Link>

@@ -10,21 +10,27 @@ const Process = () => {
 
   return (
     <div
-      className="bg-cover bg-no-repeat mt-10 flex justify-center items-center min-h-screen"
+      className="bg-cover bg-no-repeat mt-10 flex justify-center items-center min-h-screen bg-opacity-70 bg-black" // Add background styles
       style={{
-        backgroundImage: `url("https://i.ibb.co/mTvMy4T/abstract-blue-circle-black-background-technology-1142-12714.jpg")`,
+        backgroundImage: `url("https://i.ibb.co/FzDJkXy/image.png")`,
       }}
     >
       <div className="max-w-6xl mx-auto px-4 md:px-8">
-        <h1 className="text-3xl md:text-5xl text-center my-6 text-gray-50 font-extrabold">
-          How It Works
-        </h1>
+        <div className="bg-slate-700">
+          <h1
+            className="text-3xl md:text-4xl text-center my-10 text-gray-50 font-bold"
+            data-aos="fade-up" // Add AOS effect to the heading
+          >
+            How It Works
+          </h1>
+        </div>
 
         {/* Icons */}
         <div
-          data-aos="flip-down"
+          data-aos="fade-up" // Add AOS effect to the container
           className="grid gap-5 md:gap-8 md:grid-cols-3"
         >
+          {/* Icon 1 */}
           <div className="text-blue-700 text-center shadow-xl rounded-lg bg-white p-4 md:p-8 transition duration-300 hover:bg-blue-100">
             <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
               <FaDesktop />
@@ -33,6 +39,8 @@ const Process = () => {
               Join a Course
             </h3>
           </div>
+
+          {/* Icon 2 */}
           <div className="text-blue-700 text-center shadow-xl rounded-lg bg-white p-4 md:p-8 transition duration-300 hover:bg-blue-100">
             <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
               <FaBookReader />
@@ -41,6 +49,8 @@ const Process = () => {
               Study, Practice and Review
             </h3>
           </div>
+
+          {/* Icon 3 */}
           <div className="text-blue-700 text-center shadow-xl rounded-lg bg-white p-4 md:p-8 transition duration-300 hover:bg-blue-100">
             <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
               <FaFacebookMessenger />
