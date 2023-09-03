@@ -1,55 +1,84 @@
-import React from "react";
-import bannervideo from "../../../../assets/animation_llvau3zl.mp4";
-import { Link } from "react-router-dom";
 
-const Banner1: React.FC = () => {
+
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import "./Banner.css";
+
+// import required modules
+import { EffectFade,Autoplay, Pagination } from "swiper/modules";
+import { Link } from "react-router-dom";
+const Banner1 = () => {
   return (
     <>
-      <div
-        className="bg-cover bg-no-repeat  flex justify-center md:pt-8 items-center min-h-screen"
-        style={{
-          backgroundImage: `url('https://i.ibb.co/NLJ7BHj/bgimage.jpg')`,
-        }}
-      >
-        <div className="flex flex-col md:flex-row max-w-6xl mx-auto px-4 md:px-8">
-          {/* Left side with text */}
-          <div className="md:w-1/2 text-white md:py-16">
-            <h1 className="text-4xl font-sans md:text-5xl font-bold mb-4 md:mb-6 leading-tight">
-              Learn Spoken English
-            </h1>
-            <h3 className="text-lg md:text-2xl font-semibold mb-4 md:mb-6">
-              Improve Your Communication Skills
-            </h3>
-            <p className="text-sm md:text-lg mb-8">
-              Join our courses to enhance your spoken English proficiency and
-              gain confidence in conversations.
-            </p>
-            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-              <Link
-                to="/freelivelessons"
-                className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-              >
-                Attend a Free Class
-              </Link>
-            </button>
-          </div>
+      <div className=" relative">
+        <Swiper
+          spaceBetween={30}
+          effect={"fade"}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[EffectFade, Autoplay, Pagination]}
+          className="mySwiper md:h-[650px] "
+        >
+          <SwiperSlide>
+            <img src="https://plus.unsplash.com/premium_photo-1683887034473-74e486cdb7a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://media.istockphoto.com/id/1419580307/photo/students-walking-on-the-university-campus.jpg?s=612x612&w=0&k=20&c=DPTfhcehBeiINfFiEIaldBhjqn4Isf8p1d_twUJRVkk=
+"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" />
+          </SwiperSlide>
+        </Swiper>
 
-          {/* Right side with image */}
-          <div className="md:w-1/2 shadow-2xl   mt-4 md:mt-0">
-            <video
-              src={bannervideo}
-              autoPlay
-              loop
-              muted
-              className="md:w-full md:h-96 text-center  rounded-lg w-auto h-60"
-            >
-              Your browser does not support the video tag.
-            </video>
+        <div className=" absolute banner-bg w-full top-0 z-10 h-full">
+          <div className="md:flex  justify-center items-center  h-full md:px-[5%]">
+            {/* Left side with text */}
+            <div className=" w-full text-white md:py-16 p-10">
+              <h1 className="text-2xl md:text-7xl font-bold mb-4 md:mb-6 md:leading-snug leading-8 md:text-center md:mt-[-50px] font-serif  ">
+                We are Provide The best spoken english learning environment.
+              </h1>
+              <h3 className=" mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex">
+                Join our courses to enhance your spoken English proficiency and
+                gain confidence in conversations.
+                 animi ea non nemo inventore fuga aliquid eligendi suscipit praesentium ratione repudiandae id et earum labore neque
+              </h3>
+             
+              <div className="md:flex justify-center mt-7 items-center md:mt-20">
+                <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                  <Link
+                    to="/freelivelessons"
+                    className="relative md:px-20 px-4 py-2.5 transition-all ease-in duration-75 uppercase text-white rounded-md group-hover:bg-opacity-0"
+                  >
+                    Free Classes
+                  </Link>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 };
+
 
 export default Banner1;
