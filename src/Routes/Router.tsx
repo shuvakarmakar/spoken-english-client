@@ -148,7 +148,9 @@ export const router = createBrowserRouter([
         path: "blog/:id",
         element: <BlogDetails></BlogDetails>,
         loader: ({ params }) =>
-          fetch(`https://spoken-english-server.vercel.app/blog/${params.id}`),
+          fetch(
+            ` https://spoken-english-server-xi.vercel.app/blog/${params.id}`
+          ),
       },
       {
         path: "all-blogs",
@@ -261,11 +263,10 @@ export const router = createBrowserRouter([
 
   // connect pages
   {
-   path: "/Connect",
+    path: "/Connect",
     element: <PTPCommunication></PTPCommunication>,
-        
+
     children: [
-      
       {
         path: "/Connect/Friend",
         element: <Friends></Friends>,

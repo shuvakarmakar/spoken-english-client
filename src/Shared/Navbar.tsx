@@ -111,7 +111,7 @@ const Navbar = () => {
               </div>
             </li>
           )}
-        u</ul>
+        </ul>
 
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
@@ -128,7 +128,7 @@ const Navbar = () => {
             )}
           </button>
           {isMenuOpen && (
-            <div className="absolute top-0 left-0 w-full z-10">
+            <div className="absolute top-0 left-0 w-full z-20">
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
