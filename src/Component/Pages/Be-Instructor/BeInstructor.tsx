@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
 
@@ -8,6 +9,9 @@ const BeInstructor: React.FC = () => {
   const toggleForm = () => {
     setShowForm(!showForm);
   };
+
+  const { t } = useTranslation();
+
   // https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png
   return (
     <div className="bg-slate-100">
@@ -33,12 +37,10 @@ const BeInstructor: React.FC = () => {
       <div className=" mx-auto py-8  md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
         <div className=" md:w-[50%] w-full">
           <h2 className="md:text-4xl text-2xl font-bold mb-4 ">
-            Become an Instructor
+            {t('beInstructor.title')}
           </h2>
           <p className="text-gray-600 mb-4 text-sm leading-7">
-            Would you like to expand your experience in English sector? Do you
-            want to share your knowledge with Student and working professionals?
-            If so, we would love to hire you as an instructor
+            {t('beInstructor.description')}
           </p>
 
           <NavLink to={"/applyInstructor"}>
@@ -46,7 +48,7 @@ const BeInstructor: React.FC = () => {
               className="bg-blue-500 text-white px-4 py-2 mt-5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
               onClick={toggleForm}
             >
-              Apply Now
+              {t('beInstructor.buttonText')}
             </button>
           </NavLink>
         </div>

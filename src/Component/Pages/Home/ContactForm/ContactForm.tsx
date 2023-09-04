@@ -3,7 +3,9 @@ import Swal from "sweetalert2";
 import emailjs from "@emailjs/browser";
 // import contactbg from "../../../../assets/contactusbg.avif";
 import { BiPhoneCall } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 const ContactForm: React.FC = () => {
+  const { t } = useTranslation();
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -47,42 +49,42 @@ const ContactForm: React.FC = () => {
         <p>
           <BiPhoneCall className={"w-8 h-8 text-orange-500"}></BiPhoneCall>{" "}
         </p>{" "}
-        <h2 className="text-2xl font-bold text-white mb-4"> Lets Talk</h2>
+        <h2 className="text-2xl font-bold text-white mb-4"> {t("contactForm.title")}</h2>
       </div>
       <form ref={form} onSubmit={sendEmail}>
         <div className="mb-4">
           <label className="block text-white text-sm font-bold mb-2">
-            Name
+            {t("contactForm.nameLabel")}
           </label>
           <input
             className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
             type="text"
             name="user_name"
-            placeholder="Your Name"
+            placeholder={t("contactForm.namePlaceholder")}
             required
           />
         </div>
         <div className="mb-4">
           <label className="block text-white text-sm font-bold mb-2">
-            Email
+            {t("contactForm.emailLabel")}
           </label>
           <input
             className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
             type="email"
             name="user_email"
-            placeholder="Your Email"
+            placeholder={t("contactForm.emailPlaceholder")}
             required
           />
         </div>
         <div className="mb-4">
           <label className="block text-white text-sm font-bold mb-2">
-            Message
+            {t("contactForm.messageLabel")}
           </label>
           <textarea
             className="w-full p-1 bg-slate-200 border rounded focus:outline-none focus:border-blue-500"
             name="message"
             rows={4}
-            placeholder="Your Message"
+            placeholder={t("contactForm.messagePlaceholder")}
             required
           />
         </div>
@@ -90,7 +92,7 @@ const ContactForm: React.FC = () => {
           className="w-full btn btn-outline btn-primary hover:bg-white hover:text-blue-900 text-white py-2 px-4 rounded transition duration-300"
           type="submit"
         >
-          Send
+          {t("contactForm.submitButton")}
         </button>
       </form>
     </div>
