@@ -6,10 +6,10 @@ const Footer = () => {
   return (
     <div>
       <div
-        className="bg-cover bg-no-repeat flex border-b-2 justify-center items-center h-96"
+        className="bg-cover bg-no-repeat flex border-b-2 justify-center items-center h-96" 
         style={{ backgroundImage: `url(${footerbg})` }}
       >
-        <footer className="footer   grid md:grid-cols-3   p-10  text-white ">
+        <footer className="footer   grid md:grid-cols-3   p-10  text-white changebg">
           <div className="mb-6 md:mb-0">
             <div>
               <h1 className="text-3xl md:text-5xl text-white">

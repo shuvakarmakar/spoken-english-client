@@ -37,8 +37,8 @@ const Blogs: React.FC = () => {
 
   return (
     <>
-      <div className=" bg-slate-100">
-        <div style={{ overflow: "hidden" }}>
+      <div className=" bg-slate-100 changebg">
+        <div style={{ overflow: "hidden" }} className="changebg">
           <svg
             preserveAspectRatio="none"
             viewBox="0 0 1200 120"
@@ -48,7 +48,7 @@ const Blogs: React.FC = () => {
             <path d="M1200 120L0 16.48V0h1200v120z" />
           </svg>
         </div>
-        <div className=" bg-slate-100 px-4 md:px-8 lg:px-16">
+        <div className=" bg-slate-100 px-4 md:px-8 lg:px-16 changebg">
           <section className="title flex  justify-center items-center gap-5 py-4 md:py-7">
             <p className="text-5xl md:text-6xl font-bold">BLOGS</p>
           </section>
@@ -61,7 +61,7 @@ const Blogs: React.FC = () => {
                     className="mb-8 md:mb-12 relative border px-2 md:w-[700px] shadow-md"
                   >
                     <div className="grid grid-cols-1  gap-2  ">
-                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border ">{blog.blog_name}</p>
+                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">{blog.blog_name}</p>
                       <img src={blog.image} alt="" className="w-full md:h-[450px]  mt-5" />
                       <p className="font-sm text-justify mt-5 p-4 leading-7  font-serif">
                         {blog.blog_short_description}
@@ -83,7 +83,7 @@ const Blogs: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex justify-center  px-10">
+            <div className="flex justify-center  px-10 ">
               <Link to={"/all-blogs"} className="blogsBtn px-10 py-2">
                 View More
               </Link>
