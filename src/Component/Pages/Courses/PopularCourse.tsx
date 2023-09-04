@@ -3,6 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import { FaUsers } from "react-icons/fa";
 import "./PSstyle.css";
+import { useTranslation } from "react-i18next";
 
 interface Course {
   _id: string;
@@ -13,6 +14,8 @@ interface Course {
 }
 
 const PopularCourse: React.FC = () => {
+  const { t } = useTranslation();
+
   const [popularCourses, setPopularCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -55,9 +58,9 @@ const PopularCourse: React.FC = () => {
       </div>
       <div className="bg-[#F1F5F9] pb-4 changebg">
         <section className="flex items-center justify-between py-5 w-[96%] md:w-[90%] mx-auto">
-          <p className="text-xl md:text-2xl font-bold">Popular Courses</p>
+          <p className="text-xl md:text-2xl font-bold">{t("popularCourse.title")}</p>
           <Link to={`/all-courses`} className="PupularCourseButton darkText">
-            View All
+            {t("popularCourse.viewAll")}
           </Link>
         </section>
         <section className="w-[96%] md:w-[90%] mx-auto">
@@ -85,7 +88,7 @@ const PopularCourse: React.FC = () => {
                     to={`course-details/${pc._id}`}
                     className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
                   >
-                    Course Details
+                    {t("popularCourse.courseDetails")}
                   </Link>
                 </button>
               </div>

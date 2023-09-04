@@ -2,8 +2,11 @@ import { FaDesktop, FaBookReader, FaFacebookMessenger } from "react-icons/fa";
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useTranslation } from 'react-i18next';
 
 const Process = () => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     AOS.init(); // Initialize AOS library
   }, []);
@@ -26,22 +29,19 @@ const Process = () => {
         </svg>
       </div>
 
-      <div
-        className="" // Add background styles
-      >
+      <div className="">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
           <div className="mb-10">
             <h1
               className="text-3xl md:text-4xl text-center mt-20 mb-[100px]  uppercase font-bold"
-              data-aos="fade-up " // Add AOS effect to the heading
+              data-aos="fade-up"
             >
-              How It Works
+              {t('process.howItWorks')}
             </h1>
           </div>
 
-          {/* Icons */}
           <div
-            data-aos="fade-up" // Add AOS effect to the container
+            data-aos="fade-up"
             className="grid gap-5 md:gap-8 md:grid-cols-3"
           >
             {/* Icon 1 */}
@@ -50,7 +50,7 @@ const Process = () => {
                 <FaDesktop />
               </div>
               <h3 className="text-base md:text-xl mt-2 md:mt-3  uppercase">
-                Join a Course
+                {t('process.joinCourse')}
               </h3>
             </div>
 
@@ -60,7 +60,7 @@ const Process = () => {
                 <FaBookReader />
               </div>
               <h3 className="text-base md:text-xl mt-2 md:mt-3 text-blue-700 uppercase">
-                Study, Practice and Review
+                {t('process.studyPracticeReview')}
               </h3>
             </div>
 
@@ -70,7 +70,7 @@ const Process = () => {
                 <FaFacebookMessenger />
               </div>
               <h3 className="text-base md:text-xl mt-2 md:mt-3 text-blue-700 uppercase">
-                Speak Confidently
+                {t('process.speakConfidently')}
               </h3>
             </div>
           </div>

@@ -13,9 +13,11 @@ import "swiper/css/pagination";
 import "./Banner.css";
 
 // import required modules
-import { EffectFade,Autoplay, Pagination } from "swiper/modules";
+import { EffectFade, Autoplay, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 const Banner1 = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className=" relative">
@@ -52,23 +54,20 @@ const Banner1 = () => {
         <div className=" absolute banner-bg w-full top-0 z-10 h-full">
           <div className="md:flex  justify-center items-center  h-full md:px-[5%]">
             {/* Left side with text */}
-            <div className=" w-full text-white md:py-16 p-10">
+            <div className="w-full text-white md:py-16 p-10">
               <h1 className="text-2xl md:text-7xl font-bold mb-4 md:mb-6 md:leading-snug leading-8 md:text-center md:mt-[-50px] font-serif  ">
-                We are Provide The best spoken english learning environment.
+                {t('banner1.title')}
               </h1>
-              <h3 className=" mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex">
-                Join our courses to enhance your spoken English proficiency and
-                gain confidence in conversations.
-                 animi ea non nemo inventore fuga aliquid eligendi suscipit praesentium ratione repudiandae id et earum labore neque
+              <h3 className="mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex">
+                {t('banner1.description')}
               </h3>
-             
               <div className="md:flex justify-center mt-7 items-center md:mt-20">
                 <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                   <Link
                     to="/freelivelessons"
                     className="relative md:px-20 px-4 py-2.5 transition-all ease-in duration-75 uppercase text-white rounded-md group-hover:bg-opacity-0"
                   >
-                    Free Classes
+                    {t('banner1.buttonText')}
                   </Link>
                 </button>
               </div>
