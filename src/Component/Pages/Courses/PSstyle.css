@@ -9,10 +9,15 @@
     padding: 0.4em 1.2em;
     font-size: 18px;
     border-radius: 0.5em;
-    background: transparent;
+    background: #090909;
     border: 1px solid #e8e8e8;
-    box-shadow: 6px 6px 12px #c5c5c5,
-               -6px -6px 12px #ffffff;
+  color: wheat;
+  }
+
+  @media screen and (max-width:350px){
+    .PupularCourseButton{
+      padding: .2em ,6em;
+    }
   }
   
   .PupularCourseButton:active {

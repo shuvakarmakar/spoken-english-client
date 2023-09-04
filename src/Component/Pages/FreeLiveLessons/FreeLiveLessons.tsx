@@ -4,17 +4,15 @@ import imageLession from '../../../assets/Live-Lesson-Categories.png'
 
 const FreeLiveLessons = () => {
     return (
-        <div>
+        <div className='changebg'>
             <div
-                className='flex flex-col items-center justify-center p-4 md:p-10 shadow-md'
-                style={{
-                    background: 'linear-gradient(to bottom, white, skyblue)',
-                }}
+                className='flex flex-col items-center justify-center p-4 md:p-10 shadow-md banner-bg darkText'
+              
             >
-                <h1 className='text-center text-5xl text-black font-semibold mt-6 md:mt-12'>
+                <h1 className='text-center text-5xl text-black font-semibold mt-6 md:mt-12 darkText'>
                     Speaking FREE Live Lessons!
                 </h1>
-                <h3 className='text-center text-2xl my-4 md:my-6 text-black font-medium'>
+                <h3 className='text-center text-2xl my-4 md:my-6 text-black font-medium darkText'>
                     Here is the Latest Live Lesson
                 </h3>
                 <div className='text-center'>
@@ -30,16 +28,16 @@ const FreeLiveLessons = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-gray-100 lg:p-10'>
+            <div className='bg-gray-100 lg:p-10 changebg'>
                 <div className='container mx-auto px-6 flex flex-col md:flex-row'>
                     <div className='md:w-1/2 md:pr-6'>
-                        <h3 className='text-center text-2xl my-6 text-black font-medium'>The Speaking Academy offers</h3>
-                        <p className='text-center text-lg text-gray-800'>
+                        <h3 className='text-center text-2xl my-6 text-black font-medium darkText'>The Speaking Academy offers</h3>
+                        <p className='text-center text-lg text-gray-800 darkText'>
                             FREE live lessons on lots of different topics.
                         </p>
                     </div>
                     <div className='md:w-1/2 md:pl-6'>
-                        <p className='text-lg text-gray-800'>
+                        <p className='text-lg text-gray-800 darkText'>
                             In the lessons, we choose a popular topic and then look at:
                         </p>
                         <ul className='mt-4 list-disc list-inside text-gray-800'>
@@ -54,13 +52,13 @@ const FreeLiveLessons = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-gray-100 p-10'>
-                <h3 className='text-center text-3xl text-black font-bold'>More Free Speaking Lessons</h3>
+            <div className='bg-gray-100 p-10 changebg'>
+                <h3 className='text-center text-3xl text-black font-bold darkText'>More Free Speaking Lessons</h3>
                 <div className='flex justify-center mt-4'>
                     <img src={imageLession} alt='More Free Speaking Lessons' className='mx-auto my-10' />
                 </div>
             </div>
-            <div className='bg-gray-100 p-10'>
+            <div className='bg-gray-100 p-10 changebg'>
                 <div className='flex flex-col md:flex-row justify-center md:space-x-2 px-6 md:px-10'>
                     <div className='mb-4 md:mb-0'>
                         <iframe
@@ -93,17 +91,17 @@ const FreeLiveLessons = () => {
                         ></iframe>
                     </div>
                 </div>
-                <div className='flex justify-center mt-10'>
-                    <Link to='/free-videos' className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded'>
+                <div className='flex justify-center mt-10'> 
+                    <Link to='/free-videos' className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded '>
                         View More Videos
                     </Link>
                 </div>
             </div>
-            <div className='bg-gray-100 lg:p-8 md:p-6'>
+            <div className='bg-gray-100 lg:p-8 md:p-6 changebg darkText'>
                 <div className='container mx-auto px-6 flex flex-col md:flex-row'>
                     <div className='md:w-1/2 md:pr-6'>
-                        <h3 className='text-2xl my-6 text-black font-bold'>Learning Vocabulary for Speaking</h3>
-                        <p className='text-black'>
+                        <h3 className='text-2xl my-6 text-black font-bold darkText'>Learning Vocabulary for Speaking</h3>
+                        <p className='text-black darkText'>
                             Learning Vocabulary for Speaking" is a cornerstone of effective communication. With an extensive vocabulary, you can convey ideas clearly, engage listeners, and express emotions accurately. It empowers you to choose words that resonate with your audience, making your speech more captivating and impactful.
 
                             Furthermore, a robust vocabulary enhances your storytelling prowess. You can paint vivid pictures with words, immersing your listeners in narratives that leave a lasting impression. This skill is valuable not only in casual conversations but also in public speaking, presentations, and interviews.

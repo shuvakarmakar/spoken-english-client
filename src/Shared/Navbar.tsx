@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Bars3BottomRightIcon,
@@ -10,6 +10,8 @@ import {
   AuthContext,
   AuthContextType,
 } from "../Provider/AuthProvider/AuthProvider";
+import { FiSun, FiMoon } from 'react-icons/fi';
+
 
 const Navbar = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
@@ -30,15 +32,40 @@ const Navbar = () => {
     </>
   );
 
+  // DarkMode 
+
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Check if dark mode is already enabled in local storage
+    const storedDarkMode = localStorage.getItem('darkMode');
+    if (storedDarkMode === 'true') {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', String(newDarkMode));
+
+    // Add or remove the 'dark-mode' class from the body
+    if (newDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  };
+
 
 
   return (
-    <div className="bg-gray-100 px-4 py-5 w-full md:px-24 lg:px-8">
+    <div className="bg-gray-100 px-4 py-5 w-full md:px-24 lg:px-8 changebg">
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
           <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800">
+          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
         </Link>
@@ -113,6 +140,13 @@ const Navbar = () => {
           )}
         </ul>
 
+        <button
+          className=" focus:outline-none"
+          onClick={toggleDarkMode}
+        >
+          {isDarkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
+        </button>
+
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
           {/* Dropdown Open Button */}
@@ -122,19 +156,19 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-gray-600" />
+              <XMarkIcon className="w-5 text-white font-bold text-lg" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-gray-600" />
+              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
             )}
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 left-0 w-full z-20">
-              <div className="p-5 bg-white border rounded shadow-sm">
+              <div className="p-5 bg-white border rounded shadow-sm darkText changebg">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link to="/" className="inline-flex items-center">
                       <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase darkText">
                         ELearner
                       </span>
                     </Link>
