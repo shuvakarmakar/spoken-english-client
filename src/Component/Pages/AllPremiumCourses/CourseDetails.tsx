@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
+import ReviewCourses from "./ReviewCourses";
+
 interface Course {
   _id: string;
   imageURL: string;
@@ -26,12 +28,15 @@ const CourseDetails: React.FC = () => {
   const [course, setCourse] = useState<Course | null>(null);
 
   useEffect(() => {
+    // Fetch course details by courseId
     fetch(`https://spoken-english-server-xi.vercel.app/course/${id}`)
       .then((response) => response.json())
       .then((data) => setCourse(data))
       .catch((error) => console.error("Error fetching course details:", error));
-  }, [id]);
 
+    // Fetch reviews by course name
+    [id];
+  });
   if (!course) {
     return <div>Loading...</div>;
   }
@@ -46,19 +51,13 @@ const CourseDetails: React.FC = () => {
   };
   console.log(enrollmentData);
 
-
-
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">
         {course.courseName}
       </h1>
       <div className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
-        <img
-          src={course.imageURL}
-          alt={course.courseName}
-          className="w-full h-auto mb-4"
-        />
+        <img src={course.imageURL} className="w-full h-auto mb-4" />
         <p className="text-gray-600 mb-4">{course.courseDetails}</p>
         <p className="font-bold text-xl text-black mb-2">
           Price: ${course.price}
@@ -75,6 +74,8 @@ const CourseDetails: React.FC = () => {
           </Link>
         </div>
       </div>
+
+      <ReviewCourses />
     </div>
   );
 };

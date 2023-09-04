@@ -14,8 +14,8 @@ const BeInstructor: React.FC = () => {
 
   // https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png
   return (
-    <div className="bg-slate-100">
-      <div style={{ overflow: "hidden" }}>
+    <div className="bg-slate-100 ">
+      <div style={{ overflow: "hidden" }} className="changebg">
         <svg
           preserveAspectRatio="none"
           viewBox="0 0 1200 120"
@@ -34,12 +34,12 @@ const BeInstructor: React.FC = () => {
         </svg>
       </div>
 
-      <div className=" mx-auto py-8  md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
+      <div className="changebg mx-auto py-8  md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
         <div className=" md:w-[50%] w-full">
           <h2 className="md:text-4xl text-2xl font-bold mb-4 ">
             {t('beInstructor.title')}
-          </h2>
-          <p className="text-gray-600 mb-4 text-sm leading-7">
+          </h2> 
+          <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
             {t('beInstructor.description')}
           </p>
 

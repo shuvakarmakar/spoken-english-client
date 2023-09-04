@@ -22,10 +22,10 @@ const Login: React.FC = () => {
   // Login form
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-   const form = event.target as HTMLFormElement;
-   const formData = new FormData(form);
-   const email = formData.get("Email") as string;
-   const password = formData.get("password") as string;
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const email = formData.get("Email") as string;
+    const password = formData.get("password") as string;
 
     const user: User = {
       email,
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
       Swal.fire("Good job!", "Login Success", "success");
       form.reset();
     } catch (err) {
-    const errorMessage = (err as Error).message;
+      const errorMessage = (err as Error).message;
       if (errorMessage) {
         Swal.fire({
           icon: "error",
@@ -95,99 +95,98 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-vector/flat-design-english-school-background_23-2149487419.jpg?w=900&t=st=1691483418~exp=1691484018~hmac=d182892b644c56375411345c1801fa9b48ba34d7e42f7ff2badde3e9e5dd9397)",
-          width: "100%",
-          height: "100%",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-neutral-content">
-          <div className="w-full md:w-[600px] ">
-            <form
-              onSubmit={handleSubmit}
-              className="w-[350px] md:w-[600px] bg-white p-3 md:p-20 rounded shadow-lg"
-            >
-              <div className="flex justify-between">
-                <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
-                  Log In{" "}
-                </h2>
-                <Link to={"/SignUp"}>
-                  <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
-                    Sign Up{" "}
-                  </h2>
-                </Link>
-              </div>
-              {/* Email */}
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className=" block text-gray-700 font-medium mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  required
-                  id="Email"
-                  name="Email"
-                  ref={passRef}
-                  className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                  placeholder="Your Email"
-                />
-              </div>
-              {/* password */}
-              <div className="mb-4 relative">
-                <label
-                  htmlFor="password"
-                  className="block text-gray-700 font-medium mb-1"
-                >
-                  Password
-                </label>
-                <input
-                  type={show ? "text" : "password"}
-                  id=" password"
-                  name="password"
-                  required
-                  className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
-                  placeholder="Your password"
-                />
-
-                <p
-                  onClick={() => setShow(!show)}
-                  className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
-                >
-                  {show ? "hide" : "Show"}
-                </p>
-                {error && (
-                  <small
-                    onClick={handelResetPassword}
-                    className="text-pink-500 link "
-                  >
-                    Rest Password..?
-                  </small>
-                )}
-              </div>
-
-              {/* Add other input fields */}
-              <button
-                onClick={handleButtonClick}
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
+    <div className="w-[96%] md:w-[90%] mx-auto ">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="changebg">
+          <img className="w-full h-[75vh]"  src="https://lottie.host/?file=0eac5c46-09ea-4503-ad57-418b416e2f6b/OmQhRwCcfM.json"/>
+        </div>
+        <div
+          className="hero  h-full changebg">
+          <div className=""></div>
+          <div className="hero-content text-neutral-content">
+            <div className="w-full  h-full">
+              <form
+                onSubmit={handleSubmit}
+                className="w-full h-full cardbg  bg-white p-3 md:p-20 rounded shadow-lg"
               >
-                Login
-              </button>
+                <div className="flex justify-between">
+                  <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
+                    Log In{" "}
+                  </h2>
+                  <Link to={"/SignUp"}>
+                    <h2 className="text-2xl font-semibold mb-4 uppercase hover:text-blue-500">
+                      Sign Up{" "}
+                    </h2>
+                  </Link>
+                </div>
+                {/* Email */}
+                <div className="mb-4">
+                  <label
+                    htmlFor="email"
+                    className=" block text-gray-700 font-medium mb-1"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    id="Email"
+                    name="Email"
+                    ref={passRef}
+                    className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+                    placeholder="Your Email"
+                  />
+                </div>
+                {/* password */}
+                <div className="mb-4 relative">
+                  <label
+                    htmlFor="password"
+                    className="block text-gray-700 font-medium mb-1"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type={show ? "text" : "password"}
+                    id=" password"
+                    name="password"
+                    required
+                    className="w-full border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
+                    placeholder="Your password"
+                  />
 
-              <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
-            </form>
+                  <p
+                    onClick={() => setShow(!show)}
+                    className=" absolute top-8 right-5 font-bold cursor-pointer hover:text-blue-500 "
+                  >
+                    {show ? "hide" : "Show"}
+                  </p>
+                  {error && (
+                    <small
+                      onClick={handelResetPassword}
+                      className="text-pink-500 link "
+                    >
+                      Rest Password..?
+                    </small>
+                  )}
+                </div>
+
+                {/* Add other input fields */}
+                <button
+                  onClick={handleButtonClick}
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded w-full"
+                >
+                  Login
+                </button>
+
+                <SocialLogin handleButtonClick={handleButtonClick}></SocialLogin>
+              </form>
+            </div>
           </div>
         </div>
       </div>
+
+
     </div>
   );
 };

@@ -44,7 +44,8 @@ const Process = () => {
             data-aos="fade-up"
             className="grid gap-5 md:gap-8 md:grid-cols-3"
           >
-            <div className="text-blue-700 text-center shadow-xl border rounded-lg bg-slate-100 p-4 md:p-8 transition duration-300 hover:bg-blue-100">
+            {/* Icon 1 */}
+            <div className="changebg text-blue-700 text-center shadow-xl border rounded-lg bg-slate-100 p-4 md:p-8 transition duration-300 hover:bg-blue-100">
               <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
                 <FaDesktop />
               </div>
@@ -53,7 +54,8 @@ const Process = () => {
               </h3>
             </div>
 
-            <div className="text-blue-700 text-center shadow-xl rounded-lg bg-slate-100  p-4 md:p-8 transition duration-300 hover:bg-blue-100 border">
+            {/* Icon 2 */}
+            <div className="changebg text-blue-700 text-center shadow-xl rounded-lg bg-slate-100  p-4 md:p-8 transition duration-300 hover:bg-blue-100 border">
               <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
                 <FaBookReader />
               </div>
@@ -62,7 +64,8 @@ const Process = () => {
               </h3>
             </div>
 
-            <div className="text-blue-700 text-center shadow-xl border rounded-lg bg-slate-100  p-4 md:p-8 transition duration-300 hover:bg-blue-100">
+            {/* Icon 3 */}
+            <div className=" changebg text-blue-700 text-center shadow-xl border rounded-lg bg-slate-100  p-4 md:p-8 transition duration-300 hover:bg-blue-100">
               <div className="w-20 md:w-36 h-20 md:h-36 mx-auto text-3xl md:text-7xl flex justify-center items-center rounded-full bg-blue-100 transition duration-300 hover:bg-blue-200 shadow-md">
                 <FaFacebookMessenger />
               </div>
