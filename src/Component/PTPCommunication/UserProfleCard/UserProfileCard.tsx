@@ -17,9 +17,7 @@ interface UserProfileCardProps {
 }
 
 const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
-  const { user, onlineUsers } = useContext(
-    AuthContext
-  ) as AuthContextType;
+  const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
 
   // const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
   //   {}
@@ -50,23 +48,21 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
 
   // Check if the connected user's online status is true
   const isUserOnline = onlineUsers[student.uid] === true;
-// const isUserOnline = onlineUsers.some((user) => user.uid === student.uid);
+  // const isUserOnline = onlineUsers.some((user) => user.uid === student.uid);
 
-// user profile view
-  
+  // user profile view
+
   const [showModal, setShowModal] = useState(false);
-   const [id,SetId]=useState<number>(0)
+  const [id, SetId] = useState<number>(0);
 
   const openModal = (id: number) => {
-      SetId(id)
-     setShowModal(true);
-   };
+    SetId(id);
+    setShowModal(true);
+  };
 
-   const closeModal = () => {
-     setShowModal(false);
-   };
-
-
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
@@ -98,10 +94,15 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           </p>
         </div>
         <div className="mt-4 flex justify-between">
-          <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
-            Call
-          </button>
-          <Link to={'/messaging'} state={{ MyId:user?.uid, userId: student?.uid }}>
+          <Link to="/connect/calling">
+            <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
+              Call
+            </button>
+          </Link>
+          <Link
+            to={"/messaging"}
+            state={{ MyId: user?.uid, userId: student?.uid }}
+          >
             <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
               Message
             </button>
