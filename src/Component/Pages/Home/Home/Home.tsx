@@ -40,8 +40,7 @@ const Home = () => {
       <PopularCourse></PopularCourse>
       <Process />
 
-      {/* Button to open the popup */}
-      <button onClick={openPopup}>Open Popup</button>
+
 
       {/* Popup */}
       <div
