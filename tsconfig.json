@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-     "types": ["vite/client", "aos"],
-     "noEmitOnError": false,
+    "types": ["vite/client", "aos", "jest", "@testing-library/jest-dom"],
+    "noEmitOnError": false,
     "jsx": "react",
     "target": "ES2020",
     "useDefineForClassFields": true,

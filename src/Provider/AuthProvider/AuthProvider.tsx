@@ -29,7 +29,6 @@ export interface AuthContextType {
   onlineUsers: { [key: string]: boolean };
 }
 
-
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
@@ -105,31 +104,32 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     // Your button's click handler logic
   };
 
+  const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+  // get online connected user
+  useEffect(() => {
+    const socket = io("https://amused-assorted-bar.glitch.me/");
 
-const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>({});
-  // get online connected user  
-   useEffect(() => {
-     const socket = io("https://amused-assorted-bar.glitch.me/");
+    if (user) {
+      socket.emit("userConnect", { userId: user.uid });
 
-     if (user) {
-       socket.emit("userConnect", { userId: user.uid });
+      socket.on(
+        "onlineUsers",
+        (updatedOnlineUsers: { [key: string]: boolean }) => {
+          console.log(updatedOnlineUsers, "connected");
+          setOnlineUsers(updatedOnlineUsers);
+        }
+      );
+    }
 
-       socket.on(
-         "onlineUsers",
-         (updatedOnlineUsers: { [key: string]: boolean }) => {
-           console.log(updatedOnlineUsers, "connected");
-           setOnlineUsers(updatedOnlineUsers);
-         }
-       );
-     }
-
-     return () => {
-       if (user) {
-         socket.emit("userDisconnect", { userId: user.uid });
-       }
-       socket.disconnect();
-     };
-   }, [user]);
+    return () => {
+      if (user) {
+        socket.emit("userDisconnect", { userId: user.uid });
+      }
+      socket.disconnect();
+    };
+  }, [user]);
 
   const AuthUser: AuthContextType = {
     createUser,
