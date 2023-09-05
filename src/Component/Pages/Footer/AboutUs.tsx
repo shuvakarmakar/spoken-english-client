@@ -5,7 +5,7 @@ import faruk from './../../../assets/faruk.jpg'
 
 const AboutUs = () => {
   return (
-    <div className="bg-[#EEEEEE]">
+    <div className="bg-[#EEEEEE] changebg">
 
       <section className="py-4">
         <div className="w-[96%] md:w-[90%] mx-auto ">

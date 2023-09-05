@@ -2,7 +2,7 @@ import React from "react";
 
 const TermsAndConditations = () => {
   return (
-    <div className="bg-[#EEEEEE]">
+    <div className="bg-[#EEEEEE] changebg">
       <div className="w-[96%] md:w-[90%] mx-auto">
         <p className="text-3xl py-5">Terms & Conditions</p>
         <img
