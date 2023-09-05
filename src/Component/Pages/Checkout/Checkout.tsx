@@ -59,9 +59,9 @@ const Checkout: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto py-8">
+        <div className="container mx-auto py-8 changebg">
             <h1 className="text-3xl text-center font-semibold mb-6">Checkout</h1>
-            <div className="bg-white shadow-lg rounded-lg p-6">
+            <div className="bg-white shadow-lg rounded-lg p-6 changebg">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     {/* Enrollment data */}
                     <p className="text-xl font-semibold mb-4">

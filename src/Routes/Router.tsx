@@ -48,7 +48,8 @@ import StartCourse from "../Layout/DashBoard/StudentPages/StartCourse/StartCours
 import FriendRequest from "../Component/PTPCommunication/FriendRequest/FriendRequest";
 import Friends from "../Component/PTPCommunication/Friends/Friends";
 import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
-
+import Joinroom from "../Component/Calls/Joinroom";
+import Calling from "../Component/Calls/Calling";
 
 export const router = createBrowserRouter([
   {
@@ -285,6 +286,24 @@ export const router = createBrowserRouter([
           <PrivetRout>
             {" "}
             <Messaging></Messaging>
+          </PrivetRout>
+        ),
+      },
+      {
+        path: "/Connect/calling",
+        element: (
+          <PrivetRout>
+            {" "}
+            <Joinroom />
+          </PrivetRout>
+        ),
+      },
+      {
+        path: "/Connect/room/:roomId",
+        element: (
+          <PrivetRout>
+            {" "}
+            <Calling />
           </PrivetRout>
         ),
       },

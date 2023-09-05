@@ -5,7 +5,7 @@ import ContactForm from "../Home/ContactForm/ContactForm";
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-[#eeeeee] py-5">
+    <div className="bg-[#eeeeee] py-5 changebg">
       <div className="w-[96%] md:w-[90%] mx-auto">
         <p className="text-3xl font-bold"> Our Locations</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7  items-center shadow-2xl p-5">
