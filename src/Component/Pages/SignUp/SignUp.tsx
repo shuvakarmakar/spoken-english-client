@@ -233,7 +233,7 @@ const SignUp: React.FC = () => {
           loop={true}
           autoplay={true}
           animationData={data}
-          className="w-full h-[40vh] md:h-[75vh]"
+          className="w-full h-[40vh] md:h-[94vh]"
         />
         </div>
       </div>

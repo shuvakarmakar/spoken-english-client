@@ -13,6 +13,8 @@ import {
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { FaCross, FaSearch, FaTimes } from "react-icons/fa";
 import './Navbar.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 interface NavbarProps {
@@ -31,9 +33,14 @@ interface Course {
 
 
 const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
+  
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
 
   const toggleMenu = () => {
     setShowModal(false);
@@ -136,6 +143,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           <div className="relative rounded-lg  p-4">
             <input
               type="text"
+              data-aos="fade-down"
               className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
               placeholder="Search..."
               value={query}
