@@ -5,3 +5,46 @@
 .active{
   color: rgb(27, 132, 202);
 }
+
+/* Light Mode */
+
+
+/* Dark Mode */
+.dark-mode {
+  --bg-color: #101E41  !important;
+  --text-color: white;
+}
+.dark-mode .changebg{
+  background-color: #101E41 !important;
+}
+.dark-mode .cardbg{
+  background-color: rgba(0, 0, 0,0.2)  !important;
+}
+
+.dark-mode .darkText{
+  color: white !important;
+}
+.dark-mode .design-bgcloor{
+  color: #101E41;
+}
+
+.dark-mode .banner-bg{
+  background-image:
+     linear-gradient(to bottom, #101E41, rgba(28, 208, 58, 0.300));
+     color: white !important;
+ }
+
+ .dark-mode .gradinentBg{
+  background-image:
+     linear-gradient(to bottom, #101E41, rgba(28, 208, 58, 0.300));
+ }
+
+.dark-mode .changebg button{
+  box-shadow: 0 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.2s, color 0.2s;
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import {
   Bars3BottomRightIcon,
@@ -10,8 +10,27 @@ import {
   AuthContext,
   AuthContextType,
 } from "../Provider/AuthProvider/AuthProvider";
+import { FiSun, FiMoon } from 'react-icons/fi';
+import { FaCross, FaSearch, FaTimes } from "react-icons/fa";
+import './Navbar.css'
 
-const Navbar = () => {
+
+interface NavbarProps {
+  onSearch: (query: string) => void;
+}
+
+interface Course {
+  _id: string;
+  imageURL: string;
+  courseName: string;
+  courseDetails: string;
+  price: string;
+  instructorName: string;
+  instructorEmail: string;
+}
+
+
+const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -30,15 +49,160 @@ const Navbar = () => {
     </>
   );
 
+  // DarkMode 
+
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+
+  useEffect(() => {
+    const storedDarkMode = localStorage.getItem('darkMode');
+    if (storedDarkMode === 'true') {
+      setIsDarkMode(true);
+    }
+
+  }, []);
+
+  const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
+    setIsDarkMode(newDarkMode);
+    localStorage.setItem('darkMode', String(newDarkMode));
+    if (newDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  };
+
+  // Search Functionality 
+  // const displaySearchedCourses =(event)=>{
+
+  // }
+
+  const openSearchBar = () => {
+    document.getElementById("searchBarContainer")?.classList.remove("hidden")
+  }
+
+  const [query, setQuery] = useState('');
+
+
+  const handleSearch = () => {
+    onSearch(query);
+  };
+
+  const hideSearchPopUp = () => {
+    document.getElementById("searchBarContainer")?.classList.add("hidden")
+    document.getElementById("SearchResultContainer")?.classList.add("hidden")
+
+  }
+
+  // Courses 
+
+  const [courses, setCourses] = useState<Course[]>([]);
+
+  useEffect(() => {
+    // Fetch data from the API
+    fetch("https://spoken-english-server-xi.vercel.app/courses")
+      .then((response) => response.json())
+      .then((data: Course[]) => setCourses(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const hideSerachBar = () => {
+    document.getElementById("SearchResultContainer")?.classList.add("hidden")
+  }
 
 
   return (
-    <div className="bg-gray-100 px-4 py-5 w-full md:px-24 lg:px-8">
+    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg relative">
+
+      {/* Searchbar */}
+      <div id="searchBarContainer" className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg">
+        <div className="absolute flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 gap-2 md:gap-8">
+          {/* <div className="flex">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="border rounded-l px-2 py-3 w-[50vw] shadow-xl"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button
+              className="bg-blue-700 text-white rounded-r px-3 py-3 shadow-xl"
+              onClick={handleSearch}
+            >
+              Saerch
+            </button>
+          </div> */}
+
+          <div className="relative rounded-lg  p-4">
+            <input
+              type="text"
+              className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
+              placeholder="Search..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
+              <svg
+                className="w-5 h-5 text-blue-700 cursor-pointer font-bold text-lg md:text-xl"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={handleSearch}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
+                />
+              </svg>
+            </div>
+
+          </div>
+
+          <button
+
+            className=" focus:outline-none right-0 textDark "
+            onClick={hideSearchPopUp}
+          >
+            {<FaTimes size={24} className="" />}
+          </button>
+
+        </div>
+
+
+
+
+
+      </div>
+      {
+        query && (
+          <div id="SearchResultContainer" className="changebg cursor-pointer p-4 absolute SearchResultContainer w-[96vw] md:w-[50vw] top-20 bg-white z-50 left-1/2 -translate-x-1/2 shadow-2xl">
+            {
+              query && courses.filter(course => course.courseName.toLowerCase().includes(query)).map(c => (
+
+                <div onClick={hideSerachBar} className="searchCard  py-2 hover:bg-slate-400 hover:shadow-xl hover:translate-x-1 px-1" key={c._id}>
+                  <Link to={`/course-details/${c._id}`} key={c._id}>
+                    <div className="flex items-center gap-4 md:gap-6">
+                      <img src={c.imageURL} className="w-[50px] md:w-[100px] md:h-auto h-full" alt="" />
+                      <div className="">
+                        <p className=" textDark text-sm md:text-lg">{c.courseName}</p>
+                        <p className="font-bold text-sm md:text-lg">${c.price}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              ))
+            }
+          </div>
+        )
+      }
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
           <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800">
+          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
         </Link>
@@ -112,6 +276,20 @@ const Navbar = () => {
             </li>
           )}
         </ul>
+        <div className="flex gap-2 md:gap-4 items-center">
+          {/* Dark Mode */}
+          <button
+            className=" focus:outline-none"
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
+          </button>
+
+          {/* search */}
+          <button className="searchBtn" onClick={openSearchBar}>
+            <FaSearch size={24} />
+          </button>
+        </div>
 
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
@@ -122,19 +300,19 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-gray-600" />
+              <XMarkIcon className="w-5 text-white font-bold text-lg" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-gray-600" />
+              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
             )}
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 left-0 w-full z-20">
-              <div className="p-5 bg-white border rounded shadow-sm">
+              <div className="p-5 bg-white border rounded shadow-sm darkText changebg">
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link to="/" className="inline-flex items-center">
                       <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+                      <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase darkText">
                         ELearner
                       </span>
                     </Link>
@@ -155,8 +333,8 @@ const Navbar = () => {
 
                     {user && (
                       <li><NavLink to="/dictionary" className={({ isActive }) => isActive ? "active" : "default"}>
-                          Dictionary
-                        </NavLink>
+                        Dictionary
+                      </NavLink>
                       </li>
                     )}
 
