@@ -19,7 +19,7 @@ const CourseFeedback = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/course-feedback/`, {
+      const response = await fetch(`https://spoken-english-server-xi.vercel.app/course-feedback/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

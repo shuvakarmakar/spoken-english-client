@@ -12,6 +12,7 @@ interface UserProfileCardProps {
     name: string;
     uid: string;
     _id: number;
+    profileImage:string
     // Add other properties of your student object
   };
 }
@@ -79,7 +80,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
             onClick={() => openModal(student._id)}
             className="w-16 h-16 bg-blue-500 rounded-full"
           >
-            <img src={""} className="rounded-full" alt="" />
+            <img src={student?.profileImage} className="rounded-full w-full h-full" alt="" />
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>
@@ -101,7 +102,10 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
             Call
           </button>
-          <Link to={'/messaging'} state={{ MyId:user?.uid, userId: student?.uid }}>
+          <Link
+            to={"/messaging"}
+            state={{ MyId: user?.uid, userId: student?.uid }}
+          >
             <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
               Message
             </button>
