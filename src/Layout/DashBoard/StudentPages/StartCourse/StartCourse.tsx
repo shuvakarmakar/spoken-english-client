@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import CourseFeedback from "./CourseFeedback";
 
 interface CourseDetails {
   courseName: string;
@@ -81,6 +82,7 @@ const StartCourse: React.FC = () => {
           </div>
         </div>
       </div>
+      <CourseFeedback />
     </div>
   );
 };
