@@ -12,6 +12,7 @@ interface UserProfileCardProps {
     name: string;
     uid: string;
     _id: number;
+    profileImage:string
     // Add other properties of your student object
   };
 }
@@ -75,7 +76,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
             onClick={() => openModal(student._id)}
             className="w-16 h-16 bg-blue-500 rounded-full"
           >
-            <img src={""} className="rounded-full" alt="" />
+            <img src={student?.profileImage} className="rounded-full w-full h-full" alt="" />
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>

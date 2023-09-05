@@ -5,14 +5,20 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 
-const ReviewCourses = () => {
-  const [reviews, setReviews] = useState<any[]>([]);
+interface Review {
+  name: string;
+  rating: string;
+  description: string;
+}
+
+const ReviewCourses: React.FC = () => {
+  const [reviews, setReviews] = useState<Review[]>([]);
   const { user } = useContext(AuthContext) as AuthContextType;
 
   useEffect(() => {
     fetch(`https://spoken-english-server-xi.vercel.app/course-feedback`)
       .then((response) => response.json())
-      .then((data) => {
+      .then((data: Review[]) => {
         setReviews(data);
       })
       .catch((error) => {
@@ -22,7 +28,7 @@ const ReviewCourses = () => {
 
   return (
     <div className="max-w-lg mt-8 bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-2xl font-semibold mb-4">Whats Our Student Says!</h2>
+      <h2 className="text-2xl font-semibold mb-4">What Our Students Say!</h2>
       {reviews.length === 0 ? (
         <p>No reviews available for this course.</p>
       ) : (
