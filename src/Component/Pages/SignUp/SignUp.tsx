@@ -9,6 +9,10 @@ import Swal from "sweetalert2";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from "../../../Firebase/firebase";
 import { User } from "firebase/auth";
+import Lottie from 'lottie-react';
+import data from '././signup.json'
+
+
 const SignUp: React.FC = () => {
   const auth = getAuth(app);
   const [show, setShow] = useState(false);
@@ -131,23 +135,16 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="w-[96%] md:w-[90%] mx-auto pt-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 flex-col-reverse">
       <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-vector/flat-design-english-school-background_23-2149487419.jpg?w=900&t=st=1691483418~exp=1691484018~hmac=d182892b644c56375411345c1801fa9b48ba34d7e42f7ff2badde3e9e5dd9397)",
-          width: "100%",
-          height: "100%",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
+        className=" hero  h-full changebg">
+     
         <div className="hero-content  text-neutral-content">
-          <div className="w-[350px] md:w-[600px] ">
+          <div className=" ">
             <form
               onSubmit={handleSubmit}
-              className="w-full  bg-white p-8 rounded shadow-lg"
+              className="w-full h-full cardbg  bg-white p-3 md:p-20  shadow-2xl rounded-lg"
             >
               <div className=" flex justify-between">
                 <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
@@ -229,6 +226,18 @@ const SignUp: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Animation */}
+      <div className="changebg">
+        <Lottie
+          loop={true}
+          autoplay={true}
+          animationData={data}
+          className="w-full h-[40vh] md:h-[75vh]"
+        />
+        </div>
+      </div>
+    
     </div>
   );
 };

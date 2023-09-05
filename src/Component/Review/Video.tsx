@@ -2,8 +2,10 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const VideoPlayer: React.FC = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     AOS.init(); // Initialize AOS library
   }, []);
@@ -16,17 +18,17 @@ const VideoPlayer: React.FC = () => {
       <div className="md:text-center  border">
         <div className="p-8">
           <h1 className="text-2xl md:text-4xl font-bold uppercase">
-            What Our Students Say
+            {t("videoPlayer.title")}
           </h1>
           <p className="py-3 md:py-6 text-justify">
-          Our students have provided positive feedback about our Spoken English courses. They appreciate the engaging and interactive nature of the classes, which has helped them improve their speaking skills with confidence. They also value the supportive and patient instructors who create a comfortable learning environment. Overall, they find our courses effective and enjoyable for enhancing their spoken English abilities.
+          {t("videoPlayer.content")}
           </p>
           <button className="relative mt-5 inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
             <Link
               to="/freelivelessons"
               className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
             >
-              Get Started
+              {t("videoPlayer.buttonText")}
             </Link>
           </button>
         </div>

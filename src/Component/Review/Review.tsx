@@ -16,7 +16,7 @@ const Review: React.FC = () => {
     <div>
       <VideoPlayer />
 
-      <div className=" bg-slate-300">
+      <div className=" bg-slate-300 changebg" >
         <div style={{ overflow: "hidden" }}>
           <svg
             preserveAspectRatio="none"
@@ -63,7 +63,7 @@ const Review: React.FC = () => {
               >
                 <SwiperSlide>
                   {" "}
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -130,7 +130,7 @@ const Review: React.FC = () => {
                   </blockquote>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -196,7 +196,7 @@ const Review: React.FC = () => {
                   </blockquote>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -263,7 +263,7 @@ const Review: React.FC = () => {
                 </SwiperSlide>{" "}
                 <SwiperSlide>
                   {" "}
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -330,7 +330,7 @@ const Review: React.FC = () => {
                   </blockquote>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
@@ -396,7 +396,7 @@ const Review: React.FC = () => {
                   </blockquote>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <blockquote className="rounded-lg bg-gray-100 p-8">
+                  <blockquote className="rounded-lg bg-gray-100 p-8 cardbg">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
                         <div className="w-16 rounded-full">
