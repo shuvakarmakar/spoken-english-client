@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
-import useUser from "../../../Hooks/useUser";
+// import useUser from "../../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
+// import { changeLanguage } from "i18next";
 
 interface Student {
   _id: number;
@@ -12,13 +13,14 @@ interface Student {
     profileImage: string;
   };
   userId: string;
+  request:boolean;
 }
 
 
 const FriendRequest: React.FC = () => {
   const { onlineUsers, user } = useContext(AuthContext) as AuthContextType;
   // const [users] = useUser();
-  const [loading,setLoading]=useState(true)
+  const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [id, SetId] = useState<number>(0);
   const [friends, setFriends] = useState<Student[]>([]);
@@ -31,9 +33,9 @@ const FriendRequest: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-   const anim=[1,2,3,4,5,6 ,7,8,9,10,11,12]
+  const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     if (user) {
       fetch(
         `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
@@ -42,24 +44,44 @@ const FriendRequest: React.FC = () => {
         .then((data) => {
           console.log(data);
           setFriends(data);
-          setLoading(false)
+          setLoading(false);
         });
     }
   }, [user]);
 
   const DeleteRequest = (id: number) => {
     if (id) {
-       fetch(`https://spoken-english-server-xi.vercel.app/delete-friend-requests/${id}`, {
-         method: "DELETE",
-       })
-         .then((res) => res.json())
-         .then((data) => {
-           console.log(data);
-           const remaining = friends.filter(friend => friend._id !== id)
-           setFriends(remaining)
-         });
+      fetch(
+        `https://spoken-english-server-xi.vercel.app/delete-friend-requests/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = friends.filter((friend) => friend._id !== id);
+          setFriends(remaining);
+        });
     }
-   
+  };
+
+  // https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}
+
+  const AcceptFriendRequest = (friendId: string,_id:number) => {
+    fetch(`https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({id:_id})
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+         const remaining = friends.filter((friend) => friend._id !== _id);
+         setFriends(remaining);
+      });
   };
 
   return (
@@ -125,8 +147,14 @@ const FriendRequest: React.FC = () => {
                       Delete
                     </button>
 
-                    <button className="py-1 px-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
-                     Accept
+                    <button
+                      disabled={student?.request}
+                      onClick={() =>
+                        AcceptFriendRequest(student?.userId, student?._id)
+                      }
+                      className="py-1 px-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
+                    >
+                      Accept
                     </button>
                   </div>
                   {showModal && (
@@ -136,7 +164,6 @@ const FriendRequest: React.FC = () => {
                         id={id}
                         showModal={showModal}
                         closeModal={closeModal}
-                        name={student.user?.name || ""}
                       ></UserModal>
                     </div>
                   )}

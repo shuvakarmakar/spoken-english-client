@@ -57,9 +57,9 @@ const PTPCommunication = () => {
 
    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-   const toggleMobileMenu = () => {
-     setMobileMenuOpen(!mobileMenuOpen);
-   };
+  //  const toggleMobileMenu = () => {
+  //    setMobileMenuOpen(!mobileMenuOpen);
+  //  };
 
    const closeMobileMenu = () => {
      setMobileMenuOpen(false);
