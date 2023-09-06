@@ -11,7 +11,7 @@ import {
   AuthContextType,
 } from "../Provider/AuthProvider/AuthProvider";
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { FaCross, FaSearch, FaTimes } from "react-icons/fa";
+import { FaSearch, FaTimes } from "react-icons/fa";
 import './Navbar.css'
 import AOS from "aos";
 import "aos/dist/aos.css";

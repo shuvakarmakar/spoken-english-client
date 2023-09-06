@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import Rating from "react-rating";
+// import * as Rating from "react-rating";
+
 import {
   AuthContext,
   AuthContextType,
@@ -48,16 +49,19 @@ const ReviewCourses: React.FC = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-blue-500 font-semibold">{review.name}</p>
-                  <Rating
-                    initialRating={parseFloat(review.rating)}
-                    emptySymbol={
-                      <span className="text-gray-400 text-2xl">☆</span>
-                    }
-                    fullSymbol={
-                      <span className="text-yellow-400 text-2xl">☆</span>
-                    }
-                    readonly
-                  />
+                  <div>
+                    {/* <Rating.default
+                      initialRating={parseFloat(review.rating)}
+                      emptySymbol={
+                        <span className="text-gray-400 text-2xl">☆</span>
+                      }
+                      fullSymbol={
+                        <span className="text-yellow-400 text-2xl">☆</span>
+                      }
+                      readonly
+                    > */}
+                     
+                  </div>
                 </div>
               </div>
               <p className="text-gray-600">{review.description}</p>

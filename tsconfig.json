@@ -22,6 +22,15 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  
   "include": ["src", "vite-env.d.ts", "jsx.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
+  ,
+  "devDependencies": {
+  "@types/testing-library__jest-dom": "^5.12.0",
+  "@testing-library/jest-dom": "^5.12.0",
+  // Other dependencies
+}
+  
+  
 }
