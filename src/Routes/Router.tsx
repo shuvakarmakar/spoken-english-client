@@ -50,6 +50,7 @@ import Friends from "../Component/PTPCommunication/Friends/Friends";
 import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
+import SearchResults from "../Component/Pages/Search/SearchResults";
 
 export const router = createBrowserRouter([
   {
@@ -192,6 +193,10 @@ export const router = createBrowserRouter([
       {
         path: "faqs",
         element: <FAQs></FAQs>,
+      },
+      {
+        path:"search",
+        element:<SearchResults></SearchResults>
       },
 
       // shuva-work
