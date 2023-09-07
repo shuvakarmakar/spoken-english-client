@@ -8,6 +8,7 @@ import { BsInstagram, BsTwitter, } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import LanguageDropdown from "../../Component/LanguageDropdown/LanguageDropdown";
 import { useTranslation } from "react-i18next";
+
 const Footer = () => {
   const { t } = useTranslation();
   const changeLanguage = (language: string) => {
@@ -25,17 +26,29 @@ const Footer = () => {
           <div className="right-content bg-[#101E41] w-full border-r-2">
             <div className=" border-b w-full  grid grid-cols-1 md:grid-cols-3  p-10 ">
               <div className="mb-6 h-full border-t md:mb-0 text-center md:text-left  px-8 py-2 border-r-[1px] border-l ">
-                <span className="font-bold text-lg mb-2 block">{t("footer.services")}</span>
+                <span className="font-bold text-lg mb-2 block">
+                  {t("footer.services")}
+                </span>
                 <ul className="footer-list">
-                  <li className="link link-hover block mb-1">{t("footer.branding")}</li>
-                  <li className="link link-hover block mb-1">{t("footer.design")}</li>
-                  <li className="link link-hover block mb-1">{t("footer.marketing")}</li>
-                  <li className="link link-hover block mb-1">{t("footer.advertisement")}</li>
+                  <li className="link link-hover block mb-1">
+                    {t("footer.branding")}
+                  </li>
+                  <li className="link link-hover block mb-1">
+                    {t("footer.design")}
+                  </li>
+                  <li className="link link-hover block mb-1">
+                    {t("footer.marketing")}
+                  </li>
+                  <li className="link link-hover block mb-1">
+                    {t("footer.advertisement")}
+                  </li>
                 </ul>
               </div>
 
               <div className="mb-6 md:mb-0 border-b text-center  px-8 py-2 border-r-[1px] ">
-                <span className="font-bold text-lg mb-2 block">{t("footer.company")}</span>
+                <span className="font-bold text-lg mb-2 block">
+                  {t("footer.company")}
+                </span>
                 <ul className="footer-list">
                   <li>
                     {" "}
@@ -49,7 +62,9 @@ const Footer = () => {
                       {t("footer.contactUs")}
                     </Link>
                   </li>
-                  <li className="link link-hover block mb-1">{t("footer.jobs")}</li>
+                  <li className="link link-hover block mb-1">
+                    {t("footer.jobs")}
+                  </li>
                   <li>
                     {" "}
                     <Link to={"faqs"} className="block mb-1">
@@ -59,7 +74,9 @@ const Footer = () => {
                 </ul>
               </div>
               <div className="text-center border-t md:text-left border-r-[1px] px-8 py-2">
-                <span className="font-bold text-lg mb-2 block">{t("footer.legal")}</span>
+                <span className="font-bold text-lg mb-2 block">
+                  {t("footer.legal")}
+                </span>
                 <ul className="footer-list">
                   <li>
                     {" "}
@@ -98,13 +115,19 @@ const Footer = () => {
                     ></BiLogoFacebookCircle>
                   </div>
                   <div className="instagram">
-                    <FaLinkedinIn className={"w-10 h-10 text-blue-600"}></FaLinkedinIn>
+                    <FaLinkedinIn
+                      className={"w-10 h-10 text-blue-600"}
+                    ></FaLinkedinIn>
                   </div>
                   <div className="twitter">
-                    <BsTwitter className={"w-10 h-10 text-blue-400"}></BsTwitter>
+                    <BsTwitter
+                      className={"w-10 h-10 text-blue-400"}
+                    ></BsTwitter>
                   </div>
                   <div className="Linkedin">
-                    <BsInstagram className={"w-10 h-10 text-pink-500"}></BsInstagram>
+                    <BsInstagram
+                      className={"w-10 h-10 text-pink-500"}
+                    ></BsInstagram>
                   </div>
                 </div>
               </div>

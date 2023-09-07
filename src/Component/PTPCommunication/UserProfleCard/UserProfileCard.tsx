@@ -9,10 +9,15 @@ import { Link } from "react-router-dom";
 
 interface UserProfileCardProps {
   student: {
+    InstructorDisabled: boolean;
+    Roll: string;
+    email: string;
     name: string;
+    password: string;
+    profileBanner: string;
+    profileImage: string;
     uid: string;
     _id: number;
-    profileImage:string
     // Add other properties of your student object
   };
 }

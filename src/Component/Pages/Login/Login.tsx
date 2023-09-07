@@ -3,7 +3,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Lottie, { Options } from 'lottie-react';
+import Lottie from 'lottie-react';
 import data from './login.json'
 
 interface User {
