@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Navbar from './Navbar'; // Adjust the import path as needed
+import Navbar from '../../Shared/Navbar';
+ // Adjust the import path as needed
 
 // Mock the AuthContext
 jest.mock('../../Provider/AuthProvider/AuthProvider', () => ({
