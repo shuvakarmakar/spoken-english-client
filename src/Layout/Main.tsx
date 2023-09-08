@@ -8,10 +8,12 @@ const Main = () => {
 
   const helpSupport = location.pathname === "/helpSupport";
   const connected= location.pathname ==="/Connect"
-
+ 
   return (
     <>
-      <div className="header">{helpSupport || connected ? "" : <Navbar />}</div>
+      <div className="header">
+        {helpSupport || connected ? "" : <Navbar  />}
+      </div>
 
       {/* main  */}
       <div className="main min-h-[100vh]">

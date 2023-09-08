@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,useNavigate  } from "react-router-dom";
 import {
   Bars3BottomRightIcon,
   XMarkIcon,
@@ -10,14 +10,21 @@ import {
   AuthContext,
   AuthContextType,
 } from "../Provider/AuthProvider/AuthProvider";
+<<<<<<< HEAD
 import { FiSun, FiMoon } from "react-icons/fi";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
+=======
+import { FiSun, FiMoon } from 'react-icons/fi';
+import { FaSearch, FaTimes } from "react-icons/fa";
+import './Navbar.css'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-interface NavbarProps {
-  onSearch: (query: string) => void;
-}
+
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
+
 
 interface Course {
   _id: string;
@@ -29,10 +36,20 @@ interface Course {
   instructorEmail: string;
 }
 
+<<<<<<< HEAD
 const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
+=======
+
+const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
 
   const toggleMenu = () => {
     setShowModal(false);
@@ -57,7 +74,10 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           Connect
         </NavLink>
       </li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
       <li>
         <NavLink
           to="/freelivelessons"
@@ -108,10 +128,15 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
     document.getElementById("searchBarContainer")?.classList.remove("hidden");
   };
 
+<<<<<<< HEAD
   const [query, setQuery] = useState("");
+=======
+  const [query, setQuery] = useState<string>("");
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
 
   const handleSearch = () => {
-    onSearch(query);
+    navigate("/search", { state: { value: query } });
+    document.getElementById("SearchResultContainer")?.classList.add("hidden");
   };
 
   const hideSearchPopUp = () => {
@@ -119,6 +144,17 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
     document.getElementById("SearchResultContainer")?.classList.add("hidden");
   };
 
+<<<<<<< HEAD
+=======
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      // Handle the Enter key press here
+      handleSearch();
+      // You can perform any action you want when the Enter key is pressed
+      // For example, submit a form, perform a search, etc.
+    }
+  };
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
   // Courses
 
   const [courses, setCourses] = useState<Course[]>([]);
@@ -162,10 +198,12 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           <div className="relative rounded-lg  p-4">
             <input
               type="text"
+              data-aos="fade-down"
               className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
               placeholder="Search..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
             <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
               <svg
@@ -295,6 +333,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
             <>
               <li>
                 <Link
+<<<<<<< HEAD
                   to="/SignUp"
                   className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >
@@ -303,6 +342,8 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               </li>
               <li>
                 <Link
+=======
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
                   to="/Login"
                   className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >
@@ -403,6 +444,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                         <div className="flex">
                           <li>
                             <Link
+<<<<<<< HEAD
                               to="/SignUp"
                               className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             >
@@ -411,6 +453,8 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                           </li>
                           <li>
                             <Link
+=======
+>>>>>>> 3fbdb8907478f6f415a03ba1f87ae2ec74a95087
                               to="/Login"
                               className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             >

@@ -12,13 +12,15 @@ interface UserModalProps {
   showModal: boolean;
   closeModal: () => void;
   id: number;
+  // name: string;
 }
 
 const UserModal: React.FC<UserModalProps> = ({
-  student,
   showModal,
   closeModal,
   id,
+  student
+  
 }) => {
   if (!showModal) {
     return null;
@@ -33,7 +35,7 @@ const UserModal: React.FC<UserModalProps> = ({
             alt="User"
             className="w-16 h-16 rounded-full mx-auto mb-4"
           />
-          <h2 className="text-xl font-semibold mb-2">{student.name}</h2>
+          <h2 className="text-xl font-semibold mb-2">{student?.name}</h2>
           <div className="flex justify-between">
             <button
               className="px-4 py-2 bg-blue-500 absolute top-2 right-2 text-white rounded-md hover:bg-blue-600"

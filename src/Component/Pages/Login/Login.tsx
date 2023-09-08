@@ -3,7 +3,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Lottie, { Options } from 'lottie-react';
+import Lottie from 'lottie-react';
 import data from './login.json'
 
 interface User {
@@ -13,7 +13,7 @@ interface User {
 
 const Login: React.FC = () => {
   // lottie
-  
+
 
   const [show, setShow] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
@@ -102,7 +102,7 @@ const Login: React.FC = () => {
   return (
     <div className="w-[96%] md:w-[90%] mx-auto pt-3">
       <div className="grid grid-cols-1 md:grid-cols-2">
-   
+
         <div
           className="hero  h-full changebg">
           <div className=""></div>
@@ -110,7 +110,7 @@ const Login: React.FC = () => {
             <div className="w-full  h-full">
               <form
                 onSubmit={handleSubmit}
-                className="w-full h-full cardbg  bg-white p-3 md:p-20 rounded shadow-2xl"
+                className="w-full h-full cardbg bg-gradient-to-t to-[#101E41] from-white p-3 md:p-20 rounded shadow-2xl"
               >
                 <div className="flex justify-between">
                   <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
@@ -188,12 +188,12 @@ const Login: React.FC = () => {
           </div>
         </div>
         <div className="changebg">
-        <Lottie
-          loop={true}
-          autoplay={true}
-          animationData={data}
-          className="w-full h-[40vh] md:h-[75vh]"
-        />
+          <Lottie
+            loop={true}
+            autoplay={true}
+            animationData={data}
+            className="w-full h-[40vh] md:h-[80vh]"
+          />
         </div>
       </div>
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
-interface LanguageDropdownProps { }
+interface LanguageDropdownProps {
+  changeLanguage: (language: string) => void;
+  // other prop types
+}
 
 const LanguageDropdown: React.FC<LanguageDropdownProps> = () => {
     const { i18n } = useTranslation();
