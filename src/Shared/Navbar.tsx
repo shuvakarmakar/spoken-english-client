@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink,useNavigate  } from "react-router-dom";
 import {
   Bars3BottomRightIcon,
   XMarkIcon,
@@ -17,9 +17,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 
-interface NavbarProps {
-  onSearch: (query: string) => void;
-}
+
 
 interface Course {
   _id: string;
@@ -32,8 +30,9 @@ interface Course {
 }
 
 
-const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
+const Navbar: React.FC = () => {
   
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -88,11 +87,13 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
     document.getElementById("searchBarContainer")?.classList.remove("hidden")
   }
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>(''); 
+
 
 
   const handleSearch = () => {
-    onSearch(query);
+    navigate('/search', { state: { value: query } });
+    document.getElementById("SearchResultContainer")?.classList.add("hidden")
   };
 
   const hideSearchPopUp = () => {
@@ -101,6 +102,14 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
 
   }
 
+  const handleKeyPress=(event: React.KeyboardEvent<HTMLInputElement>)=>{
+    if (event.key === 'Enter') {
+      // Handle the Enter key press here
+      handleSearch();
+      // You can perform any action you want when the Enter key is pressed
+      // For example, submit a form, perform a search, etc.
+    }
+  }
   // Courses 
 
   const [courses, setCourses] = useState<Course[]>([]);
@@ -148,6 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
               placeholder="Search..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
             <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
               <svg
@@ -261,7 +271,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
 
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
-            <><li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link></li>
+            <>
               <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
               </li>
             </>
@@ -350,8 +360,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                     {!user ? (
                       <>
                         <div className="flex">
-                          <li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link>
-                          </li>
+                         
                           <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
                           </li>
                         </div>

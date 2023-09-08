@@ -144,7 +144,7 @@ const SignUp: React.FC = () => {
           <div className=" ">
             <form
               onSubmit={handleSubmit}
-              className="w-full h-full cardbg  bg-white p-3 md:p-20  shadow-2xl rounded-lg"
+              className="w-full h-full cardbg  bg-gradient-to-t to-[#101E41] from-white p-3 md:p-20  shadow-2xl rounded-lg"
             >
               <div className=" flex justify-between">
                 <h2 className="text-2xl font-semibold mb-4 uppercase text-blue-500">
