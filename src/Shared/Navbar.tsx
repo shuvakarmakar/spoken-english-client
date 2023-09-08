@@ -10,10 +10,10 @@ import {
   AuthContext,
   AuthContextType,
 } from "../Provider/AuthProvider/AuthProvider";
-import { FiSun, FiMoon } from 'react-icons/fi';
-import { FaCross, FaSearch, FaTimes } from "react-icons/fa";
-import './Navbar.css'
-
+import { FiSun, FiMoon } from "react-icons/fi";
+import { FaSearch, FaTimes } from "react-icons/fa";
+import "./Navbar.css";
+import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
 
 interface NavbarProps {
   onSearch: (query: string) => void;
@@ -29,7 +29,6 @@ interface Course {
   instructorEmail: string;
 }
 
-
 const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,59 +41,85 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
 
   const navItems = (
     <>
-      <li><NavLink to="/" className={({ isActive }) => (isActive ? "active" : "default")}>Home</NavLink></li>
-      <li><NavLink to="/Connect/Friend" className={({ isActive }) => (isActive ? "active" : "default")}>Connect</NavLink></li>
-      <li><NavLink to="/freelivelessons" className={({ isActive }) => (isActive ? "active" : "default")}>Free Live Lesson </NavLink></li>
-      <li><NavLink to="/all-premium-courses" className={({ isActive }) => (isActive ? "active" : "default")}>All Premium Courses</NavLink></li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/Connect/Friend"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Connect
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/freelivelessons"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          Free Live Lesson{" "}
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/all-premium-courses"
+          className={({ isActive }) => (isActive ? "active" : "default")}
+        >
+          All Premium Courses
+        </NavLink>
+      </li>
     </>
   );
 
-  // DarkMode 
+  // DarkMode
 
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    const storedDarkMode = localStorage.getItem('darkMode');
-    if (storedDarkMode === 'true') {
+    const storedDarkMode = localStorage.getItem("darkMode");
+    if (storedDarkMode === "true") {
       setIsDarkMode(true);
     }
-
   }, []);
 
   const toggleDarkMode = () => {
     const newDarkMode = !isDarkMode;
     setIsDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', String(newDarkMode));
+    localStorage.setItem("darkMode", String(newDarkMode));
     if (newDarkMode) {
-      document.body.classList.add('dark-mode');
+      document.body.classList.add("dark-mode");
     } else {
-      document.body.classList.remove('dark-mode');
+      document.body.classList.remove("dark-mode");
     }
   };
 
-  // Search Functionality 
+  // Search Functionality
   // const displaySearchedCourses =(event)=>{
 
   // }
 
   const openSearchBar = () => {
-    document.getElementById("searchBarContainer")?.classList.remove("hidden")
-  }
+    document.getElementById("searchBarContainer")?.classList.remove("hidden");
+  };
 
-  const [query, setQuery] = useState('');
-
+  const [query, setQuery] = useState("");
 
   const handleSearch = () => {
     onSearch(query);
   };
 
   const hideSearchPopUp = () => {
-    document.getElementById("searchBarContainer")?.classList.add("hidden")
-    document.getElementById("SearchResultContainer")?.classList.add("hidden")
+    document.getElementById("searchBarContainer")?.classList.add("hidden");
+    document.getElementById("SearchResultContainer")?.classList.add("hidden");
+  };
 
-  }
-
-  // Courses 
+  // Courses
 
   const [courses, setCourses] = useState<Course[]>([]);
 
@@ -107,15 +132,16 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
   }, []);
 
   const hideSerachBar = () => {
-    document.getElementById("SearchResultContainer")?.classList.add("hidden")
-  }
-
+    document.getElementById("SearchResultContainer")?.classList.add("hidden");
+  };
 
   return (
     <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg relative">
-
       {/* Searchbar */}
-      <div id="searchBarContainer" className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg">
+      <div
+        id="searchBarContainer"
+        className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg"
+      >
         <div className="absolute flex top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 gap-2 md:gap-8">
           {/* <div className="flex">
             <input
@@ -158,46 +184,53 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                 />
               </svg>
             </div>
-
           </div>
 
           <button
-
             className=" focus:outline-none right-0 textDark "
             onClick={hideSearchPopUp}
           >
             {<FaTimes size={24} className="" />}
           </button>
-
         </div>
-
-
-
-
-
       </div>
-      {
-        query && (
-          <div id="SearchResultContainer" className="changebg cursor-pointer p-4 absolute SearchResultContainer w-[96vw] md:w-[50vw] top-20 bg-white z-50 left-1/2 -translate-x-1/2 shadow-2xl">
-            {
-              query && courses.filter(course => course.courseName.toLowerCase().includes(query)).map(c => (
-
-                <div onClick={hideSerachBar} className="searchCard  py-2 hover:bg-slate-400 hover:shadow-xl hover:translate-x-1 px-1" key={c._id}>
+      {query && (
+        <div
+          id="SearchResultContainer"
+          className="changebg cursor-pointer p-4 absolute SearchResultContainer w-[96vw] md:w-[50vw] top-20 bg-white z-50 left-1/2 -translate-x-1/2 shadow-2xl"
+        >
+          {query &&
+            courses
+              .filter((course) =>
+                course.courseName.toLowerCase().includes(query)
+              )
+              .map((c) => (
+                <div
+                  onClick={hideSerachBar}
+                  className="searchCard  py-2 hover:bg-slate-400 hover:shadow-xl hover:translate-x-1 px-1"
+                  key={c._id}
+                >
                   <Link to={`/course-details/${c._id}`} key={c._id}>
                     <div className="flex items-center gap-4 md:gap-6">
-                      <img src={c.imageURL} className="w-[50px] md:w-[100px] md:h-auto h-full" alt="" />
+                      <img
+                        src={c.imageURL}
+                        className="w-[50px] md:w-[100px] md:h-auto h-full"
+                        alt=""
+                      />
                       <div className="">
-                        <p className=" textDark text-sm md:text-lg">{c.courseName}</p>
-                        <p className="font-bold text-sm md:text-lg">${c.price}</p>
+                        <p className=" textDark text-sm md:text-lg">
+                          {c.courseName}
+                        </p>
+                        <p className="font-bold text-sm md:text-lg">
+                          ${c.price}
+                        </p>
                       </div>
                     </div>
                   </Link>
                 </div>
-              ))
-            }
-          </div>
-        )
-      }
+              ))}
+        </div>
+      )}
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
@@ -247,14 +280,34 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
           {navItems}
 
           {user && (
-            <li><NavLink to="/dictionary" className={({ isActive }) => (isActive ? "active" : "default")}>Dictionary</NavLink>
+            <li>
+              <NavLink
+                to="/dictionary"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Dictionary
+              </NavLink>
             </li>
           )}
 
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
-            <><li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link></li>
-              <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
+            <>
+              <li>
+                <Link
+                  to="/SignUp"
+                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  Sign Up
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Login"
+                  className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  Login
+                </Link>
               </li>
             </>
           ) : (
@@ -278,16 +331,16 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
         </ul>
         <div className="flex gap-2 md:gap-4 items-center">
           {/* Dark Mode */}
-          <button
-            className=" focus:outline-none"
-            onClick={toggleDarkMode}
-          >
+          <button className=" focus:outline-none" onClick={toggleDarkMode}>
             {isDarkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
           </button>
 
           {/* search */}
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
+          </button>
+          <button>
+            <LanguageDropdown />
           </button>
         </div>
 
@@ -332,9 +385,15 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                     {navItems}
 
                     {user && (
-                      <li><NavLink to="/dictionary" className={({ isActive }) => isActive ? "active" : "default"}>
-                        Dictionary
-                      </NavLink>
+                      <li>
+                        <NavLink
+                          to="/dictionary"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Dictionary
+                        </NavLink>
                       </li>
                     )}
 
@@ -342,9 +401,21 @@ const Navbar: React.FC<NavbarProps> = ({ onSearch }) => {
                     {!user ? (
                       <>
                         <div className="flex">
-                          <li><Link to="/SignUp" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sign Up</Link>
+                          <li>
+                            <Link
+                              to="/SignUp"
+                              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            >
+                              Sign Up
+                            </Link>
                           </li>
-                          <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
+                          <li>
+                            <Link
+                              to="/Login"
+                              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            >
+                              Login
+                            </Link>
                           </li>
                         </div>
                       </>

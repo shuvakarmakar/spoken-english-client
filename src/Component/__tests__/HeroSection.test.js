@@ -1,28 +1,22 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
-import HeroSection from "../Pages/Home/HeroSection/HeroSection";
+import React from 'react';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // for additional matchers
+import HeroSection from '../Pages/Home/HeroSection';
 
-// Mock the AOS.init function
-jest.mock("aos", () => ({
-  init: jest.fn(),
+// Mock react-i18next useTranslation hook
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: key => key }), // Mock the translation function
 }));
 
-describe("HeroSection Component", () => {
-  test("renders HeroSection component", () => {
-    render(
-      <Router>
-        <HeroSection />
-      </Router>
-    );
+describe('HeroSection', () => {
+  it('renders correctly', () => {
+    const { getByText } = render(<HeroSection />);
 
-    // Check if the main content of the component is rendered
-    const mainContent = screen.getByText('Be a Confident English Speaker');
-    expect(mainContent).toBeInTheDocument();
-
-
+    // Replace these with the actual translations you expect to be in your component
+    expect(getByText('hero.title')).toBeInTheDocument();
+    expect(getByText('hero.description')).toBeInTheDocument();
+    expect(getByText('hero.buttonText')).toBeInTheDocument();
   });
 
-  // You can add more test cases for other scenarios and interactions
+  // Add more test cases as needed
 });
-

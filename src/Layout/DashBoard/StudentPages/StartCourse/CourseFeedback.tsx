@@ -1,6 +1,13 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+// import {
+//   AuthContext,
+//   AuthContextType,
+// } from "../../../../Provider/AuthProvider/AuthProvider";
 
 const CourseFeedback = () => {
+  // const { user } = useContext(AuthContext) as AuthContextType;
+
   const [formData, setFormData] = useState({
     name: "",
     rating: 0,
@@ -19,28 +26,32 @@ const CourseFeedback = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/course-feedback/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://spoken-english-server-xi.vercel.app/course-feedback/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        console.log("Data sent successfully");
+        Swal.fire("Thanks For Your Feedback");
+
+        // Clear the form
+        setFormData({
+          name: "",
+          rating: 0,
+          description: "",
+        });
       } else {
         console.error("Error sending data");
       }
     } catch (error) {
       console.error("An error occurred:", error);
     }
-
-    setFormData({
-      name: "",
-      rating: 0,
-      description: "",
-    });
   };
 
   return (
