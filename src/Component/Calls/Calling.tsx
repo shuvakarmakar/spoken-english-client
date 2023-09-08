@@ -46,7 +46,7 @@ const Calling: React.FC = () => {
         sharedLinks: [
           {
             name: "Copy Link",
-            url: `http://localhost:5173/Connect/room/${roomId}`,
+            url: `https://spoken-english-65d22.web.app/Connect/room/${roomId}`,
           },
         ],
       };
