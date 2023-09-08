@@ -12,7 +12,7 @@ import { FaBars, FaHome, } from "react-icons/fa";
 // import FriendRequest from "./FriendRequest/FriendRequest";
 // import Suggestion from "./Suggestion/Suggestion";
 import './PTPCommunication.css'
-import {NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 // interface MyObject {
 //   _id: number;
 //   name: string;
@@ -77,6 +77,7 @@ const PTPCommunication = () => {
             >
               <FaBars />
             </button>
+
             <p className="text-xl">
               <NavLink to={"/"}>
                 <FaHome className={"w-8 h-8"}></FaHome>
@@ -111,8 +112,11 @@ const PTPCommunication = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/Connect/messaging"} onClick={closeMobileMenu}>
-                Messenger
+
+              <NavLink to={"/Connect/notification"} onClick={closeMobileMenu}>
+                Notification <div className=" badge bg-pink-600 text-white">
+                    0
+                </div>
               </NavLink>
             </li>
           </ul>

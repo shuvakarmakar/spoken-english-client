@@ -3,6 +3,7 @@ import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 // import useUser from "../../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
+import { Link } from "react-router-dom";
 // import { changeLanguage } from "i18next";
 
 interface Student {
@@ -109,8 +110,13 @@ const FriendRequest: React.FC = () => {
           {friends.length <= 0 ? (
             <>
               <div className="flex flex-col justify-center items-center w-full h-[100vh]">
-                <p className="mb-5 text-2xl   offline">No Friend Request Yet.</p>
-                <button className="btn bg-blue-500">Lets make Friend</button>
+                <p className="mb-5 text-2xl   offline">
+                  No Friend Request Yet.
+                </p>
+
+                <Link to={"/Connect/FriendSuggestions"}>
+                  <button className="btn bg-blue-500">Lets make Friend</button>
+                </Link>
               </div>
             </>
           ) : (
