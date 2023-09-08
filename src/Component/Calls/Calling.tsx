@@ -66,7 +66,7 @@ const Calling: React.FC = () => {
      const form = e.currentTarget;
      const link = form.link.value as string;
 
-     fetch(`http://localhost:5000/SendCall/${roomId}`, {
+     fetch(`https://spoken-english-server-xi.vercel.app/SendCall/${roomId}`, {
        method: "POST",
        headers: {
          "content-type": "application/json",

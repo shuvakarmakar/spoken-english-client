@@ -19,7 +19,7 @@ const Notification: React.FC = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/getCallMessages/${user?.uid}`)
+      fetch(`https://spoken-english-server-xi.vercel.app/getCallMessages/${user?.uid}`)
         .then((res) => res.json())
         .then((data: Notification[]) => {
           setNotifications(data);
