@@ -195,8 +195,8 @@ export const router = createBrowserRouter([
         element: <FAQs></FAQs>,
       },
       {
-        path:"search",
-        element:<SearchResults></SearchResults>
+        path: "search",
+        element: <SearchResults></SearchResults>,
       },
 
       // shuva-work
