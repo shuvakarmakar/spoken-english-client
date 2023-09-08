@@ -40,14 +40,6 @@ const ReviewCourses: React.FC = () => {
           className="scrolling-marquee"
         >
           {reviews.map((review, index) => (
-            <div key={index} className="review-card">
-              <div className="bg-gray-100 p-4  ml-6  rounded-lg shadow-xl">
-                <div className="flex gap-6 items-center mb-4">
-                  <div className="ml-4">
-                    <p className="text-blue-500 font-semibold text-lg">
-                      {review.name}
-                    </p>
-                 
             <div key={index} className="shadow-lg mb-4 p-4">
               <div className="flex items-center mb-2">
                 <div className="flex-shrink-0 w-10 h-10">
@@ -73,17 +65,11 @@ const ReviewCourses: React.FC = () => {
                       }
                       readonly
                     > */}
-                     
                   </div>
                 </div>
                 <p className="text-gray-600 mt-2">{review.description}</p>
               </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </div>
-              </div>
+            </div>
           ))}
         </Marquee>
       )}

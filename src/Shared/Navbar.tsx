@@ -13,8 +13,9 @@ import {
 import { FiSun, FiMoon } from "react-icons/fi";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
-import AOS from "aos";
 import "aos/dist/aos.css";
+import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
+import Aos from "aos";
 
 interface Course {
   _id: string;
@@ -33,7 +34,7 @@ const Navbar: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    AOS.init(); // Initialize AOS library
+    Aos.init(); // Initialize AOS library
   }, []);
 
   const toggleMenu = () => {
@@ -342,6 +343,13 @@ const Navbar: React.FC = () => {
           {/* search */}
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
+          </button>
+          <button>
+            <LanguageDropdown
+              changeLanguage={function (_language: string): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
           </button>
         </div>
 
