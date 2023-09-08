@@ -7,7 +7,9 @@
 }
 
 /* Light Mode */
-
+.lightText{
+  color: white !important;
+}
 
 /* Dark Mode */
 .dark-mode {

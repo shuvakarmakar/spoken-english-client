@@ -1,9 +1,12 @@
 module.exports = {
-    testMatch: ['**/__tests__/**/*.js'],
-    collectCoverage: true,
-    transform: {
-        '^.+\\.js$': 'babel-jest',
-    },
-    "moduleFileExtensions": ["js", "jsx", "json"]
-
-}
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          targets: {
+            node: 'current'
+          }
+        }
+      ]
+    ]
+  };

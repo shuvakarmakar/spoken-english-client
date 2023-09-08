@@ -54,8 +54,8 @@ const Banner1 = () => {
         <div className=" absolute banner-bg w-full top-0 z-10 h-full">
           <div className="md:flex  justify-center items-center  h-full md:px-[5%]">
             {/* Left side with text */}
-            <div className="w-full text-white md:py-16 p-10">
-              <h1 className="text-2xl md:text-7xl font-bold mb-4 md:mb-6 md:leading-snug leading-8 md:text-center md:mt-[-50px] font-serif  ">
+            <div className="w-full text-white md:py-16 p-2">
+              <h1 className="text-xl md:text-7xl font-bold mb-0 md:mb-6 md:leading-snug leading-8 md:text-center md:mt-[-50px] font-serif  ">
                 {t('banner1.title')}
               </h1>
               <h3 className="mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex">

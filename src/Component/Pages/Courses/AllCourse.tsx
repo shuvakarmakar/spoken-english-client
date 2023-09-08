@@ -38,7 +38,7 @@ const AllCourse: React.FC = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-[60px]">
       <section className="flex justify-center  py-5 w-[96%] md:w-[90%] mx-auto">
         <p className="text-2xl">Popular Courses</p>
       </section>

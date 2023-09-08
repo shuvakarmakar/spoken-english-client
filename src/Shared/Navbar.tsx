@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink,useNavigate  } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   Bars3BottomRightIcon,
   XMarkIcon,
@@ -31,7 +31,7 @@ interface Course {
 
 
 const Navbar: React.FC = () => {
-  
+
   const navigate = useNavigate();
   const { user } = useContext(AuthContext) as AuthContextType;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,12 +87,12 @@ const Navbar: React.FC = () => {
     document.getElementById("searchBarContainer")?.classList.remove("hidden")
   }
 
-  const [query, setQuery] = useState<string>(''); 
+  const [query, setQuery] = useState<string>('');
 
 
 
   const handleSearch = () => {
-    navigate('/search', { state: { value: query } });
+    navigate(`/search?searchtext=${query}`, { state: { value: query } });
     document.getElementById("SearchResultContainer")?.classList.add("hidden")
   };
 
@@ -102,7 +102,7 @@ const Navbar: React.FC = () => {
 
   }
 
-  const handleKeyPress=(event: React.KeyboardEvent<HTMLInputElement>)=>{
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       // Handle the Enter key press here
       handleSearch();
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
 
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg relative">
+    <div className="  px-4 py-5 w-full md:px-24 lg:px-8 changebg relative   z-50 shadow-2xl">
 
       {/* Searchbar */}
       <div id="searchBarContainer" className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg">
@@ -196,7 +196,7 @@ const Navbar: React.FC = () => {
       </div>
       {
         query && (
-          <div id="SearchResultContainer" className="changebg cursor-pointer p-4 absolute SearchResultContainer w-[96vw] md:w-[50vw] top-20 bg-white z-50 left-1/2 -translate-x-1/2 shadow-2xl">
+          <div id="SearchResultContainer" className=" changebg cursor-pointer p-4 absolute SearchResultContainer w-[96vw] md:w-[50vw] top-20 bg-white z-50 left-1/2 -translate-x-1/2 shadow-2xl">
             {
               query && courses.filter(course => course.courseName.toLowerCase().includes(query)).map(c => (
 
@@ -320,7 +320,7 @@ const Navbar: React.FC = () => {
             {isMenuOpen ? (
               <XMarkIcon className="w-5 text-white font-bold text-lg" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
+              <Bars3BottomRightIcon className="w-5  font-bold text-lg" />
             )}
           </button>
           {isMenuOpen && (
@@ -360,7 +360,7 @@ const Navbar: React.FC = () => {
                     {!user ? (
                       <>
                         <div className="flex">
-                         
+
                           <li><Link to="/Login" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Login</Link>
                           </li>
                         </div>

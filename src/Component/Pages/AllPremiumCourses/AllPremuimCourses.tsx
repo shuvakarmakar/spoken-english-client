@@ -23,7 +23,7 @@ const MainComponent: React.FC = () => {
     }, []);
 
     return (
-        <div className="container mx-auto py-8">
+        <div className="mt-[60px] container mx-auto py-8">
             <h1 className="text-2xl font-semibold mb-4">All Premium Courses</h1>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
                 {courses.map(course => (

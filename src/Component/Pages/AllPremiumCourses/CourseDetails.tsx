@@ -52,7 +52,7 @@ const CourseDetails: React.FC = () => {
   console.log(enrollmentData);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="mt-[60px] container mx-auto py-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">
         {course.courseName}
       </h1>
