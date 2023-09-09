@@ -26,13 +26,16 @@ const CourseFeedback = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`https://spoken-english-server-xi.vercel.app/course-feedback/`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://spoken-english-server-xi.vercel.app/course-feedback/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         Swal.fire("Thanks For Your Feedback");
