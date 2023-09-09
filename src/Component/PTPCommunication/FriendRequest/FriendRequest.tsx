@@ -78,9 +78,14 @@ const FriendRequest: React.FC = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+         
         console.log(data);
-         const remaining = friends.filter((friend) => friend._id !== _id);
-         setFriends(remaining);
+        if(data ){
+          const remaining = friends.filter((friend) => friend._id !== _id);
+           setFriends(remaining);
+        }
+       
+       
       });
   };
 
@@ -101,6 +106,16 @@ const FriendRequest: React.FC = () => {
         </div>
       ) : (
         <>
+          {friends.length <= 0 ? (
+            <>
+              <div className="flex flex-col justify-center items-center w-full h-[100vh]">
+                <p className="mb-5 text-2xl   offline">No Friend Request Yet.</p>
+                <button className="btn bg-blue-500">Lets make Friend</button>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-[5%] my-[5%]">
             {friends.map((student) => {
               const isUserOnline = onlineUsers[student?.userId] === true;

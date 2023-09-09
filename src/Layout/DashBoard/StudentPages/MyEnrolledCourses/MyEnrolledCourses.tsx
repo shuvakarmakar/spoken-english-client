@@ -24,7 +24,7 @@ const MyEnrolledCourses: React.FC = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          setEnrolledCourses(data)
+          setEnrolledCourses(data);
           console.log(data);
         })
         .catch((error) =>
@@ -53,9 +53,7 @@ const MyEnrolledCourses: React.FC = () => {
             {enrolledCourses.map((course, index) => (
               <tr key={course._id}>
                 <td>{index + 1}</td>
-                <td className="font-bold">
-                    {course.product_name}
-                </td>
+                <td className="font-bold">{course.product_name}</td>
                 <td>${course.total_amount}</td>
                 <td>{course.instructor_name}</td>
                 <td className="flex justify-center">

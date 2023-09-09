@@ -5,6 +5,7 @@ import {
   AuthContext,
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
+import Marquee from "react-fast-marquee"; // Import Marquee component
 
 interface Review {
   name: string;
@@ -33,7 +34,11 @@ const ReviewCourses: React.FC = () => {
       {reviews.length === 0 ? (
         <p>No reviews available for this course.</p>
       ) : (
-        <div>
+        <Marquee
+          speed={50} // Adjust the speed as needed (higher value = slower)
+          gradient={false} // Disable gradient effect
+          className="scrolling-marquee"
+        >
           {reviews.map((review, index) => (
             <div key={index} className="shadow-lg mb-4 p-4">
               <div className="flex items-center mb-2">
@@ -60,14 +65,13 @@ const ReviewCourses: React.FC = () => {
                       }
                       readonly
                     > */}
-                     
                   </div>
                 </div>
+                <p className="text-gray-600 mt-2">{review.description}</p>
               </div>
-              <p className="text-gray-600">{review.description}</p>
             </div>
           ))}
-        </div>
+        </Marquee>
       )}
     </div>
   );
