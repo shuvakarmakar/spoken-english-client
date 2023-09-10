@@ -16,6 +16,7 @@ import "./Navbar.css";
 import "aos/dist/aos.css";
 import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
 import Aos from "aos";
+import useNotification from "../Hooks/useNotification";
 
 interface Course {
   _id: string;
@@ -41,7 +42,7 @@ const Navbar: React.FC = () => {
     setShowModal(false);
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const [unReadNotifications, unReadFriendRequest] = useNotification();
   const navItems = (
     <>
       <li>
@@ -57,7 +58,10 @@ const Navbar: React.FC = () => {
           to="/Connect/Friend"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-          Connect
+          Connect{" "}
+          <div className=" badge bg-blue-500 text-white">
+            {unReadNotifications || unReadFriendRequest}
+          </div>
         </NavLink>
       </li>
       <li>
@@ -73,7 +77,7 @@ const Navbar: React.FC = () => {
           to="/all-premium-courses"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-          All Premium Courses
+    Premium Courses
         </NavLink>
       </li>
     </>

@@ -37,16 +37,23 @@ const FriendRequest: React.FC = () => {
   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   useEffect(() => {
     setLoading(true);
-    if (user) {
-      fetch(
-        `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setFriends(data);
-          setLoading(false);
-        });
+    const polingineterval = setInterval(() => {
+       if (user) {
+         fetch(
+           `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
+         )
+           .then((res) => res.json())
+           .then((data) => {
+             console.log(data);
+             setFriends(data);
+             setLoading(false);
+           });
+       }
+
+    }, 1000)
+    
+    return () => {
+      clearInterval(polingineterval)
     }
   }, [user]);
 

@@ -11,7 +11,7 @@ const Main = () => {
  
   return (
     <>
-      <div className="header bg-[#7285f25a]">
+      <div className="header">
         {helpSupport || connected ? "" : <Navbar />}
       </div>
 
