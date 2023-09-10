@@ -8,6 +8,7 @@ const firebaseConfig = {
   storageBucket: "spoken-english-65d22.appspot.com",
   messagingSenderId: "997742080295",
   appId: "1:997742080295:web:8e6785b1381ba32aa63902",
+  
 };
 
 // Initialize Firebase
