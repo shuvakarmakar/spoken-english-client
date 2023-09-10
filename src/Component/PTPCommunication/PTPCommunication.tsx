@@ -25,22 +25,22 @@ import useNotification from "../../Hooks/useNotification";
 
 
 const PTPCommunication = () => {
-  // const [users, loading] = useUser();
-  // const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  // const Student = users.filter((user) => user.Roll=="student");
+  const [users, loading] = useUser();
+  const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
+  const Student = users.filter((user) => user.Roll=="student");
 
   const [searchQuery, setSearchQuery] = useState<string>("");
-  //  const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
 
-    // const filtered = users.filter((item) =>
-    //   item.name.toLowerCase().includes(query.toLowerCase())
-    // );
+    const filtered = users.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
 
-    // setFilteredData(filtered);
+    setFilteredData(filtered);
   };
 
   // const fetchData = async () => {

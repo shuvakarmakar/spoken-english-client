@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 // import io from "socket.io-client";
 import {
   AuthContext,
@@ -10,6 +10,7 @@ import {
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 import useUser from "../../../Hooks/useUser";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
+import { Helmet } from "react-helmet";
 
 // interface UserProfileCardProps {
 //   student: {
@@ -22,9 +23,9 @@ import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 
 const Suggestion: React.FC = () => {
   const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
-  const [users,isLoading]=useUser()
+  const [users, isLoading] = useUser();
   // const [disable,setDesabled] =useState({})
-  
+
   // Check if the connected user's online status is true
   // const isUserOnline = onlineUsers[user?.uid] === true;
 
@@ -40,60 +41,51 @@ const Suggestion: React.FC = () => {
     setShowModal(false);
   };
 
-  const [Suggestion,setSuggestion]=useState()
-
-  useEffect(() => { 
-    fetch("https://spoken-english-server-xi.vercel.app/GetUsers")
-      .then(res => res.json())
-      .then(data => {
-      setSuggestion(data.suggestion)
-    })
-  },[])
-
 
   // send friend  request
-const sendFriendRequest = (friendId: string) => {
-  try {
-           console.log(friendId,user?.uid);
+  const sendFriendRequest = (friendId: string) => {
+    try {
+      console.log(friendId, user?.uid);
 
-     fetch(
-      `https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then(res => res.json())
-       .then(data => {
-         console.log(data);
-         if (data.friendRequest) {
-             
-             // You can update your UI or show a notification here
-           } else {
-             console.error("Failed to send friend request");
-             // Handle error scenario
-           }
-    })
-  
-  } catch (error) {
-    console.error("Error sending friend request:", error);
-  }
-};
+      fetch(
+        `https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.friendRequest) {
+            // You can update your UI or show a notification here
+          } else {
+            console.error("Failed to send friend request");
+            // Handle error scenario
+          }
+        });
+    } catch (error) {
+      console.error("Error sending friend request:", error);
+    }
+  };
 
-    
-  
-// console.log();
-   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  // console.log();
+  const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
+      <Helmet>
+        <title>Suggest Friend</title>
+      </Helmet>
+      ;
       {isLoading ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mx-[5%] my-[2%]">
             {anim.map((a) => {
               return (
                 <>
-                  <p className="hidden">{ a}</p>
+                  <p className="hidden">{a}</p>
                   <LoadingCard></LoadingCard>
                 </>
               );

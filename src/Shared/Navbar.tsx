@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           to="/all-premium-courses"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-    Premium Courses
+          Premium Courses
         </NavLink>
       </li>
     </>
@@ -299,10 +299,10 @@ const Navbar: React.FC = () => {
           {user && (
             <li>
               <NavLink
-                to="/dictionary"
+                to="/translator"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                Dictionary
+                Translator
               </NavLink>
             </li>
           )}
@@ -348,6 +348,8 @@ const Navbar: React.FC = () => {
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
           </button>
+
+          {/* Language */}
           <button>
             <LanguageDropdown
               changeLanguage={function (_language: string): void {
@@ -355,6 +357,8 @@ const Navbar: React.FC = () => {
               }}
             />
           </button>
+
+          
         </div>
 
         {/* Mobile Navbar Section */}
@@ -366,9 +370,9 @@ const Navbar: React.FC = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-white font-bold text-lg" />
+              <XMarkIcon className="w-5 text-black font-bold text-xl" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
+              <Bars3BottomRightIcon className="w-5 text-black  font-bold text-lg darkText" />
             )}
           </button>
           {isMenuOpen && (
@@ -400,12 +404,12 @@ const Navbar: React.FC = () => {
                     {user && (
                       <li>
                         <NavLink
-                          to="/dictionary"
+                          to="/translator"
                           className={({ isActive }) =>
                             isActive ? "active" : "default"
                           }
                         >
-                          Dictionary
+                          Translator
                         </NavLink>
                       </li>
                     )}

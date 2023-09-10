@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
-
 const BeInstructor: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
 
@@ -37,18 +36,18 @@ const BeInstructor: React.FC = () => {
       <div className="changebg mx-auto py-8  md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
         <div className=" md:w-[50%] w-full">
           <h2 className="md:text-4xl text-2xl font-bold mb-4 ">
-            {t('beInstructor.title')}
-          </h2> 
+            {t("beInstructor.title")}
+          </h2>
           <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
-            {t('beInstructor.description')}
+            {t("beInstructor.description")}
           </p>
 
           <NavLink to={"/applyInstructor"}>
             <button
-              className="bg-blue-500 text-white px-4 py-2 mt-5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
               onClick={toggleForm}
             >
-              {t('beInstructor.buttonText')}
+              {t("beInstructor.buttonText")}
             </button>
           </NavLink>
         </div>
