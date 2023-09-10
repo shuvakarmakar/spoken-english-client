@@ -51,6 +51,7 @@ import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
 import SearchResults from "../Component/Pages/Search/SearchResults";
+import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
 
 export const router = createBrowserRouter([
   {
@@ -311,6 +312,10 @@ export const router = createBrowserRouter([
             <Calling />
           </PrivetRout>
         ),
+      },
+      {
+        path: "/Connect/notification",
+        element:<Notification></Notification>
       },
     ],
   },

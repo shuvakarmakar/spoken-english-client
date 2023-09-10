@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg relative">
+    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg relative">
       {/* Searchbar */}
       <div
         id="searchBarContainer"
