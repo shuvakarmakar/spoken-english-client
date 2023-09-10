@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import io from "socket.io-client";
 import {
   AuthContext,
@@ -39,6 +39,16 @@ const Suggestion: React.FC = () => {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const [Suggestion,setSuggestion]=useState()
+
+  useEffect(() => { 
+    fetch("https://spoken-english-server-xi.vercel.app/GetUsers")
+      .then(res => res.json())
+      .then(data => {
+      setSuggestion(data.suggestion)
+    })
+  },[])
 
 
   // send friend  request
