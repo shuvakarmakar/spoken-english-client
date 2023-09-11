@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  position: relative;
+}
+.spinner{
+  top: 0 !important; 
+}
 .active{
   color: rgb(27, 132, 202);
 }

@@ -63,7 +63,16 @@ const CourseDetails: React.FC = () => {
           Price: ${course.price}
         </p>
         <div className="flex justify-center">
-          <Link
+          {
+            course.courseName==="Spoken English Fluently"? (<Link
+              to={{
+                pathname: "/quiz-starter",
+              }}
+              state={course}
+              className="px-6 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
+            >
+              Enroll Now
+            </Link>):(<Link
             to={{
               pathname: "/checkout",
             }}
@@ -71,7 +80,16 @@ const CourseDetails: React.FC = () => {
             className="px-6 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
           >
             Enroll Now
-          </Link>
+          </Link>)
+            // if(courseName=="Spoken English Fluently")
+            // {
+
+            // }
+            // else{
+              
+            // }
+          }
+          
         </div>
       </div>
 

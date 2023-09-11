@@ -26,6 +26,7 @@ const Checkout: React.FC = () => {
     const location = useLocation();
     // const { user } = useContext(AuthContext);
     const enrollmentData = location?.state;
+    console.log(enrollmentData)
 
     const { register, handleSubmit } = useForm<BillingData>();
 
