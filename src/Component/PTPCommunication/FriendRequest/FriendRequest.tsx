@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 // import useUser from "../../../Hooks/useUser";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 // import { changeLanguage } from "i18next";
 
 interface Student {
@@ -13,9 +18,8 @@ interface Student {
     profileImage: string;
   };
   userId: string;
-  request:boolean;
+  request: boolean;
 }
-
 
 const FriendRequest: React.FC = () => {
   const { onlineUsers, user } = useContext(AuthContext) as AuthContextType;
@@ -36,17 +40,23 @@ const FriendRequest: React.FC = () => {
   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   useEffect(() => {
     setLoading(true);
-    if (user) {
-      fetch(
-        `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setFriends(data);
-          setLoading(false);
-        });
-    }
+    const polingineterval = setInterval(() => {
+      if (user) {
+        fetch(
+          `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setFriends(data);
+            setLoading(false);
+          });
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(polingineterval);
+    };
   }, [user]);
 
   const DeleteRequest = (id: number) => {
@@ -68,29 +78,33 @@ const FriendRequest: React.FC = () => {
 
   // https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}
 
-  const AcceptFriendRequest = (friendId: string,_id:number) => {
-    fetch(`https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({id:_id})
-    })
+  const AcceptFriendRequest = (friendId: string, _id: number) => {
+    fetch(
+      `https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ id: _id }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-         
         console.log(data);
-        if(data ){
+        if (data) {
           const remaining = friends.filter((friend) => friend._id !== _id);
-           setFriends(remaining);
+          setFriends(remaining);
         }
-       
-       
       });
   };
 
   return (
     <>
+      <Helmet>
+        <title>Friend Request</title>
+      </Helmet>
+      ;
       {loading ? (
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-[5%] my-[5%] w-full">
@@ -109,8 +123,13 @@ const FriendRequest: React.FC = () => {
           {friends.length <= 0 ? (
             <>
               <div className="flex flex-col justify-center items-center w-full h-[100vh]">
-                <p className="mb-5 text-2xl   offline">No Friend Request Yet.</p>
-                <button className="btn bg-blue-500">Lets make Friend</button>
+                <p className="mb-5 text-2xl   offline">
+                  No Friend Request Yet.
+                </p>
+
+                <Link to={"/Connect/FriendSuggestions"}>
+                  <button className="btn bg-blue-500">Lets make Friend</button>
+                </Link>
               </div>
             </>
           ) : (

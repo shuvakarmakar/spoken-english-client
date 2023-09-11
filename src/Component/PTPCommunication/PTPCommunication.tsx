@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 // 
 // import useUser from '../../Hooks/useUser';
 // import Spinner from '../Pages/Spinner/Spinner';
@@ -12,7 +12,9 @@ import { FaBars, FaHome, } from "react-icons/fa";
 // import FriendRequest from "./FriendRequest/FriendRequest";
 // import Suggestion from "./Suggestion/Suggestion";
 import './PTPCommunication.css'
-import {NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+import useNotification from "../../Hooks/useNotification";
 // interface MyObject {
 //   _id: number;
 //   name: string;
@@ -20,6 +22,8 @@ import {NavLink, Outlet } from "react-router-dom";
 //   // other properties
 // }
 // import { Pagination } from "swiper/modules";
+
+
 const PTPCommunication = () => {
   // const [users, loading] = useUser();
   // const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
@@ -64,7 +68,13 @@ const PTPCommunication = () => {
    const closeMobileMenu = () => {
      setMobileMenuOpen(false);
    };
+  // notifications
+  const [unReadNotifications, unReadFriendRequest] = useNotification();
+ 
+  const location=useLocation()
+  
 
+ const searchPath = location.pathname === "/Connect/FriendSuggestions";
   return (
     <>
       <div className="header">
@@ -77,6 +87,7 @@ const PTPCommunication = () => {
             >
               <FaBars />
             </button>
+
             <p className="text-xl">
               <NavLink to={"/"}>
                 <FaHome className={"w-8 h-8"}></FaHome>
@@ -99,7 +110,7 @@ const PTPCommunication = () => {
             </li>
             <li>
               <NavLink to={"/Connect/FriendRequest"} onClick={closeMobileMenu}>
-                Friends Request
+                Friends Request <div className=" badge bg-blue-500 text-white">{unReadFriendRequest}</div>
               </NavLink>
             </li>
             <li>
@@ -111,47 +122,54 @@ const PTPCommunication = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/Connect/messaging"} onClick={closeMobileMenu}>
-                Messenger
+              <NavLink to={"/Connect/notification"} onClick={closeMobileMenu}>
+                Notification{" "}
+                <div className=" badge bg-blue-500 text-white">
+                  {unReadNotifications}
+                </div>
               </NavLink>
             </li>
           </ul>
 
           {/* Search Bar */}
-          <div className="flex items-center mt-4 md:mt-0">
-            <div className="input-group">
-              <input
-                type="text"
-                placeholder="Search…"
-                className="d-input w-full md:w-[500px] input-bordered"
-                
-                
-              />
-              <button className="btn-custom bg-blue-500 h-10 px-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          {searchPath && (
+            <>
+              <div className="flex items-center mt-4 md:mt-0">
+                <div className="input-group">
+                  <input
+                    type="text"
+                    placeholder="Search…"
+                    className="d-input w-full md:w-[500px] input-bordered"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                   />
-                </svg>
-              </button>
-            </div>
+                  <button className="btn-custom bg-blue-500 h-10 px-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
-            {/* Home Icon (Hidden on Mobile and Tablet) */}
-            <p className="hidden md:block ml-6">
-              <NavLink to={"/"}>
-                <FaHome className={"w-10 h-10"}></FaHome>
-              </NavLink>
-            </p>
-          </div>
+                {/* Home Icon (Hidden on Mobile and Tablet) */}
+              </div>
+            </>
+          )}
+          <p className="hidden md:block ml-6">
+            <NavLink to={"/"}>
+              <FaHome className={"w-10 h-10"}></FaHome>
+            </NavLink>
+          </p>
         </div>
       </div>
       <div className=" overflow-auto h-[100vh]">

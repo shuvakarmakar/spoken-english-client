@@ -5,7 +5,7 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 interface UserProfileCardProps {
   student: {
@@ -18,6 +18,7 @@ interface UserProfileCardProps {
     profileImage: string;
     uid: string;
     _id: number;
+   
     // Add other properties of your student object
   };
 }
@@ -69,6 +70,11 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
   const closeModal = () => {
     setShowModal(false);
   };
+   const navigate = useNavigate();
+
+    const handleJoinRoom =(uid: string) => {
+      navigate(`/Connect/room/${uid}`);
+    };
 
   return (
     <>
@@ -81,7 +87,11 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
             onClick={() => openModal(student._id)}
             className="w-16 h-16 bg-blue-500 rounded-full"
           >
-            <img src={student?.profileImage} className="rounded-full w-full h-full" alt="" />
+            <img
+              src={student?.profileImage}
+              className="rounded-full w-full h-full"
+              alt=""
+            />
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>
@@ -95,16 +105,18 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
         </div>
         <div className="mt-4">
           <p className="text-gray-600">
-            I'm a passionate web developer with a love for crafting clean and
-            efficient code. Let's build amazing things together!
+            I'm a passionate English Learner Lets learn English together
           </p>
         </div>
         <div className="mt-4 flex justify-between">
-          <Link to="/connect/calling">
-            <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring">
+       
+            <button
+              onClick={()=>handleJoinRoom(student?.uid)}
+              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring"
+            >
               Call
             </button>
-          </Link>
+        
           <Link
             to={"/messaging"}
             state={{ MyId: user?.uid, userId: student?.uid }}

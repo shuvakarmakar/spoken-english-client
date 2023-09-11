@@ -10,6 +10,7 @@ interface User {
   uid: string;
   profileImage: string;
   profileBanner: string;
+  request: boolean;
 }
 
 const useUser = (): [User[], boolean, () => void] => {
