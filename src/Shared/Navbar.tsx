@@ -16,6 +16,7 @@ import "./Navbar.css";
 import "aos/dist/aos.css";
 import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
 import Aos from "aos";
+import useNotification from "../Hooks/useNotification";
 
 interface Course {
   _id: string;
@@ -41,7 +42,7 @@ const Navbar: React.FC = () => {
     setShowModal(false);
     setIsMenuOpen(!isMenuOpen);
   };
-
+  const [unReadNotifications, unReadFriendRequest] = useNotification();
   const navItems = (
     <>
       <li>
@@ -57,7 +58,10 @@ const Navbar: React.FC = () => {
           to="/Connect/Friend"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-          Connect
+          Connect{" "}
+          <div className=" badge bg-blue-500 text-white">
+            {unReadNotifications || unReadFriendRequest}
+          </div>
         </NavLink>
       </li>
       <li>
@@ -73,7 +77,7 @@ const Navbar: React.FC = () => {
           to="/all-premium-courses"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-          All Premium Courses
+          Premium Courses
         </NavLink>
       </li>
     </>
@@ -147,7 +151,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4  py-5 w-full md:px-24 lg:px-8 changebg relative">
+    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg relative">
       {/* Searchbar */}
       <div
         id="searchBarContainer"
@@ -295,10 +299,10 @@ const Navbar: React.FC = () => {
           {user && (
             <li>
               <NavLink
-                to="/dictionary"
+                to="/translator"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                Dictionary
+                Translator
               </NavLink>
             </li>
           )}
@@ -396,12 +400,12 @@ const Navbar: React.FC = () => {
                     {user && (
                       <li>
                         <NavLink
-                          to="/dictionary"
+                          to="/translator"
                           className={({ isActive }) =>
                             isActive ? "active" : "default"
                           }
                         >
-                          Dictionary
+                          Translator
                         </NavLink>
                       </li>
                     )}

@@ -125,9 +125,8 @@ const sendFriendRequest = (friendId: string) => {
                     </div>
                     <div className="mt-4">
                       <p className="text-gray-600">
-                        I'm a passionate web developer with a love for crafting
-                        clean and efficient code. Let's build amazing things
-                        together!
+                        I'm a passionate English Learner Lets learn English
+                        together.
                       </p>
                     </div>
                     <div className="mt-4 flex justify-between">
@@ -137,6 +136,7 @@ const sendFriendRequest = (friendId: string) => {
 
                       <button
                         onClick={() => sendFriendRequest(student.uid)}
+                        disabled={student.request}
                         className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
                       >
                         Add Friend
