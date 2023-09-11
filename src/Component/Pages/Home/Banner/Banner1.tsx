@@ -58,7 +58,7 @@ const Banner1 = () => {
               <h1 className="text-2xl md:text-7xl font-bold mb-4 md:mb-6 md:leading-snug leading-8 md:text-center md:mt-[-50px] font-serif  ">
                 {t('banner1.title')}
               </h1>
-              <h3 className="mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex">
+              <h3 className="mb-4 md:mb-6 text-center  font-mono md:font-bold leading-7 md:mt-5 hidden md:flex  justify-center">
                 {t('banner1.description')}
               </h3>
               <div className="md:flex justify-center mt-7 items-center md:mt-20">

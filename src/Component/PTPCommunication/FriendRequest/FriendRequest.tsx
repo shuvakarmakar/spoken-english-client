@@ -3,6 +3,7 @@ import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 // import useUser from "../../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
+import { Link } from "react-router-dom";
 // import { changeLanguage } from "i18next";
 
 interface Student {
@@ -36,16 +37,23 @@ const FriendRequest: React.FC = () => {
   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   useEffect(() => {
     setLoading(true);
-    if (user) {
-      fetch(
-        `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setFriends(data);
-          setLoading(false);
-        });
+    const polingineterval = setInterval(() => {
+       if (user) {
+         fetch(
+           `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
+         )
+           .then((res) => res.json())
+           .then((data) => {
+             console.log(data);
+             setFriends(data);
+             setLoading(false);
+           });
+       }
+
+    }, 1000)
+    
+    return () => {
+      clearInterval(polingineterval)
     }
   }, [user]);
 
@@ -78,9 +86,14 @@ const FriendRequest: React.FC = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+         
         console.log(data);
-         const remaining = friends.filter((friend) => friend._id !== _id);
-         setFriends(remaining);
+        if(data ){
+          const remaining = friends.filter((friend) => friend._id !== _id);
+           setFriends(remaining);
+        }
+       
+       
       });
   };
 
@@ -101,6 +114,21 @@ const FriendRequest: React.FC = () => {
         </div>
       ) : (
         <>
+          {friends.length <= 0 ? (
+            <>
+              <div className="flex flex-col justify-center items-center w-full h-[100vh]">
+                <p className="mb-5 text-2xl   offline">
+                  No Friend Request Yet.
+                </p>
+
+                <Link to={"/Connect/FriendSuggestions"}>
+                  <button className="btn bg-blue-500">Lets make Friend</button>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-[5%] my-[5%]">
             {friends.map((student) => {
               const isUserOnline = onlineUsers[student?.userId] === true;

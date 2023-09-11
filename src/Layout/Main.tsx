@@ -8,13 +8,11 @@ const Main = () => {
 
   const helpSupport = location.pathname === "/helpSupport";
   const connected= location.pathname ==="/Connect"
-  const handleSearch = () => {
-   console.log("hello");
- }
+ 
   return (
     <>
       <div className="header">
-        {helpSupport || connected ? "" : <Navbar onSearch={handleSearch} />}
+        {helpSupport || connected ? "" : <Navbar />}
       </div>
 
       {/* main  */}
