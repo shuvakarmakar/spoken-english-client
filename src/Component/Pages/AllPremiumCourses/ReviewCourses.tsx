@@ -23,8 +23,8 @@ const ReviewCourses: React.FC = () => {
   }, []); // Add an empty dependency array to run this effect only once
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-center m-8">
+    <div className="my-16">
+      <h2 className="text-3xl underline font-bold text-center m-8">
         What Our Students Say!
       </h2>
       {reviews.length === 0 ? (

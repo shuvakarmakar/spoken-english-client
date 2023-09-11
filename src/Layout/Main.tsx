@@ -12,7 +12,7 @@ const Main = () => {
   return (
     <>
       <div className="header">
-        {helpSupport || connected ? "" : <Navbar  />}
+        {helpSupport || connected ? "" : <Navbar />}
       </div>
 
       {/* main  */}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaVolumeUp, FaCopy, FaExchangeAlt } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const LanguageTranslator = () => {
   const [fromText, setFromText] = useState<string>("");
@@ -69,6 +70,9 @@ const LanguageTranslator = () => {
 
   return (
     <div className="w-1/2 mx-auto mt-10 p-4">
+      <Helmet>
+        <title>ELearner | Translator</title>
+      </Helmet>
       <div className="bg-blue-200 p-6 rounded-lg shadow-xl">
         <div className="text-input flex flex-col md:flex-row border-b border-gray-300 bg-white p-2 rounded-lg">
           <textarea
