@@ -1,7 +1,7 @@
 import React from 'react';
 const Spinner = () => {
   return (
-    <div className="relative top-0">
+    <div className="spinner z-[9000]">
       <div className="h-[100vh] w-full flex items-center justify-center top-0 left-0 absolute">
         <div role="status">
           <svg

@@ -52,7 +52,7 @@ const CourseDetails: React.FC = () => {
   console.log(enrollmentData);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="mt-[60px] container mx-auto py-8">
       <h1 className="text-3xl font-semibold mb-4 text-center">
         {course.courseName}
       </h1>
@@ -63,7 +63,16 @@ const CourseDetails: React.FC = () => {
           Price: ${course.price}
         </p>
         <div className="flex justify-center">
-          <Link
+          {
+            course.courseName==="Spoken English Fluently"? (<Link
+              to={{
+                pathname: "/quiz-starter",
+              }}
+              state={course}
+              className="px-6 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
+            >
+              Enroll Now
+            </Link>):(<Link
             to={{
               pathname: "/checkout",
             }}
@@ -71,7 +80,16 @@ const CourseDetails: React.FC = () => {
             className="px-6 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition duration-300"
           >
             Enroll Now
-          </Link>
+          </Link>)
+            // if(courseName=="Spoken English Fluently")
+            // {
+
+            // }
+            // else{
+              
+            // }
+          }
+          
         </div>
       </div>
 

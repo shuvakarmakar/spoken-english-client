@@ -51,6 +51,8 @@ import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
 import SearchResults from "../Component/Pages/Search/SearchResults";
+import Quiz from "../Component/Pages/Quiz/Quiz";
+import QuizStarter from "../Component/Pages/Quiz/QuizStarter";
 import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
 import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
 
@@ -199,7 +201,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <SearchResults></SearchResults>,
+        element: <SearchResults></SearchResults>
+      },
+
+      {
+        path: "quiz",
+        element: <Quiz></Quiz>
+      },
+      {
+        path: "quiz-starter",
+        element: <QuizStarter></QuizStarter>
       },
 
       // shuva-work

@@ -348,6 +348,8 @@ const Navbar: React.FC = () => {
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
           </button>
+
+          {/* Language */}
           <button>
             <LanguageDropdown
               changeLanguage={function (_language: string): void {
@@ -355,6 +357,8 @@ const Navbar: React.FC = () => {
               }}
             />
           </button>
+
+          
         </div>
 
         {/* Mobile Navbar Section */}
@@ -368,7 +372,7 @@ const Navbar: React.FC = () => {
             {isMenuOpen ? (
               <XMarkIcon className="w-5 text-black font-bold text-xl" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-black font-bold text-xl" />
+              <Bars3BottomRightIcon className="w-5 text-black  font-bold text-lg darkText" />
             )}
           </button>
           {isMenuOpen && (
