@@ -26,7 +26,7 @@ import Checkout from "../Component/Pages/Checkout/Checkout";
 import AboutUs from "../Component/Pages/Footer/AboutUs";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
-import Dictionary from "../Component/Pages/Dictionary/Dictionary";
+// import Dictionary from "../Component/Pages/Dictionary/Dictionary";
 import Messaging from "../Component/Messageing/Messaging";
 import Applications from "../Layout/DashBoard/AdminPages/Applications/Applications";
 import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
@@ -51,6 +51,7 @@ import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
 import SearchResults from "../Component/Pages/Search/SearchResults";
+import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
 
 export const router = createBrowserRouter([
   {
@@ -124,7 +125,8 @@ export const router = createBrowserRouter([
         path: "/dictionary",
         element: (
           <PrivetRout>
-            <Dictionary />
+            {/* <Dictionary /> */}
+            <LanguageTranslator />
           </PrivetRout>
         ),
       },

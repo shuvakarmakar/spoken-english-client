@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg relative">
+    <div className=" px-4  py-5 w-full md:px-24 lg:px-8 changebg relative">
       {/* Searchbar */}
       <div
         id="searchBarContainer"
@@ -362,9 +362,9 @@ const Navbar: React.FC = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-white font-bold text-lg" />
+              <XMarkIcon className="w-5 text-black font-bold text-xl" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
+              <Bars3BottomRightIcon className="w-5 text-black font-bold text-xl" />
             )}
           </button>
           {isMenuOpen && (

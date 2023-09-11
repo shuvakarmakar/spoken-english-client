@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Rating from "react-rating";
-
-import Marquee from "react-fast-marquee"; // Import Marquee component
+import Marquee from "react-fast-marquee";
 
 interface Review {
   name: string;
@@ -39,7 +38,7 @@ const ReviewCourses: React.FC = () => {
                   <p className="text-blue-500 font-semibold">{review.name}</p>
                   <div className="">
                     <Rating
-                      initialRating={parseFloat(review.rating)}
+                      initialRating={parseFloat(review.rating)} // Convert rating to a number
                       emptySymbol={
                         <span className="text-gray-400 text-2xl">☆</span>
                       }
