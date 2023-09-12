@@ -12,9 +12,8 @@ import "./Banner.css";
 
 // import required modules
 import { EffectFade, Autoplay, Pagination } from "swiper/modules";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Flip, Roll, Rotate, Slide, Zoom } from 'react-awesome-reveal';
+import { Flip, Slide, Zoom } from 'react-awesome-reveal';
 
 const Banner1 = () => {
   const { t } = useTranslation();
