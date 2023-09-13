@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import 'tailwindcss/tailwind.css';
 import './TextToImageSpeaker.css'; // Create this CSS file for styling
 
