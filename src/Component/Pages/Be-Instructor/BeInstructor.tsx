@@ -42,7 +42,7 @@ const BeInstructor: React.FC = () => {
             </h2>
           </Fade>
           <Slide direction="left" triggerOnce>
-            <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
+            <p className="text-gray-600 mb-4 text-sm leading-7 darkText text-justify">
               {t("beInstructor.description")}
             </p>
           </Slide>
@@ -59,7 +59,7 @@ const BeInstructor: React.FC = () => {
           </NavLink>
         </div>
 
-        <div className="right-img md:w-[50%] w-full mt-10 md:mt-0">
+        <div className="right-img md:w-[70%] w-full mt-10 md:mt-0">
           <Slide direction="right" triggerOnce>
             <img
               src="https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png"
