@@ -3,15 +3,19 @@ import React, { useContext, useState } from "react";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BiSolidUserAccount } from "react-icons/bi";
 import { FaBugSlash } from "react-icons/fa6";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const HelpSupportPage: React.FC = () => {
-  const { user } = useContext(AuthContext) as AuthContextType
+  const { user } = useContext(AuthContext) as AuthContextType;
   const timestamp = new Date();
   const [formData, setFormData] = useState({
-    subject:"",
-    message:"",
+    subject: "",
+    message: "",
     email: user?.email,
     createdAt: timestamp,
     isRead: false,
@@ -38,11 +42,10 @@ const HelpSupportPage: React.FC = () => {
             message: "",
             email: "",
             isRead: false,
-            createdAt:timestamp,
+            createdAt: timestamp,
           });
         }
       });
-    
   };
 
   const handleInputChange = (
@@ -57,10 +60,13 @@ const HelpSupportPage: React.FC = () => {
 
   return (
     <div className=" bg-gray-100 w-full min-h-screen">
+      <Helmet>
+        <title>Help & Support</title>
+      </Helmet>
       <div className="bg-white p-1 rounded-lg shadow-md">
         <div className="header w-ful shadow-md border flex justify-between items-center">
           <h2 className="text-2xl font-bold mb-4 px-10 py-2">Help & Support</h2>
-          <Link to={'/'}>
+          <Link to={"/"}>
             {" "}
             <p className="btn btn-sm bg-blue-500 mr-10">Home</p>
           </Link>

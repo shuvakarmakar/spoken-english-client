@@ -26,7 +26,7 @@ import Checkout from "../Component/Pages/Checkout/Checkout";
 import AboutUs from "../Component/Pages/Footer/AboutUs";
 import Profile from "../Component/Pages/Profile/Profile";
 import ProfileDetails from "../Component/Pages/ProfileDetails/ProfileDetails";
-// import Dictionary from "../Component/Pages/Dictionary/Dictionary";
+import Dictionary from "../Component/Pages/Dictionary/Dictionary";
 import Messaging from "../Component/Messageing/Messaging";
 import Applications from "../Layout/DashBoard/AdminPages/Applications/Applications";
 import PaymentSuccess from "../Component/Pages/PaymentSuccess/PaymentSuccess";
@@ -55,6 +55,7 @@ import Quiz from "../Component/Pages/Quiz/Quiz";
 import QuizStarter from "../Component/Pages/Quiz/QuizStarter";
 import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
 import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
+import VoiceToText from "../Component/VoiceToText/VoiceToText";
 
 export const router = createBrowserRouter([
   {
@@ -128,10 +129,21 @@ export const router = createBrowserRouter([
         path: "/translator",
         element: (
           <PrivetRout>
-            {/* <Dictionary /> */}
             <LanguageTranslator />
           </PrivetRout>
         ),
+      },
+      {
+        path: "/dictionary",
+        element: (
+          <PrivetRout>
+            <Dictionary />
+          </PrivetRout>
+        ),
+      },
+      {
+        path: "/VoiceToText",
+        element: <VoiceToText />,
       },
       {
         path: "/profile/:id",
@@ -201,16 +213,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "search",
-        element: <SearchResults></SearchResults>
+        element: <SearchResults></SearchResults>,
       },
 
       {
         path: "quiz",
-        element: <Quiz></Quiz>
+        element: <Quiz></Quiz>,
       },
       {
         path: "quiz-starter",
-        element: <QuizStarter></QuizStarter>
+        element: <QuizStarter></QuizStarter>,
       },
 
       // shuva-work

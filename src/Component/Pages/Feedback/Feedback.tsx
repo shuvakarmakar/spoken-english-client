@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const GiveFeedbackPage: React.FC = () => {
-  const {user}=useContext(AuthContext) as AuthContextType
+  const { user } = useContext(AuthContext) as AuthContextType;
   const [feedback, setFeedback] = useState("");
   const timestamp = new Date();
   console.log(timestamp);
@@ -14,7 +18,7 @@ const GiveFeedbackPage: React.FC = () => {
     const feedbacks = {
       email: user?.email,
       feedback,
-      createdAt:timestamp,
+      createdAt: timestamp,
       isRead: false,
     };
     // Optionally, you can show a success message to the user
@@ -32,16 +36,18 @@ const GiveFeedbackPage: React.FC = () => {
           Swal.fire("Yaa", " Successfully submitted ", "success");
         }
       });
-    setFeedback("")
-  }
-
+    setFeedback("");
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFeedback(e.target.value);
   };
- 
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <Helmet>
+        <title>Feedbacks</title>
+      </Helmet>
       <div className="bg-white p-6 rounded-lg shadow-md md:w-[50%] w-96 ">
         <h2 className="text-2xl font-bold mb-4">Give Feedback</h2>
         <form onSubmit={handleSubmit}>

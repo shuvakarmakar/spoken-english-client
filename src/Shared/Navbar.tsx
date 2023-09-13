@@ -296,17 +296,6 @@ const Navbar: React.FC = () => {
         <ul className="items-center font-sans hidden space-x-8 lg:flex">
           {navItems}
 
-          {user && (
-            <li>
-              <NavLink
-                to="/translator"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Translator
-              </NavLink>
-            </li>
-          )}
-
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
             <>
@@ -357,8 +346,6 @@ const Navbar: React.FC = () => {
               }}
             />
           </button>
-
-
         </div>
 
         {/* Mobile Navbar Section */}
@@ -400,19 +387,6 @@ const Navbar: React.FC = () => {
                 <nav>
                   <ul className="space-y-4">
                     {navItems}
-
-                    {user && (
-                      <li>
-                        <NavLink
-                          to="/translator"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          Translator
-                        </NavLink>
-                      </li>
-                    )}
 
                     {/* Display Sign Up and Login buttons if not authenticated */}
                     {!user ? (

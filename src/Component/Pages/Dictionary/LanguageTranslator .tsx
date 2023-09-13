@@ -80,7 +80,9 @@ const LanguageTranslator = () => {
             className="flex-1  md:border-r border-gray-700 outline-none resize-none bg-transparent text-gray-700 placeholder-gray-400 text-lg p-2 mb-2 md:mb-0 rounded-lg"
             placeholder="Enter text"
             value={fromText}
-            onChange={(e) => setFromText(e.target.value)}
+            onChange={(e: { target: { value: any } }) =>
+              setFromText(e.target.value)
+            }
           ></textarea>
           <textarea
             spellCheck="false"
@@ -106,7 +108,9 @@ const LanguageTranslator = () => {
             <select
               className="w-full md:w-2/3 border-none outline-none bg-transparent text-gray-700 text-lg rounded-lg"
               value={fromLang}
-              onChange={(e) => setFromLang(e.target.value)}
+              onChange={(e: { target: { value: any } }) =>
+                setFromLang(e.target.value)
+              }
             >
               {Object.entries(countries).map(([code, name]) => (
                 <option key={code} value={code}>
@@ -125,7 +129,9 @@ const LanguageTranslator = () => {
             <select
               className="w-full md:w-2/3 border-none outline-none bg-transparent text-gray-700 text-lg rounded-lg"
               value={toLang}
-              onChange={(e) => setToLang(e.target.value)}
+              onChange={(e: { target: { value: any } }) =>
+                setToLang(e.target.value)
+              }
             >
               {Object.entries(countries).map(([code, name]) => (
                 <option key={code} value={code}>

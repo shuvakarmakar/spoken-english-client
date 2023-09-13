@@ -2,14 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import imageLession from "../../../assets/Live-Lesson-Categories.png";
 import { Helmet } from "react-helmet";
+import SideIcons from "../Home/Home/Side";
 
 const FreeLiveLessons = () => {
   return (
     <div className="changebg">
       <Helmet>
         {" "}
-        <title>ELearner | Free Class</title>
+        <title>ELearner | Free Classes</title>
       </Helmet>
+      <SideIcons />
       <div className="flex flex-col items-center justify-center p-4 md:p-10 shadow-md banner-bg darkText">
         <h1 className="text-center text-5xl text-black font-semibold mt-6 md:mt-12 darkText">
           Speaking FREE Live Lessons!

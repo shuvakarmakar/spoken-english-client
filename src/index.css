@@ -2,52 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   position: relative;
+  overflow-x: hidden;
 }
-.spinner{
-  top: 0 !important; 
+.spinner {
+  top: 0 !important;
 }
-.active{
+.active {
   color: rgb(27, 132, 202);
 }
 
 /* Light Mode */
-.lightText{
+.lightText {
   color: white !important;
 }
 
 /* Dark Mode */
 .dark-mode {
-  --bg-color: #101E41  !important;
+  --bg-color: #101e41 !important;
   --text-color: white;
 }
-.dark-mode .changebg{
-  background-color: #101E41 !important;
+.dark-mode .changebg {
+  background-color: #101e41 !important;
 }
-.dark-mode .cardbg{
-  background-color: rgba(0, 0, 0,0.2)  !important;
+.dark-mode .cardbg {
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-.dark-mode .darkText{
+.dark-mode .darkText {
   color: white !important;
 }
-.dark-mode .design-bgcloor{
-  color: #101E41;
+.dark-mode .design-bgcloor {
+  color: #101e41;
 }
 
-.dark-mode .banner-bg{
-  background-image:
-     linear-gradient(to bottom, #101E41, rgba(28, 208, 58, 0.300));
-     color: white !important;
- }
+.dark-mode .banner-bg {
+  background-image: linear-gradient(to bottom, #101e41, rgba(28, 208, 58, 0.3));
+  color: white !important;
+}
 
- .dark-mode .gradinentBg{
-  background-image:
-     linear-gradient(to bottom, #101E41, rgba(28, 208, 58, 0.300));
- }
+.dark-mode .gradinentBg {
+  background-image: linear-gradient(to bottom, #101e41, rgba(28, 208, 58, 0.3));
+}
 
-.dark-mode .changebg button{
+.dark-mode .changebg button {
   box-shadow: 0 0;
 }
 

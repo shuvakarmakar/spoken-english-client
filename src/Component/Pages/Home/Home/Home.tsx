@@ -9,6 +9,7 @@ import Banner from "../Banner/Banner1";
 import ContactForm from "../ContactForm/ContactForm";
 import HeroSection from "../HeroSection/HeroSection";
 import ReviewCourses from "../../AllPremiumCourses/ReviewCourses";
+import SideIcons from "./Side";
 
 const Home = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -40,7 +41,7 @@ const Home = () => {
       <Helmet>
         <title>ELearner</title>
       </Helmet>
-
+      <SideIcons />
       <Banner />
       <HeroSection />
       <BeInstructor></BeInstructor>
