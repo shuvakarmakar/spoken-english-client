@@ -35,7 +35,7 @@ const MyEnrolledCourses: React.FC = () => {
   }, [user]);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className=" mx-auto py-8">
       <Helmet>
         <title>Enroll | Dashboard</title>
       </Helmet>

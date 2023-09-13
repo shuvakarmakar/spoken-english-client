@@ -52,7 +52,7 @@ const Blogs: React.FC = () => {
         </div>
         <div className=" bg-slate-100 px-4 md:px-8 lg:px-16 changebg">
           <section className="title flex  justify-center items-center gap-5 py-4 md:py-7">
-            <p className="text-5xl md:text-6xl font-bold">BLOGS</p>
+            <p className="text-5xl md:text-6xl font-bold">{t("blogs.title")}</p>
           </section>
           <section className="blogs py-5 md:py-10 ">
             <div className="w-[95%] mx-auto">
