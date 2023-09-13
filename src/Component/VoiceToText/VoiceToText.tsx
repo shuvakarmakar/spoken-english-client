@@ -26,6 +26,7 @@ const VoiceToText: React.FC = () => {
 
   return (
     <div className="p-4 max-w-md  bg-slate-300 mx-auto">
+      <h1 className="text-3xl my-4 underline  ">Improve your Speaking Skill</h1>
       <div className="mb-4">
         <textarea
           id="result"
