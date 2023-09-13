@@ -56,6 +56,7 @@ import QuizStarter from "../Component/Pages/Quiz/QuizStarter";
 import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
 import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
 import VoiceToText from "../Component/VoiceToText/VoiceToText";
+import Text from "../Component/Pages/TextToSpeach/Tesxt";
 
 export const router = createBrowserRouter([
   {
@@ -144,6 +145,10 @@ export const router = createBrowserRouter([
       {
         path: "/VoiceToText",
         element: <VoiceToText />,
+      },
+      {
+        path: "/TextToSpeach",
+        element: <Text />,
       },
       {
         path: "/profile/:id",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Rating from "react-rating";
 import Marquee from "react-fast-marquee";
+import StarRatings from "react-star-ratings";
 
 interface Review {
   name: string;
@@ -20,7 +20,7 @@ const ReviewCourses: React.FC = () => {
       .catch((error) => {
         console.error("Error fetching course reviews:", error);
       });
-  }, []); // Add an empty dependency array to run this effect only once
+  }, []);
 
   return (
     <div className="my-16">
@@ -37,15 +37,13 @@ const ReviewCourses: React.FC = () => {
                 <div className="ml-4">
                   <p className="text-blue-500 font-semibold">{review.name}</p>
                   <div className="">
-                    <Rating
-                      initialRating={parseFloat(review.rating)} // Convert rating to a number
-                      emptySymbol={
-                        <span className="text-gray-400 text-2xl">☆</span>
-                      }
-                      fullSymbol={
-                        <span className="text-yellow-400 text-2xl">☆</span>
-                      }
-                      readonly
+                    <StarRatings
+                      rating={parseFloat(review.rating)}
+                      starDimension="30px"
+                      starRatedColor="gold"
+                      starEmptyColor="gray"
+                      numberOfStars={5}
+                      name={`rating-${index}`}
                     />
                   </div>
                   <p className="text-gray-600 mt-2">{review.description}</p>
