@@ -42,7 +42,7 @@ const BeInstructor: React.FC = () => {
             </h2>
           </Fade>
           <Slide direction="left" triggerOnce>
-            <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
+            <p className="text-gray-600 mb-4 text-sm leading-7 darkText text-justify">
               {t("beInstructor.description")}
             </p>
           </Slide>
