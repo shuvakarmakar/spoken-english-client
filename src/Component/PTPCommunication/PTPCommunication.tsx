@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import React, {  useState } from "react";
 // 
 // import useUser from '../../Hooks/useUser';
 // import Spinner from '../Pages/Spinner/Spinner';
@@ -13,7 +13,7 @@ import { FaBars, FaHome, } from "react-icons/fa";
 // import Suggestion from "./Suggestion/Suggestion";
 import './PTPCommunication.css'
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+// import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
 import useNotification from "../../Hooks/useNotification";
 // interface MyObject {
 //   _id: number;
@@ -140,8 +140,8 @@ const PTPCommunication = () => {
                     type="text"
                     placeholder="Search…"
                     className="d-input w-full md:w-[500px] input-bordered"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
+                    
+                    
                   />
                   <button className="btn-custom bg-blue-500 h-10 px-2">
                     <svg
