@@ -358,7 +358,7 @@ const Navbar: React.FC = () => {
             />
           </button>
 
-          
+
         </div>
 
         {/* Mobile Navbar Section */}
