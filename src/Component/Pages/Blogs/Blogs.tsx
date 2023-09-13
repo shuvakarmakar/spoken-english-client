@@ -63,7 +63,7 @@ const Blogs: React.FC = () => {
                     className="mb-8 md:mb-12 relative border px-2 md:w-[700px] shadow-md mx-auto"
                   >
                     <div className="grid grid-cols-1  gap-2  ">
-                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border ">{t("blogs.title")}</p>
+                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">{t("blogs.title")}</p>
                       <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">{blog.blog_name}</p>
                       <img src={blog.image} alt="" className="w-full md:h-[450px]  mt-5" />
                       <p className="font-sm text-justify mt-5 p-4 leading-7  font-serif">

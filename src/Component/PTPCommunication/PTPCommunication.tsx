@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent,useEffect,useState } from "react";
 //
 // import useUser from '../../Hooks/useUser';
 // import Spinner from '../Pages/Spinner/Spinner';
@@ -13,53 +13,55 @@ import { FaBars, FaHome } from "react-icons/fa";
 // import Suggestion from "./Suggestion/Suggestion";
 import "./PTPCommunication.css";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import {
-  AuthContext,
-  AuthContextType,
-} from "../../Provider/AuthProvider/AuthProvider";
+// import {
+//   AuthContext,
+//   AuthContextType,
+// } from "../../Provider/AuthProvider/AuthProvider";
 import useNotification from "../../Hooks/useNotification";
-// interface MyObject {
-//   _id: number;
-//   name: string;
-//   uid: string;
-//   // other properties
-// }
-// import { Pagination } from "swiper/modules";
+import axios from "axios";
+import useUser from "../../Hooks/useUser";
+interface MyObject {
+  _id: number;
+  name: string;
+  uid: string;
+  // other properties
+}
+
 
 const PTPCommunication = () => {
-  // const [users, loading] = useUser();
-  // const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  // const Student = users.filter((user) => user.Roll=="student");
+  const [users, loading] = useUser();
+  const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
+  const Student = users.filter((user) => user.Roll=="student");
 
   const [searchQuery, setSearchQuery] = useState<string>("");
-  //  const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
 
-    // const filtered = users.filter((item) =>
-    //   item.name.toLowerCase().includes(query.toLowerCase())
-    // );
+    const filtered = users.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
 
-    // setFilteredData(filtered);
+    setFilteredData(filtered);
   };
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://spoken-english-server-xi.vercel.app/GetUsers"
-  //     ); // Replace with your API endpoint
-  //     setData(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://spoken-english-server-xi.vercel.app/GetUsers"
+      ); // Replace with your API endpoint
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
-  // // Fetch data when the component mounts
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  // Fetch data when the component mounts
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -144,8 +146,8 @@ const PTPCommunication = () => {
                     type="text"
                     placeholder="Search…"
                     className="d-input w-full md:w-[500px] input-bordered"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
+                    
+                    
                   />
                   <button className="btn-custom bg-blue-500 h-10 px-2">
                     <svg

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import SideIcons from "../Home/Home/Side";
 
 interface Course {
   _id: string;
@@ -28,7 +29,10 @@ const MainComponent: React.FC = () => {
       <Helmet>
         <title>Premium Classes</title>
       </Helmet>
-      <h1 className="text-2xl font-semibold mb-4">All Premium Courses</h1>
+      <SideIcons />
+      <h1 className="text-5xl font-semibold text-center underline mb-6">
+        All Premium Courses
+      </h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {courses.map((course) => (
           <div

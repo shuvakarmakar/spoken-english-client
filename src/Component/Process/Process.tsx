@@ -13,27 +13,11 @@ const Process = () => {
 
   return (
     <div>
-      <div style={{ overflow: "hidden" }}>
-        <svg
-          preserveAspectRatio="none"
-          viewBox="0 0 1200 120"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{
-            fill: "#f3f5fc",
-            width: "353%",
-            height: 122,
-            transform: "scaleX(-1)",
-          }}
-        >
-          <path d="M1200 120L0 16.48V0h1200v120z" />
-        </svg>
-      </div>
-
       <div className="">
         <div className="max-w-6xl mx-auto px-4 md:px-8">
-          <div className="mb-10">
+          <div className="mb-5">
             <h1
-              className="text-3xl md:text-4xl text-center mt-20 mb-[100px]  uppercase font-bold"
+              className="text-3xl md:text-4xl text-center mt-20 mb-[60px]  uppercase font-bold"
               data-aos="fade-up"
             >
               {t('process.howItWorks')}
@@ -42,7 +26,7 @@ const Process = () => {
 
           <div
             data-aos="fade-up"
-            className="grid gap-5 md:gap-8 md:grid-cols-3"
+            className="grid gap-5 md:gap-8 md:grid-cols-3 mb-[60px]"
           >
             {/* Icon 1 */}
             <div className="changebg text-blue-700 text-center shadow-xl border rounded-lg bg-slate-100 p-4 md:p-8 transition duration-300 hover:bg-blue-100">

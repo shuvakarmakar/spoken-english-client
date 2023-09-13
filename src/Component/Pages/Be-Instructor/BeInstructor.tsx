@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
+import { Fade, Slide } from 'react-awesome-reveal';
 
 const BeInstructor: React.FC = () => {
   const [showForm, setShowForm] = useState(false);
@@ -33,30 +34,38 @@ const BeInstructor: React.FC = () => {
         </svg>
       </div>
 
-      <div className="changebg mx-auto py-8  md:flex  justify-between items-center px-[10%] bg-slate-100 gap-20  md:h-[400px]">
-        <div className=" md:w-[50%] w-full">
-          <h2 className="md:text-4xl text-2xl font-bold mb-4 ">
-            {t("beInstructor.title")}
-          </h2>
-          <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
-            {t("beInstructor.description")}
-          </p>
+      <div className="changebg mx-auto py-8 md:flex justify-between items-center px-[10%] bg-slate-100 gap-20 md:h-[400px]">
+        <div className="md:w-[50%] w-full">
+          <Fade direction="left" triggerOnce>
+            <h2 className="md:text-4xl text-2xl font-bold mb-4">
+              {t("beInstructor.title")}
+            </h2>
+          </Fade>
+          <Slide direction="left" triggerOnce>
+            <p className="text-gray-600 mb-4 text-sm leading-7 darkText">
+              {t("beInstructor.description")}
+            </p>
+          </Slide>
 
           <NavLink to={"/applyInstructor"}>
-            <button
-              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-              onClick={toggleForm}
-            >
-              {t("beInstructor.buttonText")}
-            </button>
+            <Fade direction="up" triggerOnce>
+              <button
+                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                onClick={toggleForm}
+              >
+                {t("beInstructor.buttonText")}
+              </button>
+            </Fade>
           </NavLink>
         </div>
 
         <div className="right-img md:w-[50%] w-full mt-10 md:mt-0">
-          <img
-            src="https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png"
-            alt=""
-          />
+          <Slide direction="right" triggerOnce>
+            <img
+              src="https://i.ibb.co/fN7s1vW/become-a-teacher-hero-image-removebg-preview.png"
+              alt=""
+            />
+          </Slide>
         </div>
       </div>
     </div>

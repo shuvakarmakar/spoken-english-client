@@ -3,10 +3,14 @@ import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import rashik from "../../../assets/rashik.jpg";
 import faruk from "./../../../assets/faruk.jpg";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   return (
     <div className="bg-[#EEEEEE] changebg">
+      <Helmet>
+        <title>ELearner | About Us</title>
+      </Helmet>
       <section className="py-4">
         <div className="w-[96%] md:w-[90%] mx-auto ">
           <p className="text-3xl pb-5 pt-2">About Us</p>
