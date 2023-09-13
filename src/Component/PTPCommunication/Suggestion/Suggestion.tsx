@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import io from "socket.io-client";
 import {
   AuthContext,
@@ -41,7 +41,6 @@ const Suggestion: React.FC = () => {
     setShowModal(false);
   };
 
-
   // send friend  request
   const sendFriendRequest = (friendId: string) => {
     try {
@@ -73,6 +72,8 @@ const Suggestion: React.FC = () => {
 
   // console.log();
   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+   
   return (
     <>
       <Helmet>

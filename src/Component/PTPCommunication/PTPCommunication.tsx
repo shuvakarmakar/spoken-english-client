@@ -1,4 +1,4 @@
-import React, { ChangeEvent,useEffect,useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 //
 // import useUser from '../../Hooks/useUser';
 // import Spinner from '../Pages/Spinner/Spinner';
@@ -12,7 +12,7 @@ import { FaBars, FaHome } from "react-icons/fa";
 // import FriendRequest from "./FriendRequest/FriendRequest";
 // import Suggestion from "./Suggestion/Suggestion";
 import "./PTPCommunication.css";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 // import {
 //   AuthContext,
 //   AuthContextType,
@@ -20,24 +20,27 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useNotification from "../../Hooks/useNotification";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
+import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+
 interface MyObject {
   _id: number;
   name: string;
   uid: string;
+  profileImage: string;
   // other properties
 }
-
 
 const PTPCommunication = () => {
   const [users, loading] = useUser();
   const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  const Student = users.filter((user) => user.Roll=="student");
-
+  const Student = users.filter((user) => user.Roll == "student");
+  const {onlineUsers } = useContext(AuthContext) as AuthContextType;
   const [searchQuery, setSearchQuery] = useState<string>("");
-   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+  const [filteredData, setFilteredData] = useState<MyObject[]>([]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
+    console.log(query);
     setSearchQuery(query);
 
     const filtered = users.filter((item) =>
@@ -79,7 +82,7 @@ const PTPCommunication = () => {
 
   const searchPath = location.pathname === "/Connect/FriendSuggestions";
   return (
-    <>
+    <div className=" relative">
       <div className="header">
         <div className="nav-section w-full py-2 bg-[#10315E] flex flex-col md:flex-row justify-between items-center text-white px-8">
           {/* Mobile and Tablet Menu (Hidden on Desktop) */}
@@ -145,9 +148,9 @@ const PTPCommunication = () => {
                   <input
                     type="text"
                     placeholder="Search…"
-                    className="d-input w-full md:w-[500px] input-bordered"
-                    
-                    
+                    className="d-input w-full md:w-[500px]  text-gray-900 input-bordered "
+                    value={searchQuery}
+                    onChange={handleSearchChange}
                   />
                   <button className="btn-custom bg-blue-500 h-10 px-2">
                     <svg
@@ -178,10 +181,52 @@ const PTPCommunication = () => {
           </p>
         </div>
       </div>
+
       <div className=" overflow-auto h-[100vh]">
         <Outlet></Outlet>
       </div>
-    </>
+
+      {filteredData.length > 0 && searchQuery.length>0 ? (
+        <>
+          <div className="search-result w-full absolute top-[130px] md:top-[50px] bg-[#10315E] z-20 border p-10  flex justify-center ">
+            <div className="item  grid grid-cols-1 gap-5 md:grid-cols-3 ">
+              {filteredData?.map((student) => {
+                const isUserOnline = onlineUsers[student?.uid] === true;
+                return (
+                  <>
+                    <Link to={`/profile/${student._id}`}>
+                      <div className="bg-white shadow-md w-[300px] rounded-md p-4 relative border ">
+                        <div className="flex items-center">
+                          <div className="w-16 h-16 bg-blue-500 rounded-full">
+                            <img
+                              src={student?.profileImage}
+                              className="rounded-full w-full h-full"
+                              alt=""
+                            />
+                          </div>
+                          <div className="ml-4">
+                            <h2 className="text-lg font-semibold">
+                              {student.name}
+                            </h2>
+                          </div>
+                          <div
+                            className={`ml-2 w-2 h-2 rounded-full ${
+                              isUserOnline ? "bg-green-500" : "bg-gray-400"
+                            }`}
+                          ></div>
+                        </div>
+                      </div>
+                    </Link>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 
