@@ -251,8 +251,8 @@ const Navbar: React.FC = () => {
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
-          <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
+          <AcademicCapIcon className="h-6 w-6 text-blue-500"  />
+          <span className="siteTitle ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
         </Link>
