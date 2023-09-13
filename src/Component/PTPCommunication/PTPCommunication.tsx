@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-// 
+//
 // import useUser from '../../Hooks/useUser';
 // import Spinner from '../Pages/Spinner/Spinner';
 // import UserProfileCard from './UserProfleCard/UserProfileCard';
@@ -7,13 +7,16 @@ import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 // import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 // import "react-tabs/style/react-tabs.css";
 // import axios from 'axios';
-import { FaBars, FaHome, } from "react-icons/fa";
+import { FaBars, FaHome } from "react-icons/fa";
 // FaUserCheck, FaUserFriends, FaUserPlus
 // import FriendRequest from "./FriendRequest/FriendRequest";
 // import Suggestion from "./Suggestion/Suggestion";
-import './PTPCommunication.css'
+import "./PTPCommunication.css";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../Provider/AuthProvider/AuthProvider";
 import useNotification from "../../Hooks/useNotification";
 // interface MyObject {
 //   _id: number;
@@ -23,24 +26,23 @@ import useNotification from "../../Hooks/useNotification";
 // }
 // import { Pagination } from "swiper/modules";
 
-
 const PTPCommunication = () => {
-  const [users, loading] = useUser();
-  const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  const Student = users.filter((user) => user.Roll=="student");
+  // const [users, loading] = useUser();
+  // const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
+  // const Student = users.filter((user) => user.Roll=="student");
 
   const [searchQuery, setSearchQuery] = useState<string>("");
-   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+  //  const [filteredData, setFilteredData] = useState<MyObject[]>([]);
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
 
-    const filtered = users.filter((item) =>
-      item.name.toLowerCase().includes(query.toLowerCase())
-    );
+    // const filtered = users.filter((item) =>
+    //   item.name.toLowerCase().includes(query.toLowerCase())
+    // );
 
-    setFilteredData(filtered);
+    // setFilteredData(filtered);
   };
 
   // const fetchData = async () => {
@@ -59,22 +61,21 @@ const PTPCommunication = () => {
   //   fetchData();
   // }, []);
 
-   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   //  const toggleMobileMenu = () => {
   //    setMobileMenuOpen(!mobileMenuOpen);
   //  };
 
-   const closeMobileMenu = () => {
-     setMobileMenuOpen(false);
-   };
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
   // notifications
   const [unReadNotifications, unReadFriendRequest] = useNotification();
- 
-  const location=useLocation()
-  
 
- const searchPath = location.pathname === "/Connect/FriendSuggestions";
+  const location = useLocation();
+
+  const searchPath = location.pathname === "/Connect/FriendSuggestions";
   return (
     <>
       <div className="header">
@@ -110,7 +111,10 @@ const PTPCommunication = () => {
             </li>
             <li>
               <NavLink to={"/Connect/FriendRequest"} onClick={closeMobileMenu}>
-                Friends Request <div className=" badge bg-blue-500 text-white">{unReadFriendRequest}</div>
+                Friends Request{" "}
+                <div className=" badge bg-blue-500 text-white">
+                  {unReadFriendRequest}
+                </div>
               </NavLink>
             </li>
             <li>
