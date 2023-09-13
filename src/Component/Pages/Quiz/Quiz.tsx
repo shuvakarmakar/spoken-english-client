@@ -4,6 +4,8 @@ import { quizData } from './quizData';
 import QuizQuestion from './QuizQuestion';
 import QuizResult from './QuizResult';
 import { useLocation } from 'react-router-dom';
+import Text from '../TextToSpeach/Tesxt';
+
 
 
 function Quiz() {
@@ -25,7 +27,12 @@ function Quiz() {
 
   return (
     <div className="h-[calc(100vh-50px)] flex items-center justify-center ">
-      <div className="bg-white p-6 rounded-lg shadow-2xl w-[90%] md:w-[50%] border">
+
+      <section>
+        <Text></Text>
+      </section>
+
+      <div className="bg-white p-6 rounded-lg shadow-2xl w-[90%] md:w-[50%] border ">
         {currentQuestionIndex < quizData.length ? (
           <QuizQuestion
             question={quizData[currentQuestionIndex]}
