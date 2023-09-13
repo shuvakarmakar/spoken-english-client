@@ -20,20 +20,32 @@ const Home = () => {
 
   const closePopup = () => {
     setPopupOpen(false);
+    localStorage.setItem("popupShown", "true");
   };
 
   useEffect(() => {
-    // Add a delay (in milliseconds) before opening the popup
-    const delay = 2000; // 2 seconds
+    const popupShown = localStorage.getItem("popupShown");
 
-    // Set a timer to open the popup after the specified delay
-    const timer = setTimeout(() => {
-      openPopup();
-    }, delay);
+    if (!popupShown) {
+      const delay = 2000; // 2 seconds
 
-    // Clear the timer when the component unmounts to avoid memory leaks
-    return () => clearTimeout(timer);
+      const timer = setTimeout(() => {
+        openPopup();
+      }, delay);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
+
+  // useEffect(() => {
+  //   const delay = 2000; // 2 seconds
+
+  //   const timer = setTimeout(() => {
+  //     openPopup();
+  //   }, delay);
+
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className="">
@@ -88,6 +100,12 @@ const Home = () => {
                 </li>
                 <li className="mb-1">
                   <span className="text-yellow-500">✓</span> Quizzes
+                </li>
+                <li className="mb-1">
+                  <span className="text-yellow-500">✓</span> Voice To Text
+                </li>
+                <li className="mb-1">
+                  <span className="text-yellow-500">✓</span> Translator
                 </li>
               </ul>
             </div>
