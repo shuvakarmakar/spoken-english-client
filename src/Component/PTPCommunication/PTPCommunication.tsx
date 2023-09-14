@@ -21,6 +21,7 @@ import useNotification from "../../Hooks/useNotification";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+import Spinner from "../Pages/Spinner/Spinner";
 
 interface MyObject {
   _id: number;
@@ -33,10 +34,11 @@ interface MyObject {
 const PTPCommunication = () => {
   const [users, loading] = useUser();
   const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  const Student = users.filter((user) => user.Roll == "student");
+  // const Student = users.filter((user) => user.Roll == "student");
   const {onlineUsers } = useContext(AuthContext) as AuthContextType;
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+  console.log(data)
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
@@ -65,6 +67,11 @@ const PTPCommunication = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if(loading)
+  {
+    return <Spinner/>
+  }
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

@@ -8,7 +8,7 @@ import {
 
 // import { Link } from "react-router-dom";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
-import useUser from "../../../Hooks/useUser";
+//import useUser from "../../../Hooks/useUser";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 import { Helmet } from "react-helmet";
 import axios from "axios";
