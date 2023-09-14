@@ -55,13 +55,13 @@ const CourseFeedback = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-md rounded-md">
+    <div className="max-w-md mx-auto mt-8 p-6 bg-white shadow-xl rounded-md boeder changebg">
       <h2 className="text-2xl font-semibold mb-4">Feedback Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             htmlFor="name"
-            className="block text-gray-700 font-medium mb-2"
+            className="darkText block text-gray-700 font-medium mb-2"
           >
             Name
           </label>
@@ -71,14 +71,14 @@ const CourseFeedback = () => {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
+            className="lightText w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
             required
           />
         </div>
         <div className="mb-4">
           <label
             htmlFor="rating"
-            className="block text-gray-700 font-medium mb-2"
+            className="darkText block text-gray-700 font-medium mb-2"
           >
             Rating
           </label>
@@ -87,7 +87,7 @@ const CourseFeedback = () => {
             name="rating"
             value={formData.rating}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
+            className="lightText w-full px-4 py-2 border border-gray-300 rounded-md focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
             required
           >
             <option value="1">1 - Poor</option>
@@ -100,7 +100,7 @@ const CourseFeedback = () => {
         <div className="mb-4">
           <label
             htmlFor="description"
-            className="block text-gray-700 font-medium mb-2"
+            className="darkText block text-gray-700 font-medium mb-2"
           >
             Description
           </label>
@@ -109,7 +109,7 @@ const CourseFeedback = () => {
             name="description"
             value={formData.description}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md resize-none h-36 focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
+            className="lightText w-full px-4 py-2 border border-gray-300 rounded-md resize-none h-36 focus:ring focus:ring-indigo-200 focus:border-indigo-400 focus:outline-none"
             required
           ></textarea>
         </div>
