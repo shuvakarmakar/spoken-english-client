@@ -19,7 +19,7 @@ const Banner1 = () => {
   const { t } = useTranslation();
   return (
     <>
-      <div className=" relative mt-16 md:mt-0">
+      <div className="bannaerStyle relative md:mt-0">
         <Swiper
           spaceBetween={30}
           effect={"fade"}
