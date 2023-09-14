@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 const CookiePolicy = () => {
   return (
-    <div className="bg-[#eeeeee] py-5 changebg">
+    <div className="bg-[#eeeeee] py-5 changebg pt-32">
       <Helmet>
         <title>Cookies</title>
       </Helmet>

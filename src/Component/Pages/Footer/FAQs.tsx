@@ -50,7 +50,7 @@ const FAQs = () => {
   };
 
   return (
-    <div className="bg-[#eeeeee] py-5 changebg">
+    <div className=" py-5 changebg pt-32">
       <Helmet>
         <title>FAQ's</title>
       </Helmet>
