@@ -26,7 +26,7 @@ const BlogDetails: React.FC = () => {
   }
 
   return (
-    <div className="mt-[60px] bg-white changebg">
+    <div className="pt-[130px] bg-white changebg ">
       <section>
         <div className="w-[96%] md:w-[90%] mx-auto">
           <p className=" text-4xl py-5">{blog.blog_name}</p>

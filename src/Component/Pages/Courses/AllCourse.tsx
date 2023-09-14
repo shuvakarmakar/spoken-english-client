@@ -38,7 +38,7 @@ const AllCourse: React.FC = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white mt-20">
       <section className="flex justify-center py-5 w-[96%] md:w-[90%] mx-auto text-black underline">
         <p className="text-3xl font-semibold uppercase tracking-wider">
           Popular Courses
