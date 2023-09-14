@@ -47,7 +47,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="contactFormStyle border md:border-none p-7 md:p-5 bg-[#101E41] rounded-lg shadow-xl w-full md:w-[350px] ">
+    <div className="contactFormStyle border md:border-none p-7 md:p-5 bg-[#101E41] rounded-lg shadow-xl w-full md:w-[250px] ">
       <div className="flex gap-3 items-center ">
         <p>
           <BiPhoneCall className={"w-8 h-8 text-orange-500"}></BiPhoneCall>{" "}
