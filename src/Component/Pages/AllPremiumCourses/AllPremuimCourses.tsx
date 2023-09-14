@@ -8,7 +8,7 @@ interface Course {
   imageURL: string;
   courseName: string;
   courseDetails: string;
-  price: string;
+  price:string;
   instructorName: string;
   instructorEmail: string;
 }
