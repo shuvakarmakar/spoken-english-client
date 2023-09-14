@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg bg-slate-100 fixed top-0 z-50 navbarStyle">
+    <div className="bg-[#FDFDFD] border-b shadow-2xl px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg fixed top-0 z-50 navbarStyle">
       {/* Searchbar */}
       
       <div

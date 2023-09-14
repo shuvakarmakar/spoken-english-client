@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 const TermsAndConditations = () => {
   return (
-    <div className="bg-[#EEEEEE] changebg">
+    <div className="changebg pt-32">
       <Helmet>
         <title>Terms & Conditions</title>
       </Helmet>

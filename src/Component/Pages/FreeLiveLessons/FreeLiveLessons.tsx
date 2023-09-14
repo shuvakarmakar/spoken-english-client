@@ -9,7 +9,7 @@ const FreeLiveLessons = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="changebg">
+    <div className="changebg pt-20">
       <Helmet>
         {" "}
         <title>ELearner | Free Classes</title>

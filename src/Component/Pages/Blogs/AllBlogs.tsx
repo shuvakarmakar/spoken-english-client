@@ -36,7 +36,7 @@ const AllBlogs: React.FC = () => {
   }
 
   return (
-    <div className="bg-[#EEEEEE] mt-[60px]">
+    <div className="pt-[130px]">
       <section className="title flex justify-center items-center gap-5">
         <div className="flex flex-col items-center justify-start">
           <p className="text-xl font-bold">From</p>

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const Contact: React.FC = () => {
   return (
-    <div className="bg-[#eeeeee] py-5 changebg">
+    <div className="pt-32 py-5 changebg">
       <Helmet>
         <title>ELearner | Contact US</title>
       </Helmet>
