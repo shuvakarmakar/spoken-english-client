@@ -44,7 +44,7 @@ const MyEnrolledCourses: React.FC = () => {
   // }, []);
 
   return (
-    <div className=" mx-auto py-8">
+    <div className="changebg mx-auto py-8">
       <Helmet>
         <title>Enroll | Dashboard</title>
       </Helmet>
