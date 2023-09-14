@@ -95,7 +95,7 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>
-            <p className="text-gray-500">Web Developer</p>
+          
           </div>
           <div
             className={`ml-2 w-2 h-2 rounded-full ${

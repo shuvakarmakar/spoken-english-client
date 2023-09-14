@@ -21,6 +21,7 @@ import useNotification from "../../Hooks/useNotification";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+// import { changeLanguage } from "i18next";
 
 interface MyObject {
   _id: number;
@@ -31,9 +32,9 @@ interface MyObject {
 }
 
 const PTPCommunication = () => {
-  const [users, loading] = useUser();
+  const [users] = useUser();
   const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
-  const Student = users.filter((user) => user.Roll == "student");
+  // const Student = users.filter((user) => user.Roll == "student");
   const {onlineUsers } = useContext(AuthContext) as AuthContextType;
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
@@ -60,6 +61,7 @@ const PTPCommunication = () => {
       console.error("Error fetching data:", error);
     }
   };
+console.log(data);
 
   // Fetch data when the component mounts
   useEffect(() => {
