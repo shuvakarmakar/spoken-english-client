@@ -91,6 +91,11 @@ const Navbar: React.FC = () => {
     const storedDarkMode = localStorage.getItem("darkMode");
     if (storedDarkMode === "true") {
       setIsDarkMode(true);
+      document.body.classList.add("dark-mode");
+    }
+    else{
+      setIsDarkMode(false);
+      document.body.classList.remove("dark-mode");
     }
   }, []);
 

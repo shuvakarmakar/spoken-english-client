@@ -30,7 +30,7 @@ const ReviewCourses: React.FC = () => {
       {reviews.length === 0 ? (
         <p>No reviews available for this course.</p>
       ) : (
-        <Marquee speed={50} gradient={false} className="scrolling-marquee">
+        <Marquee speed={50} gradient={false} className="scrolling-marquee course-details">
           {reviews.map((review, index) => (
             <div key={index} className="shadow-xl mb-4 p-4">
               <div className="flex items-center mb-2">
