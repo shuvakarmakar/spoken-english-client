@@ -4,6 +4,7 @@ import {
   AuthContext,
   AuthContextType,
 } from "../../../../Provider/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 interface Course {
   _id: string;
@@ -43,9 +44,11 @@ const MyEnrolledCourses: React.FC = () => {
   // }, []);
 
   return (
-
-    <div className="container mx-auto py-8 text-white ">
-      <h1 className="text-3xl font-semibold text-center my-5">
+    <div className=" mx-auto py-8">
+      <Helmet>
+        <title>Enroll | Dashboard</title>
+      </Helmet>
+      <h1 className="text-2xl font-semibold text-center my-5">
         My Enrolled Courses
       </h1>
       <div className="grid md:grid-cols-2 gap-6">

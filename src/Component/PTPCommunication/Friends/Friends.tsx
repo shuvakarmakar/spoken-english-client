@@ -1,5 +1,7 @@
 import React from "react";
 import UserProfileCard from "../UserProfleCard/UserProfileCard";
+import { Helmet } from "react-helmet";
+
 // import useUser from "../../../Hooks/useUser";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 // import { set } from "react-hook-form";
@@ -62,14 +64,16 @@ const Friends = () => {
   //    clearInterval(pollingInterval);
   //  };
   //   }, [user]);
-const { friends, loading } = useFriend();
-
-
+  const { friends, loading } = useFriend();
 
   const anim = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   console.log(friends);
   return (
     <>
+      <Helmet>
+        <title>ELearner | Connect</title>
+      </Helmet>
+      ;
       {loading ? (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-[5%] my-[5%]">

@@ -4,6 +4,7 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 interface Notification {
   _id: string;
@@ -61,44 +62,49 @@ const Notification: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-semibold mb-4">Notifications</h1>
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        {notifications.length === 0 ? (
-          <p className="p-4">No notifications available.</p>
-        ) : (
-          <ul>
-            {notifications.map((notification) => (
-              <li
-                key={notification._id}
-                className="border-b border-gray-200 last:border-b-0 mb-4"
-              >
-                <div className="p-4 border">
-                  <p className="text-lg font-semibold">
-                   Calling From {notification.link.name}
-                  </p>
-                  <p className="text-sm text-gray-500 my-4">
-                    {notification.link.message}
-                  </p>
-                  <button
-                    onClick={() => handleJoinClick(notification.link.message)}
-                    className="bg-blue-500 text-white px-4 py-2 mt-2 rounded mr-2 "
-                  >
-                    Join
-                  </button>
-                  <button
-                    onClick={() => handleDeleteClick(notification._id)}
-                    className="bg-red-500 text-white px-4 py-2 mt-2 rounded"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+    <>
+      <Helmet>
+        <title>Notification</title>
+      </Helmet>
+      <div className="container mx-auto py-8">
+        <h1 className="text-2xl font-semibold mb-4">Notifications</h1>
+        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+          {notifications.length === 0 ? (
+            <p className="p-4">No notifications available.</p>
+          ) : (
+            <ul>
+              {notifications.map((notification) => (
+                <li
+                  key={notification._id}
+                  className="border-b border-gray-200 last:border-b-0 mb-4"
+                >
+                  <div className="p-4 border">
+                    <p className="text-lg font-semibold">
+                      Calling From {notification.link.name}
+                    </p>
+                    <p className="text-sm text-gray-500 my-4">
+                      {notification.link.message}
+                    </p>
+                    <button
+                      onClick={() => handleJoinClick(notification.link.message)}
+                      className="bg-blue-500 text-white px-4 py-2 mt-2 rounded mr-2 "
+                    >
+                      Join
+                    </button>
+                    <button
+                      onClick={() => handleDeleteClick(notification._id)}
+                      className="bg-red-500 text-white px-4 py-2 mt-2 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

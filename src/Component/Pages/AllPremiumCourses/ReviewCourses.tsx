@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Rating from "react-rating";
-
-import Marquee from "react-fast-marquee"; // Import Marquee component
+import Marquee from "react-fast-marquee";
+import StarRatings from "react-star-ratings";
 
 interface Review {
   name: string;
@@ -21,32 +20,30 @@ const ReviewCourses: React.FC = () => {
       .catch((error) => {
         console.error("Error fetching course reviews:", error);
       });
-  }, []); // Add an empty dependency array to run this effect only once
+  }, []);
 
   return (
-    <div>
-      <h2 className="text-2xl font-semibold text-center m-8">
+    <div className="my-16">
+      <h2 className="text-3xl underline font-bold text-center m-8">
         What Our Students Say!
       </h2>
       {reviews.length === 0 ? (
         <p>No reviews available for this course.</p>
       ) : (
-        <Marquee speed={50} gradient={false} className="scrolling-marquee">
+        <Marquee speed={50} gradient={false} className="scrolling-marquee course-details">
           {reviews.map((review, index) => (
             <div key={index} className="shadow-xl mb-4 p-4">
               <div className="flex items-center mb-2">
                 <div className="ml-4">
                   <p className="text-blue-500 font-semibold">{review.name}</p>
                   <div className="">
-                    <Rating
-                      initialRating={parseFloat(review.rating)}
-                      emptySymbol={
-                        <span className="text-gray-400 text-2xl">☆</span>
-                      }
-                      fullSymbol={
-                        <span className="text-yellow-400 text-2xl">☆</span>
-                      }
-                      readonly
+                    <StarRatings
+                      rating={parseFloat(review.rating)}
+                      starDimension="30px"
+                      starRatedColor="gold"
+                      starEmptyColor="gray"
+                      numberOfStars={5}
+                      name={`rating-${index}`}
                     />
                   </div>
                   <p className="text-gray-600 mt-2">{review.description}</p>
@@ -61,3 +58,6 @@ const ReviewCourses: React.FC = () => {
 };
 
 export default ReviewCourses;
+
+
+

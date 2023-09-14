@@ -45,25 +45,25 @@ const Blogs: React.FC = () => {
             preserveAspectRatio="none"
             viewBox="0 0 1200 120"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ fill: "#dce4f3", width: "110%", height: 72 }}
+            style={{ fill: "#dce4f3", width: "100%", height: 72 }}
           >
             <path d="M1200 120L0 16.48V0h1200v120z" />
           </svg>
         </div>
         <div className=" bg-slate-100 px-4 md:px-8 lg:px-16 changebg">
           <section className="title flex  justify-center items-center gap-5 py-4 md:py-7">
-            <p className="text-5xl md:text-6xl font-bold">BLOGS</p>
+            <p className="text-5xl md:text-6xl font-bold">{t("blogs.title")}</p>
           </section>
           <section className="blogs py-5 md:py-10 ">
-            <div className="flex justify-center w-[95%]">
+            <div className="w-[95%] mx-auto">
               <div className="">
                 {blogs.slice(0, 3).map((blog) => (
                   <div
                     key={blog._id}
-                    className="mb-8 md:mb-12 relative border px-2 md:w-[700px] shadow-md"
+                    className="mb-8 md:mb-12 relative border px-2 md:w-[700px] shadow-md mx-auto"
                   >
                     <div className="grid grid-cols-1  gap-2  ">
-                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border ">{t("blogs.title")}</p>
+                      <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">{t("blogs.title")}</p>
                       <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">{blog.blog_name}</p>
                       <img src={blog.image} alt="" className="w-full md:h-[450px]  mt-5" />
                       <p className="font-sm text-justify mt-5 p-4 leading-7  font-serif">

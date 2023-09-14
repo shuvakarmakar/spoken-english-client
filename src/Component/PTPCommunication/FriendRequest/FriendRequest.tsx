@@ -1,9 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
 // import useUser from "../../../Hooks/useUser";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { BsCheckLg } from "react-icons/bs";
 // import { changeLanguage } from "i18next";
 
 interface Student {
@@ -14,9 +19,8 @@ interface Student {
     profileImage: string;
   };
   userId: string;
-  request:boolean;
+  request: boolean;
 }
-
 
 const FriendRequest: React.FC = () => {
   const { onlineUsers, user } = useContext(AuthContext) as AuthContextType;
@@ -25,7 +29,7 @@ const FriendRequest: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [id, SetId] = useState<number>(0);
   const [friends, setFriends] = useState<Student[]>([]);
-
+  const [accepted, setAccepted] = useState(false)
   const openModal = (id: number) => {
     SetId(id);
     setShowModal(true);
@@ -38,26 +42,27 @@ const FriendRequest: React.FC = () => {
   useEffect(() => {
     setLoading(true);
     const polingineterval = setInterval(() => {
-       if (user) {
-         fetch(
-           `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
-         )
-           .then((res) => res.json())
-           .then((data) => {
-             console.log(data);
-             setFriends(data);
-             setLoading(false);
-           });
-       }
+      if (user) {
+        fetch(
+          `https://spoken-english-server-xi.vercel.app/get-friend-requests/${user?.uid}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            setFriends(data);
+            setLoading(false);
+          });
+      }
+    }, 1000);
 
-    }, 1000)
-    
     return () => {
-      clearInterval(polingineterval)
-    }
+      clearInterval(polingineterval);
+    };
   }, [user]);
 
   const DeleteRequest = (id: number) => {
+    const reaming = friends.filter(friend => friend._id !== id);
+    setFriends(reaming)
     if (id) {
       fetch(
         `https://spoken-english-server-xi.vercel.app/delete-friend-requests/${id}`,
@@ -76,29 +81,34 @@ const FriendRequest: React.FC = () => {
 
   // https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}
 
-  const AcceptFriendRequest = (friendId: string,_id:number) => {
-    fetch(`https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({id:_id})
-    })
+  const AcceptFriendRequest = (friendId: string, _id: number) => {
+    setAccepted(true)
+    fetch(
+      `https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ id: _id }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
-         
         console.log(data);
-        if(data ){
+        if (data) {
           const remaining = friends.filter((friend) => friend._id !== _id);
-           setFriends(remaining);
+          setFriends(remaining);
         }
-       
-       
       });
   };
 
   return (
     <>
+      <Helmet>
+        <title>Friend Request</title>
+      </Helmet>
+      ;
       {loading ? (
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mx-[5%] my-[5%] w-full">
@@ -142,7 +152,7 @@ const FriendRequest: React.FC = () => {
                   <div className="flex items-center cursor-pointer">
                     <div
                       onClick={() => openModal(student._id)}
-                      className="w-16 h-16 bg-blue-500 rounded-full cursor-pointer"
+                      className="w-16 h-16 bg-blue-300 rounded-full cursor-pointer"
                     >
                       <img
                         src={student.user?.profileImage}
@@ -170,7 +180,7 @@ const FriendRequest: React.FC = () => {
                   <div className="mt-10 flex justify-between font-serif">
                     <button
                       onClick={() => DeleteRequest(student._id)}
-                      className="py-1  px-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring"
+                      className="py-1  px-3 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring"
                     >
                       Delete
                     </button>
@@ -180,9 +190,11 @@ const FriendRequest: React.FC = () => {
                       onClick={() =>
                         AcceptFriendRequest(student?.userId, student?._id)
                       }
-                      className="py-1 px-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
+                      className="py-1 px-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
                     >
-                      Accept
+                      {accepted ? <>
+                        <BsCheckLg className={"w-3 h-3 text-white"}></BsCheckLg>
+                      </> : <>Accept</>}
                     </button>
                   </div>
                   {showModal && (

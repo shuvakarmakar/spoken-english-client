@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
           to="/all-premium-courses"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-    Premium Courses
+          Premium Courses
         </NavLink>
       </li>
     </>
@@ -91,6 +91,11 @@ const Navbar: React.FC = () => {
     const storedDarkMode = localStorage.getItem("darkMode");
     if (storedDarkMode === "true") {
       setIsDarkMode(true);
+      document.body.classList.add("dark-mode");
+    }
+    else{
+      setIsDarkMode(false);
+      document.body.classList.remove("dark-mode");
     }
   }, []);
 
@@ -251,8 +256,8 @@ const Navbar: React.FC = () => {
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
-          <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
+          <AcademicCapIcon className="h-6 w-6 text-blue-500"  />
+          <span className="siteTitle ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
         </Link>
@@ -296,17 +301,6 @@ const Navbar: React.FC = () => {
         <ul className="items-center font-sans hidden space-x-8 lg:flex">
           {navItems}
 
-          {user && (
-            <li>
-              <NavLink
-                to="/dictionary"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Dictionary
-              </NavLink>
-            </li>
-          )}
-
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
             <>
@@ -348,6 +342,8 @@ const Navbar: React.FC = () => {
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
           </button>
+
+          {/* Language */}
           <button>
             <LanguageDropdown
               changeLanguage={function (_language: string): void {
@@ -366,9 +362,9 @@ const Navbar: React.FC = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-white font-bold text-lg" />
+              <XMarkIcon className="w-5 text-black font-bold text-xl" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
+              <Bars3BottomRightIcon className="w-5 text-black  font-bold text-lg darkText" />
             )}
           </button>
           {isMenuOpen && (
@@ -396,19 +392,6 @@ const Navbar: React.FC = () => {
                 <nav>
                   <ul className="space-y-4">
                     {navItems}
-
-                    {user && (
-                      <li>
-                        <NavLink
-                          to="/dictionary"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          Dictionary
-                        </NavLink>
-                      </li>
-                    )}
 
                     {/* Display Sign Up and Login buttons if not authenticated */}
                     {!user ? (

@@ -9,6 +9,7 @@ import Modal from "./ProfileImageUpdat/ProfileImageUPdate";
 import { BiEdit } from "react-icons/bi";
 import ProfileBannerUpdate from "./ProfileBannerUpdate/ProfieBannerUpdate";
 import useUser from "../../../Hooks/useUser";
+import { Helmet } from "react-helmet";
 // import { set } from "react-hook-form";
 
 const Profile = () => {
@@ -16,28 +17,30 @@ const Profile = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [bannerModalOpen, setBannerModalOpen] = useState(false)
-  
-  const userProfile = users.find(u => u.email == user?.email)
-  console.log(userProfile,"user");
+  const [bannerModalOpen, setBannerModalOpen] = useState(false);
+
+  const userProfile = users.find((u) => u.email == user?.email);
+  console.log(userProfile, "user");
 
   const openBannerModal = () => {
-    setBannerModalOpen(true)
-  }
+    setBannerModalOpen(true);
+  };
   const closeBannerModal = () => {
-     setBannerModalOpen(false)
-  }
+    setBannerModalOpen(false);
+  };
   const openModal = () => {
-   
-     setIsModalOpen(true);
-   };
+    setIsModalOpen(true);
+  };
 
-   const closeModal = () => {
-     setIsModalOpen(false);
-   };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
+      <Helmet>
+        <title>Your Profile</title>
+      </Helmet>
       <div className="container mx-auto  my-10">
         <div className="flex justify-start p-4"></div>
         <div className="flex justify-center p-10 w-full">

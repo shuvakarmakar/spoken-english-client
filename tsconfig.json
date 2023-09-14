@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["vite/client", "aos", "jest", "@testing-library/jest-dom"],
+    "types": ["vite/client", "aos", "jest", "@testing-library/jest-dom","@types/react-helmet"],
     "noEmitOnError": false,
     "jsx": "react",
     "target": "ES2020",

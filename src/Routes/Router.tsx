@@ -51,7 +51,12 @@ import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
 import SearchResults from "../Component/Pages/Search/SearchResults";
+import Quiz from "../Component/Pages/Quiz/Quiz";
+import QuizStarter from "../Component/Pages/Quiz/QuizStarter";
 import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
+import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
+import VoiceToText from "../Component/VoiceToText/VoiceToText";
+import Text from "../Component/Pages/TextToSpeach/Tesxt";
 
 export const router = createBrowserRouter([
   {
@@ -122,12 +127,28 @@ export const router = createBrowserRouter([
 
       // Dictionary (rashik)
       {
+        path: "/translator",
+        element: (
+          <PrivetRout>
+            <LanguageTranslator />
+          </PrivetRout>
+        ),
+      },
+      {
         path: "/dictionary",
         element: (
           <PrivetRout>
             <Dictionary />
           </PrivetRout>
         ),
+      },
+      {
+        path: "/VoiceToText",
+        element: <VoiceToText />,
+      },
+      {
+        path: "/TextToSpeach",
+        element: <Text />,
       },
       {
         path: "/profile/:id",
@@ -198,6 +219,15 @@ export const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchResults></SearchResults>,
+      },
+
+      {
+        path: "quiz",
+        element: <Quiz></Quiz>,
+      },
+      {
+        path: "quiz-starter",
+        element: <QuizStarter></QuizStarter>,
       },
 
       // shuva-work
@@ -315,7 +345,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Connect/notification",
-        element:<Notification></Notification>
+        element: <Notification></Notification>,
       },
     ],
   },

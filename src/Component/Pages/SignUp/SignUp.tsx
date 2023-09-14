@@ -135,7 +135,7 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="w-[96%] md:w-[90%] mx-auto pt-3">
+    <div className="mt-[60px] w-[96%] md:w-[90%] mx-auto pt-3">
       <div className="grid grid-cols-1 md:grid-cols-2 flex-col-reverse">
       <div
         className=" hero  h-full changebg">
