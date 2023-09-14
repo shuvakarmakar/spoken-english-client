@@ -92,8 +92,7 @@ const Navbar: React.FC = () => {
     if (storedDarkMode === "true") {
       setIsDarkMode(true);
       document.body.classList.add("dark-mode");
-    }
-    else{
+    } else {
       setIsDarkMode(false);
       document.body.classList.remove("dark-mode");
     }
@@ -156,7 +155,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg relative">
+    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg bg-slate-100 fixed top-0 z-50 navbarStyle">
       {/* Searchbar */}
       
       <div
@@ -257,7 +256,7 @@ const Navbar: React.FC = () => {
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
-          <AcademicCapIcon className="h-6 w-6 text-blue-500"  />
+          <AcademicCapIcon className="h-6 w-6 text-blue-500" />
           <span className="siteTitle ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
@@ -308,7 +307,7 @@ const Navbar: React.FC = () => {
               <li>
                 <Link
                   to="/Login"
-                  className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  className="text-white bg-gradient-to-br from-cyan-500 to-blue-500  group-hover:to-blue-700 hover:bg-gradient-to-tl  hover:scale-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >
                   Login
                 </Link>
@@ -401,7 +400,7 @@ const Navbar: React.FC = () => {
                           <li>
                             <Link
                               to="/Login"
-                              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              className="text-white bg-gradient-to-br from-cyan-500 to-blue-500  group-hover:to-blue-700 hover:bg-gradient-to-tl  hover:scale-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             >
                               Login
                             </Link>

@@ -17,6 +17,7 @@ interface Course {
 const MyEnrolledCourses: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
+  //const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (user) {
@@ -35,7 +36,7 @@ const MyEnrolledCourses: React.FC = () => {
   }, [user]);
 
   return (
-    <div className=" mx-auto py-8">
+    <div className="changebg mx-auto py-8">
       <Helmet>
         <title>Enroll | Dashboard</title>
       </Helmet>
