@@ -158,6 +158,7 @@ const Navbar: React.FC = () => {
   return (
     <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg relative">
       {/* Searchbar */}
+      
       <div
         id="searchBarContainer"
         className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg"

@@ -80,7 +80,7 @@ const Applications:React.FC=()=> {
         <>
           <div className=" min-h-screen py-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl font-semibold mb-10 text-center ">
+              <h2 className="text-3xl font-semibold mb-10 text-white text-center ">
                 Application Form
               </h2>
               <div className="max-h-96 md:max-h-[600px] overflow-y-auto">

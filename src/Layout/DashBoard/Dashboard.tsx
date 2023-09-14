@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [isStudent, isStudentLoading] = UseStudent();
 
   return (
-    <div className="bg-[#14193f]  h-[100vh]"
+    <div className="bg-[#0d1446]  min-h-screen"
       // style={{
       //   backgroundImage:
       //     "url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=900&t=st=1691992198~exp=1691992798~hmac=b8c9e4f94bf34ff4f185e4d90db42722d8b164c03572352c9dc80751264b8ecf')",
@@ -99,10 +99,10 @@ const Dashboard = () => {
         >
           {sidebarOpen ? (
             <>
-              <AiOutlineClose className="text-[3vw]"></AiOutlineClose>
+              <AiOutlineClose className="text-[3vw] text-white"></AiOutlineClose>
             </>
           ) : (
-            <FaBars className="text-[3vw]"></FaBars>
+            <FaBars className="text-[3vw] text-white"></FaBars>
           )}
         </button>
 

@@ -17,7 +17,6 @@ interface Course {
 const MyEnrolledCourses: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
-  const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (user) {
@@ -35,27 +34,20 @@ const MyEnrolledCourses: React.FC = () => {
     }
   }, [user]);
 
-  // useEffect(() => {
-  //   // Fetch data from the API
-  //   fetch("https://spoken-english-server-xi.vercel.app/courses")
-  //     .then((response) => response.json())
-  //     .then((data: Course[]) => setCourses(data))
-  //     .catch((error) => console.error("Error fetching data:", error));
-  // }, []);
-
   return (
     <div className=" mx-auto py-8">
       <Helmet>
         <title>Enroll | Dashboard</title>
       </Helmet>
-      <h1 className="text-2xl font-semibold text-center my-5">
+      <h1 className="text-3xl text-white font-semibold text-center mb-8 my-5">
         My Enrolled Courses
       </h1>
       <div className="grid md:grid-cols-2 gap-6">
 
 
         {
-          enrolledCourses.map((course) => (
+          enrolledCourses.map((course) =>  (
+    
             <div className="card flex flex-col sm:flex-row w-100%   bg-[#494eaf] text-white shadow-xl">
               <div className="w-1/3">
                 <figure className="px-10 pt-10">
