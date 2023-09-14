@@ -8,6 +8,7 @@ import {
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { BsCheckLg } from "react-icons/bs";
 // import { changeLanguage } from "i18next";
 
 interface Student {
@@ -28,7 +29,7 @@ const FriendRequest: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [id, SetId] = useState<number>(0);
   const [friends, setFriends] = useState<Student[]>([]);
-
+  const [accepted, setAccepted] = useState(false)
   const openModal = (id: number) => {
     SetId(id);
     setShowModal(true);
@@ -60,6 +61,8 @@ const FriendRequest: React.FC = () => {
   }, [user]);
 
   const DeleteRequest = (id: number) => {
+    const reaming = friends.filter(friend => friend._id !== id);
+    setFriends(reaming)
     if (id) {
       fetch(
         `https://spoken-english-server-xi.vercel.app/delete-friend-requests/${id}`,
@@ -79,6 +82,7 @@ const FriendRequest: React.FC = () => {
   // https://spoken-english-server-xi.vercel.app/send-friend-request/${user?.uid}/${friendId}
 
   const AcceptFriendRequest = (friendId: string, _id: number) => {
+    setAccepted(true)
     fetch(
       `https://spoken-english-server-xi.vercel.app/accept/friendRequest/${user?.uid}/${friendId}`,
       {
@@ -148,7 +152,7 @@ const FriendRequest: React.FC = () => {
                   <div className="flex items-center cursor-pointer">
                     <div
                       onClick={() => openModal(student._id)}
-                      className="w-16 h-16 bg-blue-500 rounded-full cursor-pointer"
+                      className="w-16 h-16 bg-blue-300 rounded-full cursor-pointer"
                     >
                       <img
                         src={student.user?.profileImage}
@@ -176,7 +180,7 @@ const FriendRequest: React.FC = () => {
                   <div className="mt-10 flex justify-between font-serif">
                     <button
                       onClick={() => DeleteRequest(student._id)}
-                      className="py-1  px-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring"
+                      className="py-1  px-3 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring"
                     >
                       Delete
                     </button>
@@ -186,9 +190,11 @@ const FriendRequest: React.FC = () => {
                       onClick={() =>
                         AcceptFriendRequest(student?.userId, student?._id)
                       }
-                      className="py-1 px-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
+                      className="py-1 px-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
                     >
-                      Accept
+                      {accepted ? <>
+                        <BsCheckLg className={"w-3 h-3 text-white"}></BsCheckLg>
+                      </> : <>Accept</>}
                     </button>
                   </div>
                   {showModal && (

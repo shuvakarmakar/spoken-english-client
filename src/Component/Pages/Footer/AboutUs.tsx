@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   return (
-    <div className="bg-[#EEEEEE] changebg">
+    <div className=" changebg pt-32">
       <Helmet>
         <title>ELearner | About Us</title>
       </Helmet>

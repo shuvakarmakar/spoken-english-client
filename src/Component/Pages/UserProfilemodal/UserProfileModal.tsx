@@ -58,7 +58,7 @@ const UserProfileModal = () => {
         </div>
         <hr />
         <ul className="text-gray-600 space-y-2">
-          <li>
+          <li className="hover:text-indigo-500 font-semibold text-gray-900">
             <Link to={"/profile"}>
               {" "}
               <p>Profile</p>
@@ -70,7 +70,7 @@ const UserProfileModal = () => {
                 {isAdmin && (
                   <>
                     <Link to={"/dashboard/users"}>
-                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                      <li className="font-semibold text-gray-900 hover:text-indigo-500">
                         Dashboard
                       </li>
                     </Link>
@@ -79,7 +79,7 @@ const UserProfileModal = () => {
                 {isStudent && (
                   <>
                     <Link to={"/dashboard/MyEnrolledCourses"}>
-                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                      <li className="font-semibold text-gray-900 hover:text-indigo-500">
                         Dashboard
                       </li>
                     </Link>
@@ -88,7 +88,7 @@ const UserProfileModal = () => {
                 {isInstructor && (
                   <>
                     <Link to={"/dashboard/AddClasses"}>
-                      <li className="font-bold text-gray-900 hover:text-indigo-500">
+                      <li className="font-semibold text-gray-900 hover:text-indigo-500">
                         Dashboard
                       </li>
                     </Link>
@@ -97,22 +97,22 @@ const UserProfileModal = () => {
               </>
             )}
           </li>
-          <li>
+          <li className="hover:text-indigo-500 font-semibold text-gray-900">
             <Link to={"/profileSetting"} state={user?.uid}>
               <p>Settings</p>
             </Link>
           </li>
-          <li>
+          <li className="hover:text-indigo-500 font-semibold text-gray-900">
             <Link to={"/helpSupport"}>
               <p>Help and Support</p>
             </Link>
           </li>
-          <li>
+          <li className="hover:text-indigo-500 font-semibold text-gray-900">
             <Link to={"/Feedback"}>
               <p>Give Feedback</p>
             </Link>
           </li>
-          <li onClick={handleLogOut}>
+          <li  onClick={handleLogOut} className="hover:text-indigo-500 font-semibold text-gray-900">
             <a href="#">Logout</a>
           </li>
         </ul>

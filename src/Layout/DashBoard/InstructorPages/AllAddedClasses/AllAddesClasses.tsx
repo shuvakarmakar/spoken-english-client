@@ -65,11 +65,11 @@ const AllAddedClasses: React.FC = () => {
 
     return (
         <div>
-            <h1 className='text-center text-3xl font-bold my-5'>All Added Classes</h1>
+            <h1 className='text-center text-white text-3xl font-bold my-5'>All Added Classes</h1>
             <div className="overflow-x-auto mt-10 flex justify-center items-center">
                 <div className="w-full overflow-hidden rounded-lg">
-                    <table className="table">
-                        <thead>
+                    <table className="table ">
+                        <thead className='text-white'>
                             <tr>
                                 <th>
 
@@ -82,8 +82,8 @@ const AllAddedClasses: React.FC = () => {
                         </thead>
                         <tbody>
                             {courses.map((course) => (
-                                <tr key={course._id}>
-                                    <td>
+                                <tr key={course._id} className='text-white'>
+                                    <td >
                                         <label>
                                             <input type="checkbox" className="checkbox" />
                                         </label>

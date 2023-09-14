@@ -33,6 +33,9 @@ body {
 .dark-mode .darkText {
   color: white !important;
 }
+.dark-mode .lightText {
+  color: black !important;
+}
 .dark-mode .design-bgcloor {
   color: #101e41;
 }

@@ -35,7 +35,7 @@ const SearchResults: React.FC = () => {
       }, []);
   // Use the searchValue to display search results or perform further actions
   return ( 
-    <div className="py-5 md:py-10 mt-10">
+    <div className="py-5 md:py-10 mt-32">
         <div className="w-[96%] md:w-[90%] mx-auto">
             <h2 className="text-xl font-semibold bg-[rgba(0,0,0,0.1)] px-3 py-2">Search Results for: <span className='text-red-600'>{searchQuery}</span> </h2>
 

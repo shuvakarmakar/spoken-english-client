@@ -12,7 +12,7 @@ const QuizResult: React.FC<QuizResultProps> = ({ score, totalQuestions, course }
   const percentage = ((score / totalQuestions) * 100).toFixed(2);
 
   return (
-    <div className="bg-white p-4 rounded-md ">
+    <div className="bg-white p-4 rounded-md changebg">
 
       <div className="flex flex-col justify-center items-center">
         <h2 className="text-xl font-semibold mb-4">Quiz Result</h2>
@@ -21,7 +21,7 @@ const QuizResult: React.FC<QuizResultProps> = ({ score, totalQuestions, course }
         {
           percentage >= "10" ? (
             <div className="hello">
-              <Link state={course} to={"http://localhost:5173/checkout"} className='border mt-7 shadow-lg px-3 py-2'>Process to enroll</Link>
+              <Link state={course} to={"https://spoken-english-65d22.web.app/checkout"} className='border mt-7 shadow-lg px-3 py-2'>Process to enroll</Link>
             </div>
           ) : (
             <div className="flex flex-col justify-center items-center">

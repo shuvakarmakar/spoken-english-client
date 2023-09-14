@@ -47,7 +47,7 @@ const SideIcons = () => {
   ];
 
   return (
-    <div className="hidden lg:flex flex-col top-[35%] z-10 left-0 fixed">
+    <div className="flex flex-col top-[30%] z-10 left-0 fixed">
       <ul>
         {links.map(({ id, child, href, style }) => (
           <li

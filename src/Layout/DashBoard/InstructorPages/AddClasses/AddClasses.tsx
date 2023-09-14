@@ -92,9 +92,9 @@ const AddClasses: React.FC = () => {
     setCourseVideos(updatedVideos);
   };
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
-        <h1 className="text-3xl font-semibold mb-4">Add Classes</h1>
+    <div className="bg-slate-400 min-h-screen flex items-center justify-center">
+      <div className="bg-slate-500 text-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
+        <h1 className="text-3xl font-semibold text-center mb-4">Add Classes</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Course Name */}
           <div>
@@ -102,7 +102,7 @@ const AddClasses: React.FC = () => {
             <input
               type="text"
               {...register("courseName", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-2 text-black border rounded focus:outline-none focus:border-blue-500"
             />
             {errors.courseName && (
               <span className="text-red-500">Course Name is required</span>
@@ -116,7 +116,7 @@ const AddClasses: React.FC = () => {
               type="file"
               {...register("image", { required: true })}
               name="image"
-              className="file-input file-input-bordered w-full"
+              className="file-input file-input-bordered text-black w-full"
             />
             {errors.image && (
               <span className="text-red-500">Class Image is required</span>
@@ -129,7 +129,7 @@ const AddClasses: React.FC = () => {
             <input
               type="number"
               {...register("price", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-2 border rounded text-black focus:outline-none focus:border-blue-500"
             />
             {errors.price && (
               <span className="text-red-500">Price is required</span>
@@ -142,7 +142,7 @@ const AddClasses: React.FC = () => {
             <input
               type="text"
               {...register("instructorName", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-4 py-2 border text-black rounded focus:outline-none focus:border-blue-500"
             />
             {errors.instructorName && (
               <span className="text-red-500">Instructor Name is required</span>
@@ -156,7 +156,7 @@ const AddClasses: React.FC = () => {
               type="email"
               defaultValue={user?.email || ''}
               {...register("instructorEmail", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full px-4 text-black py-2 border rounded focus:outline-none focus:border-blue-500"
             />
             {errors.instructorEmail && (
               <span className="text-red-500">Instructor Email is required</span>
@@ -171,7 +171,7 @@ const AddClasses: React.FC = () => {
             <input
               type="number"
               {...register("numberOfStudents", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
             {errors.numberOfStudents && (
               <span className="text-red-500">
@@ -186,7 +186,7 @@ const AddClasses: React.FC = () => {
             <input
               type="number"
               {...register("availableSeats", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
             {errors.availableSeats && (
               <span className="text-red-500">Available Seats is required</span>
@@ -198,7 +198,7 @@ const AddClasses: React.FC = () => {
             <label className="block font-semibold mb-1">Course Details</label>
             <textarea
               {...register("courseDetails", { required: true })}
-              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+              className="w-full text-black px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
             />
             {errors.courseDetails && (
               <span className="text-red-500">Course Details is required</span>
@@ -218,7 +218,7 @@ const AddClasses: React.FC = () => {
                 onChange={(e) =>
                   handleCourseVideoNameChange(index, e.target.value)
                 }
-                className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                className="w-full  text-black px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
               />
               <label className="block font-semibold mb-1">
                 Add YouTube Video Link {index + 1}
@@ -229,7 +229,7 @@ const AddClasses: React.FC = () => {
                   onChange={(e) =>
                     handleCourseVideoUrlChange(index, e.target.value)
                   }
-                  className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                  className="w-full text-black px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>
