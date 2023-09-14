@@ -14,7 +14,7 @@ const Dashboard = () => {
   const [isStudent, isStudentLoading] = UseStudent();
 
   return (
-    <div className="bg-[#14193f]  h-[100vh]"
+    <div className="changebg  h-[100vh]"
       // style={{
       //   backgroundImage:
       //     "url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=900&t=st=1691992198~exp=1691992798~hmac=b8c9e4f94bf34ff4f185e4d90db42722d8b164c03572352c9dc80751264b8ecf')",
@@ -25,7 +25,7 @@ const Dashboard = () => {
     >
       {/* Mobile and Tablet Sidebar */}
       <div
-        className={`fixed top-0 left-0 bottom-0 bg-[#150F2D] text-white shadow-md w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
+        className={` fixed top-0 left-0 bottom-0 bg-[#150F2D] text-white shadow-md w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
           sidebarOpen ? "block" : "hidden"
         } transition-transform duration-[0.5s] ease-in-out transform translate-x-0 lg:translate-x-0`}
       >

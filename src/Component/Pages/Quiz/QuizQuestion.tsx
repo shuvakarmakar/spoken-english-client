@@ -33,7 +33,7 @@ const QuizQuestion: React.FC<QuestionProps> = ({ question, onAnswer }) => {
           <li
             key={index}
             className={`p-2 cursor-pointer ${
-              selectedOption === option ? 'bg-blue-400 text-white' : 'bg-gray-100'
+              selectedOption === option ? 'bg-blue-400 text-white' : 'changebg'
             }`}
             onClick={() => handleOptionClick(option)}
           >
