@@ -17,7 +17,7 @@ interface Course {
 const MyEnrolledCourses: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
-  const [courses, setCourses] = useState<Course[]>([]);
+  //const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (user) {

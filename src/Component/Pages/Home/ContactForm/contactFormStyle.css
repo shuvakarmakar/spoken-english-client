@@ -1,0 +1,21 @@
+@media screen and (max-width:400px)
+{
+    .contactFormStyle{
+        padding: 10px !important;
+
+    }
+}
+
+@media screen and (max-width:769px)
+{
+    .contactFormStyle{
+        width: 100%;
+
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .contactFormStyle {
+      width:250px;
+    }
+  }

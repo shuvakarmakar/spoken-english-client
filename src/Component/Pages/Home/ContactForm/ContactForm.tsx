@@ -4,9 +4,12 @@ import emailjs from "@emailjs/browser";
 // import contactbg from "../../../../assets/contactusbg.avif";
 import { BiPhoneCall } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
+import "./contactFormStyle.css"
+
 const ContactForm: React.FC = () => {
   const { t } = useTranslation();
   const form = useRef<HTMLFormElement>(null);
+  
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className=" p-5 bg-[#101E41] rounded-lg shadow-lg w-full md:w-[350px] ">
+    <div className="contactFormStyle border md:border-none p-7 md:p-5 bg-[#101E41] rounded-lg shadow-xl w-full md:w-[350px] ">
       <div className="flex gap-3 items-center ">
         <p>
           <BiPhoneCall className={"w-8 h-8 text-orange-500"}></BiPhoneCall>{" "}
