@@ -84,7 +84,7 @@ const Checkout: React.FC = () => {
                     {/* Billing Details Form */}
                     <div className="mb-4 mt-6">
                         <h2 className="text-lg font-semibold mb-2">Billing Details</h2>
-                        <label htmlFor="fullName" className="block mb-1">
+                        <label htmlFor="fullName" className="block mb-1 darkText">
                             Full Name
                         </label>
                         <input
@@ -92,11 +92,11 @@ const Checkout: React.FC = () => {
                             id="fullName"
                             
                             {...register('fullName')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="email" className="block mb-1 mt-3">
+                        <label htmlFor="email" className="block mb-1 darkText mt-3">
                             Email
                         </label>
                         <input
@@ -104,11 +104,11 @@ const Checkout: React.FC = () => {
                             id="email"
                           
                             {...register('email')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="address" className="block mb-1 mt-3">
+                        <label htmlFor="address" className="block mb-1 darkText mt-3">
                             Billing Address
                         </label>
                         <input
@@ -116,11 +116,11 @@ const Checkout: React.FC = () => {
                             id="address"
                             
                             {...register('address')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="city" className="block mb-1 mt-3">
+                        <label htmlFor="city" className="block mb-1 darkText mt-3">
                             City
                         </label>
                         <input
@@ -128,11 +128,11 @@ const Checkout: React.FC = () => {
                             id="city"
                          
                             {...register('city')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="country" className="block mb-1 mt-3">
+                        <label htmlFor="country" className="block mb-1 darkText mt-3">
                             Country
                         </label>
                         <input
@@ -140,11 +140,11 @@ const Checkout: React.FC = () => {
                             id="country"
                            
                             {...register('country')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="postalCode" className="block mb-1 mt-3">
+                        <label htmlFor="postalCode" className="block mb-1 darkText mt-3">
                             Postal Code
                         </label>
                         <input
@@ -152,11 +152,11 @@ const Checkout: React.FC = () => {
                             id="postalCode"
                            
                             {...register('postalCode')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
 
-                        <label htmlFor="contactNumber" className="block mb-1 mt-3">
+                        <label htmlFor="contactNumber" className="block mb-1 darkText mt-3">
                             Contact Number
                         </label>
                         <input
@@ -164,7 +164,7 @@ const Checkout: React.FC = () => {
                             id="contactNumber"
                             
                             {...register('contactNumber')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText"
                             required
                         />
                     </div>

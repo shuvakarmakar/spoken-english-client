@@ -23,6 +23,7 @@ import useUser from "../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
 // import { changeLanguage } from "i18next";
 
+
 interface MyObject {
   _id: number;
   name: string;
@@ -38,6 +39,7 @@ const PTPCommunication = () => {
   const {onlineUsers } = useContext(AuthContext) as AuthContextType;
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredData, setFilteredData] = useState<MyObject[]>([]);
+  console.log(data)
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
@@ -67,6 +69,8 @@ console.log(data);
   useEffect(() => {
     fetchData();
   }, []);
+
+ 
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 

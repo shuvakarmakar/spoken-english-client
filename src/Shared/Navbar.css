@@ -7,4 +7,7 @@ border:1px solid blue
     .siteTitle{
         display: none;
     }
+    .navbarStyle{
+        margin-bottom: 100px;
+    }
 }

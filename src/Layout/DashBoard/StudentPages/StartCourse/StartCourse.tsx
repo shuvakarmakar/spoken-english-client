@@ -44,7 +44,7 @@ const StartCourse: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-4">
+    <div className="bg-gray-100 min-h-screen p-4 changebg">
       <div className="container mx-auto">
         <h1 className="text-2xl font-bold mb-4">{courseDetails.courseName}</h1>
         <div className="grid grid-cols-12 gap-4">
@@ -62,7 +62,7 @@ const StartCourse: React.FC = () => {
               ></iframe>
             </div>
           </div>
-          <div className="col-span-3 bg-white rounded-lg shadow-md p-4">
+          <div className="col-span-3 bg-white rounded-lg shadow-xl p-4 changebg border">
             <h2 className="text-lg font-semibold mb-2">Select a Video</h2>
             <div className="space-y-2">
               {courseDetails.courseVideos.map((video, index) => (
