@@ -28,7 +28,7 @@ const Dashboard2 = () => {
             <ul className="uppercase">
               <NavLink to="/" onClick={() => setSidebarOpen(false)}>
                 <li className="p-2  transition duration-1000 ease-in-out flex gap-4 transform hover:bg-gray-200">
-                  <FaHome></FaHome> Home
+                  <FaHome ></FaHome> Home
                 </li>
               </NavLink>
               <NavLink
@@ -48,7 +48,7 @@ const Dashboard2 = () => {
       <div className="main flex-grow p-4">
         {/* Mobile and Tablet Sidebar Toggle */}
         <button
-          className="md:hidden absolute top-6 right-10 text-gray-600"
+          className="md:hidden absolute top-6  text-gray-600"
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           {sidebarOpen ? (
