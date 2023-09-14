@@ -32,7 +32,7 @@ interface MyObject {
 }
 
 const PTPCommunication = () => {
-  const [users, loading] = useUser();
+  const [users] = useUser();
   const [data, setData] = useState<MyObject[]>([]); // Store your fetched data here
   // const Student = users.filter((user) => user.Roll == "student");
   const {onlineUsers } = useContext(AuthContext) as AuthContextType;
