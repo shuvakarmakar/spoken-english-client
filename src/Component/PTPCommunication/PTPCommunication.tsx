@@ -21,7 +21,7 @@ import useNotification from "../../Hooks/useNotification";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
-import Spinner from "../Pages/Spinner/Spinner";
+
 
 interface MyObject {
   _id: number;
@@ -68,10 +68,7 @@ const PTPCommunication = () => {
     fetchData();
   }, []);
 
-  if(loading)
-  {
-    return <Spinner/>
-  }
+ 
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
