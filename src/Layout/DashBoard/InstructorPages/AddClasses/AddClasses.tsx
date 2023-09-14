@@ -94,7 +94,7 @@ const AddClasses: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
-        <h1 className="text-3xl font-semibold mb-4">Add Classes</h1>
+        <h1 className="text-3xl font-semibold text-center my-5">Add Classes</h1>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Course Name */}
           <div>

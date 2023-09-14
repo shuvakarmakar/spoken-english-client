@@ -16,6 +16,7 @@ interface Course {
 const MyEnrolledCourses: React.FC = () => {
   const { user } = useContext(AuthContext) as AuthContextType;
   const [enrolledCourses, setEnrolledCourses] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
     if (user) {
@@ -33,16 +34,57 @@ const MyEnrolledCourses: React.FC = () => {
     }
   }, [user]);
 
+  // useEffect(() => {
+  //   // Fetch data from the API
+  //   fetch("https://spoken-english-server-xi.vercel.app/courses")
+  //     .then((response) => response.json())
+  //     .then((data: Course[]) => setCourses(data))
+  //     .catch((error) => console.error("Error fetching data:", error));
+  // }, []);
+
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-semibold text-center my-5">
+
+    <div className="container mx-auto py-8 text-white ">
+      <h1 className="text-3xl font-semibold text-center my-5">
         My Enrolled Courses
       </h1>
-      <div className="overflow-x-auto">
-        <table className="table">
+      <div className="grid md:grid-cols-2 gap-6">
+
+
+        {
+          enrolledCourses.map((course) => (
+            <div className="card flex flex-col sm:flex-row w-100%   bg-[#494eaf] text-white shadow-xl">
+              <div className="w-1/3">
+                <figure className="px-10 pt-10">
+                  <img src="" alt="Thumbnails " className="rounded-xl" />
+                </figure>
+              </div>
+              <div>
+                <div className="card-body items-center text-center mb-4">
+                  <h2 className="card-title mb-4">{course.product_name}</h2>
+                  <p className="mb-4">{course.instructor_name}</p>
+                  <progress className="progress progress-info w-48 h-4 mb-4" value="20" max="100">20%</progress>
+                  <Link
+                    className="btn border-0  bg-gradient-to-r from-[#ca62e4] to-[#211c6b] text-white"
+                    to={`/dashboard/startCourse/${course._id}`}
+                    state={course}
+                  >
+                    Continue Course
+                  </Link>
+                </div>
+              </div>
+
+
+            </div>
+          ))
+        }
+      </div>
+      {/* <div className="overflow-x-auto"> */}
+
+      {/* <table className="table ">
           <thead>
             <tr>
-              <th></th>
+              <th>#</th>
               <th>Course Name</th>
               <th>Price</th>
               <th>Instructor</th>
@@ -58,7 +100,7 @@ const MyEnrolledCourses: React.FC = () => {
                 <td>{course.instructor_name}</td>
                 <td className="flex justify-center">
                   <Link
-                    className="btn btn-secondary text-white"
+                    className="btn btn-primary text-white"
                     to={`/dashboard/startCourse/${course._id}`}
                     state={course}
                   >
@@ -68,8 +110,8 @@ const MyEnrolledCourses: React.FC = () => {
               </tr>
             ))}
           </tbody>
-        </table>
-      </div>
+        </table> */}
+      {/* </div> */}
     </div>
   );
 };
