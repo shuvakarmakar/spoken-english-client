@@ -43,18 +43,18 @@ const MyEnrolledCourses: React.FC = () => {
       <h1 className="text-3xl text-white font-semibold text-center mb-8 my-5">
         My Enrolled Courses
       </h1>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
         {
           enrolledCourses.map((course) =>  (
     
-            <div className="card flex flex-col sm:flex-row w-100%   bg-[#494eaf] text-white shadow-xl">
-              <div className="w-1/3">
+            <div className="card  w-100%   bg-[#494eaf] text-white shadow-xl">
+              {/* <div className="w-1/3">
                 <figure className="px-10 pt-10">
                   <img src="" alt="Thumbnails " className="rounded-xl" />
                 </figure>
-              </div>
+              </div> */}
               <div>
                 <div className="card-body items-center text-center mb-4">
                   <h2 className="card-title mb-4">{course.product_name}</h2>
