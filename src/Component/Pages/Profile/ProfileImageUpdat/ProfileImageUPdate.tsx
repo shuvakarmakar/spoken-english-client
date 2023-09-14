@@ -136,7 +136,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                   image={URL.createObjectURL(selectedImage)}
                   crop={crop}
                   zoom={1}
-                  aspect={4 / 3}
+                  aspect={3 / 3}
                   onCropChange={handleCropChange as any}
                   onCropComplete={handleCropComplete}
                   showGrid={false}

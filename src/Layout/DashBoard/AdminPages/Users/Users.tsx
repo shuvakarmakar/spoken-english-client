@@ -60,16 +60,16 @@ const Users = () => {
         </>
       ) : (
         <>
-          <div className="h-[100vh]">
-            <h1 className=" uppercase text-[3vw] text-center my-4">
+          <div className="">
+            <h1 className=" uppercase text-[3vw] text-white text-center my-4">
               All <span className="text-blue-500">Users</span>{" "}
             </h1>
-            <div className="flex justify-center mx-auto mt-11">
+            <div className="flex justify-center  mx-auto mt-11">
               <div className="overflow-x-auto overflow-y-auto max-h-96 md:max-h-[600px]  bg-white">
                 <table className="table border shadow-xl">
                   {/* head */}
-                  <thead className="bg-gray-100">
-                    <tr>
+                  <thead className="bg-gray-100 ">
+                    <tr className="text-black">
                       <th>NO:</th>
                       <th>Name</th>
                       <th>Email</th>
@@ -83,7 +83,7 @@ const Users = () => {
                     {/* row 2 */}
                     {users?.map((user, index) => {
                       return (
-                        <tr className="hover">
+                        <tr className="hover text-black">
                           <th>{index + 1}</th>
                           <td>{user.name}</td>
                           <td>{user.email}</td>

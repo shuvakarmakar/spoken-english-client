@@ -91,14 +91,7 @@ export const router = createBrowserRouter([
         path: "/applyInstructor",
         element: <InstructorApplicationForm></InstructorApplicationForm>,
       },
-      // {
-      //   path: "/Connect",
-      //   element: (
-      //     <PrivetRout>
-      //       <PTPCommunication></PTPCommunication>
-      //     </PrivetRout>
-      //   ),
-      // },
+
       {
         path: "/profile",
         element: (
@@ -136,16 +129,17 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dictionary",
-        element: (
-          <PrivetRout>
-            <Dictionary />
-          </PrivetRout>
-        ),
+        element: <Dictionary />,
       },
       {
         path: "/VoiceToText",
-        element: <VoiceToText />,
+        element: (
+          <PrivetRout>
+            <VoiceToText />
+          </PrivetRout>
+        ),
       },
+
       {
         path: "/TextToSpeach",
         element: <Text />,
@@ -237,26 +231,46 @@ export const router = createBrowserRouter([
       },
       {
         path: "course-details/:id",
-        element: <CourseDetails></CourseDetails>,
+        element: (
+          <PrivetRout>
+            <CourseDetails></CourseDetails>
+          </PrivetRout>
+        ),
       },
       {
         path: "checkout",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivetRout>
+            <Checkout></Checkout>
+          </PrivetRout>
+        ),
       },
       {
         path: "payment/success/:tranId",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: (
+          <PrivetRout>
+            <PaymentSuccess></PaymentSuccess>
+          </PrivetRout>
+        ),
       },
       {
         path: "payment/fail/:tranId",
-        element: <PaymentFailed></PaymentFailed>,
+        element: (
+          <PrivetRout>
+            <PaymentFailed></PaymentFailed>
+          </PrivetRout>
+        ),
       },
     ],
   },
   // dashboard routes
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivetRout>
+        <Dashboard></Dashboard>
+      </PrivetRout>
+    ),
     children: [
       //  admin routes
       {
@@ -329,7 +343,6 @@ export const router = createBrowserRouter([
         path: "/Connect/calling",
         element: (
           <PrivetRout>
-            {" "}
             <Joinroom />
           </PrivetRout>
         ),

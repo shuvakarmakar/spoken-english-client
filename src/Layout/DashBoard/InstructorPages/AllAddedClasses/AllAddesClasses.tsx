@@ -82,8 +82,8 @@ const AllAddedClasses: React.FC = () => {
                         </thead>
                         <tbody>
                             {courses.map((course) => (
-                                <tr key={course._id}>
-                                    <td>
+                                <tr key={course._id} className='text-white'>
+                                    <td >
                                         <label>
                                             <input type="checkbox" className="checkbox" />
                                         </label>
