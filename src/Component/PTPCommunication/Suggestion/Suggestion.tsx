@@ -8,7 +8,7 @@ import {
 
 // import { Link } from "react-router-dom";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
-//import useUser from "../../../Hooks/useUser";
+// import useUser from "../../../Hooks/useUser";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -165,7 +165,7 @@ const Suggestion: React.FC = () => {
                 <>
                   <div
                     onMouseLeave={closeModal}
-                    className="bg-white shadow-md rounded-md p-4 relative border "
+                    className="card-bg shadow-md rounded-md p-4 relative border "
                   >
                     <div className="flex items-center">
                       <div
@@ -190,7 +190,7 @@ const Suggestion: React.FC = () => {
                       ></div>
                     </div>
                     <div className="mt-4">
-                      <p className="text-gray-600">
+                      <p className="text-gray-300">
                         I'm a passionate English Learner Lets learn English
                         together.
                       </p>

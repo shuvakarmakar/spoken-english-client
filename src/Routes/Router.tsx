@@ -315,7 +315,12 @@ export const router = createBrowserRouter([
   // connect pages
   {
     path: "/Connect",
-    element: <PTPCommunication></PTPCommunication>,
+    element: (
+      <PrivetRout>
+        {" "}
+        <PTPCommunication></PTPCommunication>
+      </PrivetRout>
+    ),
 
     children: [
       {
