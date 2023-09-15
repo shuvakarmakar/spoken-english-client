@@ -57,7 +57,7 @@ const Dictionary: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-purple-200 min-h-screen flex justify-center items-center">
+    <div className="bg-purple-200 min-h-screen flex justify-center items-center pt-32">
       <div className="bg-white w-90vmin p-8 rounded-md shadow-md">
         <input
           type="text"

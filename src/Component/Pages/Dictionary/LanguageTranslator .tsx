@@ -69,7 +69,7 @@ const LanguageTranslator = () => {
   };
 
   return (
-    <div className="w-1/2 mx-auto mt-10 p-4">
+    <div className="w-1/2 mx-auto pt-32 r p-4">
       <Helmet>
         <title>ELearner | Translator</title>
       </Helmet>
