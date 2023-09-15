@@ -3,11 +3,11 @@ import { Helmet } from "react-helmet";
 
 const PrivecyPolicy = () => {
   return (
-    <div className="bg-[#EEEEEE] changebg">
+    <div className=" changebg pt-32">
       <Helmet>
         <title>Privacy and Policy</title>
       </Helmet>
-      <div className="w-[96%] md:w-[90%] mx-auto">
+      <div className="w-[96%] md:w-[90%] mx-auto ">
         <p className="text-3xl py-5">Privacy Policy</p>
         <p className="text-xl font-bold">
           What personal data we collect and why we collect it Comments

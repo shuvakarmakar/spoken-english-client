@@ -25,7 +25,7 @@ const MainComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 pt-32">
       <Helmet>
         <title>Premium Classes</title>
       </Helmet>

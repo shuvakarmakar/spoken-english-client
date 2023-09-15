@@ -5,7 +5,7 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface UserProfileCardProps {
   student: {
@@ -18,7 +18,7 @@ interface UserProfileCardProps {
     profileImage: string;
     uid: string;
     _id: number;
-   
+
     // Add other properties of your student object
   };
 }
@@ -70,17 +70,17 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
   const closeModal = () => {
     setShowModal(false);
   };
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleJoinRoom =(uid: string) => {
-      navigate(`/Connect/room/${uid}`);
-    };
+  const handleJoinRoom = (uid: string) => {
+    navigate(`/Connect/room/${uid}`);
+  };
 
   return (
     <>
       <div
         onMouseLeave={closeModal}
-        className="bg-white border shadow-md rounded-md p-4 relative "
+        className="card-bg border shadow-md rounded-md p-4 relative "
       >
         <div className="flex items-center">
           <div
@@ -109,14 +109,14 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           </p>
         </div>
         <div className="mt-4 flex justify-between">
-       
-            <button
-              onClick={()=>handleJoinRoom(student?.uid)}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring"
-            >
+          <button
+            onClick={() => handleJoinRoom(student?.uid)}
+            className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+          >
+            <div className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
               Call
-            </button>
-        
+            </div>
+          </button>
           <Link
             to={"/messaging"}
             state={{ MyId: user?.uid, userId: student?.uid }}

@@ -6,11 +6,10 @@ import SideIcons from "../Home/Home/Side";
 import { useTranslation } from "react-i18next";
 
 const FreeLiveLessons = () => {
-
   const { t } = useTranslation();
 
   return (
-    <div className="changebg">
+    <div className="changebg pt-20">
       <Helmet>
         {" "}
         <title>ELearner | Free Classes</title>
@@ -87,14 +86,16 @@ const FreeLiveLessons = () => {
             ></iframe>
           </div>
         </div>
-        <div className="flex justify-center mt-10">
-          <Link
-            to="/free-videos"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded "
-          >
 
-            {t("freelivelessons.viewMoreVideos")}
-          </Link>
+        <div className="flex justify-center mt-10">
+          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+            <Link
+              to="/free-videos"
+              className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+            >
+              {t("freelivelessons.viewMoreVideos")}
+            </Link>
+          </button>
         </div>
       </div>
       <div className="bg-gray-100 lg:p-8 md:p-6 changebg darkText">
