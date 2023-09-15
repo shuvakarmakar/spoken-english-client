@@ -86,7 +86,7 @@ const FreeLiveLessons = () => {
                   allowFullScreen
                 ></iframe>
               </div>
-              <div className="mb-4 md:mb-0">
+              <div className="mb-4 md:mb-0 hidden md:block">
                 <iframe
                   className="w-full md:w-80 h-48 md:h-auto"
                   src="https://www.youtube.com/embed/JXqPHZ8smb8"
@@ -96,7 +96,7 @@ const FreeLiveLessons = () => {
                   allowFullScreen
                 ></iframe>
               </div>
-              <div className=" col-span-2 ">
+              <div className="col-span-2 ">
                 <iframe
                   className="w-full  md:h-[260px]"
                   src="https://www.youtube.com/embed/66bXMjs7Q2A"
