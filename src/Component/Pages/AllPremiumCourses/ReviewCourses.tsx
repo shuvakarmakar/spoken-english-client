@@ -24,33 +24,40 @@ const ReviewCourses: React.FC = () => {
 
   return (
     <div className="my-16">
-      <h2 className="text-3xl underline font-bold text-center m-8">
+      <h2 className="text-3xl font-bold text-center m-8 uppercase my-20">
         What Our Students Say!
       </h2>
       {reviews.length === 0 ? (
         <p>No reviews available for this course.</p>
       ) : (
-        <Marquee speed={50} gradient={false} className="scrolling-marquee course-details">
-          {reviews.map((review, index) => (
-            <div key={index} className="shadow-xl mb-4 p-4">
-              <div className="flex items-center mb-2">
-                <div className="ml-4">
-                  <p className="text-blue-500 font-semibold">{review.name}</p>
-                  <div className="">
-                    <StarRatings
-                      rating={parseFloat(review.rating)}
-                      starDimension="30px"
-                      starRatedColor="gold"
-                      starEmptyColor="gray"
-                      numberOfStars={5}
-                      name={`rating-${index}`}
-                    />
+        <Marquee
+          speed={50}
+          gradient={false}
+          className="scrolling-marquee course-details "
+        >
+          <div className="flex gap-5">
+            {reviews.map((review, index) => (
+              <div key={index} className="shadow-xl mb-4 p-4 w-[300px] bg-slate-100">
+                <div className="flex items-center mb-2">
+                  <div className="ml-4">
+                    <p className="text-blue-500 font-semibold">{review.name}</p>
+
+                    <p className="text-gray-600 mt-5">{review.description}</p>
+                    <div className=" mt-2">
+                      <StarRatings
+                        rating={parseFloat(review.rating)}
+                        starDimension="20px"
+                        starRatedColor="gold"
+                        starEmptyColor="gray"
+                        numberOfStars={5}
+                        name={`rating-${index}`}
+                      />
+                    </div>
                   </div>
-                  <p className="text-gray-600 mt-2">{review.description}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </Marquee>
       )}
     </div>
