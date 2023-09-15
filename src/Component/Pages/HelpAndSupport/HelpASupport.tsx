@@ -76,7 +76,7 @@ const HelpSupportPage: React.FC = () => {
             {/* card */}
             <a href="#cards">
               <div
-                className="card w-[300px]
+                className="card h-[300px] w-[300px]
             bg-base-200 shadow-md"
               >
                 <figure className="px-10 pt-10">
@@ -96,7 +96,7 @@ const HelpSupportPage: React.FC = () => {
             </a>
             {/* card */}
             <a href="#cards">
-              <div className="card w-[300px] bg-base-100 shadow-md border">
+              <div className="card  h-[300px]  w-[300px] bg-base-100 shadow-md border">
                 <figure className="px-10 pt-10">
                   <BiSolidUserAccount
                     className={"w-20 h-20 text-blue-500"}
@@ -115,7 +115,7 @@ const HelpSupportPage: React.FC = () => {
 
             {/* card */}
             <a href="#cards">
-              <div className="card w-[300px] bg-base-200 shadow-md ">
+              <div className="card  h-[300px]  w-[300px] bg-base-200 shadow-md ">
                 <figure className="px-10 pt-10">
                   <FaBugSlash
                     className={"w-20 h-20 text-blue-500"}
@@ -196,7 +196,7 @@ const HelpSupportPage: React.FC = () => {
                   <div className="collapse-content">
                     <p>
                       {" "}
-                      - You can apply for becoming an instructor from home page
+                      -You can apply for becoming an instructor from home page
                       apply for a instructor section and then filup the form
                       upload your cv or resume
                     </p>
@@ -207,11 +207,12 @@ const HelpSupportPage: React.FC = () => {
           </div>
         </div>
         <div id="cards" className="my-20">
-          <p className="text-center uppercase font-bold p-1">Or</p>
+      
           <div className=" md:flex gap-10  h-full ">
-            <div className="w-full shadow-md p-10 border mb-10 h-[307px]">
+            
+            <div className="w-full shadow-md p-10 border mb-10 h-[330px]">
               <h3 className="text-lg font-semibold mb-2">Contact Support</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-7">
                 If you can't find the information you need, feel free to contact
                 our support team. We're here to help you! or directly message to
                 contact form.
@@ -223,6 +224,7 @@ const HelpSupportPage: React.FC = () => {
                 Contact Support
               </a>
             </div>
+
             <div className="direct-message w-full shadow-md p-5 border h-full">
               {/* Support Form */}
               <form onSubmit={handleSubmit}>

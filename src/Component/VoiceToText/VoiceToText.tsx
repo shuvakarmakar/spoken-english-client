@@ -25,7 +25,7 @@ const VoiceToText: React.FC = () => {
   );
 
   return (
-    <div>
+    <div className="pt-32">
       {" "}
       <div
         style={{ backgroundColor: "#D3D3D3" }}

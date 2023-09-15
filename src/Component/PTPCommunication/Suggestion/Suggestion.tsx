@@ -8,10 +8,11 @@ import {
 
 // import { Link } from "react-router-dom";
 import UserModal from "../UserProfleCard/ViewUserProfile/ViewUserProfile";
-//import useUser from "../../../Hooks/useUser";
+// import useUser from "../../../Hooks/useUser";
 import LoadingCard from "../LoadingCardAnim/LoadingAnimation";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { FaCircleUser } from "react-icons/fa6";
 
 // interface UserProfileCardProps {
 //   student: {
@@ -163,20 +164,28 @@ const Suggestion: React.FC = () => {
               const isUserOnline = onlineUsers[student?.uid] === true;
               return (
                 <>
-                  <div
-                    onMouseLeave={closeModal}
-                    className="bg-white shadow-md rounded-md p-4 relative border "
-                  >
+                  <div className="card-bg shadow-md rounded-md p-4 relative border  ">
                     <div className="flex items-center">
                       <div
                         onClick={() => openModal(student._id)}
-                        className="w-16 h-16 bg-blue-300 rounded-full"
+                        className="w-16 h-16 rounded-full cursor-pointer"
                       >
-                        <img
-                          src={student?.profileImage}
-                          className="rounded-full w-full h-full"
-                          alt=""
-                        />
+                        {student.profileImage ? (
+                          <>
+                            {" "}
+                            <img
+                              src={student?.profileImage}
+                              className="rounded-full w-full h-full"
+                              alt=""
+                            />
+                          </>
+                        ) : (
+                          <>
+                            <FaCircleUser
+                              className={"w-full h-full"}
+                            ></FaCircleUser>
+                          </>
+                        )}
                       </div>
                       <div className="ml-4">
                         <h2 className="text-lg font-semibold">
@@ -190,7 +199,7 @@ const Suggestion: React.FC = () => {
                       ></div>
                     </div>
                     <div className="mt-4">
-                      <p className="text-gray-600">
+                      <p className="text-gray-300">
                         I'm a passionate English Learner Lets learn English
                         together.
                       </p>
@@ -198,11 +207,11 @@ const Suggestion: React.FC = () => {
                     <div className="mt-4 flex justify-between">
                       <button
                         onClick={() => RemoveSuggestion(student._id)}
-                        className="px-4 py-2 bg-blue-300 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring"
+                        className="px-4 py-2 text-white rounded-md  absolute hover:bg-blue-600 focus:outline-none focus:ring  top-2 right-2"
                       >
-                        Remove
+                        X
                       </button>
-                      {!request? (
+                      {!request ? (
                         <>
                           <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
                             Cancel
@@ -213,7 +222,7 @@ const Suggestion: React.FC = () => {
                           <button
                             onClick={() => sendFriendRequest(student.uid)}
                             disabled={student.request}
-                            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring"
+                            className="px-4 py-2 btn btn-sm bg-[#10315E] text-white rounded-md focus:outline-none focus:ring mt-5"
                           >
                             Add Friend
                           </button>

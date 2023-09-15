@@ -38,7 +38,7 @@ const Checkout: React.FC = () => {
 
       console.log(combinedData);
       // spoken-english-server-xi.vercel.app
-      fetch("https://spoken-english-server-xi.vercel.app/order", {
+      fetch("spoken-english-server-xi.vercel.app/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -116,7 +116,7 @@ const Checkout: React.FC = () => {
                             id="address"
                             
                             {...register('address')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 text-black p-2 w-full lightText"
                             required
                         />
 

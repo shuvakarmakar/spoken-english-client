@@ -21,6 +21,7 @@ import useNotification from "../../Hooks/useNotification";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
 import { AuthContext, AuthContextType } from "../../Provider/AuthProvider/AuthProvider";
+// import { changeLanguage } from "i18next";
 
 
 interface MyObject {
@@ -62,6 +63,7 @@ const PTPCommunication = () => {
       console.error("Error fetching data:", error);
     }
   };
+console.log(data);
 
   // Fetch data when the component mounts
   useEffect(() => {

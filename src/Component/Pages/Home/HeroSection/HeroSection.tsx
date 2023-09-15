@@ -12,7 +12,7 @@ const HeroSection = () => {
     // Simulate loading by using a setTimeout
     setTimeout(() => {
       setLoading(false); // Set isLoading to false when loading is complete
-    }, 2000); // Adjust the timeout duration as needed
+    }, 100); // Adjust the timeout duration as needed
   }, []);
 
   return (
