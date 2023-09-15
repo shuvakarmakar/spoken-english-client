@@ -57,7 +57,7 @@ const ProfileSettings = () => {
   };
 
   return (
-    <div className="mx-auto p-6 bg-white rounded-lg shadow-md w-[70%] my-10">
+    <div className="mx-auto p-6 bg-white rounded-lg shadow-md w-[70%] my-[200px]">
       <Helmet>
         <title>Profile Settings</title>
       </Helmet>
