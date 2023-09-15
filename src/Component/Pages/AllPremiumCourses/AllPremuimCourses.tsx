@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import SideIcons from "../Home/Home/Side";
-import { IoBookSharp } from "react-icons/io5";
-import { use } from "i18next";
+
 interface Course {
   _id: string;
   imageURL: string;
@@ -31,7 +30,7 @@ const MainComponent: React.FC = () => {
         <title>Premium Classes</title>
       </Helmet>
       <SideIcons />
-      <h1 className="text-5xl font-semibold text-center  mb-6 uppercase">
+      <h1 className="md:text-5xl text-2xl font-semibold text-center  mb-6 uppercase">
         Premium Courses
       </h1>
       <hr />

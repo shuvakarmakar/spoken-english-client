@@ -38,7 +38,7 @@ const Checkout: React.FC = () => {
 
       console.log(combinedData);
       // spoken-english-server-xi.vercel.app
-      fetch("http://localhost:5000/order", {
+      fetch("spoken-english-server-xi.vercel.app/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

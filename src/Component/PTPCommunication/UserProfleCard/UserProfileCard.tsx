@@ -5,7 +5,7 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 interface UserProfileCardProps {
@@ -25,7 +25,7 @@ interface UserProfileCardProps {
 }
 
 const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
-  const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
+  const {  onlineUsers } = useContext(AuthContext) as AuthContextType;
 
   // const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
   //   {}
