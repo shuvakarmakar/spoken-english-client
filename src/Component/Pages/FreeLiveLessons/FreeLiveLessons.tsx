@@ -15,89 +15,104 @@ const FreeLiveLessons = () => {
         <title>ELearner | Free Classes</title>
       </Helmet>
       <SideIcons />
-      <div className="flex flex-col items-center justify-center p-4 md:p-10 shadow-md banner-bg darkText">
-        <h1 className="text-center text-4xl text-black font-semibold mt-6 md:mt-12 darkText">
+      <div className="p-4 md:pt-1 shadow-md banner-bg darkText">
+        <h1 className=" uppercase text-2xl text-black font-semibold mt-6 md:mt-12 darkText mb-2">
           {t("freelivelessons.title")}
         </h1>
-        <h3 className="text-center text-2xl my-4 md:my-6 text-black font-medium darkText">
+        <hr />
+        {/* <h3 className="text-center text-2xl my-4 md:my-6 text-black font-medium darkText">
           {t("freelivelessons.latestLesson")}
-        </h3>
-        <div className="text-center">
-          <div className="mx-auto mt-2 md:mt-6 max-w-screen-md">
-            <iframe
-              className="lg:w-96 lg:h-80"
-              src="https://www.youtube.com/embed/66bXMjs7Q2A"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+        </h3> */}
+        <div className="md:flex gap-10  justify-between md:p-20 p-5">
+          <div className="text-center md:w-[70%] w-full border  shadow-md">
+            <div className="mx-auto   w-full">
+              <iframe
+                className="md:w-full w-full h-[300px] md:h-[350px]"
+                src="https://www.youtube.com/embed/66bXMjs7Q2A"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div className=" changebg md:w-[50%] mt-10 md:mt-0 md:p-5 text-white  p-2 border shadow-md ">
+            <p className="text-lg   leading-8">
+              {t("freelivelessons.lessonDescription")}
+            </p>
           </div>
         </div>
-      </div>
-      <div className="bg-gray-100 lg:p-10 changebg">
-        <p className="text-lg text-center text-gray-700">
-          {t("freelivelessons.lessonDescription")}
-        </p>
       </div>
 
       <div className="bg-gray-100 p-10 changebg">
         <h3 className="text-center text-3xl text-black font-bold darkText">
           {t("freelivelessons.moreLessonsTitle")}
         </h3>
-        <div className="flex justify-center mt-4">
-          <img
-            src={imageLession}
-            alt="More Free Speaking Lessons"
-            className="mx-auto my-10"
-          />
-        </div>
-      </div>
-      <div className="bg-gray-100 p-10 changebg">
-        <div className="flex flex-col md:flex-row justify-center md:space-x-2 px-6 md:px-10">
-          <div className="mb-4 md:mb-0">
-            <iframe
-              className="w-full md:w-80 h-48 md:h-auto"
-              src="https://www.youtube.com/embed/66bXMjs7Q2A"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div className="mb-4 md:mb-0">
-            <iframe
-              className="w-full md:w-80 h-48 md:h-auto"
-              src="https://www.youtube.com/embed/JXqPHZ8smb8"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <div>
-            <iframe
-              className="w-full md:w-80 h-48 md:h-auto"
-              src="https://www.youtube.com/embed/66bXMjs7Q2A"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
 
-        <div className="flex justify-center mt-10">
-          <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-            <Link
-              to="/free-videos"
-              className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-            >
-              {t("freelivelessons.viewMoreVideos")}
+        <div className="md:flex gap-10 justify-center w-full my-[100px]">
+          <div className=" border shadow-md md:w-[50%] ">
+            <img
+              src={imageLession}
+              alt="More Free Speaking Lessons"
+              className="mx-auto w-full "
+            />
+            <Link to={"/all-premium-courses"}>
+              <button className=" btn bg-blue-500 text-white mt-10">
+                {" "}
+                Enroll Courses
+              </button>
             </Link>
-          </button>
+          </div>
+
+          <div className="border shadow-md changebg  md:w-[50%] ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="mb-4 md:mb-0">
+                <iframe
+                  className="w-full md:w-80 h-48 md:h-auto"
+                  src="https://www.youtube.com/embed/66bXMjs7Q2A"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="mb-4 md:mb-0">
+                <iframe
+                  className="w-full md:w-80 h-48 md:h-auto"
+                  src="https://www.youtube.com/embed/JXqPHZ8smb8"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className=" col-span-2 ">
+                <iframe
+                  className="w-full  md:h-[260px]"
+                  src="https://www.youtube.com/embed/66bXMjs7Q2A"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            <div className="flex justify-center mt-10">
+              <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                <Link
+                  to="/free-videos"
+                  className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                >
+                  {t("freelivelessons.viewMoreVideos")}
+                </Link>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
       <div className="bg-gray-100 lg:p-8 md:p-6 changebg darkText">
         <div className="mx-auto px-6 lg:flex md:flex m-5">
           <div className="md:w-1/2 md:pr-6 p-2">
