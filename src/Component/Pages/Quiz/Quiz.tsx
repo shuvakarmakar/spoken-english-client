@@ -44,8 +44,8 @@ function Quiz() {
         {currentQuestionIndex < quizData.length ? (
           <div className="">
             <div className="flex justify-between items-center pb-2 border-b-2">
-            <p className=" pb-3 font-bold text-2xl">{currentQuestionIndex+1} of {totalQuestions}</p>
-            <p className={`${timeLeft >= 4 ? 'text-white' : 'text-red-600'} font-bold text-3xl`}>{timeLeft}</p>
+            <p className=" pb-3 font-bold text-2xl ">{currentQuestionIndex+1} of {totalQuestions}</p>
+            <p className={`${timeLeft >= 4 ? 'darkText' : 'text-red-600'} font-bold text-3xl `}>{timeLeft}</p>
             </div>
           <QuizQuestion
             question={quizData[currentQuestionIndex]}
