@@ -3,6 +3,7 @@ import Spinner from "../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import "./BlogsStyle.css";
 import { useTranslation } from "react-i18next";
+import {  Slide, Zoom } from 'react-awesome-reveal';
 
 interface Blog {
   _id: string;
@@ -69,11 +70,13 @@ const Blogs: React.FC = () => {
                       <p className="font-bold text-justify p-2 bg-slate-200  shadow border changebg">
                         {blog.blog_name}
                       </p>
+                      <Zoom direction="right">
                       <img
                         src={blog.image}
                         alt=""
                         className="w-full md:h-[450px]  mt-5"
                       />
+                      </Zoom>
                       <p className="font-sm text-justify mt-5 p-4 leading-7  font-serif">
                         {blog.blog_short_description}
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -82,6 +85,7 @@ const Blogs: React.FC = () => {
                         explicabo a commodi perspiciatis nobis id assumenda!....
                       </p>
                     </div>
+                    <Slide direction="down">
                     <div className="flex justify-center mt-4 md:mt-0">
                       <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                         <Link
@@ -92,18 +96,21 @@ const Blogs: React.FC = () => {
                         </Link>
                       </button>
                     </div>
+                    </Slide>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="flex justify-center  px-10 ">
-              <Link
+             <Slide direction="left">
+             <Link
                 to={"/all-blogs"}
                 className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 px-10 py-2"
               >
                 {t("blogs.viewMore")}
               </Link>
+             </Slide>
             </div>
           </section>
         </div>

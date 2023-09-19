@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { quizData } from "./quizData";
 import QuizQuestion from "./QuizQuestion";
 import QuizResult from "./QuizResult";
@@ -11,6 +11,7 @@ function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const totalQuestions = quizData.length;
+  const [timeLeft, setTimeLeft] = useState(10);
 
   const handleAnswer = (isCorrect: boolean) => {
     if (isCorrect) {
@@ -21,15 +22,38 @@ function Quiz() {
     setCurrentQuestionIndex(currentQuestionIndex + 1);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Decrement the timer
+      if(timeLeft>0){
+        setTimeLeft(timeLeft - 1);
+      }
+      
+
+      // If time is up, submit the current question
+      
+    }, 1000);
+
+    // Clean up the timer on unmount or when the quiz is complete
+    return () => clearTimeout(timer);
+  }, [timeLeft, currentQuestionIndex]);
+
   return (
     <div className="h-[calc(100vh-50px)] flex items-center justify-center ">
       <div className=" p-6 rounded-lg shadow-2xl w-[90%] md:w-[50%] border changebg">
         {currentQuestionIndex < quizData.length ? (
           <div className="">
-            <p className="text-center pb-3 font-bold text-2xl">{currentQuestionIndex+1} of {totalQuestions}</p>
+            <div className="flex justify-between items-center pb-2 border-b-2">
+            <p className=" pb-3 font-bold text-2xl">{currentQuestionIndex+1} of {totalQuestions}</p>
+            <p className={`${timeLeft >= 4 ? 'text-white' : 'text-red-600'} font-bold text-3xl`}>{timeLeft}</p>
+            </div>
           <QuizQuestion
             question={quizData[currentQuestionIndex]}
             onAnswer={handleAnswer}
+            timeLeft={timeLeft}
+            setTimeLeft={setTimeLeft}
+            currentIndex={currentQuestionIndex}
+            setCurrentIndex={setCurrentQuestionIndex}
           />
           </div>
         ) : (
