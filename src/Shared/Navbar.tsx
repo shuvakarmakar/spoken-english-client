@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
 import Aos from "aos";
 import useNotification from "../Hooks/useNotification";
+import { Slide } from "react-awesome-reveal";
 
 interface Course {
   _id: string;
@@ -157,7 +158,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="bg-[#FDFDFD] border-b shadow-2xl px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg fixed top-0 z-50 navbarStyle">
       {/* Searchbar */}
-      
+
       <div
         id="searchBarContainer"
         className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg"
@@ -179,41 +180,49 @@ const Navbar: React.FC = () => {
             </button>
           </div> */}
 
-          <div className="relative rounded-lg  p-4">
-            <input
-              type="text"
-              data-aos="fade-down"
-              className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
-              <svg
-                className="w-5 h-5 text-blue-700 cursor-pointer font-bold text-lg md:text-xl"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={handleSearch}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
-                />
-              </svg>
+          <Slide direction="down">
+            <div className="relative rounded-lg  p-4">
+              <input
+                type="text"
+                data-aos="fade-down"
+                className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
+                placeholder="Search..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
+              <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
+                <svg
+                  className="w-5 h-5 text-blue-700 cursor-pointer font-bold text-lg md:text-xl"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  onClick={handleSearch}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
+
+          </Slide>
 
           <button
             className=" focus:outline-none right-0 textDark "
             onClick={hideSearchPopUp}
           >
-            {<FaTimes size={24} className="" />}
+            <Slide direction="right">
+              {<FaTimes size={24} className="" />}
+            </Slide>
+
+
           </button>
+
         </div>
       </div>
       {query && (
