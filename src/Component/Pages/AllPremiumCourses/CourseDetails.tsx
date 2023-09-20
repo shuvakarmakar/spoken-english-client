@@ -64,7 +64,7 @@ const CourseDetails: React.FC = () => {
         </p>
         <div className="flex justify-center">
           {
-            course.courseName==="Spoken English Fluently"? (<Link
+            course.courseName==="Advanced English Mastery"? (<Link
               to={{
                 pathname: "/quiz-starter",
               }}
