@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+
 import Swal from "sweetalert2";
 import {
   AuthContext,
@@ -85,7 +85,7 @@ const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
             // data.courseVideos = courseVideos;
 
             const backendResponse = await fetch(
-              `http://localhost:5000/updateCourse/${id}`,
+              `https://spoken-english-server-xi.vercel.app/updateCourse/${id}`,
               {
                 method: "PUT",
                 headers: {
@@ -182,7 +182,7 @@ const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:5000/getCourse/${id}`)
+      fetch(`https://spoken-english-server-xi.vercel.app/getCourse/${id}`)
         .then((res) => res.json())
         .then((data) => {
           setCourses(data);

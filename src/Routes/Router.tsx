@@ -57,6 +57,7 @@ import Notification from "../Component/PTPCommunication/GetCallNotification/Noti
 import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
 import VoiceToText from "../Component/VoiceToText/VoiceToText";
 import Text from "../Component/Pages/TextToSpeach/Tesxt";
+import PaymentHistory from "../Layout/DashBoard/StudentPages/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -282,6 +283,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/MyEnrolledCourses",
         element: <MyEnrolledCourses></MyEnrolledCourses>,
+      },
+      {
+        path: "/dashboard/PaymentHistory",
+        element:<PaymentHistory></PaymentHistory> ,
       },
       {
         path: "/dashboard/HelpForm",
