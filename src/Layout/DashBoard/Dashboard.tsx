@@ -14,7 +14,8 @@ const Dashboard = () => {
   const [isStudent, isStudentLoading] = UseStudent();
 
   return (
-    <div className="bg-[#0d1446]  min-h-screen"
+    <div
+      className="bg-[#0d1446]  min-h-screen"
       // style={{
       //   backgroundImage:
       //     "url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=900&t=st=1691992198~exp=1691992798~hmac=b8c9e4f94bf34ff4f185e4d90db42722d8b164c03572352c9dc80751264b8ecf')",
@@ -40,7 +41,7 @@ const Dashboard = () => {
             <ul className="uppercase ">
               <NavLink to="/" onClick={() => setSidebarOpen(false)}>
                 <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200 flex">
-                <FaHome className={"w-6 h-6 me-2 "}></FaHome>
+                  <FaHome className={"w-6 h-6 me-2 "}></FaHome>
                   Home
                 </li>
               </NavLink>
@@ -52,11 +53,9 @@ const Dashboard = () => {
                   My Enrolled Courses
                 </li>
               </NavLink>
-              <NavLink
-                to=""               
-              >
+              <NavLink to="/dashboard/PaymentHistory">
                 <li className="p-2 transition duration-1000 text-white ease-in-out transform hover:bg-gray-200">
-                 Payment History
+                  Payment History
                 </li>
               </NavLink>
             </ul>
@@ -65,7 +64,7 @@ const Dashboard = () => {
             <ul className="uppercase">
               <NavLink to="/" onClick={() => setSidebarOpen(false)}>
                 <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200 flex">
-                <FaHome className={"w-6 h-6 me-2 "}></FaHome>
+                  <FaHome className={"w-6 h-6 me-2 "}></FaHome>
                   Home
                 </li>
               </NavLink>
