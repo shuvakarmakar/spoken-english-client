@@ -31,7 +31,7 @@ const AddClasses: React.FC = () => {
 
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
+    console.log(data);
     try {
       const response = await fetch(img_hosting_url, {
         method: "POST",
