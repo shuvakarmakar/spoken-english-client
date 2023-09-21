@@ -49,7 +49,7 @@ const AllBlogs: React.FC = () => {
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="mb-8 md:mb-12 relative shadow-xl p-1 md:p-3 bg-slate-100"
+              className="mb-8 md:mb-12 relative shadow-xl p-1 md:p-3 bg-slate-100 cardbg"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4  py-7">
                 <p className="text-2xl text-justify">{blog.blog_name}</p>
@@ -65,7 +65,7 @@ const AllBlogs: React.FC = () => {
               <div className="flex justify-center mb-3">
                 <Link
                   className="px-5 py-2.5  p-0.5 mb-2 mr-2 text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline- focus:ring-cyan-200 dark:focus:ring-cyan-800 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
-                  to={`blog/${blog._id}`}
+                  to={`/blog/${blog._id}`}
                 >
                   Details
                 </Link>
