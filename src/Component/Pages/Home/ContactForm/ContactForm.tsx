@@ -60,7 +60,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.nameLabel")}
           </label>
           <input
-            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
+            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200 text-black"
             type="text"
             name="user_name"
             placeholder={t("contactForm.namePlaceholder")}
@@ -72,7 +72,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.emailLabel")}
           </label>
           <input
-            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
+            className="text-black w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
             type="email"
             name="user_email"
             placeholder={t("contactForm.emailPlaceholder")}
@@ -84,7 +84,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.messageLabel")}
           </label>
           <textarea
-            className="w-full p-1 bg-slate-200 border rounded focus:outline-none focus:border-blue-500"
+            className="text-black w-full p-1 bg-slate-200 border rounded focus:outline-none focus:border-blue-500"
             name="message"
             rows={4}
             placeholder={t("contactForm.messagePlaceholder")}

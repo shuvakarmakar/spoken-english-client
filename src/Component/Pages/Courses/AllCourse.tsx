@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./PSstyle.css";
 import { Helmet } from "react-helmet";
 import SideIcons from "../Home/Home/Side";
+import './PSstyle.css'
 
 interface Course {
   _id: string;
@@ -57,7 +58,7 @@ const AllCourse: React.FC = () => {
           {popularCourses.map((course) => (
             <div
               key={course._id}
-              className={`box-border bg-gradient-to-br w-[300px] ${ show ? " h-[450px]" :"min-h-[350px]"}  from-blue-400 to-purple-500 border-white border-2 shadow-lg backdrop-blur-6 rounded-lg transition-all duration-500  hover:text-white hover:scale-105 hover:bg-gradient-to-br hover:from-pink-500 hover:to-pink-400 hover:shadow-xl`}
+              className={`box-border bg-gradient-to-br w-[300px] ${ show ? " h-[450px]" :"min-h-[350px]"} ${course.courseName=="Advanced English Mastery" ?"from-blue-400 to-green-700":"from-blue-400 to-purple-500"}    border-white border-2 shadow-lg backdrop-blur-6 rounded-lg transition-all duration-500  hover:text-white hover:scale-105 hover:bg-gradient-to-br hover:from-pink-500 hover:to-pink-400 hover:shadow-xl`}
             >
               <div className="relative w-full h-48  ">
                 <img
@@ -65,6 +66,12 @@ const AllCourse: React.FC = () => {
                   src={course.imageURL}
                   alt={course.courseName}
                 />
+                {
+                  course.courseName=="Advanced English Mastery" && <div className="absolute top-0 left-0 bg-red-600 p-2 rounded-tl-lg">
+                  <span className="text-white font-bold animations">1 quiz</span>
+                </div>
+                }
+                
                 <div className="absolute top-0 right-0 bg-gradient-to-b from-blue-400 to-blue-600 p-2 rounded-tl-lg">
                   <span className="text-white font-semibold text-xs">New</span>
                 </div>

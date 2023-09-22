@@ -60,7 +60,7 @@ const Checkout: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto py-8 changebg">
+        <div className="w-[96%] md:w-[60%] mx-auto py-8 changebg">
             <h1 className="text-3xl text-center font-semibold mb-6">Checkout</h1>
             <div className="bg-white shadow-lg rounded-lg p-6 changebg">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,7 +92,7 @@ const Checkout: React.FC = () => {
                             id="fullName"
                             
                             {...register('fullName')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
@@ -104,7 +104,7 @@ const Checkout: React.FC = () => {
                             id="email"
                           
                             {...register('email')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
@@ -116,7 +116,7 @@ const Checkout: React.FC = () => {
                             id="address"
                             
                             {...register('address')}
-                            className="border border-gray-300 text-black p-2 w-full lightText"
+                            className="border border-gray-300 text-black p-2 w-full lightText "
                             required
                         />
 
@@ -128,7 +128,7 @@ const Checkout: React.FC = () => {
                             id="city"
                          
                             {...register('city')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
@@ -140,7 +140,7 @@ const Checkout: React.FC = () => {
                             id="country"
                            
                             {...register('country')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
@@ -152,7 +152,7 @@ const Checkout: React.FC = () => {
                             id="postalCode"
                            
                             {...register('postalCode')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
@@ -164,7 +164,7 @@ const Checkout: React.FC = () => {
                             id="contactNumber"
                             
                             {...register('contactNumber')}
-                            className="border border-gray-300 p-2 w-full lightText"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
                     </div>
