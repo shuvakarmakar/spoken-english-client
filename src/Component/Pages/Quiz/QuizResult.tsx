@@ -39,13 +39,13 @@ const QuizResult: React.FC<QuizResultProps> = ({ score, totalQuestions, course }
         <h2 className="text-xl font-semibold mb-4">Quiz Result</h2>
         <p className=''>Your scored </p>
         <p className='text-4xl mb-4'>
-          <span className={`${score >= 2 ? 'text-green-500' : 'text-red-600'}`}>
+          <span className={`${score >= 5 ? 'text-green-500' : 'text-red-600'}`}>
             {score}
           </span>/{totalQuestions}
         </p>
 
         {
-          percentage >= "20" ? (
+          percentage >= "50" ? (
             <div className="hello">
               <Link state={course} to={"https://spoken-english-65d22.web.app/checkout"} className='border mt-7 shadow-xl px-3 py-2 bg-green-600 rounded-md text-white'>Process to enroll</Link>
             </div>
