@@ -18,7 +18,7 @@ const AllBlogs: React.FC = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          " https://spoken-english-server-xi.vercel.app/blogs"
+          "https://spoken-english-server-xi.vercel.app/blogs"
         );
         const jsonData = await response.json();
         setLoading(false);
