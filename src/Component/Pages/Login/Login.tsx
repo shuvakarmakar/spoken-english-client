@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef } from "react";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import Lottie from 'lottie-react';
 import data from './login.json'
@@ -19,6 +19,8 @@ const Login: React.FC = () => {
   const [error, setError] = useState<string>("");
 
   const Navigate = useNavigate();
+  const location=useLocation()
+  const from=location.state?.from?.pathname || "/"
 
   const { login, ResetPassword, handleButtonClick } = useContext(
     AuthContext
@@ -46,7 +48,7 @@ const Login: React.FC = () => {
       const result = await login(user.email, user.password);
       console.log(result);
 
-      Navigate("/");
+      Navigate(from,{replace:true});
 
       Swal.fire("Good job!", "Login Success", "success");
       form.reset();
