@@ -180,7 +180,7 @@ export const router = createBrowserRouter([
         element: <PopularCourse></PopularCourse>,
       },
       {
-        path: "all-courses",
+        path: "all-popular-courses",
         element: <AllCourse></AllCourse>,
       },
       {

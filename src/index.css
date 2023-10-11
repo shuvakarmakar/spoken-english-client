@@ -14,9 +14,7 @@ body {
 }
 
 /* Light Mode */
-.lightText {
-  color: white !important;
-}
+
 
 /* Dark Mode */
 .dark-mode {
@@ -58,3 +56,4 @@ body {
   color: var(--text-color);
   transition: background-color 0.2s, color 0.2s;
 }
+
