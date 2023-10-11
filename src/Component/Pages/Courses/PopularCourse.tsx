@@ -58,8 +58,13 @@ const PopularCourse: React.FC = () => {
       </div>
       <div className="bg-[#F1F5F9] pb-4 changebg">
         <section className="flex items-center justify-between py-5 w-[96%] md:w-[90%] mx-auto">
-          <p className="text-xl md:text-2xl font-bold">{t("popularCourse.title")}</p>
-          <Link to={`/all-courses`} className="PupularCourseButton darkText">
+          <p className="text-xl md:text-2xl font-bold">
+            {t("popularCourse.title")}
+          </p>
+          <Link
+            to={`/all-popular-courses`}
+            className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 darkText"
+          >
             {t("popularCourse.viewAll")}
           </Link>
         </section>

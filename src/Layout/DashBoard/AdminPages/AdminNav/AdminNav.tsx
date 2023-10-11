@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { ReactElement, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 interface AdminNavProps {
   setSidebarOpen: (open: boolean) => void;
@@ -124,7 +125,8 @@ const AdminNav: React.FC<AdminNavProps> = ({
   return (
     <>
       <NavLink to="/" onClick={() => setSidebarOpen(false)}>
-        <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+        <li className="p-2 flex transition duration-1000 ease-in-out transform hover:bg-gray-200">
+        <FaHome className={"w-5 h-5 me-2 "}></FaHome>
           Home
         </li>
       </NavLink>

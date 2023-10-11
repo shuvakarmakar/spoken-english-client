@@ -9,41 +9,45 @@ import Modal from "./ProfileImageUpdat/ProfileImageUPdate";
 import { BiEdit } from "react-icons/bi";
 import ProfileBannerUpdate from "./ProfileBannerUpdate/ProfieBannerUpdate";
 import useUser from "../../../Hooks/useUser";
+import { Helmet } from "react-helmet";
+import useFriend from "../../../Hooks/useFriend";
 // import { set } from "react-hook-form";
 
 const Profile = () => {
   const [users] = useUser();
   const { user } = useContext(AuthContext) as AuthContextType;
-
+  const{friends}=useFriend()
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [bannerModalOpen, setBannerModalOpen] = useState(false)
-  
-  const userProfile = users.find(u => u.email == user?.email)
-  console.log(userProfile,"user");
+  const [bannerModalOpen, setBannerModalOpen] = useState(false);
+
+  const userProfile = users.find((u) => u.email == user?.email);
+  console.log(userProfile, "user");
 
   const openBannerModal = () => {
-    setBannerModalOpen(true)
-  }
+    setBannerModalOpen(true);
+  };
   const closeBannerModal = () => {
-     setBannerModalOpen(false)
-  }
+    setBannerModalOpen(false);
+  };
   const openModal = () => {
-   
-     setIsModalOpen(true);
-   };
+    setIsModalOpen(true);
+  };
 
-   const closeModal = () => {
-     setIsModalOpen(false);
-   };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
+      <Helmet>
+        <title>Your Profile</title>
+      </Helmet>
       <div className="container mx-auto  my-10">
         <div className="flex justify-start p-4"></div>
         <div className="flex justify-center p-10 w-full">
           <div className="bg-white shadow-lg rounded-lg w-full relative">
             <div
-              className="bg-blue-500 overflow-auto aspect-auto  md:h-[300px] rounded-t-lg relative "
+              className="bg-blue-300 overflow-auto aspect-auto  md:h-[300px] rounded-t-lg relative "
               onClick={openBannerModal}
             >
               <img
@@ -60,7 +64,7 @@ const Profile = () => {
             </div>
 
             <div
-              className=" z-20 top-[130px] md:top-[200px] md:left-[calc(50%-80px)] flex  left-[calc(50%-53px)]  justify-center absolute cursor-pointer"
+              className=" z-20 top-[300px] md:top-[200px] md:left-[calc(50%-80px)] flex  left-[calc(50%-53px)]  justify-center absolute cursor-pointer"
               onClick={openModal}
             >
               <div className=" relative ">
@@ -90,17 +94,17 @@ const Profile = () => {
               <div className="border-t md:p-10 p-3 bg-white shadow-xl">
                 <h3 className="text-lg font-semibold my-2">Friends</h3>
                 <div className="grid grid-cols-3 gap-5">
-                  {users.slice(0, 6).map((friend) => (
+                  {friends.slice(0, 6).map((friend) => (
                     <div
                       key={friend._id}
-                      className="card w-[90px] md:w-[100px] h-[90px] md:h-[100px] bg-base-100 shadow-xl border p"
+                      className=" w-[90px] md:w-[100px] h-[90px] md:h-[100px] bg-base-100 overflow-hidden  border "
                     >
                       <img
                         className="rounded-md"
-                        src={user?.photoURL || ""}
+                        src={friend.friend.profileImage}
                         alt="friends"
                       />
-                      <h2 className="font-bold">{friend?.name}</h2>
+                      <h2 className="">{friend?.friend.name}</h2>
                     </div>
                   ))}
                 </div>

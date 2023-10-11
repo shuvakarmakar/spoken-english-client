@@ -5,7 +5,8 @@ import {
   AuthContextType,
 } from "../../../Provider/AuthProvider/AuthProvider";
 import ViewUserProfile from "./ViewUserProfile/ViewUserProfile";
-import { Link,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 interface UserProfileCardProps {
   student: {
@@ -18,13 +19,13 @@ interface UserProfileCardProps {
     profileImage: string;
     uid: string;
     _id: number;
-   
+
     // Add other properties of your student object
   };
 }
 
 const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
-  const { user, onlineUsers } = useContext(AuthContext) as AuthContextType;
+  const {  onlineUsers } = useContext(AuthContext) as AuthContextType;
 
   // const [onlineUsers, setOnlineUsers] = useState<{ [key: string]: boolean }>(
   //   {}
@@ -70,32 +71,38 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
   const closeModal = () => {
     setShowModal(false);
   };
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleJoinRoom =(uid: string) => {
-      navigate(`/Connect/room/${uid}`);
-    };
+  const handleJoinRoom = (uid: string) => {
+    navigate(`/Connect/room/${uid}`);
+  };
 
   return (
     <>
-      <div
-        onMouseLeave={closeModal}
-        className="bg-white border shadow-md rounded-md p-4 relative "
-      >
+      <div className="card-bg border shadow-md rounded-md p-4 relative ">
         <div className="flex items-center">
           <div
             onClick={() => openModal(student._id)}
-            className="w-16 h-16 bg-blue-500 rounded-full"
+            className="w-16 h-16  rounded-full"
           >
-            <img
-              src={student?.profileImage}
-              className="rounded-full w-full h-full"
-              alt=""
-            />
+            {" "}
+            {student.profileImage ? (
+              <>
+                {" "}
+                <img
+                  src={student?.profileImage}
+                  className="rounded-full w-full h-full"
+                  alt=""
+                />
+              </>
+            ) : (
+              <>
+                <FaUserCircle className={"w-10 h-10"}></FaUserCircle>
+              </>
+            )}
           </div>
           <div className="ml-4">
             <h2 className="text-lg font-semibold">{student.name}</h2>
-            <p className="text-gray-500">Web Developer</p>
           </div>
           <div
             className={`ml-2 w-2 h-2 rounded-full ${
@@ -104,27 +111,20 @@ const UserProfileCard: React.FC<UserProfileCardProps> = ({ student }) => {
           ></div>
         </div>
         <div className="mt-4">
-          <p className="text-gray-600">
+          <p className="text-gray-300">
             I'm a passionate English Learner Lets learn English together
           </p>
         </div>
         <div className="mt-4 flex justify-between">
-       
-            <button
-              onClick={()=>handleJoinRoom(student?.uid)}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring"
-            >
-              Call
-            </button>
-        
-          <Link
-            to={"/messaging"}
-            state={{ MyId: user?.uid, userId: student?.uid }}
+          <button
+            onClick={() => handleJoinRoom(student?.uid)}
+            className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 mt-5"
           >
-            <button className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring">
-              Message
-            </button>
-          </Link>
+            <div className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Call
+            </div>
+          </button>
+        
         </div>
         {showModal && (
           <div className=" absolute">

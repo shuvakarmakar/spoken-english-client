@@ -4,7 +4,7 @@ import useAdmin from "../../Hooks/UseAdmin";
 import UseInstructor from "../../Hooks/UseInstructor";
 import UseStudent from "../../Hooks/UseStudent";
 import Spinner from "../../Component/Pages/Spinner/Spinner";
-import { FaBars } from "react-icons/fa";
+import { FaBars,FaHome } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import AdminNav from "./AdminPages/AdminNav/AdminNav";
 const Dashboard = () => {
@@ -15,17 +15,18 @@ const Dashboard = () => {
 
   return (
     <div
-      style={{
-        backgroundImage:
-          "url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=900&t=st=1691992198~exp=1691992798~hmac=b8c9e4f94bf34ff4f185e4d90db42722d8b164c03572352c9dc80751264b8ecf')",
-        backgroundPosition: "cover",
-        opacity: "0.9",
-      }}
-      className="flex h-[100vh] "
+      className="bg-[#0d1446]  min-h-screen"
+      // style={{
+      //   backgroundImage:
+      //     "url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=900&t=st=1691992198~exp=1691992798~hmac=b8c9e4f94bf34ff4f185e4d90db42722d8b164c03572352c9dc80751264b8ecf')",
+      //   backgroundPosition: "cover",
+      //   opacity: "0.9",
+      // }}
+      // className="flex h-[100vh] "
     >
       {/* Mobile and Tablet Sidebar */}
       <div
-        className={`fixed top-0 left-0 bottom-0 shadow-md bg-white w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
+        className={` fixed top-0 left-0 bottom-0 bg-[#150F2D] text-white shadow-md w-2/3 sm:w-1/3 md:w-1/4 lg:w-1/5 z-10 ${
           sidebarOpen ? "block" : "hidden"
         } transition-transform duration-[0.5s] ease-in-out transform translate-x-0 lg:translate-x-0`}
       >
@@ -37,9 +38,10 @@ const Dashboard = () => {
           )}
 
           {isStudent && (
-            <ul className="uppercase">
+            <ul className="uppercase ">
               <NavLink to="/" onClick={() => setSidebarOpen(false)}>
-                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200 flex">
+                  <FaHome className={"w-6 h-6 me-2 "}></FaHome>
                   Home
                 </li>
               </NavLink>
@@ -47,8 +49,13 @@ const Dashboard = () => {
                 to="/dashboard/MyEnrolledCourses"
                 onClick={() => setSidebarOpen(false)}
               >
-                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+                <li className="p-2 transition duration-1000 text-sky-700 ease-in-out transform hover:bg-gray-200">
                   My Enrolled Courses
+                </li>
+              </NavLink>
+              <NavLink to="/dashboard/PaymentHistory">
+                <li className="p-2 transition duration-1000 text-white ease-in-out transform hover:bg-gray-200">
+                  Payment History
                 </li>
               </NavLink>
             </ul>
@@ -56,7 +63,8 @@ const Dashboard = () => {
           {isInstructor && (
             <ul className="uppercase">
               <NavLink to="/" onClick={() => setSidebarOpen(false)}>
-                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200">
+                <li className="p-2 transition duration-1000 ease-in-out transform hover:bg-gray-200 flex">
+                  <FaHome className={"w-6 h-6 me-2 "}></FaHome>
                   Home
                 </li>
               </NavLink>
@@ -90,10 +98,10 @@ const Dashboard = () => {
         >
           {sidebarOpen ? (
             <>
-              <AiOutlineClose className="text-[3vw]"></AiOutlineClose>
+              <AiOutlineClose className="text-[3vw] text-white"></AiOutlineClose>
             </>
           ) : (
-            <FaBars className="text-[3vw]"></FaBars>
+            <FaBars className="text-[3vw] text-white"></FaBars>
           )}
         </button>
 

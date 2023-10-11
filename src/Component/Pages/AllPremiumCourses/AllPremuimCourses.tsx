@@ -1,56 +1,105 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import SideIcons from "../Home/Home/Side";
 
 interface Course {
-    _id: string;
-    imageURL: string;
-    courseName: string;
-    courseDetails: string;
-    price: string;
-    instructorName: string;
-    instructorEmail: string;
+  _id: string;
+  imageURL: string;
+  courseName: string;
+  courseDetails: string;
+  price:string;
+  instructorName: string;
+  instructorEmail: string;
 }
 
 const MainComponent: React.FC = () => {
-    const [courses, setCourses] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<Course[]>([]);
 
-    useEffect(() => {
-        // Fetch data from the API
-        fetch("https://spoken-english-server-xi.vercel.app/courses")
-            .then((response) => response.json())
-            .then((data: Course[]) => setCourses(data))
-            .catch((error) => console.error("Error fetching data:", error));
-    }, []);
-
-    return (
-        <div className="container mx-auto py-8">
-            <h1 className="text-2xl font-semibold mb-4">All Premium Courses</h1>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-                {courses.map(course => (
-                    <div key={course._id} className="bg-white shadow-lg rounded-lg overflow-hidden cardbg">
-                        <img className="w-full h-48 object-cover" src={course.imageURL} alt={course.courseName} />
-                        <div className="p-4">
-                            <h2 className="text-lg font-semibold">{course.courseName}</h2>
-                            <p className="text-gray-600 darkText">{course.courseDetails}</p>
-                            <div className="mt-2">
-                                <p className="text-gray-800 font-semibold darkText">Course Price: ${course.price}</p>
-                                <p className="text-gray-600 mt-3 darkText">Instructor: {course.instructorName}</p>
-                                <p className="text-gray-600 mt-2 darkText">Instructor Email:{course.instructorEmail}</p>
-                            </div>
-                        </div>
-                        <div className="flex justify-center items-center p-4">
-                            <Link
-                                to={`/course-details/${course._id}`}
-                                className="text-white font-semibold py-2 px-4 btn btn-outline btn-secondary"
-                            >
-                                Learn More
-                            </Link>
-                        </div>
+  useEffect(() => {
+    // Fetch data from the API
+    fetch("https://spoken-english-server-xi.vercel.app/courses")
+      .then((response) => response.json())
+      .then((data: Course[]) => setCourses(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+  const [show, setShow] = useState(false);
+  return (
+    <div className="container mx-auto py-8 pt-32">
+      <Helmet>
+        <title>Premium Classes</title>
+      </Helmet>
+      <SideIcons />
+      <h1 className="md:text-5xl text-2xl font-semibold text-center  mb-6 uppercase">
+        Premium Courses
+      </h1>
+      <hr />
+      <div className="flex justify-center ">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 mt-10">
+          {courses.map((course) => (
+            <div
+              key={course._id}
+              className={`box-border bg-gradient-to-br w-[300px] ${course.courseName=="Advanced English Mastery" ?"from-blue-300 to-green-800":"from-blue-400 to-purple-500"} ${ show ? " h-[450px]" :"min-h-[350px]"}  from-blue-400 to-purple-500 border-white border-2 shadow-lg backdrop-blur-6 rounded-lg transition-all duration-500  hover:text-white hover:scale-105 hover:bg-gradient-to-br hover:from-pink-500 hover:to-pink-400 hover:shadow-xl`}
+            >
+              <div className="relative w-full h-48  ">
+                <img
+                  className="w-full h-48 object-cover rounded-t-lg"
+                  src={course.imageURL}
+                  alt={course.courseName}
+                />
+                {
+                  course.courseName=="Advanced English Mastery" && <div className="absolute top-0 left-0 bg-red-600 p-2 rounded-tl-lg">
+                  <span className="text-white font-bold animations">1 quiz</span>
+                </div>
+                }
+                <div className="absolute top-0 right-0 bg-gradient-to-b from-blue-400 to-blue-600 p-2 rounded-tl-lg">
+                  <span className="text-white font-semibold text-xs">New</span>
+                </div>
+              </div>
+              <div className="p-4">
+                {/* <span className="bg-gray-200">
+                  <IoBookSharp></IoBookSharp>
+                </span> */}
+                <h2 className={`font-semibold ${ show ? "hidden" :"block"} text-white darkText mb-2`}>
+                  {course.courseName}
+                </h2>
+                {/* <p className={`text-white darkText ${show ? "hidden" : "block"}`}>
+                  {course.courseDetails.slice(0, 100)}...
+                </p> */}
+                <div onClick={()=>setShow(!show)} className=" ">
+                  <div className="collapse collapse-arrow ">
+                    <input type="radio" name="my-accordion-2" />
+                    <div className="collapse-title text-xl font-medium uppercase">
+                      more
                     </div>
-                ))}
+                    <div className="collapse-content">
+                      <p className="text-white font-semibold darkText">
+                        Course Price: ${course.price}
+                      </p>
+                      <p className="text-white darkText mt-1">
+                        Instructor: {course.instructorName}
+                      </p>
+                      <p className="text-white darkText mt-1">
+                        Instructor Email: {course.instructorEmail}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <Link
+                    to={`/course-details/${course._id}`}
+                    className="text-white font-semibold py-2 px-4 bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 rounded-lg text-sm transition-colors duration-300"
+                  >
+                    Enroll Now
+                  </Link>
+                </div>
+              </div>
             </div>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default MainComponent;

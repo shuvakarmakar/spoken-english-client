@@ -34,8 +34,8 @@ const SearchResults: React.FC = () => {
         fetchData();
       }, []);
   // Use the searchValue to display search results or perform further actions
-  return (
-    <div className="py-5 md:py-10">
+  return ( 
+    <div className="py-5 md:py-10 mt-[80px]">
         <div className="w-[96%] md:w-[90%] mx-auto">
             <h2 className="text-xl font-semibold bg-[rgba(0,0,0,0.1)] px-3 py-2">Search Results for: <span className='text-red-600'>{searchQuery}</span> </h2>
 
@@ -64,7 +64,7 @@ const SearchResults: React.FC = () => {
                 </div>
                 <button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
                   <Link
-                    to={`course-details/${pc._id}`}
+                    to={`/course-details/${pc._id}`}
                     className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
                   >
                     Course Details

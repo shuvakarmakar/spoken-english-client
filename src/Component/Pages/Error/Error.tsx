@@ -1,6 +1,9 @@
+import { useLocation } from 'react-router-dom';
 import gif from '../../../assets/404_animation.gif'
 import React from 'react'
 const Error = () => {
+    const course=useLocation()?.state
+    console.log(course)
     return (
         <div>
             <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">

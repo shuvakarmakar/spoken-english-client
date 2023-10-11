@@ -3,15 +3,19 @@ import React, { useContext, useState } from "react";
 import { SiGoogleclassroom } from "react-icons/si";
 import { BiSolidUserAccount } from "react-icons/bi";
 import { FaBugSlash } from "react-icons/fa6";
-import { AuthContext, AuthContextType } from "../../../Provider/AuthProvider/AuthProvider";
+import {
+  AuthContext,
+  AuthContextType,
+} from "../../../Provider/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const HelpSupportPage: React.FC = () => {
-  const { user } = useContext(AuthContext) as AuthContextType
+  const { user } = useContext(AuthContext) as AuthContextType;
   const timestamp = new Date();
   const [formData, setFormData] = useState({
-    subject:"",
-    message:"",
+    subject: "",
+    message: "",
     email: user?.email,
     createdAt: timestamp,
     isRead: false,
@@ -38,11 +42,10 @@ const HelpSupportPage: React.FC = () => {
             message: "",
             email: "",
             isRead: false,
-            createdAt:timestamp,
+            createdAt: timestamp,
           });
         }
       });
-    
   };
 
   const handleInputChange = (
@@ -57,10 +60,13 @@ const HelpSupportPage: React.FC = () => {
 
   return (
     <div className=" bg-gray-100 w-full min-h-screen">
+      <Helmet>
+        <title>Help & Support</title>
+      </Helmet>
       <div className="bg-white p-1 rounded-lg shadow-md">
         <div className="header w-ful shadow-md border flex justify-between items-center">
           <h2 className="text-2xl font-bold mb-4 px-10 py-2">Help & Support</h2>
-          <Link to={'/'}>
+          <Link to={"/"}>
             {" "}
             <p className="btn btn-sm bg-blue-500 mr-10">Home</p>
           </Link>
@@ -70,7 +76,7 @@ const HelpSupportPage: React.FC = () => {
             {/* card */}
             <a href="#cards">
               <div
-                className="card w-[300px]
+                className="card h-[300px] w-[300px]
             bg-base-200 shadow-md"
               >
                 <figure className="px-10 pt-10">
@@ -90,7 +96,7 @@ const HelpSupportPage: React.FC = () => {
             </a>
             {/* card */}
             <a href="#cards">
-              <div className="card w-[300px] bg-base-100 shadow-md border">
+              <div className="card  h-[300px]  w-[300px] bg-base-100 shadow-md border">
                 <figure className="px-10 pt-10">
                   <BiSolidUserAccount
                     className={"w-20 h-20 text-blue-500"}
@@ -109,7 +115,7 @@ const HelpSupportPage: React.FC = () => {
 
             {/* card */}
             <a href="#cards">
-              <div className="card w-[300px] bg-base-200 shadow-md ">
+              <div className="card  h-[300px]  w-[300px] bg-base-200 shadow-md ">
                 <figure className="px-10 pt-10">
                   <FaBugSlash
                     className={"w-20 h-20 text-blue-500"}
@@ -190,7 +196,7 @@ const HelpSupportPage: React.FC = () => {
                   <div className="collapse-content">
                     <p>
                       {" "}
-                      - You can apply for becoming an instructor from home page
+                      -You can apply for becoming an instructor from home page
                       apply for a instructor section and then filup the form
                       upload your cv or resume
                     </p>
@@ -201,11 +207,12 @@ const HelpSupportPage: React.FC = () => {
           </div>
         </div>
         <div id="cards" className="my-20">
-          <p className="text-center uppercase font-bold p-1">Or</p>
+      
           <div className=" md:flex gap-10  h-full ">
-            <div className="w-full shadow-md p-10 border mb-10 h-[307px]">
+            
+            <div className="w-full shadow-md p-10 border mb-10 h-[330px]">
               <h3 className="text-lg font-semibold mb-2">Contact Support</h3>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-7">
                 If you can't find the information you need, feel free to contact
                 our support team. We're here to help you! or directly message to
                 contact form.
@@ -217,6 +224,7 @@ const HelpSupportPage: React.FC = () => {
                 Contact Support
               </a>
             </div>
+
             <div className="direct-message w-full shadow-md p-5 border h-full">
               {/* Support Form */}
               <form onSubmit={handleSubmit}>

@@ -1,6 +1,10 @@
 {
-    "banner1.title": "We are Provide The best spoken English learning environment.",
-    "banner1.description": "Join our courses to enhance your spoken English proficiency and gain confidence in conversations.",
+    "banner1.title": "Unlock Your English Fluency Today!",
+    "banner1.description": "Speak English Confidently with Us.",
+    "banner2.title": "Your Journey to Fluent English Begins Here.",
+    "banner2.description": "Discover the Power of Fluent English.",
+    "banner3.title": "Elevate Your English Speaking Skills Now!",
+    "banner3.description": "Join Us to Master the Art of Spoken English.",
     "banner1.buttonText": "Free Classes",
     "hero.title": "Be a Confident English Speaker",
     "hero.description": "So you are preparing for IELTS, but you are not confident when you need to speak English, right? Maybe you’ve been learning English since you were at school, but you still get stuck when you speak. Also, and I am just guessing here, sometimes you feel the English in your head is great, but when you speak, it comes out much worse. If this sounds familiar, then you’re what I call a Struggling English Student but relax, because I can help you become a Confident English Speaker.",
@@ -49,5 +53,12 @@
     "contactForm.messagePlaceholder": "Your Message",
     "videoPlayer.title": "What Our Students Say",
     "videoPlayer.content": "Our students have provided positive feedback about our Spoken English courses. They appreciate the engaging and interactive nature of the classes, which has helped them improve their speaking skills with confidence. They also value the supportive and patient instructors who create a comfortable learning environment. Overall, they find our courses effective and enjoyable for enhancing their spoken English abilities.",
-    "videoPlayer.buttonText": "Get Started"
+    "videoPlayer.buttonText": "Get Started",
+    "freelivelessons.title": "Speaking FREE Live Lessons!",
+    "freelivelessons.latestLesson": "Here is the Latest Live Lesson",
+    "freelivelessons.lessonDescription": "The Speaking Academy offers FREE live lessons on lots of different topics. In the lessons, we choose a popular topic and then look at vocabulary, including idioms and collocations, grammar, pronunciation, tips, and techniques. You can watch on my YouTube Channel or Facebook Page.",
+    "freelivelessons.moreLessonsTitle": "More Free Speaking Lessons",
+    "freelivelessons.viewMoreVideos": "View More Videos",
+    "freelivelessons.vocabularyTitle": "Learning Vocabulary for Speaking",
+    "freelivelessons.vocabularyDescription": "Learning Vocabulary for Speaking is a cornerstone of effective communication. With an extensive vocabulary, you can convey ideas clearly, engage listeners, and express emotions accurately. It empowers you to choose words that resonate with your audience, making your speech more captivating and impactful. Furthermore, a robust vocabulary enhances your storytelling prowess. You can paint vivid pictures with words, immersing your listeners in narratives that leave a lasting impression. This skill is valuable not only in casual conversations but also in public speaking, presentations, and interviews. In language proficiency exams like IELTS, a diverse vocabulary can significantly elevate your scores in the speaking section. It showcases your language proficiency and ability to use words appropriately in different contexts. Expanding your vocabulary also fosters cross-cultural understanding. As you encounter and learn words from various languages and cultures, you gain insights into different worldviews and ways of expression. This, in turn, enhances your ability to connect with a diverse range of people."
 }

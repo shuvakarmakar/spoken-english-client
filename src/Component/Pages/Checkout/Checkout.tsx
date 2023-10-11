@@ -26,6 +26,7 @@ const Checkout: React.FC = () => {
     const location = useLocation();
     // const { user } = useContext(AuthContext);
     const enrollmentData = location?.state;
+    console.log(enrollmentData)
 
     const { register, handleSubmit } = useForm<BillingData>();
 
@@ -34,8 +35,8 @@ const Checkout: React.FC = () => {
         ...enrollmentData,
         billingData,
       };
-
-      console.log(combinedData);
+      
+    //   console.log(combinedData);
       // spoken-english-server-xi.vercel.app
       fetch("https://spoken-english-server-xi.vercel.app/order", {
         method: "POST",
@@ -59,7 +60,7 @@ const Checkout: React.FC = () => {
     }
 
     return (
-        <div className="container mx-auto py-8 changebg">
+        <div className="w-[96%] md:w-[60%] mx-auto py-8 changebg">
             <h1 className="text-3xl text-center font-semibold mb-6">Checkout</h1>
             <div className="bg-white shadow-lg rounded-lg p-6 changebg">
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,7 +84,7 @@ const Checkout: React.FC = () => {
                     {/* Billing Details Form */}
                     <div className="mb-4 mt-6">
                         <h2 className="text-lg font-semibold mb-2">Billing Details</h2>
-                        <label htmlFor="fullName" className="block mb-1">
+                        <label htmlFor="fullName" className="block mb-1 darkText">
                             Full Name
                         </label>
                         <input
@@ -91,11 +92,11 @@ const Checkout: React.FC = () => {
                             id="fullName"
                             
                             {...register('fullName')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
-                        <label htmlFor="email" className="block mb-1 mt-3">
+                        <label htmlFor="email" className="block mb-1 darkText mt-3">
                             Email
                         </label>
                         <input
@@ -103,11 +104,11 @@ const Checkout: React.FC = () => {
                             id="email"
                           
                             {...register('email')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
-                        <label htmlFor="address" className="block mb-1 mt-3">
+                        <label htmlFor="address" className="block mb-1 darkText mt-3">
                             Billing Address
                         </label>
                         <input
@@ -115,11 +116,11 @@ const Checkout: React.FC = () => {
                             id="address"
                             
                             {...register('address')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 text-black p-2 w-full lightText "
                             required
                         />
 
-                        <label htmlFor="city" className="block mb-1 mt-3">
+                        <label htmlFor="city" className="block mb-1 darkText mt-3">
                             City
                         </label>
                         <input
@@ -127,11 +128,11 @@ const Checkout: React.FC = () => {
                             id="city"
                          
                             {...register('city')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
-                        <label htmlFor="country" className="block mb-1 mt-3">
+                        <label htmlFor="country" className="block mb-1 darkText mt-3">
                             Country
                         </label>
                         <input
@@ -139,11 +140,11 @@ const Checkout: React.FC = () => {
                             id="country"
                            
                             {...register('country')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
-                        <label htmlFor="postalCode" className="block mb-1 mt-3">
+                        <label htmlFor="postalCode" className="block mb-1 darkText mt-3">
                             Postal Code
                         </label>
                         <input
@@ -151,11 +152,11 @@ const Checkout: React.FC = () => {
                             id="postalCode"
                            
                             {...register('postalCode')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
 
-                        <label htmlFor="contactNumber" className="block mb-1 mt-3">
+                        <label htmlFor="contactNumber" className="block mb-1 darkText mt-3">
                             Contact Number
                         </label>
                         <input
@@ -163,7 +164,7 @@ const Checkout: React.FC = () => {
                             id="contactNumber"
                             
                             {...register('contactNumber')}
-                            className="border border-gray-300 p-2 w-full"
+                            className="border border-gray-300 p-2 w-full lightText text-black"
                             required
                         />
                     </div>

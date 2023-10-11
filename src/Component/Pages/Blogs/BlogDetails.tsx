@@ -26,10 +26,10 @@ const BlogDetails: React.FC = () => {
   }
 
   return (
-    <div className="bg-white">
+    <div className="pt-[130px] bg-white changebg ">
       <section>
         <div className="w-[96%] md:w-[90%] mx-auto">
-          <p className="text-4xl py-5">{blog.blog_name}</p>
+          <p className=" text-4xl py-5">{blog.blog_name}</p>
           <img src={blog.image} alt="" className="w-full md:w-[600px] h-[60vh] shadow-xl mx-auto" />
           <p className="py-5">{blog.blog_short_description}</p>
           <p>{blog.blog_details}</p>

@@ -17,6 +17,7 @@ import "aos/dist/aos.css";
 import LanguageDropdown from "../Component/LanguageDropdown/LanguageDropdown";
 import Aos from "aos";
 import useNotification from "../Hooks/useNotification";
+import { Slide } from "react-awesome-reveal";
 
 interface Course {
   _id: string;
@@ -77,7 +78,7 @@ const Navbar: React.FC = () => {
           to="/all-premium-courses"
           className={({ isActive }) => (isActive ? "active" : "default")}
         >
-    Premium Courses
+          Premium Courses
         </NavLink>
       </li>
     </>
@@ -91,6 +92,10 @@ const Navbar: React.FC = () => {
     const storedDarkMode = localStorage.getItem("darkMode");
     if (storedDarkMode === "true") {
       setIsDarkMode(true);
+      document.body.classList.add("dark-mode");
+    } else {
+      setIsDarkMode(false);
+      document.body.classList.remove("dark-mode");
     }
   }, []);
 
@@ -151,8 +156,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className=" px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg relative">
+    <div className="bg-[#FDFDFD] border-b shadow-2xl px-4 py-5 w-full md:px-24 lg:px-8 changebg nav-bg fixed top-0 z-50 navbarStyle">
       {/* Searchbar */}
+
       <div
         id="searchBarContainer"
         className="top-0 absolute w-full h-full bg-blue-500 z-50 left-0 hidden changebg"
@@ -174,41 +180,49 @@ const Navbar: React.FC = () => {
             </button>
           </div> */}
 
-          <div className="relative rounded-lg  p-4">
-            <input
-              type="text"
-              data-aos="fade-down"
-              className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyPress={handleKeyPress}
-            />
-            <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
-              <svg
-                className="w-5 h-5 text-blue-700 cursor-pointer font-bold text-lg md:text-xl"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                onClick={handleSearch}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
-                />
-              </svg>
+          <Slide direction="down">
+            <div className="relative rounded-lg  p-4">
+              <input
+                type="text"
+                data-aos="fade-down"
+                className="cardbg darkText outline-none shadow-xl block w-[70vw] md:w-[50vw] pl-5  pr-4 py-2 md:py-3 border rounded-lg leading-5focus:outline-none  focus:border-blue-500 sm:text-sm"
+                placeholder="Search..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
+              <div className="absolute inset-y-0 right-8 pl-3 flex items-center ">
+                <svg
+                  className="w-5 h-5 text-blue-700 cursor-pointer font-bold text-lg md:text-xl"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  onClick={handleSearch}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M21 21l-4.35-4.35M15 10a5 5 0 11-10 0 5 5 0 0110 0z"
+                  />
+                </svg>
+              </div>
             </div>
-          </div>
+
+          </Slide>
 
           <button
             className=" focus:outline-none right-0 textDark "
             onClick={hideSearchPopUp}
           >
-            {<FaTimes size={24} className="" />}
+            <Slide direction="right">
+              {<FaTimes size={24} className="" />}
+            </Slide>
+
+
           </button>
+
         </div>
       </div>
       {query && (
@@ -252,7 +266,7 @@ const Navbar: React.FC = () => {
         {/* Logo Section */}
         <Link to="/" className="inline-flex items-center">
           <AcademicCapIcon className="h-6 w-6 text-blue-500" />
-          <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
+          <span className="siteTitle ml-2 text-xl font-bold tracking-wide text-gray-800 darkText">
             Elearner{" "}
           </span>
         </Link>
@@ -296,24 +310,13 @@ const Navbar: React.FC = () => {
         <ul className="items-center font-sans hidden space-x-8 lg:flex">
           {navItems}
 
-          {user && (
-            <li>
-              <NavLink
-                to="/dictionary"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                Dictionary
-              </NavLink>
-            </li>
-          )}
-
           {/* Display Sign Up and Login buttons if not authenticated */}
           {!user ? (
             <>
               <li>
                 <Link
                   to="/Login"
-                  className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  className="text-white bg-gradient-to-br from-cyan-500 to-blue-500  group-hover:to-blue-700 hover:bg-gradient-to-tl  hover:scale-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >
                   Login
                 </Link>
@@ -348,6 +351,8 @@ const Navbar: React.FC = () => {
           <button className="searchBtn" onClick={openSearchBar}>
             <FaSearch size={24} />
           </button>
+
+          {/* Language */}
           <button>
             <LanguageDropdown
               changeLanguage={function (_language: string): void {
@@ -366,9 +371,9 @@ const Navbar: React.FC = () => {
             onClick={toggleMenu}
           >
             {isMenuOpen ? (
-              <XMarkIcon className="w-5 text-white font-bold text-lg" />
+              <XMarkIcon className="w-5 text-black font-bold text-xl" />
             ) : (
-              <Bars3BottomRightIcon className="w-5 text-white font-bold text-lg" />
+              <Bars3BottomRightIcon className="w-5 text-black  font-bold text-lg darkText" />
             )}
           </button>
           {isMenuOpen && (
@@ -397,19 +402,6 @@ const Navbar: React.FC = () => {
                   <ul className="space-y-4">
                     {navItems}
 
-                    {user && (
-                      <li>
-                        <NavLink
-                          to="/dictionary"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          Dictionary
-                        </NavLink>
-                      </li>
-                    )}
-
                     {/* Display Sign Up and Login buttons if not authenticated */}
                     {!user ? (
                       <>
@@ -417,7 +409,7 @@ const Navbar: React.FC = () => {
                           <li>
                             <Link
                               to="/Login"
-                              className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                              className="text-white bg-gradient-to-br from-cyan-500 to-blue-500  group-hover:to-blue-700 hover:bg-gradient-to-tl  hover:scale-500 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             >
                               Login
                             </Link>

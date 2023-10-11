@@ -1,8 +1,12 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const TermsAndConditations = () => {
   return (
-    <div className="bg-[#EEEEEE] changebg">
+    <div className="changebg pt-32">
+      <Helmet>
+        <title>Terms & Conditions</title>
+      </Helmet>
       <div className="w-[96%] md:w-[90%] mx-auto">
         <p className="text-3xl py-5">Terms & Conditions</p>
         <img

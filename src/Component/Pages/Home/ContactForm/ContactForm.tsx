@@ -4,9 +4,12 @@ import emailjs from "@emailjs/browser";
 // import contactbg from "../../../../assets/contactusbg.avif";
 import { BiPhoneCall } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
+import "./contactFormStyle.css"
+
 const ContactForm: React.FC = () => {
   const { t } = useTranslation();
   const form = useRef<HTMLFormElement>(null);
+  
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,7 +47,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className=" p-5 bg-[#101E41] rounded-lg shadow-lg w-full md:w-[350px] ">
+    <div className="contactFormStyle border md:border-none p-7 md:p-5 bg-[#101E41] rounded-lg shadow-xl w-full md:w-[250px] ">
       <div className="flex gap-3 items-center ">
         <p>
           <BiPhoneCall className={"w-8 h-8 text-orange-500"}></BiPhoneCall>{" "}
@@ -57,7 +60,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.nameLabel")}
           </label>
           <input
-            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
+            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200 text-black"
             type="text"
             name="user_name"
             placeholder={t("contactForm.namePlaceholder")}
@@ -69,7 +72,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.emailLabel")}
           </label>
           <input
-            className="w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
+            className="text-black w-full p-1 border rounded focus:outline-none focus:border-blue-500 bg-slate-200"
             type="email"
             name="user_email"
             placeholder={t("contactForm.emailPlaceholder")}
@@ -81,7 +84,7 @@ const ContactForm: React.FC = () => {
             {t("contactForm.messageLabel")}
           </label>
           <textarea
-            className="w-full p-1 bg-slate-200 border rounded focus:outline-none focus:border-blue-500"
+            className="text-black w-full p-1 bg-slate-200 border rounded focus:outline-none focus:border-blue-500"
             name="message"
             rows={4}
             placeholder={t("contactForm.messagePlaceholder")}

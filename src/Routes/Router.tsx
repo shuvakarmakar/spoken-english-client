@@ -51,7 +51,13 @@ import Suggestion from "../Component/PTPCommunication/Suggestion/Suggestion";
 import Joinroom from "../Component/Calls/Joinroom";
 import Calling from "../Component/Calls/Calling";
 import SearchResults from "../Component/Pages/Search/SearchResults";
+import Quiz from "../Component/Pages/Quiz/Quiz";
+import QuizStarter from "../Component/Pages/Quiz/QuizStarter";
 import Notification from "../Component/PTPCommunication/GetCallNotification/Notification";
+import LanguageTranslator from "../Component/Pages/Dictionary/LanguageTranslator ";
+import VoiceToText from "../Component/VoiceToText/VoiceToText";
+import Text from "../Component/Pages/TextToSpeach/Tesxt";
+import PaymentHistory from "../Layout/DashBoard/StudentPages/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -86,14 +92,7 @@ export const router = createBrowserRouter([
         path: "/applyInstructor",
         element: <InstructorApplicationForm></InstructorApplicationForm>,
       },
-      // {
-      //   path: "/Connect",
-      //   element: (
-      //     <PrivetRout>
-      //       <PTPCommunication></PTPCommunication>
-      //     </PrivetRout>
-      //   ),
-      // },
+
       {
         path: "/profile",
         element: (
@@ -122,12 +121,29 @@ export const router = createBrowserRouter([
 
       // Dictionary (rashik)
       {
-        path: "/dictionary",
+        path: "/translator",
         element: (
           <PrivetRout>
-            <Dictionary />
+            <LanguageTranslator />
           </PrivetRout>
         ),
+      },
+      {
+        path: "/dictionary",
+        element: <Dictionary />,
+      },
+      {
+        path: "/VoiceToText",
+        element: (
+          <PrivetRout>
+            <VoiceToText />
+          </PrivetRout>
+        ),
+      },
+
+      {
+        path: "/TextToSpeach",
+        element: <Text />,
       },
       {
         path: "/profile/:id",
@@ -164,7 +180,7 @@ export const router = createBrowserRouter([
         element: <PopularCourse></PopularCourse>,
       },
       {
-        path: "all-courses",
+        path: "all-popular-courses",
         element: <AllCourse></AllCourse>,
       },
       {
@@ -200,6 +216,15 @@ export const router = createBrowserRouter([
         element: <SearchResults></SearchResults>,
       },
 
+      {
+        path: "quiz",
+        element: <Quiz></Quiz>,
+      },
+      {
+        path: "quiz-starter",
+        element: <QuizStarter></QuizStarter>,
+      },
+
       // shuva-work
       {
         path: "all-premium-courses",
@@ -207,26 +232,46 @@ export const router = createBrowserRouter([
       },
       {
         path: "course-details/:id",
-        element: <CourseDetails></CourseDetails>,
+        element: (
+          <PrivetRout>
+            <CourseDetails></CourseDetails>
+          </PrivetRout>
+        ),
       },
       {
         path: "checkout",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivetRout>
+            <Checkout></Checkout>
+          </PrivetRout>
+        ),
       },
       {
         path: "payment/success/:tranId",
-        element: <PaymentSuccess></PaymentSuccess>,
+        element: (
+          <PrivetRout>
+            <PaymentSuccess></PaymentSuccess>
+          </PrivetRout>
+        ),
       },
       {
         path: "payment/fail/:tranId",
-        element: <PaymentFailed></PaymentFailed>,
+        element: (
+          <PrivetRout>
+            <PaymentFailed></PaymentFailed>
+          </PrivetRout>
+        ),
       },
     ],
   },
   // dashboard routes
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivetRout>
+        <Dashboard></Dashboard>
+      </PrivetRout>
+    ),
     children: [
       //  admin routes
       {
@@ -238,6 +283,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/MyEnrolledCourses",
         element: <MyEnrolledCourses></MyEnrolledCourses>,
+      },
+      {
+        path: "/dashboard/PaymentHistory",
+        element:<PaymentHistory></PaymentHistory> ,
       },
       {
         path: "/dashboard/HelpForm",
@@ -271,7 +320,12 @@ export const router = createBrowserRouter([
   // connect pages
   {
     path: "/Connect",
-    element: <PTPCommunication></PTPCommunication>,
+    element: (
+      <PrivetRout>
+        {" "}
+        <PTPCommunication></PTPCommunication>
+      </PrivetRout>
+    ),
 
     children: [
       {
@@ -299,7 +353,6 @@ export const router = createBrowserRouter([
         path: "/Connect/calling",
         element: (
           <PrivetRout>
-            {" "}
             <Joinroom />
           </PrivetRout>
         ),
@@ -315,7 +368,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Connect/notification",
-        element:<Notification></Notification>
+        element: <Notification></Notification>,
       },
     ],
   },

@@ -1,3 +1,13 @@
 .searchCard:nth-child(even){
 border:1px solid blue
 }
+
+@media screen and (max-width:350px)
+{
+    .siteTitle{
+        display: none;
+    }
+    .navbarStyle{
+        margin-bottom: 100px;
+    }
+}
